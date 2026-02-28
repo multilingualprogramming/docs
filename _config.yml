@@ -147,7 +147,7 @@ defaults:
   - scope:
       path: ""
     values:
-      image: "/assets/images/og-image.png"
+      image: "/assets/images/og-image.svg"
 
 # Exclude
 exclude:
@@ -160,4 +160,3 @@ exclude:
   - vendor/ruby/
   - ".sass-cache"
   - ".jekyll-cache"
-

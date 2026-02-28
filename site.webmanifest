@@ -1,0 +1,25 @@
+---
+---
+{
+  "name": "{{ site.title }}",
+  "short_name": "multilingual",
+  "description": "{{ site.description }}",
+  "start_url": "{{ site.baseurl }}/",
+  "scope": "{{ site.baseurl }}/",
+  "display": "standalone",
+  "background_color": "#03020d",
+  "theme_color": "#080718",
+  "icons": [
+    {
+      "src": "{{ '/assets/images/favicon.svg' | relative_url }}",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "{{ '/apple-touch-icon.png' | relative_url }}",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
