@@ -34,7 +34,7 @@
   <header class="site-header" role="banner">
     <nav class="nav-container" aria-label="Main navigation">
       <a class="nav-brand" href="{{ '/' | relative_url }}">
-        <span class="brand-icon" aria-hidden="true">⬡</span>
+        <img class="brand-icon" src="{{ '/assets/images/logo.svg' | relative_url }}" alt="" aria-hidden="true" />
         <span class="brand-name">multilingual</span>
         <span class="brand-version">v{{ site.version }}</span>
       </a>
@@ -68,7 +68,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <div class="footer-logo">
-            <span class="brand-icon">⬡</span>
+            <img class="brand-icon" src="{{ '/assets/images/logo.svg' | relative_url }}" alt="" aria-hidden="true" />
             <span class="brand-name">multilingual</span>
           </div>
           <p class="footer-tagline">Write code in 17 human languages.<br/>One formal core. Infinite expression.</p>
@@ -120,3 +120,4 @@
   <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
 </body>
 </html>
+

@@ -123,9 +123,10 @@ body {
 }
 
 .brand-icon {
-  font-size: 1.5rem;
-  color: var(--accent-cyan);
-  line-height: 1;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: block;
+  flex-shrink: 0;
 }
 
 .brand-name {
@@ -1071,7 +1072,7 @@ body {
   margin-bottom: 1rem;
 }
 
-.footer-logo .brand-icon { color: var(--accent-cyan); font-size: 1.5rem; }
+.footer-logo .brand-icon { width: 1.5rem; height: 1.5rem; }
 .footer-logo .brand-name {
   font-family: var(--font-sans);
   font-weight: 700;
@@ -1215,3 +1216,4 @@ pre:hover .copy-btn { opacity: 1; }
   .main-content { padding: 0; }
   body { background: white; color: black; }
 }
+
