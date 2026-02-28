@@ -147,6 +147,7 @@ FALLBACK_REGISTRY["my_compute"] = MyOperations.my_compute
 
 ### Step 2: Add WASM Code Generation
 
+{% raw %}
 ```python
 # In multilingualprogramming/codegen/wasm_generator.py
 
@@ -163,6 +164,7 @@ pub extern "C" fn my_compute(x: {x_type}, y: {y_type}) -> {x_type} {{
 }}
 """
 ```
+{% endraw %}
 
 ### Step 3: Compile to WASM
 
