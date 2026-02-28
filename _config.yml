@@ -10,9 +10,6 @@ author:
   email: "johnsamuelwrites@gmail.com"
   github: "johnsamuelwrites"
 
-# Theme - we use custom layouts
-theme: minima
-
 # Markdown
 markdown: kramdown
 kramdown:
@@ -164,7 +161,3 @@ exclude:
   - ".sass-cache"
   - ".jekyll-cache"
 
-# Sass
-sass:
-  sass_dir: _sass
-  style: compressed
