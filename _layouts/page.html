@@ -1,0 +1,66 @@
+---
+layout: default
+---
+<div class="page-layout">
+  <!-- Sidebar -->
+  <aside class="sidebar" role="navigation" aria-label="Page navigation">
+    <div class="sidebar-inner">
+      {% include sidebar.html %}
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <main class="main-content" id="main-content" role="main">
+    <article class="content-article">
+      {% if page.title %}
+      <header class="content-header">
+        {% if page.category %}
+        <span class="content-category">{{ page.category }}</span>
+        {% endif %}
+        <h1 class="content-title">{{ page.title }}</h1>
+        {% if page.description %}
+        <p class="content-description">{{ page.description }}</p>
+        {% endif %}
+        {% if page.badges %}
+        <div class="content-badges">
+          {% for badge in page.badges %}
+          <span class="badge badge-{{ badge.type | default: 'default' }}">{{ badge.text }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </header>
+      {% endif %}
+
+      <div class="content-body">
+        {{ content }}
+      </div>
+
+      {% if page.next_page or page.prev_page %}
+      <nav class="page-nav" aria-label="Page navigation">
+        {% if page.prev_page %}
+        <a class="page-nav-prev" href="{{ page.prev_page.url | relative_url }}">
+          <span class="page-nav-label">Previous</span>
+          <span class="page-nav-title">{{ page.prev_page.title }}</span>
+        </a>
+        {% else %}
+        <div></div>
+        {% endif %}
+        {% if page.next_page %}
+        <a class="page-nav-next" href="{{ page.next_page.url | relative_url }}">
+          <span class="page-nav-label">Next</span>
+          <span class="page-nav-title">{{ page.next_page.title }}</span>
+        </a>
+        {% endif %}
+      </nav>
+      {% endif %}
+    </article>
+  </main>
+
+  <!-- Table of Contents (right panel) -->
+  <aside class="toc-panel" aria-label="Table of contents">
+    <div class="toc-inner">
+      <h4 class="toc-title">On this page</h4>
+      <div id="toc" class="toc-list"></div>
+    </div>
+  </aside>
+</div>

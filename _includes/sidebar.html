@@ -1,0 +1,21 @@
+{% assign nav = site.nav %}
+<div class="sidebar-nav">
+  {% for section in nav %}
+  <div class="sidebar-section">
+    <a href="{{ section.url | relative_url }}" class="sidebar-section-title{% if page.url == section.url or page.url contains section.url %} active{% endif %}">
+      {{ section.title }}
+    </a>
+    {% if section.children %}
+    <ul class="sidebar-items">
+      {% for item in section.children %}
+      <li class="sidebar-item">
+        <a href="{{ item.url | relative_url }}" class="sidebar-link{% if page.url == item.url %} active{% endif %}">
+          {{ item.title }}
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
+  {% endfor %}
+</div>

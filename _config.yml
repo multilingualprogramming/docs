@@ -1,0 +1,170 @@
+title: "Multilingual Programming Language"
+description: "Write code in 17 human languages. One formal core. Infinite expression."
+url: ""
+baseurl: ""
+version: "0.4.0"
+
+# Author
+author:
+  name: "John Samuel"
+  email: "johnsamuelwrites@gmail.com"
+  github: "johnsamuelwrites"
+
+# Theme - we use custom layouts
+theme: minima
+
+# Markdown
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: "highlight"
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
+
+highlighter: rouge
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Navigation
+nav:
+  - title: "Getting Started"
+    url: "/getting-started/"
+    children:
+      - title: "Installation"
+        url: "/getting-started/installation/"
+      - title: "Quick Start"
+        url: "/getting-started/quick-start/"
+      - title: "REPL Guide"
+        url: "/getting-started/repl/"
+  - title: "Language Guide"
+    url: "/language-guide/"
+    children:
+      - title: "Overview"
+        url: "/language-guide/"
+      - title: "Syntax Reference"
+        url: "/language-guide/syntax/"
+      - title: "Keywords"
+        url: "/language-guide/keywords/"
+      - title: "Control Flow"
+        url: "/language-guide/control-flow/"
+      - title: "Functions & Classes"
+        url: "/language-guide/functions-classes/"
+      - title: "Async & Generators"
+        url: "/language-guide/async-generators/"
+      - title: "All 17 Languages"
+        url: "/language-guide/all-languages/"
+      - title: "Guide Français"
+        url: "/language-guide/french/"
+  - title: "Reference"
+    url: "/reference/"
+    children:
+      - title: "Language Concepts"
+        url: "/reference/"
+      - title: "Built-in Aliases"
+        url: "/reference/builtins/"
+      - title: "Operators"
+        url: "/reference/operators/"
+      - title: "Numerals"
+        url: "/reference/numerals/"
+      - title: "Date & Time"
+        url: "/reference/datetime/"
+      - title: "Compatibility Matrix"
+        url: "/reference/compatibility/"
+  - title: "WASM Backend"
+    url: "/wasm/"
+    children:
+      - title: "Overview"
+        url: "/wasm/"
+      - title: "Installation"
+        url: "/wasm/installation/"
+      - title: "Architecture"
+        url: "/wasm/architecture/"
+      - title: "Performance"
+        url: "/wasm/performance/"
+      - title: "Development"
+        url: "/wasm/development/"
+      - title: "Troubleshooting"
+        url: "/wasm/troubleshooting/"
+      - title: "FAQ"
+        url: "/wasm/faq/"
+      - title: "Upgrade to v0.4"
+        url: "/wasm/upgrade/"
+  - title: "Python Codegen"
+    url: "/codegen/"
+    children:
+      - title: "Overview"
+        url: "/codegen/"
+      - title: "API Reference"
+        url: "/codegen/api/"
+  - title: "Design"
+    url: "/design/"
+    children:
+      - title: "Architecture"
+        url: "/design/"
+      - title: "Core Specification"
+        url: "/design/core-spec/"
+      - title: "Frontend Contracts"
+        url: "/design/frontend-contracts/"
+      - title: "Surface Normalization"
+        url: "/design/surface-normalization/"
+      - title: "Stdlib Localization"
+        url: "/design/stdlib-localization/"
+      - title: "Related Work"
+        url: "/design/related-work/"
+  - title: "Extending"
+    url: "/extending/"
+    children:
+      - title: "Add a Language"
+        url: "/extending/"
+      - title: "Translation Guidelines"
+        url: "/extending/translation/"
+      - title: "CNL Scope"
+        url: "/extending/cnl-scope/"
+  - title: "Contributing"
+    url: "/contributing/"
+    children:
+      - title: "Development Guide"
+        url: "/contributing/"
+
+# Collections
+collections:
+  languages:
+    output: true
+    permalink: /languages/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+  - scope:
+      path: ""
+    values:
+      image: "/assets/images/og-image.png"
+
+# Exclude
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - ".sass-cache"
+  - ".jekyll-cache"
+
+# Sass
+sass:
+  sass_dir: _sass
+  style: compressed
