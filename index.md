@@ -45,7 +45,7 @@ permalink: /
 </div>
 
 <!-- Code demo -->
-<section class="home-section" style="padding-top:3rem">
+<section class="home-section" style="padding-top:3rem" markdown="1">
   <div style="text-align:center; margin-bottom:2rem">
     <span class="section-eyebrow">Same Program, Every Language</span>
     <h2 class="section-title">One Syntax Model, 17 Expressions</h2>
@@ -69,88 +69,64 @@ permalink: /
   </div>
   <div class="code-demo-body">
     <div class="code-panel" data-lang="en" style="display:block">
-
-```text
-let name = "world"
+<pre><code>let name = "world"
 let count = 5
 
 def greet(n):
     for i in range(count):
         print(f"Hello, {n}! iteration {i}")
 
-greet(name)
-```
-
+greet(name)</code></pre>
 </div>
     <div class="code-panel" data-lang="fr" style="display:none">
-
-```text
-soit nom = "monde"
+<pre><code>soit nom = "monde"
 soit compteur = 5
 
 fonction saluer(n):
     pour i dans intervalle(compteur):
         afficher(f"Bonjour, {n}! iteration {i}")
 
-saluer(nom)
-```
-
+saluer(nom)</code></pre>
 </div>
     <div class="code-panel" data-lang="es" style="display:none">
-
-```text
-sea nombre = "mundo"
+<pre><code>sea nombre = "mundo"
 sea contador = 5
 
 función saludar(n):
     para i en rango(contador):
         imprimir(f"Hola, {n}! iteracion {i}")
 
-saludar(nombre)
-```
-
+saludar(nombre)</code></pre>
 </div>
     <div class="code-panel" data-lang="ja" style="display:none">
-
-```text
-変数 名前 = "世界"
+<pre><code>変数 名前 = "世界"
 変数 カウント = 5
 
 関数 挨拶(n):
     毎 i 中 範囲(カウント):
         表示(f"こんにちは {n} 繰り返し {i}")
 
-挨拶(名前)
-```
-
+挨拶(名前)</code></pre>
 </div>
     <div class="code-panel" data-lang="ar" style="display:none">
-
-```text
-متغير اسم = "العالم"
+<pre><code>متغير اسم = "العالم"
 متغير عداد = 5
 
 دالة تحية(n):
     لكل i في مدى(عداد):
         اطبع(f"مرحبا {n} تكرار {i}")
 
-تحية(اسم)
-```
-
+تحية(اسم)</code></pre>
 </div>
     <div class="code-panel" data-lang="hi" style="display:none">
-
-```text
-चर नाम = "दुनिया"
+<pre><code>चर नाम = "दुनिया"
 चर गिनती = 5
 
 कार्य नमस्ते(n):
     प्रत्येक i में परास(गिनती):
         छापो(f"नमस्ते {n} पुनरावृत्ति {i}")
 
-नमस्ते(नाम)
-```
-
+नमस्ते(नाम)</code></pre>
 </div>
   </div>
 </div>
@@ -158,7 +134,7 @@ saludar(nombre)
 </section>
 
 <!-- Features -->
-<section class="home-section">
+<section class="home-section" markdown="1">
   <span class="section-eyebrow">Why multilingual?</span>
   <h2 class="section-title">Designed for the World</h2>
 
@@ -222,7 +198,7 @@ saludar(nombre)
 </section>
 
 <!-- Supported Languages -->
-<section class="home-section">
+<section class="home-section" markdown="1">
   <span class="section-eyebrow">Supported Languages</span>
   <h2 class="section-title">Featured Language Frontends</h2>
   <p class="section-desc">Each language is a full first-class frontend with localized keywords, error messages, builtins, and REPL support.</p>
@@ -250,7 +226,7 @@ saludar(nombre)
 </section>
 
 <!-- Quick Start -->
-<section class="home-section">
+<section class="home-section" markdown="1">
   <span class="section-eyebrow">Quick Start</span>
   <h2 class="section-title">Get Running in 60 Seconds</h2>
 
@@ -306,7 +282,7 @@ print(x + y)
 </section>
 
 <!-- Pipeline overview -->
-<section class="home-section">
+<section class="home-section" markdown="1">
   <span class="section-eyebrow">Architecture</span>
   <h2 class="section-title">Compilation Pipeline</h2>
   <p class="section-desc">Every program, in any language, follows the same forward-only pipeline to Python or WASM output.</p>
