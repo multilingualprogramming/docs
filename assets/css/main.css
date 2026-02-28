@@ -123,8 +123,8 @@ body {
 }
 
 .brand-icon {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1rem;
+  height: 1rem;
   display: block;
   flex-shrink: 0;
 }
@@ -1072,7 +1072,7 @@ body {
   margin-bottom: 1rem;
 }
 
-.footer-logo .brand-icon { width: 1.5rem; height: 1.5rem; }
+.footer-logo .brand-icon { width: 1.25rem; height: 1.25rem; }
 .footer-logo .brand-name {
   font-family: var(--font-sans);
   font-weight: 700;
