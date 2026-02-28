@@ -1000,17 +1000,6 @@ body {
 
 .code-demo-body pre::before { display: none !important; }
 
-.code-demo-body pre code {
-  font-family: var(--font-mono);
-  font-size: 0.875rem;
-  color: var(--text-primary);
-  background: none;
-  border: none;
-  padding: 0;
-  display: block;
-  white-space: pre;
-}
-
 /* ---- Language Showcase ---- */
 .lang-showcase {
   padding: 4rem 2rem;

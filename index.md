@@ -69,64 +69,76 @@ permalink: /
   </div>
   <div class="code-demo-body">
     <div class="code-panel" data-lang="en" style="display:block">
-<pre><code>let name = "world"
+{% highlight python %}
+let name = "world"
 let count = 5
 
 def greet(n):
     for i in range(count):
         print(f"Hello, {n}! iteration {i}")
 
-greet(name)</code></pre>
+greet(name)
+{% endhighlight %}
 </div>
     <div class="code-panel" data-lang="fr" style="display:none">
-<pre><code>soit nom = "monde"
+{% highlight python %}
+soit nom = "monde"
 soit compteur = 5
 
 fonction saluer(n):
     pour i dans intervalle(compteur):
         afficher(f"Bonjour, {n}! iteration {i}")
 
-saluer(nom)</code></pre>
+saluer(nom)
+{% endhighlight %}
 </div>
     <div class="code-panel" data-lang="es" style="display:none">
-<pre><code>sea nombre = "mundo"
+{% highlight python %}
+sea nombre = "mundo"
 sea contador = 5
 
 función saludar(n):
     para i en rango(contador):
         imprimir(f"Hola, {n}! iteracion {i}")
 
-saludar(nombre)</code></pre>
+saludar(nombre)
+{% endhighlight %}
 </div>
     <div class="code-panel" data-lang="ja" style="display:none">
-<pre><code>変数 名前 = "世界"
+{% highlight python %}
+変数 名前 = "世界"
 変数 カウント = 5
 
 関数 挨拶(n):
     毎 i 中 範囲(カウント):
         表示(f"こんにちは {n} 繰り返し {i}")
 
-挨拶(名前)</code></pre>
+挨拶(名前)
+{% endhighlight %}
 </div>
     <div class="code-panel" data-lang="ar" style="display:none">
-<pre><code>متغير اسم = "العالم"
+{% highlight python %}
+متغير اسم = "العالم"
 متغير عداد = 5
 
 دالة تحية(n):
     لكل i في مدى(عداد):
         اطبع(f"مرحبا {n} تكرار {i}")
 
-تحية(اسم)</code></pre>
+تحية(اسم)
+{% endhighlight %}
 </div>
     <div class="code-panel" data-lang="hi" style="display:none">
-<pre><code>चर नाम = "दुनिया"
+{% highlight python %}
+चर नाम = "दुनिया"
 चर गिनती = 5
 
 कार्य नमस्ते(n):
     प्रत्येक i में परास(गिनती):
         छापो(f"नमस्ते {n} पुनरावृत्ति {i}")
 
-नमस्ते(नाम)</code></pre>
+नमस्ते(नाम)
+{% endhighlight %}
 </div>
   </div>
 </div>
