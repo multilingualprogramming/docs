@@ -85,7 +85,7 @@ greet(name)
 soit nom = "monde"
 soit compteur = 5
 
-fonction saluer(n):
+déf saluer(n):
     pour i dans intervalle(compteur):
         afficher(f"Bonjour, {n}! iteration {i}")
 
@@ -97,7 +97,7 @@ saluer(nom)
 sea nombre = "mundo"
 sea contador = 5
 
-función saludar(n):
+def saludar(n):
     para i en rango(contador):
         imprimir(f"Hola, {n}! iteracion {i}")
 
@@ -118,8 +118,8 @@ saludar(nombre)
 </div>
     <div class="code-panel" data-lang="ar" style="display:none">
 {% highlight python %}
-متغير اسم = "العالم"
-متغير عداد = 5
+ليكن اسم = "العالم"
+ليكن عداد = 5
 
 دالة تحية(n):
     لكل i في مدى(عداد):
@@ -130,11 +130,11 @@ saludar(nombre)
 </div>
     <div class="code-panel" data-lang="hi" style="display:none">
 {% highlight python %}
-चर नाम = "दुनिया"
-चर गिनती = 5
+मान नाम = "दुनिया"
+मान गिनती = 5
 
-कार्य नमस्ते(n):
-    प्रत्येक i में परास(गिनती):
+परिभाषा नमस्ते(n):
+    के_लिए i में परास(गिनती):
         छापो(f"नमस्ते {n} पुनरावृत्ति {i}")
 
 नमस्ते(नाम)
