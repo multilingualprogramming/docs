@@ -1,10 +1,14 @@
 # Deploy multilingual docs to GitHub Pages.
 #
 # This workflow replaces GitHub's default Jekyll deployment so we can:
-#   1. Build the multilingual WASM browser bundle from source.
-#   2. Copy the resulting .wasm + JS glue into assets/wasm/.
-#   3. Build the Jekyll site with the bundled artifacts in place.
+#   1. Build the multilingual browser WASM binary via Python + Cranelift.
+#   2. Generate the WAT text format alongside it (for educational display).
+#   3. Copy both into assets/wasm/ and build the Jekyll site.
 #   4. Deploy _site/ to GitHub Pages.
+#
+# The WASM build is purely Python-driven: multilingualprogramming[wasm]
+# uses the Cranelift compiler (via wasmtime) to produce .wasm binaries.
+# No Rust toolchain or wasm-pack is required.
 #
 # Trigger: every push to main, or manually via workflow_dispatch.
 
@@ -39,42 +43,37 @@ jobs:
           repository: johnsamuelwrites/multilingual
           path:       multilingual-src
 
-      - name: Set up Rust toolchain
-        uses: dtolnay/rust-toolchain@stable
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          targets: wasm32-unknown-unknown
+          python-version: '3.12'
+          cache:          pip
+          cache-dependency-path: multilingual-src/setup.cfg
 
-      - name: Cache Rust build artefacts
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.cargo/registry
-            ~/.cargo/git
-            multilingual-src/target
-          key: ${{ runner.os }}-cargo-${{ hashFiles('multilingual-src/**/Cargo.lock') }}
-          restore-keys: ${{ runner.os }}-cargo-
+      - name: Install multilingual with WASM extras
+        working-directory: multilingual-src
+        run: pip install -e ".[dev,wasm]"
 
-      - name: Install wasm-pack
-        run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
-
-      - name: Build WASM browser package
+      - name: Build browser WASM bundle
         working-directory: multilingual-src
         run: |
-          # build_wasm.sh produces wasm/pkg/ with multilingual.js +
-          # multilingual_bg.wasm (wasm-pack / wasm-bindgen output).
-          # Fall back to wasm-pack directly if the script is absent.
+          # build_wasm.sh uses WasmGenerator + Cranelift to produce
+          # .wasm binaries in wasm/pkg/.
+          # Pass --target browser so the script emits a browser-compatible
+          # binary (no wasmtime WASI imports).
+          mkdir -p wasm/pkg
           if [ -f build_wasm.sh ]; then
-            bash build_wasm.sh --target web
+            bash build_wasm.sh --target browser --out-dir wasm/pkg
           else
-            wasm-pack build --target web --out-dir wasm/pkg \
-              --out-name multilingual
+            python -m multilingualprogramming build-wasm \
+              --target browser \
+              --out-dir wasm/pkg
           fi
 
       # Install the WebAssembly Binary Toolkit so we can generate the WAT
       # (text format) alongside the binary for display in the docs.
       - name: Install wabt (wasm2wat)
-        run: |
-          sudo apt-get install -y wabt
+        run: sudo apt-get install -y wabt
 
       - name: Generate WAT text format
         working-directory: multilingual-src/wasm/pkg
@@ -111,8 +110,8 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version:    '3.3'
-          bundler-cache:   true   # runs `bundle install` and caches gems
+          ruby-version:  '3.3'
+          bundler-cache: true   # runs `bundle install` and caches gems
 
       - name: Configure GitHub Pages
         id:   pages
