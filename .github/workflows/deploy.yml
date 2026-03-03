@@ -61,25 +61,26 @@ jobs:
         working-directory: multilingual-src
         run: pip install -e ".[dev,wasm]"
 
+      # wabt must be installed before the bundle build so wat2wasm is
+      # available to assemble the WAT text → WASM binary.
+      - name: Install wabt (wat2wasm, wasm-validate, wasm2wat)
+        run: sudo apt-get install -y wabt
+
       - name: Build browser WASM bundle from demo.ml
         run: |
-          # WATCodeGenerator compiles demo.ml → WAT text → WASM binary.
-          # Artifacts land in wasm-out/:
-          #   module.wat, module.wasm, host_shim.js, abi_manifest.json
+          # WATCodeGenerator compiles demo.ml → WAT text (module.wat).
+          # wat2wasm then assembles the binary (module.wasm).
+          # Additional artifacts: host_shim.js, abi_manifest.json
           mkdir -p wasm-out
           multilingual build-wasm-bundle demo.ml --out-dir wasm-out
 
-      # wabt provides wasm2wat for validating / inspecting the binary.
-      # The primary .wat is already emitted by build-wasm-bundle above,
-      # but wasm2wat gives a round-trip check and canonical text form.
-      - name: Install wabt (wasm-validate, wasm2wat)
-        run: sudo apt-get install -y wabt
-
-      - name: Validate and normalise WAT
+      - name: Assemble and validate WASM binary
         run: |
+          # Assemble the canonical WAT text into a binary.
+          # This works whether build-wasm-bundle emits .wasm or not;
+          # we always produce the binary from the WAT source of truth.
+          wat2wasm wasm-out/module.wat -o wasm-out/module.wasm
           wasm-validate wasm-out/module.wasm
-          # Overwrite with canonical round-trip WAT (catches any encoding drift).
-          wasm2wat wasm-out/module.wasm -o wasm-out/module.wat
 
       - name: Rename artifacts to stable names
         run: |
