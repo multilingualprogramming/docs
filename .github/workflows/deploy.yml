@@ -86,9 +86,9 @@ jobs:
           # Collect everything into assets/wasm/ so the artifact layout
           # matches the Jekyll source tree exactly.
           mkdir -p assets/wasm/blocks
-          # Demo files (stable names for the REPL)
-          mv wasm-out/multilingual.wasm assets/wasm/multilingual.wasm
-          mv wasm-out/multilingual.wat  assets/wasm/multilingual.wat
+          # Rename module.* → multilingual.* and move into assets/wasm/
+          mv wasm-out/module.wasm       assets/wasm/multilingual.wasm
+          mv wasm-out/module.wat        assets/wasm/multilingual.wat
           mv wasm-out/host_shim.js      assets/wasm/host_shim.js
           mv wasm-out/abi_manifest.json assets/wasm/abi_manifest.json
           # Per-block binaries compiled in the next step land in assets/wasm/blocks/
