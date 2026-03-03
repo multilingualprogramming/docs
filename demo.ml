@@ -17,8 +17,8 @@ class Counter:
 
 let c = Counter(10)
 
-for i in range(8):
-    print(fibonacci(i))
+for fidx in range(8):
+    print(fibonacci(fidx))
 
 print(c.increment())
 print(c.increment())
