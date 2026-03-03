@@ -31,7 +31,6 @@
   const baseUrl = (document.querySelector('meta[name="base-url"]') || {}).content || '';
 
   const MLWasm = (() => {
-    let _instance      = null;
     let _memory        = null;
     let _outputBuf     = '';
     let _modulePromise = null;
@@ -75,8 +74,7 @@
 
       _modulePromise = WebAssembly.instantiateStreaming(fetch(wasmUrl), importObject)
         .then(({ instance }) => {
-          _instance = instance;
-          _memory   = instance.exports.memory;
+          _memory = instance.exports.memory;
           return true;
         });
 
@@ -135,12 +133,15 @@
         const mod    = await loadBlockModule(hash16);
 
         if (!mod) {
-          /* Fall back to the pre-compiled demo binary. */
-          await load();
-          _outputBuf = '';
-          try { _instance.exports.__main(); }
-          catch (e) { return { stdout: _outputBuf, stderr: String(e) }; }
-          return { stdout: _outputBuf, stderr: '' };
+          /* No per-block binary available for this code.  Rather than
+           * running the unrelated demo program, tell the user clearly. */
+          return {
+            stdout: '',
+            stderr: 'This block could not be executed: no WASM binary was\n'
+                  + 'compiled for it during the CI build (the compiler may not\n'
+                  + 'yet support all constructs used here).\n'
+                  + 'Try the REPL panel to run the full demo program.',
+          };
         }
 
         /* Instantiate the per-block module with fresh state for each run. */
