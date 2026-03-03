@@ -335,35 +335,6 @@ print(dog.fetch("ball"))  # Rex fetches the ball!
 
 ---
 
-## Exception Handling
-
-```python
-try:
-    let result = 10 / 0
-except ZeroDivisionError as e:
-    print(f"Error: {e}")
-except (TypeError, ValueError) as e:
-    print(f"Type/Value error: {e}")
-else:
-    print("No error occurred")
-finally:
-    print("Always runs")
-
-# raise
-def validate_age(age):
-    if age < 0:
-        raise ValueError(f"Age cannot be negative: {age}")
-    return age
-
-# raise ... from (exception chaining)
-try:
-    int("not a number")
-except ValueError as e:
-    raise RuntimeError("Conversion failed") from e
-```
-
----
-
 ## Context Managers
 
 ```python
