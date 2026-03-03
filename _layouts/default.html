@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="base-url" content="{{ site.baseurl }}" />
   <title>{% if page.title %}{{ page.title }} &mdash; {% endif %}{{ site.title }}</title>
   <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
 
@@ -24,6 +25,9 @@
   <meta name="theme-color" content="#080718" />
 
   {% seo %}
+
+  <!-- Cross-origin isolation for WASM SharedArrayBuffer support -->
+  <script src="{{ '/assets/js/coi-serviceworker.js' | relative_url }}"></script>
 </head>
 <body>
   <!-- Background grid -->
@@ -116,6 +120,41 @@
       </div>
     </div>
   </footer>
+
+  <!-- Interactive WASM REPL panel -->
+  <div class="repl-panel" id="repl-panel" hidden aria-label="Interactive REPL">
+    <div class="repl-header">
+      <span class="repl-title">
+        <span class="repl-status-dot" id="repl-status-dot" data-state="idle"></span>
+        multilingual REPL
+        <span class="repl-badge" id="repl-badge">loading…</span>
+      </span>
+      <div class="repl-actions">
+        <button type="button" class="repl-btn" id="repl-run-btn">Run</button>
+        <button type="button" class="repl-btn repl-btn-ghost" id="repl-wat-btn" title="Show compiled WebAssembly text format">WAT</button>
+        <button type="button" class="repl-btn repl-btn-ghost" id="repl-clear-btn">Clear</button>
+        <button type="button" class="repl-btn repl-btn-ghost repl-close-btn" id="repl-close-btn" aria-label="Close REPL">&times;</button>
+      </div>
+    </div>
+    <div class="repl-body">
+      <textarea class="repl-input" id="repl-input" rows="4"
+        placeholder="Type multilingual code here…"
+        spellcheck="false" autocomplete="off" autocorrect="off"></textarea>
+      <div class="repl-output" id="repl-output" aria-live="polite">
+        <span class="repl-output-placeholder">Output will appear here</span>
+      </div>
+    </div>
+  </div>
+
+  <button type="button" class="repl-toggle" id="repl-toggle"
+    aria-label="Open interactive REPL" aria-expanded="false" aria-controls="repl-panel">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      width="16" height="16" aria-hidden="true">
+      <polyline points="4 17 10 11 4 5"></polyline>
+      <line x1="12" y1="19" x2="20" y2="19"></line>
+    </svg>
+    Try it
+  </button>
 
   <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
 </body>

@@ -1,0 +1,146 @@
+# Deploy multilingual docs to GitHub Pages.
+#
+# This workflow replaces GitHub's default Jekyll deployment so we can:
+#   1. Build the multilingual WASM browser bundle from source.
+#   2. Copy the resulting .wasm + JS glue into assets/wasm/.
+#   3. Build the Jekyll site with the bundled artifacts in place.
+#   4. Deploy _site/ to GitHub Pages.
+#
+# Trigger: every push to main, or manually via workflow_dispatch.
+
+name: Build and deploy docs
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Required for the deploy-pages action.
+permissions:
+  contents: read
+  pages:    write
+  id-token: write
+
+# Cancel in-progress runs on the same branch so pushes don't queue up.
+concurrency:
+  group:              pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ── Job 1: Build WASM ────────────────────────────────────────────────────
+  build-wasm:
+    name: Build WASM browser bundle
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout multilingual source
+        uses: actions/checkout@v4
+        with:
+          repository: johnsamuelwrites/multilingual
+          path:       multilingual-src
+
+      - name: Set up Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+
+      - name: Cache Rust build artefacts
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            multilingual-src/target
+          key: ${{ runner.os }}-cargo-${{ hashFiles('multilingual-src/**/Cargo.lock') }}
+          restore-keys: ${{ runner.os }}-cargo-
+
+      - name: Install wasm-pack
+        run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
+
+      - name: Build WASM browser package
+        working-directory: multilingual-src
+        run: |
+          # build_wasm.sh produces wasm/pkg/ with multilingual.js +
+          # multilingual_bg.wasm (wasm-pack / wasm-bindgen output).
+          # Fall back to wasm-pack directly if the script is absent.
+          if [ -f build_wasm.sh ]; then
+            bash build_wasm.sh --target web
+          else
+            wasm-pack build --target web --out-dir wasm/pkg \
+              --out-name multilingual
+          fi
+
+      # Install the WebAssembly Binary Toolkit so we can generate the WAT
+      # (text format) alongside the binary for display in the docs.
+      - name: Install wabt (wasm2wat)
+        run: |
+          sudo apt-get install -y wabt
+
+      - name: Generate WAT text format
+        working-directory: multilingual-src/wasm/pkg
+        run: |
+          # Convert every .wasm binary to its human-readable .wat counterpart.
+          for f in *.wasm; do
+            wasm2wat "$f" -o "${f%.wasm}.wat" || true
+          done
+
+      - name: Upload WASM artefacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: wasm-pkg
+          # Includes both .wasm binaries and .wat text files.
+          path: multilingual-src/wasm/pkg/
+          retention-days: 1
+
+  # ── Job 2: Build Jekyll ───────────────────────────────────────────────────
+  build-jekyll:
+    name: Build Jekyll site
+    runs-on: ubuntu-latest
+    needs: build-wasm
+
+    steps:
+      - name: Checkout docs repo
+        uses: actions/checkout@v4
+
+      - name: Download WASM artefacts
+        uses: actions/download-artifact@v4
+        with:
+          name: wasm-pkg
+          path: assets/wasm/
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version:    '3.3'
+          bundler-cache:   true   # runs `bundle install` and caches gems
+
+      - name: Configure GitHub Pages
+        id:   pages
+        uses: actions/configure-pages@v5
+
+      # Jekyll is built with JEKYLL_ENV=production so jekyll-seo-tag,
+      # jekyll-sitemap, etc. output canonical URLs correctly.
+      - name: Build Jekyll site
+        env:
+          JEKYLL_ENV: production
+        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+
+      - name: Upload Pages artefact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site/
+
+  # ── Job 3: Deploy ─────────────────────────────────────────────────────────
+  deploy:
+    name: Deploy to GitHub Pages
+    runs-on: ubuntu-latest
+    needs: build-jekyll
+
+    environment:
+      name: github-pages
+      url:  ${{ steps.deploy.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id:   deploy
+        uses: actions/deploy-pages@v4
