@@ -38,19 +38,33 @@
 
     const dec = new TextDecoder();
 
-    /* Host imports required by every WAT module produced by WATCodeGenerator. */
+    /* Build a host import object whose callbacks write into `bufRef`.
+     * Using an object reference lets us set `bufRef.mem` after instantiation
+     * while keeping the closure intact. */
+    function makeImports(bufRef) {
+      return {
+        env: {
+          print_str(ptr, len) {
+            bufRef.v += dec.decode(new Uint8Array(bufRef.mem.buffer, ptr, len));
+          },
+          print_f64(val)  { bufRef.v += String(val); },
+          print_bool(val) { bufRef.v += val ? 'True' : 'False'; },
+          print_sep()     { bufRef.v += ' '; },
+          print_newline() { bufRef.v += '\n'; },
+        },
+      };
+    }
+
+    /* Host imports for the shared demo module (uses module-level state). */
     const importObject = {
       env: {
         print_str(ptr, len) {
           _outputBuf += dec.decode(new Uint8Array(_memory.buffer, ptr, len));
         },
-        print_f64(val) {
-          /* Match Python's default float repr: drop trailing .0 for integers. */
-          _outputBuf += Number.isInteger(val) ? String(val) : String(val);
-        },
-        print_bool(val)  { _outputBuf += val ? 'True' : 'False'; },
-        print_sep()      { _outputBuf += ' '; },
-        print_newline()  { _outputBuf += '\n'; },
+        print_f64(val)  { _outputBuf += String(val); },
+        print_bool(val) { _outputBuf += val ? 'True' : 'False'; },
+        print_sep()     { _outputBuf += ' '; },
+        print_newline() { _outputBuf += '\n'; },
       },
     };
 
@@ -70,8 +84,6 @@
     }
 
     /* ---- WAT text loader ------------------------------------------------- */
-    /* Fetches the pre-built .wat file once for educational display.
-     * Execution always uses the binary — WAT is read-only. */
     let _watPromise = null;
 
     function loadWat() {
@@ -84,22 +96,61 @@
       return _watPromise;
     }
 
+    /* ---- Per-block WASM loader ------------------------------------------ */
+    /* Each code block is compiled to its own binary during the CI build by
+     * _scripts/compile_blocks.py.  The binary is identified by the first 16
+     * hex characters of SHA-256(code), matching the hash computed here. */
+    const _blockModules = new Map();  // hash16 → WebAssembly.Module | null
+
+    async function blockHash(src) {
+      const buf = await crypto.subtle.digest(
+        'SHA-256', new TextEncoder().encode(src)
+      );
+      return Array.from(new Uint8Array(buf))
+        .map(b => b.toString(16).padStart(2, '0'))
+        .join('')
+        .slice(0, 16);
+    }
+
+    async function loadBlockModule(hash16) {
+      if (_blockModules.has(hash16)) return _blockModules.get(hash16);
+      const url = baseUrl + '/assets/wasm/blocks/' + hash16 + '.wasm';
+      try {
+        const mod = await WebAssembly.compileStreaming(fetch(url));
+        _blockModules.set(hash16, mod);
+        return mod;
+      } catch (_) {
+        /* Binary not available for this block — will fall back to demo. */
+        _blockModules.set(hash16, null);
+        return null;
+      }
+    }
+
     /* Public API */
     return {
-      /* Run the compiled demo and return { stdout, stderr }.
-       * The WASM binary is a pre-compiled program (demo.ml); it always
-       * runs the same code regardless of the `src` argument.  The `src`
-       * parameter is kept for API symmetry with the REPL textarea. */
-      execute(_src) {
-        return load().then(() => {
+      /* Execute a specific code block: loads its per-block WASM binary (keyed
+       * by content hash), falling back to the demo binary if unavailable. */
+      async execute(src) {
+        const hash16 = await blockHash(src);
+        const mod    = await loadBlockModule(hash16);
+
+        if (!mod) {
+          /* Fall back to the pre-compiled demo binary. */
+          await load();
           _outputBuf = '';
-          try {
-            _instance.exports.__main();
-          } catch (e) {
-            return { stdout: _outputBuf, stderr: String(e) };
-          }
+          try { _instance.exports.__main(); }
+          catch (e) { return { stdout: _outputBuf, stderr: String(e) }; }
           return { stdout: _outputBuf, stderr: '' };
-        });
+        }
+
+        /* Instantiate the per-block module with fresh state for each run. */
+        const bufRef   = { v: '', mem: null };
+        const instance = await WebAssembly.instantiate(mod, makeImports(bufRef));
+        bufRef.mem = instance.exports.memory;
+        bufRef.v   = '';
+        try { instance.exports.__main(); }
+        catch (e) { return { stdout: bufRef.v, stderr: String(e) }; }
+        return { stdout: bufRef.v, stderr: '' };
       },
       /* Expose the load promise so the toggle button can show readiness. */
       get ready() { return load(); },
@@ -281,7 +332,8 @@
       outputPanel.dataset.mode = 'output';
       outputPanel.innerHTML = '<span class="output-running">Running…</span>';
 
-      /* Load WASM lazily on first use. */
+      /* MLWasm.execute() hashes src, loads the per-block binary compiled from
+       * this exact code, and falls back to the demo binary automatically. */
       MLWasm.execute(src)
         .then(result => {
           renderOutput(outputPanel, result);

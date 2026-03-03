@@ -69,12 +69,11 @@ jobs:
       - name: Build browser WASM bundle from demo.ml
         run: |
           # WATCodeGenerator compiles demo.ml → WAT text (module.wat).
-          # wat2wasm then assembles the binary (module.wasm).
           # Additional artifacts: host_shim.js, abi_manifest.json
           mkdir -p wasm-out
           multilingual build-wasm-bundle demo.ml --out-dir wasm-out
 
-      - name: Assemble and validate WASM binary
+      - name: Assemble and validate demo WASM binary
         run: |
           # Assemble the canonical WAT text into a binary.
           # This works whether build-wasm-bundle emits .wasm or not;
@@ -82,18 +81,31 @@ jobs:
           wat2wasm wasm-out/module.wat -o wasm-out/module.wasm
           wasm-validate wasm-out/module.wasm
 
-      - name: Rename artifacts to stable names
+      - name: Stage all WASM artifacts under assets/wasm/
         run: |
-          # Jekyll references these as assets/wasm/multilingual.*
-          mv wasm-out/module.wasm wasm-out/multilingual.wasm
-          mv wasm-out/module.wat  wasm-out/multilingual.wat
-          # host_shim.js and abi_manifest.json keep their names as-is.
+          # Collect everything into assets/wasm/ so the artifact layout
+          # matches the Jekyll source tree exactly.
+          mkdir -p assets/wasm/blocks
+          # Demo files (stable names for the REPL)
+          mv wasm-out/multilingual.wasm assets/wasm/multilingual.wasm
+          mv wasm-out/multilingual.wat  assets/wasm/multilingual.wat
+          mv wasm-out/host_shim.js      assets/wasm/host_shim.js
+          mv wasm-out/abi_manifest.json assets/wasm/abi_manifest.json
+          # Per-block binaries compiled in the next step land in assets/wasm/blocks/
+
+      - name: Compile per-block WASM binaries
+        run: |
+          # Each executable code block in the docs gets its own WASM binary,
+          # keyed by SHA-256 hash of its content, stored in assets/wasm/blocks/.
+          # The browser Run button fetches the per-block binary and executes it,
+          # falling back to the demo binary if a block wasn't compiled.
+          python _scripts/compile_blocks.py
 
       - name: Upload WASM artefacts
         uses: actions/upload-artifact@v4
         with:
           name: wasm-pkg
-          path: wasm-out/
+          path: assets/wasm/
           retention-days: 1
 
   # ── Job 2: Build Jekyll ───────────────────────────────────────────────────
@@ -111,6 +123,9 @@ jobs:
         with:
           name: wasm-pkg
           path: assets/wasm/
+        # Downloaded layout (relative to repo root):
+        #   assets/wasm/multilingual.wasm, multilingual.wat, …
+        #   assets/wasm/blocks/<hash16>.wasm  (one per compiled code block)
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
