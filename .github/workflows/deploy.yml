@@ -85,10 +85,9 @@ jobs:
       - name: Rename artifacts to stable names
         run: |
           # Jekyll references these as assets/wasm/multilingual.*
-          mv wasm-out/module.wasm    wasm-out/multilingual.wasm
-          mv wasm-out/module.wat     wasm-out/multilingual.wat
-          mv wasm-out/host_shim.js   wasm-out/host_shim.js   # keep name
-          mv wasm-out/abi_manifest.json wasm-out/abi_manifest.json
+          mv wasm-out/module.wasm wasm-out/multilingual.wasm
+          mv wasm-out/module.wat  wasm-out/multilingual.wat
+          # host_shim.js and abi_manifest.json keep their names as-is.
 
       - name: Upload WASM artefacts
         uses: actions/upload-artifact@v4
