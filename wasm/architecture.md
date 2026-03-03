@@ -20,7 +20,7 @@ The WASM infrastructure is designed around three principles: **transparent selec
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│              Multilingual Programming Language v0.4          │
+│              Multilingual Programming Language v0.5          │
 └─────────────────────────────────────────────────────────────┘
                               │
                 ┌─────────────┴──────────────┐
@@ -40,271 +40,167 @@ The WASM infrastructure is designed around three principles: **transparent selec
                          └────┬─────┘
                               │
                     ┌─────────▼──────────┐
-                    │   Core AST         │
+                    │  SemanticAnalyzer  │
                     └─────────┬──────────┘
                               │
                 ┌─────────────┴──────────────┐
                 │                            │
          ┌──────▼──────────┐      ┌──────────▼────────┐
-         │ Python Code     │      │   WASM Code       │
-         │ Generator       │      │   Generator       │
+         │ Python Code     │      │  WATCodeGenerator  │
+         │ Generator       │      │  (wat_generator.py)│
          └──────┬──────────┘      └──────────┬────────┘
                 │                            │
                 │                    ┌───────▼────────┐
-                │                    │ Rust Code      │
-                │                    │ (Intermediate) │
+                │                    │  WAT Text      │
+                │                    │  (module.wat)  │
                 │                    └───────┬────────┘
                 │                            │
-                │                    ┌───────▼────────┐
-                │                    │ Cranelift      │
-                │                    │ Compiler       │
-                │                    └───────┬────────┘
-                │                            │
-                │                    ┌───────▼────────┐
-                │                    │ WASM Binary    │
-                │                    │ (.wasm files)  │
-                │                    └───────┬────────┘
-                └─────────────┬──────────────┘
-                              │
-                    ┌─────────▼──────────┐
-                    │ Backend Selector   │
-                    │ Smart Auto-        │
-                    │ Detection          │
-                    └─────────┬──────────┘
-                              │
-                ┌─────────────┴──────────────┐
-                │                            │
-         ┌──────▼──────────┐      ┌──────────▼────────┐
-         │ Python Executor │      │ WASM Loader       │
-         │ (+ Fallbacks)   │      │ (+ Type Conv)     │
-         └─────────────────┘      └──────────┬────────┘
-                                             │
-                              ┌──────────────┼──────────────┐
-                              │              │              │
-                         ┌────▼──┐    ┌─────▼──┐    ┌─────▼──┐
-                         │Python │    │WASM   │    │Memory  │
-                         │Fallbk │    │Exec   │    │Mgmt    │
-                         │(25+   │    │Inst.  │    │(Linear)│
-                         │funcs) │    │       │    │        │
-                         └───────┘    └───────┘    └────────┘
+                │               ┌────────────┴─────────────┐
+                │               │                          │
+                │       ┌───────▼────────┐      ┌──────────▼────────┐
+                │       │ wasmtime       │      │ WASM Binary       │
+                │       │ (server-side)  │      │ (module.wasm)     │
+                │       └───────┬────────┘      └──────────┬────────┘
+                └───────────────┴──────────────────────────┘
+                                          │
+                               ┌──────────▼──────────┐
+                               │   Runtime Output    │
+                               │ (via host callbacks)│
+                               └─────────────────────┘
 ```
 
 ---
 
-## Component 1: WASM Code Generator
+## Component 1: WATCodeGenerator
 
-**File**: `multilingualprogramming/codegen/wasm_generator.py`
+**File**: `multilingualprogramming/codegen/wat_generator.py`
 
-Transforms the Core AST into Rust intermediate code, which is then compiled to WASM by Cranelift.
+Transforms the Core AST directly into WebAssembly Text Format (WAT). This is the primary WASM backend — no Rust intermediate or external compiler is involved.
 
 **Responsibilities:**
-- Transform AST → Rust intermediate code
-- Generate memory management code
-- Optimize for Cranelift backend
-- Export function metadata
+- Transform AST nodes → WAT instructions
+- Manage linear memory for strings and objects
+- Emit host import declarations (`env.print_str`, `env.print_f64`, etc.)
+- Generate the `__main` export as the program entry point
+- Produce `abi_manifest.json` describing exported functions
 
-**Key features:**
-- 200+ lines of Rust code generation
-- Multi-function support
-- 64MB memory allocation
-- Panic handlers
-- Metadata functions
+**Output files** (via `multilingual build-wasm-bundle`):
 
-**Output**: Rust source code → compiled `.wasm` binary
+| File | Description |
+|------|-------------|
+| `module.wat` | Human-readable WAT source (educational display) |
+| `module.wasm` | Binary WASM compiled from WAT (browser execution) |
+| `host_shim.js` | JS stub implementations of host import callbacks |
+| `abi_manifest.json` | ABI metadata: exports, types, memory layout |
+
+**Usage:**
+
+```bash
+# Build a complete browser bundle from a multilingual source file
+multilingual build-wasm-bundle demo.ml --out-dir wasm-out
+```
 
 ```python
-from multilingualprogramming.codegen import WasmGenerator
+from multilingualprogramming.codegen.wat_generator import WATCodeGenerator
 
-generator = WasmGenerator()
-wasm_bytes = generator.generate_wasm(ast, function_name="fibonacci")
+gen = WATCodeGenerator()
+wat_text = gen.generate(ast)   # returns WAT source as a string
 ```
 
 ---
 
-## Component 2: WASM Bridge (Python ↔ WASM)
+## Component 2: Host Import Protocol
 
-**File**: `multilingualprogramming/wasm/loader.py`
+WAT modules produced by `WATCodeGenerator` use a **callback-based output protocol** rather than returning values. The runtime (browser or wasmtime) must supply these imports under the `env` namespace:
 
-Handles loading WASM binaries, type conversion between Python and WASM, and module caching.
+| Import | Signature | Description |
+|--------|-----------|-------------|
+| `env.print_str` | `(ptr: i32, len: i32)` | Print a UTF-8 string slice from linear memory |
+| `env.print_f64` | `(val: f64)` | Print a floating-point number |
+| `env.print_bool` | `(val: i32)` | Print `True` (1) or `False` (0) |
+| `env.print_sep` | `()` | Print an argument separator (space) |
+| `env.print_newline` | `()` | Print a newline |
 
-```python
-from multilingualprogramming.wasm.loader import WasmModule, WasmModuleCache
+**Browser import object example:**
 
-class WasmModule:
-    """Represents a loaded WASM module."""
+```js
+const importObject = {
+  env: {
+    print_str(ptr, len) {
+      output += new TextDecoder().decode(new Uint8Array(memory.buffer, ptr, len));
+    },
+    print_f64(val)  { output += String(val); },
+    print_bool(val) { output += val ? 'True' : 'False'; },
+    print_sep()     { output += ' '; },
+    print_newline() { output += '\n'; },
+  },
+};
 
-    @staticmethod
-    def load(module_path: str | Path) -> "WasmModule":
-        """Load a WASM binary from disk."""
-        ...
-
-    def instantiate(self) -> bool:
-        """Instantiate the module. Returns True on success."""
-        ...
-
-    def call(self, function_name: str, *args) -> Any:
-        """Call a WASM function with Python arguments."""
-        ...
-
-    def has_function(self, function_name: str) -> bool:
-        """Check if the module exports a given function."""
-        ...
-
-
-class WasmModuleCache:
-    """Cache loaded modules to avoid repeated loading."""
-
-    def get_or_load(self, module_path: str | Path) -> WasmModule | None:
-        """Get from cache or load and cache a module."""
-        ...
+const { instance } = await WebAssembly.instantiateStreaming(fetch('module.wasm'), importObject);
+instance.exports.__main();   // run the program
 ```
 
-**Type conversion (Python → WASM):**
+**wasmtime import example** (server-side, via `host_shim.js` or Python bridge):
 
-| Python type | WASM type | Notes |
-|-------------|-----------|-------|
-| `int` | `i32` / `i64` | Automatic width selection |
-| `float` | `f32` / `f64` | Automatic precision selection |
-| `list[int]` | linear memory | Serialized to WASM memory |
-| `list[float]` | linear memory | Serialized to WASM memory |
-| `str` | linear memory | UTF-8 encoded |
-| `bool` | `i32` | 0 or 1 |
+```python
+# The host_shim.js / wasmtime Python bindings handle this automatically.
+# Output is collected in a buffer and returned after __main() completes.
+```
 
 ---
 
-## Component 3: Backend Selector
+## Component 3: WAT Module Exports
+
+Every WAT bundle produced by `WATCodeGenerator` exports:
+
+```wat
+;; Program entry point
+(export "__main" (func $__main))
+
+;; Linear memory shared with host
+(export "memory" (memory $mem))
+```
+
+The `__main` function runs the top-level program statements and calls any user-defined functions as needed. The browser REPL and inline Run buttons all invoke `__main()`.
+
+---
+
+## Component 4: Backend Selector
 
 **File**: `multilingualprogramming/runtime/backend_selector.py`
 
-Intelligently selects between WASM and Python backends, with automatic fallback.
+For server-side use, `BackendSelector` intelligently chooses between wasmtime and Python execution:
 
 ```python
-from enum import Enum
-
-class Backend(Enum):
-    PYTHON = "python"
-    WASM   = "wasm"
-    AUTO   = "auto"    # default
-
-
-class BackendSelector:
-    """Intelligent backend selection with automatic fallback."""
-
-    def __init__(self, prefer_backend: Backend = Backend.AUTO):
-        self.prefer_backend = prefer_backend
-        self.backend = self._detect_backend()
-
-    def is_wasm_available(self) -> bool:
-        """True if WASM can be loaded and used."""
-        ...
-
-    def call_function(self, function_name: str, *args) -> Any:
-        """
-        Call a function using the best available backend.
-        Automatically falls back to Python if WASM fails.
-        """
-        ...
-
-    def _detect_backend(self) -> Backend:
-        """
-        Detection order:
-        1. Check if wasmtime installed
-        2. Check if WASM binary exists
-        3. Check platform compatibility
-        4. Try loading WASM module
-        5. Fall back to Python on any failure
-        """
-        ...
-
-
-class BackendRegistry:
-    """Register functions for different backends."""
-
-    def register_python(self, func_name: str, func: Callable) -> None:
-        """Register a Python implementation."""
-        ...
-
-    def register_wasm(self, func_name: str, wasm_path: str) -> None:
-        """Register a WASM implementation."""
-        ...
-```
-
----
-
-## Component 4: Python Fallbacks
-
-**File**: `multilingualprogramming/runtime/python_fallbacks.py`
-
-25+ pure Python implementations of WASM-accelerated functions. Used when WASM is unavailable.
-
-```python
-from multilingualprogramming.runtime.python_fallbacks import (
-    MatrixOperations,
-    NumericOperations,
-    CryptoOperations,
-    ImageOperations,
-    FALLBACK_REGISTRY,
+from multilingualprogramming.runtime.backend_selector import (
+    BackendSelector, Backend
 )
 
-# Matrix operations
-MatrixOperations.multiply(a: list[list], b: list[list]) -> list[list]
-MatrixOperations.transpose(m: list[list]) -> list[list]
-MatrixOperations.determinant(m: list[list]) -> float
+# Auto-select (wasmtime if available, else Python)
+sel = BackendSelector()
+result = sel.call_function("fibonacci", 30)
 
-# Numeric operations
-NumericOperations.fibonacci(n: int) -> int
-NumericOperations.factorial(n: int) -> int
-NumericOperations.is_prime(n: int) -> bool
-NumericOperations.monte_carlo_pi(samples: int) -> float
-
-# Crypto operations
-CryptoOperations.xor_cipher(data: bytes, key: bytes) -> bytes
-
-# Image operations
-ImageOperations.blur(pixels: list, width: int, height: int) -> list
-
-# Registry
-print(FALLBACK_REGISTRY)  # dict of all registered fallback functions
+# Force Python for debugging
+sel_py = BackendSelector(prefer_backend=Backend.PYTHON)
 ```
 
 ---
 
 ## Memory Model
 
-WASM uses **linear memory** — a flat byte array accessible from both WASM and Python.
+WAT uses **linear memory** — a flat byte array accessible from both the WASM module and the host.
 
 ```
-Linear Memory Layout (64 MB default):
+Linear Memory Layout:
 ┌─────────────────────────────────────────────────┐
-│ 0x00000 │ Static data (strings, constants)       │
+│ 0x00000 │ Static data (string constants)         │
 │ 0x10000 │ Stack (function frames)                │
 │ 0x20000 │ Heap (dynamic allocation)              │
 │ ...     │                                        │
-│ 0x3FFFF │ End of 64 MB                           │
 └─────────────────────────────────────────────────┘
 ```
 
-Python objects are serialized to linear memory before WASM function calls, and deserialized from memory after.
-
----
-
-## Module Caching
-
-WASM modules are loaded lazily and cached:
-
-```
-First call to function X:
-  1. Check module cache → miss
-  2. Find .wasm file for X
-  3. Load binary → instantiate → cache
-  4. Call function → return result
-
-Subsequent calls:
-  1. Check module cache → hit
-  2. Call function directly → return result
-```
-
-**Cache overhead**: ~10–50ms on first call, ~0ms after.
+Strings are written to linear memory before `print_str` is called; the host reads them back via `TextDecoder` (browser) or wasmtime's memory view (server).
 
 ---
 
@@ -319,24 +215,68 @@ def fibonacci(n):
     return fibonacci(n-1) + fibonacci(n-2)
 ```
 
-The WASM generator produces Rust intermediate code:
+`WATCodeGenerator` produces WAT directly:
 
-```rust
-#[no_mangle]
-pub extern "C" fn fibonacci(n: i64) -> i64 {
-    if n <= 1 {
-        return n;
-    }
-    fibonacci(n - 1) + fibonacci(n - 2)
-}
+```wat
+(module
+  (import "env" "print_f64"  (func $print_f64  (param f64)))
+  (import "env" "print_newline" (func $print_newline))
 
-#[no_mangle]
-pub extern "C" fn __wasm_metadata_function_count() -> i32 {
-    1
-}
+  (func $fibonacci (param $n f64) (result f64)
+    local.get $n
+    f64.const 1
+    f64.le
+    if (result f64)
+      local.get $n
+    else
+      local.get $n
+      f64.const 1
+      f64.sub
+      call $fibonacci
+      local.get $n
+      f64.const 2
+      f64.sub
+      call $fibonacci
+      f64.add
+    end
+  )
+
+  (func $__main
+    f64.const 10
+    call $fibonacci
+    call $print_f64
+    call $print_newline
+  )
+
+  (memory (export "memory") 1)
+  (export "__main" (func $__main))
+)
 ```
 
-This is compiled by Cranelift to a `.wasm` binary exported to `multilingualprogramming/wasm/`.
+This WAT text is then assembled into a `.wasm` binary (via `wabt`/`wat2wasm`) and served to the browser for execution.
+
+---
+
+## Build Pipeline (CI)
+
+```
+demo.ml
+  │
+  ▼  multilingual build-wasm-bundle demo.ml --out-dir wasm-out
+wasm-out/
+  ├── module.wat          ← WAT source (human-readable)
+  ├── module.wasm         ← binary (browser execution)
+  ├── host_shim.js        ← JS host import stubs
+  └── abi_manifest.json   ← ABI metadata
+  │
+  ▼  wasm-validate + wasm2wat (wabt)
+  ▼  mv module.* → multilingual.*
+assets/wasm/
+  ├── multilingual.wat
+  ├── multilingual.wasm
+  ├── host_shim.js
+  └── abi_manifest.json
+```
 
 ---
 
@@ -345,31 +285,27 @@ This is compiled by Cranelift to a `.wasm` binary exported to `multilingualprogr
 The WASM bridge handles errors at multiple levels:
 
 1. **Load errors** (binary not found, invalid WASM) → fall back to Python
-2. **Type errors** (argument doesn't match WASM signature) → raise `TypeError`
-3. **Runtime errors** (WASM trap, out-of-bounds memory) → fall back to Python fallback
-4. **Timeout** (configurable, default: no timeout) → `RuntimeError`
+2. **Host import errors** (missing `env.*` function) → `LinkError` at instantiation
+3. **Runtime traps** (out-of-bounds memory, stack overflow) → caught and shown as stderr
+4. **Timeout** (configurable) → `RuntimeError`
 
 ---
 
 ## Extending WASM with New Functions
 
-To add a new WASM-accelerated function:
+To add a new operation to the WAT backend:
 
-1. **Implement Python fallback** in `python_fallbacks.py`:
+1. **Add WAT code generation** in `wat_generator.py` — emit the appropriate WAT instructions for the new AST node type.
+
+2. **Implement Python fallback** in `python_fallbacks.py` for server-side use when wasmtime is unavailable:
 
 ```python
 class NewOperations:
     @staticmethod
     def my_operation(x: int, y: int) -> int:
-        return x * y  # pure Python implementation
-```
+        return x * y
 
-2. **Register the fallback**:
-
-```python
 FALLBACK_REGISTRY["my_operation"] = NewOperations.my_operation
 ```
 
-3. **Add WASM code generation** in `wasm_generator.py` for the Rust/Cranelift version.
-
-4. **Add tests** in `tests/wasm_corpus_test.py`.
+3. **Add tests** in `tests/wasm_corpus_test.py` verifying both backends produce identical results.

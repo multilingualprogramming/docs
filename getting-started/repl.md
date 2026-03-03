@@ -30,6 +30,9 @@ python -m multilingualprogramming repl --lang ar
 # With Python preview (show generated Python alongside output)
 python -m multilingualprogramming repl --show-python
 
+# With WAT preview (show generated WebAssembly Text alongside output)
+python -m multilingualprogramming repl --show-wat
+
 # Short command alias
 multilg repl --lang de
 ```
@@ -43,6 +46,8 @@ multilg repl --lang de
 | `:help` | Show all available REPL commands |
 | `:language <code>` | Switch active language (e.g., `:language fr`) |
 | `:python` | Toggle Python preview mode (show generated Python) |
+| `:wat` or `:wasm` | Toggle WAT preview mode (show generated WebAssembly Text) |
+| `:rust` or `:wasmtime` | Toggle wasmtime execution mode (run via WASM instead of Python) |
 | `:reset` | Reset interpreter state (clear all variables/functions) |
 | `:kw` | List keywords for the current language |
 | `:kw XX` | List keywords for language code XX |
@@ -100,6 +105,37 @@ multilingual [en]> for i in items:
 4
 6
 ```
+
+### WAT Preview Mode
+
+Use `:wat` (or `:wasm`) to toggle display of the compiled WebAssembly Text Format alongside each result:
+
+```
+multilingual [en]> :wat
+WAT preview: ON
+multilingual [en]> let x = 42
+; WAT:
+; (func $__main
+;   f64.const 42
+;   local.set $x
+; )
+multilingual [en]> :wat
+WAT preview: OFF
+```
+
+Use `:rust` (or `:wasmtime`) to switch execution to the wasmtime backend:
+
+```
+multilingual [en]> :wasmtime
+Backend: wasmtime (WASM)
+multilingual [en]> let x = 42
+multilingual [en]> print(x)
+42
+multilingual [en]> :wasmtime
+Backend: Python
+```
+
+---
 
 ### Inspecting Keywords
 
@@ -264,4 +300,6 @@ ausgeben(total)
 - Multi-line input: continue with `...` for blocks (if, for, def, class)
 - Variables and functions defined in one language persist across `:language` switches (identifiers stay, keywords change)
 - `:reset` clears all state including variables and function definitions
-- Use `:python` to understand what code is actually being run
+- Use `:python` to understand what Python code is being generated
+- Use `:wat` to inspect the WebAssembly Text Format compiled from your code
+- Use `:wasmtime` to run code through the WASM backend instead of Python

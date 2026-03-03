@@ -31,6 +31,7 @@ from multilingualprogramming.codegen import (
     WasmGenerator,
     RuntimeBuiltins,
 )
+from multilingualprogramming.codegen.wat_generator import WATCodeGenerator
 
 from multilingualprogramming.core.lowering import lower_to_core_ir
 from multilingualprogramming.runtime.backend_selector import (
@@ -396,9 +397,63 @@ exec(python_code, namespace)
 
 ---
 
+## WATCodeGenerator
+
+Generates WebAssembly Text Format (WAT) directly from a Core IR AST. This is the primary WASM backend — no Rust toolchain or Cranelift is required.
+
+**File**: `multilingualprogramming/codegen/wat_generator.py`
+
+```python
+class WATCodeGenerator:
+    def __init__(self)
+```
+
+### Methods
+
+#### `generate(ast: ASTNode) -> str`
+
+Compile the full program AST to a WAT module string:
+
+```python
+from multilingualprogramming.codegen.wat_generator import WATCodeGenerator
+
+gen = WATCodeGenerator()
+wat_text = gen.generate(ast)
+
+# Write to file for inspection or wat2wasm assembly
+with open("program.wat", "w") as f:
+    f.write(wat_text)
+```
+
+The returned WAT module:
+- Imports host callbacks: `env.print_str`, `env.print_f64`, `env.print_bool`, `env.print_sep`, `env.print_newline`
+- Exports `__main` as the program entry point
+- Exports `memory` for host access to linear memory
+
+### CLI: `build-wasm-bundle`
+
+The high-level command that runs the full pipeline (parse → WATCodeGenerator → wat2wasm → artifact packaging):
+
+```bash
+multilingual build-wasm-bundle program.ml --out-dir wasm-out
+```
+
+Output artifacts:
+
+| File | Description |
+|------|-------------|
+| `module.wat` | WAT source text |
+| `module.wasm` | Binary WASM for browser |
+| `host_shim.js` | JS host import stubs |
+| `abi_manifest.json` | ABI metadata |
+
+See [WASM Architecture](/wasm/architecture/) for the full pipeline and host import protocol.
+
+---
+
 ## WasmGenerator
 
-Generates WebAssembly bytecode from a Core IR AST (requires the WASM optional dependency).
+Legacy generator that produces Rust intermediate code, which is then compiled to WASM externally. Requires a Rust toolchain. For most use cases, prefer `WATCodeGenerator` via `multilingual build-wasm-bundle`.
 
 ```python
 class WasmGenerator:
@@ -409,29 +464,24 @@ class WasmGenerator:
 
 #### `generate_wasm(ast, function_name: str) -> bytes`
 
-Compile a function from the AST to WASM bytecode:
-
 ```python
 from multilingualprogramming.codegen import WasmGenerator
 
 wasm_gen = WasmGenerator()
 wasm_bytes = wasm_gen.generate_wasm(ast, function_name="fibonacci")
 
-# Write to file
 with open("fibonacci.wasm", "wb") as f:
     f.write(wasm_bytes)
 ```
 
 #### `generate_rust(ast, function_name: str) -> str`
 
-Get the Rust intermediate representation (before WASM compilation):
+Get the Rust intermediate representation:
 
 ```python
 rust_code = wasm_gen.generate_rust(ast, function_name="fibonacci")
 print(rust_code)
 ```
-
-See [WASM Architecture](/wasm/architecture/) for details on the compilation chain.
 
 ---
 

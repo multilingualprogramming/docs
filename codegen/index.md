@@ -232,19 +232,25 @@ python_src = codegen.generate(ast)
 
 ## WASM Code Generation
 
-The WASM code generator follows the same interface:
+The primary WASM backend is `WATCodeGenerator`, which compiles the Core AST directly to WebAssembly Text Format (WAT). No Rust toolchain or external compiler is required.
 
 ```python
-from multilingualprogramming.codegen import WasmGenerator
+from multilingualprogramming.codegen.wat_generator import WATCodeGenerator
 
-wasm_gen = WasmGenerator()
-wasm_bytes = wasm_gen.generate_wasm(ast, function_name="my_func")
-
-# Or: get the Rust intermediate code
-rust_code = wasm_gen.generate_rust(ast, function_name="my_func")
+gen = WATCodeGenerator()
+wat_text = gen.generate(ast)   # returns WAT source as a string
 ```
 
-See [WASM Architecture](/wasm/architecture/) for details.
+From the command line, `build-wasm-bundle` runs the full pipeline (WAT → binary → artifacts):
+
+```bash
+multilingual build-wasm-bundle program.ml --out-dir wasm-out
+# Produces: module.wat, module.wasm, host_shim.js, abi_manifest.json
+```
+
+The generated WAT module exports `__main` and uses host-import callbacks (`env.print_str`, `env.print_f64`, etc.) for output — it does not return values.
+
+See [WASM Architecture](/wasm/architecture/) for the full pipeline and host import protocol.
 
 ---
 

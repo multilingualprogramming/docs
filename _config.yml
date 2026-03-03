@@ -2,7 +2,7 @@ title: "Multilingual Programming Language"
 description: "Write code in 17 human languages. One formal core. Infinite expression."
 url: "https://multilingualprogramming.github.io"
 baseurl: "/docs"
-version: "0.4.0"
+version: "0.5.1"
 
 # Author
 author:

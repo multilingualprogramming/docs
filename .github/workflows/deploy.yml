@@ -1,13 +1,17 @@
 # Deploy multilingual docs to GitHub Pages.
 #
 # This workflow replaces GitHub's default Jekyll deployment so we can:
-#   1. Build the multilingual browser WASM binary via Python + Cranelift.
-#   2. Generate the WAT text format alongside it (for educational display).
-#   3. Copy both into assets/wasm/ and build the Jekyll site.
+#   1. Build the browser WASM bundle from demo.ml via WATCodeGenerator.
+#      `multilingual build-wasm-bundle demo.ml` emits:
+#        - module.wat        (WebAssembly Text — educational display in docs)
+#        - module.wasm       (binary — executed in the browser REPL)
+#        - host_shim.js      (JS host import stubs for print_str, print_f64, …)
+#        - abi_manifest.json (ABI metadata)
+#   2. Copy all bundle artifacts into assets/wasm/.
+#   3. Build the Jekyll site.
 #   4. Deploy _site/ to GitHub Pages.
 #
-# The WASM build is purely Python-driven: multilingualprogramming[wasm]
-# uses the Cranelift compiler (via wasmtime) to produce .wasm binaries.
+# The build is purely Python-driven (multilingualprogramming[wasm]).
 # No Rust toolchain or wasm-pack is required.
 #
 # Trigger: every push to main, or manually via workflow_dispatch.
@@ -37,6 +41,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout docs repo (for demo.ml)
+        uses: actions/checkout@v4
+
       - name: Checkout multilingual source
         uses: actions/checkout@v4
         with:
@@ -48,47 +55,45 @@ jobs:
         with:
           python-version: '3.12'
           cache:          pip
-          cache-dependency-path: multilingual-src/setup.cfg
+          cache-dependency-path: multilingual-src/pyproject.toml
 
       - name: Install multilingual with WASM extras
         working-directory: multilingual-src
         run: pip install -e ".[dev,wasm]"
 
-      - name: Build browser WASM bundle
-        working-directory: multilingual-src
+      - name: Build browser WASM bundle from demo.ml
         run: |
-          # build_wasm.sh uses WasmGenerator + Cranelift to produce
-          # .wasm binaries in wasm/pkg/.
-          # Pass --target browser so the script emits a browser-compatible
-          # binary (no wasmtime WASI imports).
-          mkdir -p wasm/pkg
-          if [ -f build_wasm.sh ]; then
-            bash build_wasm.sh --target browser --out-dir wasm/pkg
-          else
-            python -m multilingualprogramming build-wasm \
-              --target browser \
-              --out-dir wasm/pkg
-          fi
+          # WATCodeGenerator compiles demo.ml → WAT text → WASM binary.
+          # Artifacts land in wasm-out/:
+          #   module.wat, module.wasm, host_shim.js, abi_manifest.json
+          mkdir -p wasm-out
+          multilingual build-wasm-bundle demo.ml --out-dir wasm-out
 
-      # Install the WebAssembly Binary Toolkit so we can generate the WAT
-      # (text format) alongside the binary for display in the docs.
-      - name: Install wabt (wasm2wat)
+      # wabt provides wasm2wat for validating / inspecting the binary.
+      # The primary .wat is already emitted by build-wasm-bundle above,
+      # but wasm2wat gives a round-trip check and canonical text form.
+      - name: Install wabt (wasm-validate, wasm2wat)
         run: sudo apt-get install -y wabt
 
-      - name: Generate WAT text format
-        working-directory: multilingual-src/wasm/pkg
+      - name: Validate and normalise WAT
         run: |
-          # Convert every .wasm binary to its human-readable .wat counterpart.
-          for f in *.wasm; do
-            wasm2wat "$f" -o "${f%.wasm}.wat" || true
-          done
+          wasm-validate wasm-out/module.wasm
+          # Overwrite with canonical round-trip WAT (catches any encoding drift).
+          wasm2wat wasm-out/module.wasm -o wasm-out/module.wat
+
+      - name: Rename artifacts to stable names
+        run: |
+          # Jekyll references these as assets/wasm/multilingual.*
+          mv wasm-out/module.wasm    wasm-out/multilingual.wasm
+          mv wasm-out/module.wat     wasm-out/multilingual.wat
+          mv wasm-out/host_shim.js   wasm-out/host_shim.js   # keep name
+          mv wasm-out/abi_manifest.json wasm-out/abi_manifest.json
 
       - name: Upload WASM artefacts
         uses: actions/upload-artifact@v4
         with:
           name: wasm-pkg
-          # Includes both .wasm binaries and .wat text files.
-          path: multilingual-src/wasm/pkg/
+          path: wasm-out/
           retention-days: 1
 
   # ── Job 2: Build Jekyll ───────────────────────────────────────────────────

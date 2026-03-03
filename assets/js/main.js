@@ -4,15 +4,25 @@
 
   /* ================================================================
      WASM MODULE LOADER
-     Lazily instantiates assets/wasm/multilingual.wasm — the full
-     multilingual interpreter compiled to WASM via Python + Cranelift
-     (multilingualprogramming[wasm]).  No wasm-bindgen glue file.
+     Lazily instantiates assets/wasm/multilingual.wasm — the demo.ml
+     program compiled to WASM by `multilingual build-wasm-bundle` via
+     WATCodeGenerator (multilingualprogramming[wasm]).
 
-     Expected binary exports:
-       run_code(ptr: i32, len: i32) -> i32   source in, JSON result out
-       __wasm_alloc(size: i32)       -> i32   linear-memory allocator
-       __wasm_free(ptr: i32, size: i32)       linear-memory free
-       memory                                 WebAssembly.Memory
+     The WAT backend uses host-import callbacks for all output rather
+     than returning values.  The browser must supply these imports:
+
+       env.print_str(ptr: i32, len: i32)  — print a UTF-8 string slice
+       env.print_f64(val: f64)            — print a number
+       env.print_bool(val: i32)           — print True (1) or False (0)
+       env.print_sep()                    — print an argument separator (space)
+       env.print_newline()                — print a newline
+
+     Output is captured into a string buffer that is reset before each
+     call to __main().
+
+     The Run buttons on individual code examples call __main() and show
+     the captured output.  For a fully interactive experience with
+     arbitrary code, visit the live playground linked on the WASM page.
 
      The loader resolves the base URL from the <meta name="base-url"> tag
      so paths work identically on local dev and under /docs on GitHub Pages.
@@ -23,55 +33,45 @@
   const MLWasm = (() => {
     let _instance      = null;
     let _memory        = null;
+    let _outputBuf     = '';
     let _modulePromise = null;
 
-    const enc = new TextEncoder();
     const dec = new TextDecoder();
 
-    /* Instantiate the binary directly — no wasm-bindgen glue file needed.
-     * The Cranelift-compiled binary exports:
-     *   run_code(ptr: i32, len: i32) -> i32  (returns ptr to JSON result)
-     *   __wasm_alloc(size: i32)       -> i32
-     *   __wasm_free(ptr: i32, size: i32)
-     *   memory                        (WebAssembly.Memory) */
+    /* Host imports required by every WAT module produced by WATCodeGenerator. */
+    const importObject = {
+      env: {
+        print_str(ptr, len) {
+          _outputBuf += dec.decode(new Uint8Array(_memory.buffer, ptr, len));
+        },
+        print_f64(val) {
+          /* Match Python's default float repr: drop trailing .0 for integers. */
+          _outputBuf += Number.isInteger(val) ? String(val) : String(val);
+        },
+        print_bool(val)  { _outputBuf += val ? 'True' : 'False'; },
+        print_sep()      { _outputBuf += ' '; },
+        print_newline()  { _outputBuf += '\n'; },
+      },
+    };
+
     function load() {
       if (_modulePromise) return _modulePromise;
 
       const wasmUrl = baseUrl + '/assets/wasm/multilingual.wasm';
 
-      _modulePromise = WebAssembly.instantiateStreaming(fetch(wasmUrl), {
-        env: { abort: () => {} },
-      }).then(({ instance }) => {
-        _instance = instance;
-        _memory   = instance.exports.memory;
-        return true;
-      });
+      _modulePromise = WebAssembly.instantiateStreaming(fetch(wasmUrl), importObject)
+        .then(({ instance }) => {
+          _instance = instance;
+          _memory   = instance.exports.memory;
+          return true;
+        });
 
       return _modulePromise;
     }
 
-    /* Write a JS string into WASM linear memory; return { ptr, len }. */
-    function writeStr(str) {
-      const bytes = enc.encode(str);
-      const ptr   = _instance.exports.__wasm_alloc(bytes.length + 1);
-      const view  = new Uint8Array(_memory.buffer);
-      view.set(bytes, ptr);
-      view[ptr + bytes.length] = 0;
-      return { ptr, len: bytes.length };
-    }
-
-    /* Read a null-terminated UTF-8 string from WASM linear memory. */
-    function readStr(ptr) {
-      const view = new Uint8Array(_memory.buffer);
-      let end = ptr;
-      while (view[end] !== 0) end++;
-      return dec.decode(view.subarray(ptr, end));
-    }
-
     /* ---- WAT text loader ------------------------------------------------- */
-    /* Fetches the pre-generated .wat file (produced by wasm2wat in CI) once
-     * and caches the text.  Used purely for display — execution always uses
-     * the binary.  Returns Promise<string>. */
+    /* Fetches the pre-built .wat file once for educational display.
+     * Execution always uses the binary — WAT is read-only. */
     let _watPromise = null;
 
     function loadWat() {
@@ -86,26 +86,24 @@
 
     /* Public API */
     return {
-      /* Returns a Promise<{ stdout: string, stderr: string }>. */
-      execute(src) {
+      /* Run the compiled demo and return { stdout, stderr }.
+       * The WASM binary is a pre-compiled program (demo.ml); it always
+       * runs the same code regardless of the `src` argument.  The `src`
+       * parameter is kept for API symmetry with the REPL textarea. */
+      execute(_src) {
         return load().then(() => {
-          const { ptr, len } = writeStr(src);
-          let resultPtr;
+          _outputBuf = '';
           try {
-            resultPtr = _instance.exports.run_code(ptr, len);
-          } finally {
-            _instance.exports.__wasm_free(ptr, len + 1);
+            _instance.exports.__main();
+          } catch (e) {
+            return { stdout: _outputBuf, stderr: String(e) };
           }
-          const raw = readStr(resultPtr);
-          let out;
-          try   { out = JSON.parse(raw); }
-          catch { out = { stdout: raw, stderr: '' }; }
-          return { stdout: out.stdout || '', stderr: out.stderr || '' };
+          return { stdout: _outputBuf, stderr: '' };
         });
       },
       /* Expose the load promise so the toggle button can show readiness. */
       get ready() { return load(); },
-      /* Returns a Promise<string> with the full WAT text. */
+      /* Returns a Promise<string> with the WAT text format. */
       get wat()   { return loadWat(); },
     };
   })();
