@@ -260,8 +260,8 @@ selector = BackendSelector(config=config)
 
 try:
     result = selector.call_function("long_operation", *args)
-except RuntimeError as e:
-    print(f"Timeout: {e}")
+except RuntimeError as err:
+    print(f"Timeout: {err}")
     # Fall back to Python
 ```
 
@@ -315,8 +315,8 @@ print(f"\nInstallation:")
 try:
     import multilingualprogramming
     print(f"  multilingualprogramming: ✓ {multilingualprogramming.__version__}")
-except ImportError as e:
-    print(f"  multilingualprogramming: ✗ {e}")
+except ImportError as err:
+    print(f"  multilingualprogramming: ✗ {err}")
 
 try:
     import wasmtime
@@ -336,16 +336,16 @@ try:
     s = BackendSelector()
     print(f"  Available: {s.is_wasm_available()}")
     print(f"  Backend: {s.backend}")
-except Exception as e:
-    print(f"  Error: {e}")
+except Exception as err:
+    print(f"  Error: {err}")
 
 print(f"\nFallback Functions:")
 try:
     from multilingualprogramming.runtime.python_fallbacks import FALLBACK_REGISTRY
     print(f"  Registered: {len(FALLBACK_REGISTRY)} functions")
     print(f"  Functions: {', '.join(sorted(FALLBACK_REGISTRY.keys())[:10])}...")
-except Exception as e:
-    print(f"  Error: {e}")
+except Exception as err:
+    print(f"  Error: {err}")
 
 print("\n" + "=" * 60)
 ```

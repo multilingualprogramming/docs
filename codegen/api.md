@@ -683,12 +683,12 @@ from multilingualprogramming.errors import (
 
 try:
     executor.execute(source, language="fr")
-except MultilingualSyntaxError as e:
-    print(f"Syntax error (line {e.lineno}): {e.message}")
-except MultilingualSemanticError as e:
-    print(f"Semantic error: {e.message}")
-except MultilingualRuntimeError as e:
-    print(f"Runtime error: {e.message}")
+except MultilingualSyntaxError as err:
+    print(f"Syntax error (line {err.lineno}): {err.message}")
+except MultilingualSemanticError as err:
+    print(f"Semantic error: {err.message}")
+except MultilingualRuntimeError as err:
+    print(f"Runtime error: {err.message}")
 ```
 
 Error messages are localized to the source language — French programs show errors in French, Japanese programs show errors in Japanese.

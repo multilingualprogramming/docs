@@ -146,8 +146,8 @@ try:
 
     result = MatrixOperations.multiply([[1, 2], [3, 4]], [[5, 6], [7, 8]])
     print(f"   ✓ Matrix multiply: success")
-except Exception as e:
-    print(f"   ✗ Error: {e}")
+except Exception as err:
+    print(f"   ✗ Error: {err}")
 
 print("\n" + "=" * 60)
 if selector.is_wasm_available():
@@ -177,8 +177,8 @@ selector = BackendSelector(prefer_backend=Backend.PYTHON)
 selector = BackendSelector(prefer_backend=Backend.WASM)
 try:
     result = selector.call_function("fibonacci", 10)
-except RuntimeError as e:
-    print(f"WASM not available: {e}")
+except RuntimeError as err:
+    print(f"WASM not available: {err}")
 ```
 
 ### Environment Variables
