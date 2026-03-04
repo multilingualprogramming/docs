@@ -2,13 +2,11 @@
 """
 _tests/test_code_blocks.py
 
-Verify that every executable code block in the docs can be:
-  1. Compiled to WAT text via `multilingual build-wasm-bundle`.
-  2. Assembled to a binary via `wat2wasm`.
-  3. Validated as a well-formed WASM module via `wasm-validate`.
-  4. Executed (calling __main()) without trapping, via the wasmtime Python API.
+Verify that every executable code block in the docs runs correctly via
+ProgramExecutor — the same engine used by the browser REPL and inline
+Run buttons (Pyodide client-side).
 
-Run locally (requires multilingual, wabt, and optionally wasmtime installed):
+Run locally (requires multilingualprogramming installed):
     pytest _tests/ -v
 
 Each code block becomes its own parametrized test case, identified by
@@ -18,13 +16,15 @@ its source file and zero-based index within that file:
 """
 
 import re
-import subprocess
 from pathlib import Path
 
 import pytest
 
+from multilingualprogramming.codegen.executor import ProgramExecutor
+
 # ---------------------------------------------------------------------------
-# Configuration — must match NON_EXECUTABLE in main.js and compile_blocks.py
+# Configuration — language tags that are not executable multilingual source.
+# Must match NON_EXECUTABLE in main.js.
 # ---------------------------------------------------------------------------
 
 NON_EXECUTABLE = {
@@ -36,54 +36,14 @@ NON_EXECUTABLE = {
 }
 
 REPO_ROOT = Path(__file__).parent.parent
-COMPILE_TIMEOUT = 60   # seconds — build-wasm-bundle per block
-ASSEMBLE_TIMEOUT = 30  # seconds — wat2wasm
-VALIDATE_TIMEOUT = 10  # seconds — wasm-validate
-EXECUTE_TIMEOUT  = 10  # seconds — __main() wall-clock guard
 
 # Blocks that contain any of these patterns are host-Python integration code
 # (multilingualprogramming API usage, test harnesses, diagnostic scripts) —
-# not standalone multilingual programs that can be compiled to WASM.
+# not standalone multilingual programs intended for execution.
 HOST_PY_RE = re.compile(
     r'^\s*(import\s+[\w.]+|from\s+[\w.]+\s+import\s+|#!/usr/bin/env\s+python\d*(?:\.\d+)*)',
     re.MULTILINE,
 )
-# Catches orphan API blocks whose `from ... import` lives in a prior block.
-PYTHON_API_RE = re.compile(
-    r'executor\.|BackendSelector\(\)|NumeralConverter\(\)|ProgramExecutor\(\)'
-    r'|wasm_gen\.|sel\.|Lexer\(language=|Parser\(language='
-    r'|SemanticAnalyzer\(|ASTPrinter\(\)|\.generate_rust\('
-)
-# Patterns for syntax that WATCodeGenerator does not yet support.
-# Remove entries here as the compiler gains support for each feature.
-WASM_UNSUPPORTED_RE = re.compile(
-    r'\byield\b'                        # generators / yield from
-    r'|^\s*match\s+\S'                 # structural pattern matching
-    r'|:='                              # walrus operator
-    r'|^\s*@\w'                         # function / class decorators
-    r'|\blambda\b'                      # lambda expressions
-    r'|\*\*\w+'                         # **kwargs double-star arg
-    r'|(?:,|\()\s*\*[a-zA-Z]'          # *args single-star arg
-    r'|(?:,|\()\s*\*\s*,'              # keyword-only * separator  (def f(a, *, b))
-    r'|(?:,|\()\s*/\s*[,)]'            # positional-only / sep    (def f(a, b, /))
-    r'|\bnonlocal\b'                    # nonlocal (closure)
-    r'|\basync\s+(?:def|for|with)\b'   # async / await constructs
-    r'|\bcontinue\b'                    # continue (WATCodeGenerator hangs)
-    r'|\belif\b',                       # elif (WATCodeGenerator does not yet support)
-    re.MULTILINE,
-)
-
-
-def _verbose_context(request, code: str) -> str:
-    """Return extra failure details when --block-verbose is enabled."""
-    if not request.config.getoption("--block-verbose"):
-        return ""
-    block_id = getattr(getattr(request.node, "callspec", None), "id", "unknown-block")
-    return (
-        f"\n--- failing block: {block_id} ---\n"
-        f"{code}\n"
-        "--- end block ---\n"
-    )
 
 
 # ---------------------------------------------------------------------------
@@ -94,18 +54,14 @@ def _collect_blocks():
     """
     Yield pytest.param(code, id=...) for every executable fenced code block
     found in the docs markdown files.
-
-    A block is included when its language tag is NOT in NON_EXECUTABLE, its
-    content is not host-Python integration/setup code, and it contains at
-    least one `print(` call (matching compile_blocks.py).
     """
     pattern = re.compile(r'^```(\w*)\n(.*?)^```', re.MULTILINE | re.DOTALL)
 
     md_files = sorted(
         p for p in REPO_ROOT.rglob('*.md')
-        if '.jekyll-cache'   not in p.parts
-        and 'vendor'         not in p.parts
-        and 'multilingual-src' not in p.parts  # CI checkout lives inside docs root
+        if '.jekyll-cache'     not in p.parts
+        and 'vendor'           not in p.parts
+        and 'multilingual-src' not in p.parts
     )
 
     for md_file in md_files:
@@ -116,11 +72,7 @@ def _collect_blocks():
             code = m.group(2).strip()
             if lang in NON_EXECUTABLE or not code:
                 continue
-            if lang == 'python' and (
-                HOST_PY_RE.search(code)
-                or PYTHON_API_RE.search(code)
-                or WASM_UNSUPPORTED_RE.search(code)
-            ):
+            if HOST_PY_RE.search(code):
                 continue
             if 'print(' not in code:
                 continue
@@ -128,114 +80,17 @@ def _collect_blocks():
 
 
 # ---------------------------------------------------------------------------
-# Execution helper (wasmtime Python API)
-# ---------------------------------------------------------------------------
-
-def _execute_wasm(wasm_path: Path) -> str:
-    """
-    Instantiate *wasm_path* with the standard multilingual host imports and
-    call ``__main()``.  Returns the captured stdout string.
-
-    Raises ``pytest.skip`` if the wasmtime Python package is not installed.
-    Raises ``AssertionError`` if ``__main`` traps or is not exported.
-    """
-    try:
-        from wasmtime import Engine, FuncType, Linker, Module, Store, ValType
-    except ImportError:
-        pytest.skip('wasmtime Python package not installed — skipping execution check')
-
-    engine = Engine()
-    store  = Store(engine)
-    module = Module(engine, wasm_path.read_bytes())
-    linker = Linker(engine)
-
-    buf      = []
-    mem_ref  = [None]
-
-    # Host callbacks — mirror the ABI declared in the WAT backend
-    def _print_str(ptr, length):
-        if mem_ref[0] is not None:
-            raw = bytes(mem_ref[0].data(store)[ptr: ptr + length])
-            buf.append(raw.decode('utf-8', errors='replace'))
-
-    i32 = ValType.i32()
-    f64 = ValType.f64()
-
-    linker.define_func('env', 'print_str',     FuncType([i32, i32], []), _print_str)
-    linker.define_func('env', 'print_f64',     FuncType([f64],       []), lambda v: buf.append(str(v)))
-    linker.define_func('env', 'print_bool',    FuncType([i32],       []), lambda v: buf.append('True' if v else 'False'))
-    linker.define_func('env', 'print_sep',     FuncType([],          []), lambda: buf.append(' '))
-    linker.define_func('env', 'print_newline', FuncType([],          []), lambda: buf.append('\n'))
-
-    instance = linker.instantiate(store, module)
-    exports  = instance.exports(store)
-
-    assert 'memory' in [e.name for e in module.exports], \
-        "WASM module does not export 'memory'"
-    assert '__main' in [e.name for e in module.exports], \
-        "WASM module does not export '__main'"
-
-    mem_ref[0] = exports['memory']
-    exports['__main'](store)
-
-    return ''.join(buf)
-
-
-# ---------------------------------------------------------------------------
 # Test
 # ---------------------------------------------------------------------------
 
 @pytest.mark.parametrize('code', _collect_blocks())
-def test_block(code, tmp_path, request):
+def test_block(code):
     """
-    Each executable code block in the docs must:
-      1. Compile to WAT text without error.
-      2. Assemble into a valid WASM binary.
-      3. Execute __main() without trapping.
+    Each executable code block in the docs must execute without errors
+    via ProgramExecutor — the same engine used by the browser REPL.
     """
-    src_file  = tmp_path / 'block.ml'
-    out_dir   = tmp_path / 'out'
-    out_dir.mkdir()
-    src_file.write_text(code, encoding='utf-8')
-
-    # ── Step 1: Compile to WAT ──────────────────────────────────────────────
-    result = subprocess.run(
-        ['multilingual', 'build-wasm-bundle', str(src_file), '--out-dir', str(out_dir)],
-        capture_output=True, text=True, timeout=COMPILE_TIMEOUT,
+    result = ProgramExecutor(language='en').execute(code)
+    assert result.success, (
+        f'ProgramExecutor reported failure:\n' +
+        '\n'.join(result.errors or ['(no error details)'])
     )
-    assert result.returncode == 0, (
-        _verbose_context(request, code) +
-        f'build-wasm-bundle failed (exit {result.returncode}):\n'
-        f'{result.stderr.strip()}'
-    )
-
-    wat_file = out_dir / 'module.wat'
-    assert wat_file.exists(), (
-        'build-wasm-bundle succeeded but produced no module.wat'
-    )
-
-    # ── Step 2: Assemble WAT → WASM binary ─────────────────────────────────
-    wasm_file = out_dir / 'module.wasm'
-    result = subprocess.run(
-        ['wat2wasm', str(wat_file), '-o', str(wasm_file)],
-        capture_output=True, timeout=ASSEMBLE_TIMEOUT,
-    )
-    assert result.returncode == 0, (
-        _verbose_context(request, code) +
-        f'wat2wasm failed (exit {result.returncode}):\n'
-        f'{result.stderr.decode(errors="replace").strip()}'
-    )
-
-    # ── Step 3: Validate ────────────────────────────────────────────────────
-    result = subprocess.run(
-        ['wasm-validate', str(wasm_file)],
-        capture_output=True, timeout=VALIDATE_TIMEOUT,
-    )
-    assert result.returncode == 0, (
-        _verbose_context(request, code) +
-        f'wasm-validate rejected the binary:\n'
-        f'{result.stderr.decode(errors="replace").strip()}'
-    )
-
-    # ── Step 4: Execute (requires wasmtime Python package) ──────────────────
-    _execute_wasm(wasm_file)
