@@ -201,7 +201,9 @@ Multilingual programs can use any supported numeral literal directly:
 # English program with Devanagari numeral
 let count = ४२        # equivalent to 42
 print(count + 8)     # 50
+```
 
+```python
 # French program with Arabic-Indic numeral
 soit total = ٣٠ + ١٢
 afficher(total)      # 42

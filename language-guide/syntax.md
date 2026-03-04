@@ -356,6 +356,8 @@ def f(
 def greet(name, greeting="Hello", times=1):
     for _ in range(times):
         print(f"{greeting}, {name}")
+
+greet("World")
 ```
 
 ### Type Annotations

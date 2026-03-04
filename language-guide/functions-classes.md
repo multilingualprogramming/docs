@@ -186,6 +186,8 @@ def print_banner(text):
     print(text.center(40))
     print("=" * 40)
     # implicit return None
+
+print_banner("Hello")
 ```
 
 ---
@@ -477,9 +479,9 @@ print(temp.fahrenheit)   # 32.0
 
 ```python
 class Vector:
-    def __init__(self, x, y):
+    def __init__(self, x, y_val):
         self.x = x
-        self.y = y
+        self.y = y_val
 
     def __add__(self, other):
         return Vector(self.x + other.x, self.y + other.y)

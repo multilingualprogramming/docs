@@ -219,8 +219,8 @@ Expected output: `6`
 
 ```python
 let x = 2
-let y = 3
-print(x + y)
+let z = 3
+print(x + z)
 
 let total = 0
 for idx in range(4):
