@@ -60,7 +60,9 @@ WASM_UNSUPPORTED_RE = re.compile(
     r'|(?:,|\()\s*\*\s*,'              # keyword-only * separator  (def f(a, *, b))
     r'|(?:,|\()\s*/\s*[,)]'            # positional-only / sep    (def f(a, b, /))
     r'|\bnonlocal\b'                    # nonlocal (closure)
-    r'|\basync\s+(?:def|for|with)\b',  # async / await constructs
+    r'|\basync\s+(?:def|for|with)\b'   # async / await constructs
+    r'|\bcontinue\b'                    # continue (WATCodeGenerator hangs)
+    r'|\belif\b',                       # elif (WATCodeGenerator does not yet support)
     re.MULTILINE,
 )
 
