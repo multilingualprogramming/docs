@@ -171,6 +171,76 @@
 
 
   /* ================================================================
+     PYODIDE REPL
+     Lazily loads Pyodide the first time the user opens the REPL panel,
+     then uses ProgramExecutor(language=lang) to compile and execute
+     arbitrary multilingual source code client-side.
+     ================================================================ */
+
+  let _pyodide      = null;
+  let _pyodideReady = false;
+  let _pyodideInit  = null;   // singleton Promise
+
+  function _loadPyodideScript() {
+    return new Promise((resolve, reject) => {
+      if (typeof loadPyodide === 'function') { resolve(); return; }
+      const s = document.createElement('script');
+      s.src = 'https://cdn.jsdelivr.net/pyodide/v0.26.0/full/pyodide.js';
+      s.onload  = resolve;
+      s.onerror = () => reject(new Error('Failed to load Pyodide script'));
+      document.head.appendChild(s);
+    });
+  }
+
+  async function _initReplPyodide() {
+    if (_pyodideReady) return;
+    setReplStatus('loading', 'loading…');
+    await _loadPyodideScript();
+
+    _pyodide = await loadPyodide({    // eslint-disable-line no-undef
+      indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.26.0/full/',
+    });
+    setReplStatus('loading', 'installing…');
+    await _pyodide.loadPackage('micropip');
+    const micropip = _pyodide.pyimport('micropip');
+    await micropip.install('roman');
+    await micropip.install('python-dateutil');
+
+    // Try a locally-built wheel first, fall back to PyPI
+    let installed = false;
+    try {
+      const resp = await fetch(baseUrl + '/assets/wheel_info.json');
+      if (resp.ok) {
+        const info = await resp.json();
+        const url  = new URL(baseUrl + '/assets/' + info.wheel, window.location.href).href;
+        await micropip.install(url);
+        installed = true;
+      }
+    } catch (_) { /* wheel_info.json absent — fall back to PyPI */ }
+
+    if (!installed) {
+      await micropip.install('multilingualprogramming');
+    }
+
+    // Warm-up import so the first Run is fast
+    await _pyodide.runPythonAsync(
+      'from multilingualprogramming.codegen.executor import ProgramExecutor'
+    );
+
+    _pyodideReady = true;
+    setReplStatus('ready', 'ready');
+  }
+
+  function ensureReplPyodide() {
+    if (!_pyodideInit) _pyodideInit = _initReplPyodide().catch(err => {
+      setReplStatus('error', 'error');
+      console.error('Pyodide init failed:', err);
+      _pyodideInit = null;   // allow retry
+    });
+    return _pyodideInit;
+  }
+
+  /* ================================================================
      REPL PANEL
      ================================================================ */
 
@@ -224,13 +294,6 @@
     if (badge) badge.textContent  = label;
   }
 
-  /* Warm up the WASM module and update status indicators. */
-  function initWasm() {
-    MLWasm.ready
-      .then(() => setReplStatus('ready', 'ready'))
-      .catch(() => setReplStatus('error', 'unavailable'));
-  }
-
   /* Wire up the REPL panel controls. */
   const replPanel  = document.getElementById('repl-panel');
   const replToggle = document.getElementById('repl-toggle');
@@ -242,8 +305,8 @@
       replPanel.hidden = open;
       replToggle.setAttribute('aria-expanded', String(!open));
       if (!open) {
-        /* Start loading WASM when the user first opens the REPL. */
-        initWasm();
+        /* Start loading Pyodide the first time the user opens the REPL. */
+        ensureReplPyodide();
         document.getElementById('repl-input').focus();
       }
     });
@@ -261,50 +324,90 @@
       document.getElementById('repl-input').value = '';
     });
 
-    /* Run button. */
-    document.getElementById('repl-run-btn').addEventListener('click', () => {
+    /* Run button — compile and execute via Pyodide ProgramExecutor. */
+    document.getElementById('repl-run-btn').addEventListener('click', async () => {
       const src    = document.getElementById('repl-input').value.trim();
+      const lang   = document.getElementById('repl-lang').value;
       const output = document.getElementById('repl-output');
       if (!src) return;
+
+      if (!_pyodideReady) {
+        output.innerHTML = '<span class="repl-output-placeholder">Still loading — please wait…</span>';
+        await ensureReplPyodide();
+      }
 
       setReplStatus('running', 'running…');
       output.innerHTML = '<span class="repl-output-placeholder">Running…</span>';
 
-      MLWasm.execute(src)
-        .then(result => {
-          renderOutput(output, result);
-          setReplStatus('ready', 'ready');
-        })
-        .catch(err => {
-          output.innerHTML = `<pre class="output-stderr">${err}</pre>`;
-          setReplStatus('error', 'error');
+      try {
+        _pyodide.globals.set('_repl_code', src);
+        _pyodide.globals.set('_repl_lang', lang);
+        await _pyodide.runPythonAsync(`
+from multilingualprogramming.codegen.executor import ProgramExecutor
+_r        = ProgramExecutor(language=_repl_lang).execute(_repl_code)
+_repl_out  = _r.output or ''
+_repl_errs = '\\n'.join(_r.errors) if _r.errors else ''
+`);
+        renderOutput(output, {
+          stdout: _pyodide.globals.get('_repl_out'),
+          stderr: _pyodide.globals.get('_repl_errs'),
         });
+        setReplStatus('ready', 'ready');
+      } catch (err) {
+        output.innerHTML = `<pre class="output-stderr">${err}</pre>`;
+        setReplStatus('error', 'error');
+      }
     });
 
-    /* WAT button — show compiled WebAssembly text in the output pane. */
-    document.getElementById('repl-wat-btn').addEventListener('click', () => {
+    /* WAT button — generate WAT for the current user code via Pyodide. */
+    document.getElementById('repl-wat-btn').addEventListener('click', async () => {
       const output = document.getElementById('repl-output');
-      /* Toggle off if already showing WAT. */
       if (output.dataset.mode === 'wat') {
         output.innerHTML = '<span class="repl-output-placeholder">Output will appear here</span>';
         delete output.dataset.mode;
         return;
       }
-      output.innerHTML = '<span class="repl-output-placeholder">Loading WAT…</span>';
+
+      const src = document.getElementById('repl-input').value.trim();
+      const lang = document.getElementById('repl-lang').value;
+
+      output.innerHTML = '<span class="repl-output-placeholder">Generating WAT…</span>';
       output.dataset.mode = 'wat';
-      MLWasm.wat
-        .then(text => {
+
+      if (!_pyodideReady) { await ensureReplPyodide(); }
+
+      try {
+        _pyodide.globals.set('_repl_code', src || '');
+        _pyodide.globals.set('_repl_lang', lang);
+        await _pyodide.runPythonAsync(`
+from multilingualprogramming.lexer.lexer import Lexer
+from multilingualprogramming.parser.parser import Parser
+from multilingualprogramming.codegen.wat_generator import WATCodeGenerator
+try:
+  _toks    = Lexer(_repl_code, language=_repl_lang).tokenize()
+  _prog    = Parser(_toks, source_language=_repl_lang).parse()
+  _wat_out = WATCodeGenerator().generate(_prog)
+  _wat_err = ''
+except Exception as _e:
+  _wat_out = ''
+  _wat_err = str(_e)
+`);
+        const watSrc = _pyodide.globals.get('_wat_out');
+        const watErr = _pyodide.globals.get('_wat_err');
+        if (watErr) {
+          output.innerHTML = `<pre class="output-stderr">${watErr}</pre>`;
+          delete output.dataset.mode;
+        } else {
           output.innerHTML = '';
           const pre = document.createElement('pre');
           pre.className = 'output-wat';
-          pre.textContent = text;
+          pre.textContent = watSrc;
           output.appendChild(pre);
-        })
-        .catch(() => {
-          output.innerHTML =
-            '<span class="output-stderr">WAT not available — build the WASM module first.</span>';
-          delete output.dataset.mode;
-        });
+        }
+      } catch (err) {
+        output.innerHTML = `<pre class="output-stderr">${err}</pre>`;
+        delete output.dataset.mode;
+      }
     });
 
     /* Ctrl/Cmd+Enter to run. */

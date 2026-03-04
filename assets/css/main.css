@@ -1359,6 +1359,17 @@ pre:hover .wat-btn { opacity: 1; }
   gap: 0.4rem;
   align-items: center;
 }
+.repl-lang-select {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-secondary);
+  border-radius: 4px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 0.25rem 0.4rem;
+  cursor: pointer;
+}
+.repl-lang-select:focus { outline: none; border-color: var(--accent-cyan); color: var(--text-primary); }
 .repl-btn {
   background: rgba(0, 255, 159, 0.1);
   border: 1px solid rgba(0, 255, 159, 0.3);
