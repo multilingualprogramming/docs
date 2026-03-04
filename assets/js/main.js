@@ -126,11 +126,11 @@
 
     /* Public API */
     return {
-      /* Execute a specific code block: loads its per-block WASM binary (keyed
-       * by content hash), falling back to the demo binary if unavailable. */
-      async execute(src) {
-        const hash16 = await blockHash(src);
-        const mod    = await loadBlockModule(hash16);
+      /* Execute a specific code block: loads its per-block WASM binary.
+       * hash16 is the pre-computed data-block-hash attribute injected at
+       * build time by _scripts/inject_hashes.py — no browser-side hashing. */
+      async execute(src, hash16) {
+        const mod = await loadBlockModule(hash16);
 
         if (!mod) {
           /* No per-block binary available for this code.  Rather than
@@ -333,16 +333,17 @@
     pre.appendChild(runBtn);
 
     runBtn.addEventListener('click', () => {
-      const src = code.textContent.trim();
+      const src    = code.textContent.trim();
+      const hash16 = pre.dataset.blockHash || '';
       runBtn.textContent = '…';
       runBtn.disabled    = true;
       outputPanel.hidden = false;
       outputPanel.dataset.mode = 'output';
       outputPanel.innerHTML = '<span class="output-running">Running…</span>';
 
-      /* MLWasm.execute() hashes src, loads the per-block binary compiled from
-       * this exact code, and falls back to the demo binary automatically. */
-      MLWasm.execute(src)
+      /* hash16 is injected at build time by inject_hashes.py — no browser
+       * hash computation needed. */
+      MLWasm.execute(src, hash16)
         .then(result => {
           renderOutput(outputPanel, result);
         })

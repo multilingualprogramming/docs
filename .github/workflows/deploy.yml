@@ -180,6 +180,9 @@ jobs:
           JEKYLL_ENV: production
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
 
+      - name: Inject block hashes into built HTML
+        run: python _scripts/inject_hashes.py
+
       - name: Upload Pages artefact
         uses: actions/upload-pages-artifact@v3
         with:
