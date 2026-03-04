@@ -37,12 +37,20 @@ NON_EXECUTABLE = {
 
 REPO_ROOT = Path(__file__).parent.parent
 
-# Blocks that contain any of these patterns are host-Python integration code
-# (multilingualprogramming API usage, test harnesses, diagnostic scripts) —
-# not standalone multilingual programs intended for execution.
+# Blocks whose first line is a host-Python import/shebang — not standalone
+# multilingual programs.
 HOST_PY_RE = re.compile(
     r'^\s*(import\s+[\w.]+|from\s+[\w.]+\s+import\s+|#!/usr/bin/env\s+python\d*(?:\.\d+)*)',
     re.MULTILINE,
+)
+
+# Orphan API blocks that reference names defined in a prior block in the same
+# file (executor, sel, wasm_gen, Lexer, Parser, …).  These are documentation
+# code fragments, not standalone programs.
+PYTHON_API_RE = re.compile(
+    r'executor\.|BackendSelector\(\)|NumeralConverter\(\)|ProgramExecutor\(\)'
+    r'|wasm_gen\.|sel\.|Lexer\(language=|Parser\(language='
+    r'|SemanticAnalyzer\(|ASTPrinter\(\)|\.generate_rust\('
 )
 
 
@@ -72,7 +80,7 @@ def _collect_blocks():
             code = m.group(2).strip()
             if lang in NON_EXECUTABLE or not code:
                 continue
-            if HOST_PY_RE.search(code):
+            if HOST_PY_RE.search(code) or PYTHON_API_RE.search(code):
                 continue
             if 'print(' not in code:
                 continue
