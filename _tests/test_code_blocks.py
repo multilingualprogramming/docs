@@ -74,6 +74,18 @@ WASM_UNSUPPORTED_RE = re.compile(
 )
 
 
+def _verbose_context(request, code: str) -> str:
+    """Return extra failure details when --block-verbose is enabled."""
+    if not request.config.getoption("--block-verbose"):
+        return ""
+    block_id = getattr(getattr(request.node, "callspec", None), "id", "unknown-block")
+    return (
+        f"\n--- failing block: {block_id} ---\n"
+        f"{code}\n"
+        "--- end block ---\n"
+    )
+
+
 # ---------------------------------------------------------------------------
 # Block collection
 # ---------------------------------------------------------------------------
@@ -174,7 +186,7 @@ def _execute_wasm(wasm_path: Path) -> str:
 # ---------------------------------------------------------------------------
 
 @pytest.mark.parametrize('code', _collect_blocks())
-def test_block(code, tmp_path):
+def test_block(code, tmp_path, request):
     """
     Each executable code block in the docs must:
       1. Compile to WAT text without error.
@@ -192,6 +204,7 @@ def test_block(code, tmp_path):
         capture_output=True, text=True, timeout=COMPILE_TIMEOUT,
     )
     assert result.returncode == 0, (
+        _verbose_context(request, code) +
         f'build-wasm-bundle failed (exit {result.returncode}):\n'
         f'{result.stderr.strip()}'
     )
@@ -208,6 +221,7 @@ def test_block(code, tmp_path):
         capture_output=True, timeout=ASSEMBLE_TIMEOUT,
     )
     assert result.returncode == 0, (
+        _verbose_context(request, code) +
         f'wat2wasm failed (exit {result.returncode}):\n'
         f'{result.stderr.decode(errors="replace").strip()}'
     )
@@ -218,6 +232,7 @@ def test_block(code, tmp_path):
         capture_output=True, timeout=VALIDATE_TIMEOUT,
     )
     assert result.returncode == 0, (
+        _verbose_context(request, code) +
         f'wasm-validate rejected the binary:\n'
         f'{result.stderr.decode(errors="replace").strip()}'
     )
