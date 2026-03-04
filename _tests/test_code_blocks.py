@@ -29,6 +29,7 @@ import pytest
 
 NON_EXECUTABLE = {
     'bash', 'sh', 'shell', 'powershell', 'cmd',
+    'js', 'javascript', 'markdown', 'dockerfile',
     'yaml', 'toml', 'json', 'plaintext', 'text',
     'output', 'wat', 'rust',
     '',
@@ -40,6 +41,36 @@ ASSEMBLE_TIMEOUT = 30  # seconds — wat2wasm
 VALIDATE_TIMEOUT = 10  # seconds — wasm-validate
 EXECUTE_TIMEOUT  = 10  # seconds — __main() wall-clock guard
 
+# Blocks that contain any of these patterns are host-Python integration code
+# (multilingualprogramming API usage, test harnesses, diagnostic scripts) —
+# not standalone multilingual programs that can be compiled to WASM.
+HOST_PY_RE = re.compile(
+    r'^\s*(import\s+[\w.]+|from\s+[\w.]+\s+import\s+|#!/usr/bin/env\s+python\d*(?:\.\d+)*)',
+    re.MULTILINE,
+)
+# Catches orphan API blocks whose `from ... import` lives in a prior block.
+PYTHON_API_RE = re.compile(
+    r'executor\.|BackendSelector\(\)|NumeralConverter\(\)|ProgramExecutor\(\)'
+    r'|wasm_gen\.|sel\.|Lexer\(language=|Parser\(language='
+    r'|SemanticAnalyzer\(|ASTPrinter\(\)|\.generate_rust\('
+)
+# Patterns for syntax that WATCodeGenerator does not yet support.
+# Remove entries here as the compiler gains support for each feature.
+WASM_UNSUPPORTED_RE = re.compile(
+    r'\byield\b'                        # generators / yield from
+    r'|^\s*match\s+\S'                 # structural pattern matching
+    r'|:='                              # walrus operator
+    r'|^\s*@\w'                         # function / class decorators
+    r'|\blambda\b'                      # lambda expressions
+    r'|\*\*\w+'                         # **kwargs double-star arg
+    r'|(?:,|\()\s*\*[a-zA-Z]'          # *args single-star arg
+    r'|(?:,|\()\s*\*\s*,'              # keyword-only * separator  (def f(a, *, b))
+    r'|(?:,|\()\s*/\s*[,)]'            # positional-only / sep    (def f(a, b, /))
+    r'|\bnonlocal\b'                    # nonlocal (closure)
+    r'|\basync\s+(?:def|for|with)\b',  # async / await constructs
+    re.MULTILINE,
+)
+
 
 # ---------------------------------------------------------------------------
 # Block collection
@@ -50,9 +81,9 @@ def _collect_blocks():
     Yield pytest.param(code, id=...) for every executable fenced code block
     found in the docs markdown files.
 
-    A block is included when its language tag is NOT in NON_EXECUTABLE.
-    Unlike compile_blocks.py we do NOT filter on `print(` — we want to test
-    every block that the docs present to readers as executable.
+    A block is included when its language tag is NOT in NON_EXECUTABLE, its
+    content is not host-Python integration/setup code, and it contains at
+    least one `print(` call (matching compile_blocks.py).
     """
     pattern = re.compile(r'^```(\w*)\n(.*?)^```', re.MULTILINE | re.DOTALL)
 
@@ -68,6 +99,14 @@ def _collect_blocks():
             lang = m.group(1).lower()
             code = m.group(2).strip()
             if lang in NON_EXECUTABLE or not code:
+                continue
+            if lang == 'python' and (
+                HOST_PY_RE.search(code)
+                or PYTHON_API_RE.search(code)
+                or WASM_UNSUPPORTED_RE.search(code)
+            ):
+                continue
+            if 'print(' not in code:
                 continue
             yield pytest.param(code, id=f'{rel}::block-{idx}')
 

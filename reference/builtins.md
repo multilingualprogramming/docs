@@ -18,7 +18,7 @@ multilingual provides localized aliases for 41 commonly used Python built-in fun
 
 ## Using Built-in Aliases
 
-```python
+```plaintext
 # In English — universal name works
 print(range(5))
 print(len([1, 2, 3]))

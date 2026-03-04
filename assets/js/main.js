@@ -170,12 +170,18 @@
   const NON_EXECUTABLE = new Set([
     'language-bash', 'language-sh', 'language-shell',
     'language-powershell', 'language-cmd',
+    'language-js', 'language-javascript', 'language-markdown', 'language-dockerfile',
+    'language-output', 'language-wat', 'language-rust',
     'language-yaml', 'language-toml', 'language-json',
     'language-plaintext', 'language-text',
   ]);
 
   function isExecutable(codeEl) {
     return [...codeEl.classList].every(c => !NON_EXECUTABLE.has(c));
+  }
+
+  function looksLikeHostPython(src) {
+    return /^\s*(import\s+\w+|from\s+\w+\s+import\s+|#!\/usr\/bin\/env\s+python\d*(?:\.\d+)*)/m.test(src);
   }
 
   /* Render output (stdout + optional stderr) into a .code-output element. */
@@ -309,6 +315,7 @@
   document.querySelectorAll('.content-body pre').forEach(pre => {
     const code = pre.querySelector('code');
     if (!code || !isExecutable(code)) return;
+    if (code.classList.contains('language-python') && looksLikeHostPython(code.textContent || '')) return;
 
     /* Output panel inserted after <pre>. */
     const outputPanel = document.createElement('div');

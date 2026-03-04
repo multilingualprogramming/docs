@@ -20,7 +20,7 @@ This guide covers writing WASM-compatible multilingual programs and contributing
 
 All multilingual programs are automatically compatible with both Python and WASM backends. The backend selection is transparent.
 
-```python
+```plaintext
 # This program runs on Python or WASM automatically
 let matrix_a = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 let matrix_b = [[9, 8, 7], [6, 5, 4], [3, 2, 1]]
@@ -45,7 +45,7 @@ let transposed = matrix_transpose(matrix)
 
 #### 2. Numeric-Intensive Loops
 
-```python
+```plaintext
 # Scientific computation — WASM excels here
 def monte_carlo_pi(samples):
     let inside = 0

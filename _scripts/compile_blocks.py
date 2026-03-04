@@ -32,12 +32,37 @@ from pathlib import Path
 # Languages that never receive a Run button (matches NON_EXECUTABLE in main.js)
 NON_EXECUTABLE = {
     'bash', 'sh', 'shell', 'powershell', 'cmd',
+    'js', 'javascript', 'markdown', 'dockerfile',
     'yaml', 'toml', 'json', 'plaintext', 'text', 'output', 'wat', 'rust',
     '',
 }
 
 BLOCKS_DIR = Path('assets/wasm/blocks')
 TIMEOUT    = 60   # seconds per block compilation
+
+HOST_PY_RE = re.compile(
+    r'^\s*(import\s+[\w.]+|from\s+[\w.]+\s+import\s+|#!/usr/bin/env\s+python\d*(?:\.\d+)*)',
+    re.MULTILINE,
+)
+PYTHON_API_RE = re.compile(
+    r'executor\.|BackendSelector\(\)|NumeralConverter\(\)|ProgramExecutor\(\)'
+    r'|wasm_gen\.|sel\.|Lexer\(language=|Parser\(language='
+    r'|SemanticAnalyzer\(|ASTPrinter\(\)|\.generate_rust\('
+)
+WASM_UNSUPPORTED_RE = re.compile(
+    r'\byield\b'                        # generators / yield from
+    r'|^\s*match\s+\S'                 # structural pattern matching
+    r'|:='                              # walrus operator
+    r'|^\s*@\w'                         # function / class decorators
+    r'|\blambda\b'                      # lambda expressions
+    r'|\*\*\w+'                         # **kwargs double-star arg
+    r'|(?:,|\()\s*\*[a-zA-Z]'          # *args single-star arg
+    r'|(?:,|\()\s*\*\s*,'              # keyword-only * separator  (def f(a, *, b))
+    r'|(?:,|\()\s*/\s*[,)]'            # positional-only / sep    (def f(a, b, /))
+    r'|\bnonlocal\b'                    # nonlocal (closure)
+    r'|\basync\s+(?:def|for|with)\b',  # async / await constructs
+    re.MULTILINE,
+)
 
 
 def sha16(code: str) -> str:
@@ -110,6 +135,13 @@ def main():
             total += 1
 
             if lang in NON_EXECUTABLE:
+                skipped += 1
+                continue
+            if lang == 'python' and (
+                HOST_PY_RE.search(code)
+                or PYTHON_API_RE.search(code)
+                or WASM_UNSUPPORTED_RE.search(code)
+            ):
                 skipped += 1
                 continue
             if 'print(' not in code:

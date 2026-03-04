@@ -45,7 +45,7 @@ multilingual distinguishes three layers of localization:
 
 Grammar-level keywords are mapped via the Universal Semantic Model (USM). Every supported language has its own surface form for `COND_IF`, `LOOP_FOR`, `FUNC_DEF`, and all 51 semantic concepts.
 
-```python
+```plaintext
 # English
 if x > 0:
     print(x)
@@ -63,7 +63,7 @@ si x > 0:
 
 Selected built-in functions support localized **aliases**. The canonical English name is always available; aliases are additive:
 
-```python
+```plaintext
 # English universal name — works in any language
 print(range(5))
 len([1, 2, 3])
