@@ -172,7 +172,7 @@ def square(n):
 
 ```python
 def min_max(lst):
-    return min(lst), max(lst)
+    return (min(lst), max(lst))
 
 low, high = min_max([3, 1, 4, 1, 5, 9, 2, 6])
 print(low, high)  # 1 9
