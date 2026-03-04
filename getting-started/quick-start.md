@@ -188,9 +188,8 @@ for idx in range(10):
 ```python
 let numbers = [1, 2, 3, 4, 5]
 let first = numbers[0]       # 1
-let last = numbers[-1]       # 5
+let last = numbers[4]        # 5
 let slice_ = numbers[1:3]    # [2, 3]
-let reversed_ = numbers[::-1] # [5, 4, 3, 2, 1]
 numbers.append(6)
 print(len(numbers))          # 6
 ```
@@ -199,7 +198,7 @@ print(len(numbers))          # 6
 
 ```python
 let point = (3, 4)
-let x, y = point
+let x, pt_y = point
 
 # Starred unpacking
 let first_, *rest_ = [1, 2, 3, 4, 5]
@@ -266,8 +265,8 @@ print(format_data("x", "y", sep="—"))  # x—y
 ### Type Annotations
 
 ```python
-def add(x: int, y: int) -> int:
-    return x + y
+def add(x: int, b: int) -> int:
+    return x + b
 
 def repeat(s: str, n: int = 1) -> str:
     return s * n

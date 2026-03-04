@@ -174,8 +174,8 @@ def square(n):
 def min_max(lst):
     return min(lst), max(lst)
 
-lo, hi = min_max([3, 1, 4, 1, 5, 9, 2, 6])
-print(lo, hi)  # 1 9
+low, high = min_max([3, 1, 4, 1, 5, 9, 2, 6])
+print(low, high)  # 1 9
 ```
 
 ### No Return (None)
@@ -266,7 +266,7 @@ def my_decorator(func):
 ```python
 let square = lambda x: x ** 2
 let add = lambda x, b: x + b
-let clamp = lambda val, lo, hi: max(lo, min(hi, val))
+let clamp = lambda val, low, high: max(low, min(high, val))
 
 print(square(5))       # 25
 print(add(3, 4))       # 7
