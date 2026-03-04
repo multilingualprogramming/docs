@@ -2,172 +2,7 @@
 (function () {
   'use strict';
 
-  /* ================================================================
-     WASM MODULE LOADER
-     Lazily instantiates assets/wasm/multilingual.wasm — the demo.ml
-     program compiled to WASM by `multilingual build-wasm-bundle` via
-     WATCodeGenerator (multilingualprogramming[wasm]).
-
-     The WAT backend uses host-import callbacks for all output rather
-     than returning values.  The browser must supply these imports:
-
-       env.print_str(ptr: i32, len: i32)  — print a UTF-8 string slice
-       env.print_f64(val: f64)            — print a number
-       env.print_bool(val: i32)           — print True (1) or False (0)
-       env.print_sep()                    — print an argument separator (space)
-       env.print_newline()                — print a newline
-
-     Output is captured into a string buffer that is reset before each
-     call to __main().
-
-     The Run buttons on individual code examples call __main() and show
-     the captured output.  For a fully interactive experience with
-     arbitrary code, visit the live playground linked on the WASM page.
-
-     The loader resolves the base URL from the <meta name="base-url"> tag
-     so paths work identically on local dev and under /docs on GitHub Pages.
-     ================================================================ */
-
   const baseUrl = (document.querySelector('meta[name="base-url"]') || {}).content || '';
-
-  const MLWasm = (() => {
-    let _memory        = null;
-    let _outputBuf     = '';
-    let _modulePromise = null;
-
-    const dec = new TextDecoder();
-
-    /* Build a host import object whose callbacks write into `bufRef`.
-     * Using an object reference lets us set `bufRef.mem` after instantiation
-     * while keeping the closure intact. */
-    function makeImports(bufRef) {
-      return {
-        env: {
-          print_str(ptr, len) {
-            bufRef.v += dec.decode(new Uint8Array(bufRef.mem.buffer, ptr, len));
-          },
-          print_f64(val)  { bufRef.v += String(val); },
-          print_bool(val) { bufRef.v += val ? 'True' : 'False'; },
-          print_sep()     { bufRef.v += ' '; },
-          print_newline() { bufRef.v += '\n'; },
-        },
-      };
-    }
-
-    /* Host imports for the shared demo module (uses module-level state). */
-    const importObject = {
-      env: {
-        print_str(ptr, len) {
-          _outputBuf += dec.decode(new Uint8Array(_memory.buffer, ptr, len));
-        },
-        print_f64(val)  { _outputBuf += String(val); },
-        print_bool(val) { _outputBuf += val ? 'True' : 'False'; },
-        print_sep()     { _outputBuf += ' '; },
-        print_newline() { _outputBuf += '\n'; },
-      },
-    };
-
-    function load() {
-      if (_modulePromise) return _modulePromise;
-
-      const wasmUrl = baseUrl + '/assets/wasm/multilingual.wasm';
-
-      _modulePromise = WebAssembly.instantiateStreaming(fetch(wasmUrl), importObject)
-        .then(({ instance }) => {
-          _memory = instance.exports.memory;
-          return true;
-        });
-
-      return _modulePromise;
-    }
-
-    /* ---- WAT text loader ------------------------------------------------- */
-    let _watPromise = null;
-
-    function loadWat() {
-      if (_watPromise) return _watPromise;
-      const watUrl = baseUrl + '/assets/wasm/multilingual.wat';
-      _watPromise = fetch(watUrl).then(r => {
-        if (!r.ok) throw new Error(`WAT fetch failed: ${r.status}`);
-        return r.text();
-      });
-      return _watPromise;
-    }
-
-    /* ---- Per-block WASM loader ------------------------------------------ */
-    /* Each code block is compiled to its own binary during the CI build by
-     * _scripts/compile_blocks.py.  The binary is identified by the first 16
-     * hex characters of SHA-256(code), matching the hash computed here. */
-    const _blockModules = new Map();  // hash16 → WebAssembly.Module | null
-
-    async function blockHash(src) {
-      const buf = await crypto.subtle.digest(
-        'SHA-256', new TextEncoder().encode(src)
-      );
-      return Array.from(new Uint8Array(buf))
-        .map(b => b.toString(16).padStart(2, '0'))
-        .join('')
-        .slice(0, 16);
-    }
-
-    async function loadBlockModule(hash16) {
-      if (_blockModules.has(hash16)) return _blockModules.get(hash16);
-      const url = baseUrl + '/assets/wasm/blocks/' + hash16 + '.wasm';
-      try {
-        const mod = await WebAssembly.compileStreaming(fetch(url));
-        _blockModules.set(hash16, mod);
-        return mod;
-      } catch (_) {
-        /* Binary not available for this block — will fall back to demo. */
-        _blockModules.set(hash16, null);
-        return null;
-      }
-    }
-
-    /* Public API */
-    return {
-      /* Execute a specific code block: loads its per-block WASM binary.
-       * hash16 is the pre-computed data-block-hash attribute injected at
-       * build time by _scripts/inject_hashes.py — no browser-side hashing. */
-      async execute(src, hash16) {
-        if (!hash16) {
-          return {
-            stdout: '',
-            stderr: 'This block could not be executed: no WASM binary was\n'
-                  + 'compiled for it during the CI build (the compiler may not\n'
-                  + 'yet support all constructs used here).\n'
-                  + 'Try the REPL panel to run the full demo program.',
-          };
-        }
-        const mod = await loadBlockModule(hash16);
-
-        if (!mod) {
-          /* No per-block binary available for this code.  Rather than
-           * running the unrelated demo program, tell the user clearly. */
-          return {
-            stdout: '',
-            stderr: 'This block could not be executed: no WASM binary was\n'
-                  + 'compiled for it during the CI build (the compiler may not\n'
-                  + 'yet support all constructs used here).\n'
-                  + 'Try the REPL panel to run the full demo program.',
-          };
-        }
-
-        /* Instantiate the per-block module with fresh state for each run. */
-        const bufRef   = { v: '', mem: null };
-        const instance = await WebAssembly.instantiate(mod, makeImports(bufRef));
-        bufRef.mem = instance.exports.memory;
-        bufRef.v   = '';
-        try { instance.exports.__main(); }
-        catch (e) { return { stdout: bufRef.v, stderr: String(e) }; }
-        return { stdout: bufRef.v, stderr: '' };
-      },
-      /* Expose the load promise so the toggle button can show readiness. */
-      get ready() { return load(); },
-      /* Returns a Promise<string> with the WAT text format. */
-      get wat()   { return loadWat(); },
-    };
-  })();
 
 
   /* ================================================================
@@ -444,28 +279,35 @@ except Exception as _e:
     runBtn.setAttribute('aria-label', 'Run this code');
     pre.appendChild(runBtn);
 
-    runBtn.addEventListener('click', () => {
-      const src    = code.textContent.trim();
-      const hash16 = pre.dataset.blockHash || '';
+    runBtn.addEventListener('click', async () => {
+      const src  = code.textContent.trim();
+      const lang = pre.dataset.lang || 'en';
       runBtn.textContent = '…';
       runBtn.disabled    = true;
       outputPanel.hidden = false;
       outputPanel.dataset.mode = 'output';
       outputPanel.innerHTML = '<span class="output-running">Running…</span>';
 
-      /* hash16 is injected at build time by inject_hashes.py — no browser
-       * hash computation needed. */
-      MLWasm.execute(src, hash16)
-        .then(result => {
-          renderOutput(outputPanel, result);
-        })
-        .catch(err => {
-          outputPanel.innerHTML = `<pre class="output-stderr">${err}</pre>`;
-        })
-        .finally(() => {
-          runBtn.textContent = 'Run';
-          runBtn.disabled    = false;
+      try {
+        await ensureReplPyodide();
+        _pyodide.globals.set('_block_code', src);
+        _pyodide.globals.set('_block_lang', lang);
+        await _pyodide.runPythonAsync(`
+from multilingualprogramming.codegen.executor import ProgramExecutor
+_r         = ProgramExecutor(language=_block_lang).execute(_block_code)
+_block_out  = _r.output or ''
+_block_errs = '\\n'.join(_r.errors) if _r.errors else ''
+`);
+        renderOutput(outputPanel, {
+          stdout: _pyodide.globals.get('_block_out'),
+          stderr: _pyodide.globals.get('_block_errs'),
         });
+      } catch (err) {
+        outputPanel.innerHTML = `<pre class="output-stderr">${err}</pre>`;
+      } finally {
+        runBtn.textContent = 'Run';
+        runBtn.disabled    = false;
+      }
     });
 
     /* View WAT button — shows the compiled WebAssembly text format. */
@@ -476,7 +318,7 @@ except Exception as _e:
     watBtn.setAttribute('aria-label', 'View WebAssembly text format');
     pre.appendChild(watBtn);
 
-    watBtn.addEventListener('click', () => {
+    watBtn.addEventListener('click', async () => {
       /* Toggle: if already showing WAT, hide the panel. */
       if (!outputPanel.hidden && outputPanel.dataset.mode === 'wat') {
         outputPanel.hidden = true;
@@ -485,20 +327,44 @@ except Exception as _e:
       }
       outputPanel.hidden = false;
       outputPanel.dataset.mode = 'wat';
-      outputPanel.innerHTML = '<span class="output-running">Loading WAT…</span>';
+      outputPanel.innerHTML = '<span class="output-running">Generating WAT…</span>';
 
-      MLWasm.wat
-        .then(text => {
+      const src  = code.textContent.trim();
+      const lang = pre.dataset.lang || 'en';
+
+      try {
+        await ensureReplPyodide();
+        _pyodide.globals.set('_block_code', src);
+        _pyodide.globals.set('_block_lang', lang);
+        await _pyodide.runPythonAsync(`
+from multilingualprogramming.lexer.lexer import Lexer
+from multilingualprogramming.parser.parser import Parser
+from multilingualprogramming.codegen.wat_generator import WATCodeGenerator
+try:
+  _toks      = Lexer(_block_code, language=_block_lang).tokenize()
+  _prog      = Parser(_toks, source_language=_block_lang).parse()
+  _block_wat = WATCodeGenerator().generate(_prog)
+  _block_wat_err = ''
+except Exception as _e:
+  _block_wat = ''
+  _block_wat_err = str(_e)
+`);
+        const watSrc = _pyodide.globals.get('_block_wat');
+        const watErr = _pyodide.globals.get('_block_wat_err');
+        if (watErr) {
+          outputPanel.innerHTML = `<pre class="output-stderr">${watErr}</pre>`;
+          outputPanel.dataset.mode = '';
+        } else {
           outputPanel.innerHTML = '';
-          const pre = document.createElement('pre');
-          pre.className = 'output-wat';
-          pre.textContent = text;
-          outputPanel.appendChild(pre);
-        })
-        .catch(() => {
-          outputPanel.innerHTML =
-            '<span class="output-stderr">WAT not available — run the CI build first.</span>';
-        });
+          const watPre = document.createElement('pre');
+          watPre.className = 'output-wat';
+          watPre.textContent = watSrc;
+          outputPanel.appendChild(watPre);
+        }
+      } catch (err) {
+        outputPanel.innerHTML = `<pre class="output-stderr">${err}</pre>`;
+        outputPanel.dataset.mode = '';
+      }
     });
   });
 
