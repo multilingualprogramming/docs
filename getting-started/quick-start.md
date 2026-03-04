@@ -136,8 +136,8 @@ if (n := len(data)) > 3:
 ### for loop
 
 ```python
-for i in range(5):
-    print(i)   # 0, 1, 2, 3, 4
+for idx in range(5):
+    print(idx)   # 0, 1, 2, 3, 4
 
 # Iterate over a list
 let fruits = ["apple", "banana", "cherry"]
@@ -145,15 +145,15 @@ for fruit in fruits:
     print(fruit)
 
 # With enumerate
-for i, fruit in enumerate(fruits):
-    print(f"{i}: {fruit}")
+for idx, fruit in enumerate(fruits):
+    print(f"{idx}: {fruit}")
 ```
 
 ### for / else
 
 ```python
-for i in range(5):
-    if i == 3:
+for idx in range(5):
+    if idx == 3:
         break
 else:
     print("Loop completed without break")
@@ -171,12 +171,12 @@ while count < 5:
 ### break and continue
 
 ```python
-for i in range(10):
-    if i % 2 == 0:
+for idx in range(10):
+    if idx % 2 == 0:
         continue   # skip even
-    if i > 7:
+    if idx > 7:
         break
-    print(i)   # 1, 3, 5, 7
+    print(idx)   # 1, 3, 5, 7
 ```
 
 ---

@@ -87,8 +87,8 @@ Create a file `hello_en.ml`:
 let message = "Hello, multilingual world!"
 let count = 3
 
-for i in range(count):
-    print(f"[{i}] {message}")
+for idx in range(count):
+    print(f"[{idx}] {message}")
 ```
 
 Run it:

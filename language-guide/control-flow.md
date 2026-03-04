@@ -149,8 +149,8 @@ sonst:
 ### English
 
 ```python
-for i in range(5):
-    print(i)
+for idx in range(5):
+    print(idx)
 
 # With else
 for item in [1, 2, 3]:
@@ -219,12 +219,12 @@ for index, letter in pairs:
     print(f"{index}: {letter}")
 
 # enumerate
-for i, val in enumerate(["x", "y", "z"]):
-    print(i, val)
+for idx, val in enumerate(["x", "y", "z"]):
+    print(idx, val)
 
 # zip
-for a, b in zip([1, 2, 3], ["one", "two", "three"]):
-    print(a, b)
+for aa, bb in zip([1, 2, 3], ["one", "two", "three"]):
+    print(aa, bb)
 ```
 
 ---
@@ -432,20 +432,20 @@ These keywords are universal (not localized) across all languages.
 ### break — Exit a loop early
 
 ```python
-for i in range(100):
-    if i == 10:
+for idx in range(100):
+    if idx == 10:
         break
-    print(i)
+    print(idx)
 # prints 0 through 9
 ```
 
 ### continue — Skip current iteration
 
 ```python
-for i in range(10):
-    if i % 2 == 0:
+for idx in range(10):
+    if idx % 2 == 0:
         continue
-    print(i)
+    print(idx)
 # prints 1, 3, 5, 7, 9
 ```
 
@@ -465,9 +465,9 @@ def not_implemented_yet():
 
 ```python
 # Multiplication table
-for i in range(1, 4):
-    for j in range(1, 4):
-        print(f"{i}×{j}={i*j}", end="  ")
+for ii in range(1, 4):
+    for jj in range(1, 4):
+        print(f"{ii}×{jj}={ii*jj}", end="  ")
     print()
 ```
 
@@ -489,8 +489,8 @@ pour i dans intervalle(1, 4):
 let target = 7
 let numbers = [1, 3, 5, 7, 9]
 
-for n in numbers:
-    if n == target:
+for num in numbers:
+    if num == target:
         print(f"Found {target}")
         break
 else:

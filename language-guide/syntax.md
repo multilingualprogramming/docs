@@ -277,8 +277,8 @@ let add = lambda x, y: x + y
 
 Tuple target:
 ```python
-for i, v in enumerate([10, 20, 30]):
-    print(i, v)
+for idx, val in enumerate([10, 20, 30]):
+    print(idx, val)
 ```
 
 ### while loop

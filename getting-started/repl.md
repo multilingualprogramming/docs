@@ -223,8 +223,8 @@ let y = 3
 print(x + y)
 
 let total = 0
-for i in range(4):
-    total = total + i
+for idx in range(4):
+    total = total + idx
 print(total)
 ```
 

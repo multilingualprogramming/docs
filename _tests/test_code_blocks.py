@@ -89,7 +89,9 @@ def _collect_blocks():
 
     md_files = sorted(
         p for p in REPO_ROOT.rglob('*.md')
-        if '.jekyll-cache' not in p.parts and 'vendor' not in p.parts
+        if '.jekyll-cache'   not in p.parts
+        and 'vendor'         not in p.parts
+        and 'multilingual-src' not in p.parts  # CI checkout lives inside docs root
     )
 
     for md_file in md_files:

@@ -122,7 +122,9 @@ def main():
 
     md_files = sorted(
         p for p in Path('.').rglob('*.md')
-        if '.jekyll-cache' not in p.parts and 'vendor' not in p.parts
+        if '.jekyll-cache'   not in p.parts
+        and 'vendor'         not in p.parts
+        and 'multilingual-src' not in p.parts  # CI checkout lives inside docs root
     )
 
     total = compiled = skipped = cached = 0
