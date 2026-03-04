@@ -131,8 +131,8 @@ greet("Carol", times=3)          # Hello, Carol! (×3)
 ### Type Annotations
 
 ```python
-def add(x: int, y: int) -> int:
-    return x + y
+def add(x: int, b: int) -> int:
+    return x + b
 
 def process(items: list, limit: int = 10) -> dict:
     return {i: items[i] for i in range(min(limit, len(items)))}
@@ -226,8 +226,8 @@ def log_calls(func):
     return wrapper
 
 @log_calls
-def add(x, y):
-    return x + y
+def add(x, b):
+    return x + b
 
 add(3, 4)
 # Calling add
@@ -265,7 +265,7 @@ def my_decorator(func):
 
 ```python
 let square = lambda x: x ** 2
-let add = lambda x, y: x + y
+let add = lambda x, b: x + b
 let clamp = lambda val, lo, hi: max(lo, min(hi, val))
 
 print(square(5))       # 25
@@ -481,22 +481,22 @@ print(temp.fahrenheit)   # 32.0
 class Vector:
     def __init__(self, x, y_val):
         self.x = x
-        self.y = y_val
+        self.y_val = y_val
 
     def __add__(self, other):
-        return Vector(self.x + other.x, self.y + other.y)
+        return Vector(self.x + other.x, self.y_val + other.y_val)
 
     def __mul__(self, scalar):
-        return Vector(self.x * scalar, self.y * scalar)
+        return Vector(self.x * scalar, self.y_val * scalar)
 
     def __len__(self):
         return 2
 
     def __repr__(self):
-        return f"Vector({self.x}, {self.y})"
+        return f"Vector({self.x}, {self.y_val})"
 
     def __eq__(self, other):
-        return self.x == other.x and self.y == other.y
+        return self.x == other.x and self.y_val == other.y_val
 
 
 let v1 = Vector(1, 2)
@@ -517,11 +517,11 @@ from dataclasses import dataclass, field
 @dataclass
 class Point:
     x: float
-    y: float
+    y_coord: float
     label: str = ""
 
     def distance_from_origin(self):
-        return (self.x**2 + self.y**2) ** 0.5
+        return (self.x**2 + self.y_coord**2) ** 0.5
 
 
 @dataclass
@@ -534,7 +534,7 @@ class Polygon:
 
 
 let p = Point(3.0, 4.0, "A")
-print(p)                           # Point(x=3.0, y=4.0, label='A')
+print(p)                           # Point(x=3.0, y_coord=4.0, label='A')
 print(p.distance_from_origin())    # 5.0
 ```
 

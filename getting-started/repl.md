@@ -218,9 +218,9 @@ Expected output: `6`
 **English:**
 
 ```python
-let x = 2
-let z = 3
-print(x + z)
+let x1 = 2
+let z1 = 3
+print(x1 + z1)
 
 let total = 0
 for idx in range(4):
@@ -231,9 +231,9 @@ print(total)
 **French:**
 
 ```python
-soit x = 2
-soit y = 3
-afficher(x + y)
+soit x1 = 2
+soit y1 = 3
+afficher(x1 + y)
 
 soit total = 0
 pour i dans intervalle(4):
