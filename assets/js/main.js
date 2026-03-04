@@ -130,6 +130,15 @@
        * hash16 is the pre-computed data-block-hash attribute injected at
        * build time by _scripts/inject_hashes.py — no browser-side hashing. */
       async execute(src, hash16) {
+        if (!hash16) {
+          return {
+            stdout: '',
+            stderr: 'This block could not be executed: no WASM binary was\n'
+                  + 'compiled for it during the CI build (the compiler may not\n'
+                  + 'yet support all constructs used here).\n'
+                  + 'Try the REPL panel to run the full demo program.',
+          };
+        }
         const mod = await loadBlockModule(hash16);
 
         if (!mod) {

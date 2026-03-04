@@ -25,19 +25,8 @@ from pathlib import Path
 BLOCKS_DIR = Path('assets/wasm/blocks')
 SITE_DIR   = Path('_site')
 
-NON_EXECUTABLE = {
-    'bash', 'sh', 'shell', 'powershell', 'cmd',
-    'js', 'javascript', 'markdown', 'dockerfile',
-    'yaml', 'toml', 'json', 'plaintext', 'text', 'output', 'wat', 'rust', '',
-}
-
 # Pre-build the set of available hashes for fast lookup.
 _available = {p.stem for p in BLOCKS_DIR.glob('*.wasm')}
-
-
-def _lang_from_attrs(attrs: str) -> str:
-    m = re.search(r'language-(\w+)', attrs or '')
-    return m.group(1).lower() if m else ''
 
 
 def _text_content(html_str: str) -> str:
@@ -49,28 +38,25 @@ def _sha16(text: str) -> str:
     return hashlib.sha256(text.encode('utf-8')).hexdigest()[:16]
 
 
-# Matches <pre ...><code class="...">...</code></pre> (single code child).
+# Matches <pre ...><code ...>...</code></pre>.
+# Language filtering is intentionally omitted: compile_blocks.py only produced
+# WASM for valid blocks, so hash lookup is the only gate needed.
 _PRE_RE = re.compile(
-    r'(<pre\b)([^>]*)(>)\s*(<code\b([^>]*)>)(.*?)</code>\s*</pre>',
+    r'(<pre\b)([^>]*)(>)\s*(<code\b[^>]*>)(.*?)</code>\s*</pre>',
     re.DOTALL,
 )
 
 
 def _inject(content: str) -> str:
     def _replace(m: re.Match) -> str:
-        pre_tag   = m.group(1)          # '<pre'
-        pre_attrs = m.group(2)          # everything between '<pre' and '>'
-        pre_close = m.group(3)          # '>'
-        code_open = m.group(4)          # full '<code ...>'
-        code_attrs = m.group(5)         # attrs inside <code>
-        code_body  = m.group(6)         # raw HTML inside <code>
+        pre_tag   = m.group(1)   # '<pre'
+        pre_attrs = m.group(2)   # attrs between '<pre' and '>'
+        pre_close = m.group(3)   # '>'
+        code_open = m.group(4)   # full '<code ...>'
+        code_body = m.group(5)   # raw HTML inside <code>
 
-        # Skip if hash already injected (idempotent).
+        # Idempotent.
         if 'data-block-hash' in pre_attrs:
-            return m.group(0)
-
-        lang = _lang_from_attrs(code_attrs)
-        if lang in NON_EXECUTABLE:
             return m.group(0)
 
         text = _text_content(code_body).strip()
