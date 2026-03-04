@@ -53,6 +53,15 @@ PYTHON_API_RE = re.compile(
     r'|SemanticAnalyzer\(|ASTPrinter\(\)|\.generate_rust\('
 )
 
+# Blocks using syntax not yet supported by ProgramExecutor, or continuation
+# fragments that depend on variables/names defined in a prior block.
+UNSUPPORTED_OR_ORPHAN_RE = re.compile(
+    r'^\s*match\s+\S'   # match/case statement — target variable from prior block
+    r'|:='               # walrus operator (:= not yet supported)
+    r'|^\s*@\w+\d',     # decorator with digit suffix (@decorator1) — from prior block
+    re.MULTILINE,
+)
+
 
 # ---------------------------------------------------------------------------
 # Block collection
@@ -80,7 +89,7 @@ def _collect_blocks():
             code = m.group(2).strip()
             if lang in NON_EXECUTABLE or not code:
                 continue
-            if HOST_PY_RE.search(code) or PYTHON_API_RE.search(code):
+            if HOST_PY_RE.search(code) or PYTHON_API_RE.search(code) or UNSUPPORTED_OR_ORPHAN_RE.search(code):
                 continue
             if 'print(' not in code:
                 continue
