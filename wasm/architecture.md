@@ -20,7 +20,7 @@ The WASM infrastructure is designed around three principles: **transparent selec
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│              Multilingual Programming Language v0.5          │
+│              Multilingual Programming Language v0.5.1         │
 └─────────────────────────────────────────────────────────────┘
                               │
                 ┌─────────────┴──────────────┐
@@ -288,6 +288,81 @@ The WASM bridge handles errors at multiple levels:
 2. **Host import errors** (missing `env.*` function) → `LinkError` at instantiation
 3. **Runtime traps** (out-of-bounds memory, stack overflow) → caught and shown as stderr
 4. **Timeout** (configurable) → `RuntimeError`
+
+---
+
+## OOP Object Model in WAT (v0.5.0+)
+
+Classes with instance attributes use a **linear-memory bump allocator** for object storage. Stateless classes (no `self.attr` assignments) use `f64.const 0` as the `self` value for backward compatibility.
+
+### Heap Allocator
+
+```wat
+(global $__heap_ptr (mut i32) (i32.const HEAP_BASE))
+```
+
+- Emitted only when at least one stateful class exists.
+- `HEAP_BASE` is computed from string data size, rounded up to 8-byte alignment (minimum 64).
+- Each constructor advances `$__heap_ptr` by the object's byte size and returns the pointer as `f64`.
+
+### Field Layout
+
+Fields are stored as `f64` values (8 bytes each) in linear memory. Inherited fields come first:
+
+```
+Object memory layout:
+┌─────────────────────────────────────────────────┐
+│ +0   │ field_0 (f64, 8 bytes)                   │
+│ +8   │ field_1 (f64, 8 bytes)                   │
+│ ...  │                                           │
+└─────────────────────────────────────────────────┘
+```
+
+Field store/load pattern:
+
+```wat
+;; self.attr = value  (store)
+local.get $self
+i32.trunc_f64_u
+i32.const <field_offset>   ;; field_index * 8
+i32.add
+<value>
+f64.store
+
+;; x = self.attr  (load)
+local.get $self
+i32.trunc_f64_u
+i32.const <field_offset>
+i32.add
+f64.load
+```
+
+### Inheritance
+
+- `_effective_field_layout(cls)`: merges parent fields before own fields recursively.
+- `_mro(cls)`: C3 linearization (same algorithm as CPython, cycle-safe).
+- Method resolution: if a subclass does not define a method, the parent's WAT function name is used.
+- Constructor inheritance: if a class has no `__init__`, the parent's constructor is inherited.
+- `super()` calls: `_resolve_super_call(expr)` detects `super().method(...)` and maps to the parent's WAT function.
+
+### Stub Detection
+
+Unsupported WAT constructs emit comment stubs:
+
+```wat
+;; unsupported call: len(mylist)
+```
+
+Use `has_stub_calls(wat_text)` to detect stubs programmatically:
+
+```python
+from multilingualprogramming.codegen.wat_generator import WATCodeGenerator, has_stub_calls
+
+gen = WATCodeGenerator("en")
+wat = gen.generate(ast)
+if has_stub_calls(wat):
+    print("WAT contains unsupported call stubs")
+```
 
 ---
 

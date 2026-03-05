@@ -58,8 +58,8 @@ The multilingual WASM backend provides 50–100x performance improvements for co
 
 <div class="card">
 <span class="card-icon">🔧</span>
-<h3>Cranelift Backend</h3>
-<p>Uses the Cranelift compiler (Rust-based, part of Wasmtime) for native-speed code generation from the multilingual AST.</p>
+<h3>WAT Code Generation</h3>
+<p>Compiles the Core AST directly to WebAssembly Text (WAT) format. WAT is assembled to binary WASM and executed via wasmtime — no external Rust toolchain required.</p>
 </div>
 
 <div class="card">
@@ -146,9 +146,9 @@ multilingual Source (.ml)
          │ Core AST
          ▼
   ┌─────────────────┐
-  │  WASM Generator │  → Rust intermediate code
-  │  (wasm_generator.py) │    ↓
-  └─────────────────┘  Cranelift compiler
+  │  WAT Generator  │  → WAT text (module.wat)
+  │  (wat_generator.py)  │    ↓
+  └─────────────────┘  wabt / wat2wasm
                             ↓
                        .wasm binary
                             │
@@ -181,6 +181,40 @@ multilingual Source (.ml)
 5. If any step fails → use Python fallback (transparent)
 6. Cache loaded modules for subsequent calls
 ```
+
+---
+
+## WAT Language Support
+
+The WAT backend supports a rich subset of the multilingual language. Unsupported constructs emit stub comments and fall back to Python.
+
+| Construct | WAT support |
+|---|---|
+| Variable declaration/assignment | ✓ |
+| Arithmetic (+, -, *, /) | ✓ (f64) |
+| Augmented assignment (+=, -=, *=, /=, //=, %=) | ✓ |
+| Augmented assignment (&=, \|=, ^=, <<=, >>=) | ✓ i32 round-trip |
+| Comparisons and boolean logic | ✓ |
+| `if` / `elif` / `else` | ✓ |
+| `while` loop | ✓ |
+| `for` loop | ✓ |
+| Function definition and `return` | ✓ |
+| `async def` / `await` | ✓ best-effort |
+| Class definition (OOP) with fields | ✓ linear-memory object model |
+| Inheritance and `super()` | ✓ C3 MRO |
+| `match`/`case` (numeric/boolean) | ✓ lowered to WAT blocks |
+| `match`/`case` (string/complex) | stub |
+| `print` | ✓ host import |
+| `abs`, `min`, `max` (n-arg) | ✓ native f64 ops |
+| `len` (string literal/var, list, tuple) | ✓ |
+| List/tuple literal allocation | ✓ heap bump-allocator |
+| List/tuple index read | ✓ |
+| `try/except/finally` | ✓ best-effort |
+| `with` statement | ✓ best-effort |
+| Lambda expressions | ✓ lifted to named WAT functions |
+| List/generator comprehension over `range` | ✓ |
+| String concatenation, indexing, slicing | not supported |
+| `async for` / `async with` | not supported |
 
 ---
 

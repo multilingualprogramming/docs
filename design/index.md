@@ -101,17 +101,17 @@ Source File (.ml)
     ┌──┴──┐
     │     │
     ▼     ▼
-┌───────┐ ┌────────┐
-│Python │ │  WASM  │  Code generation targets
-│Code   │ │  Code  │
-│Gen.   │ │  Gen.  │
-└───┬───┘ └───┬────┘
-    │         │
-    ▼         ▼
+┌───────┐ ┌─────────┐
+│Python │ │   WAT   │  Code generation targets
+│Code   │ │   Code  │
+│Gen.   │ │   Gen.  │
+└───┬───┘ └────┬────┘
+    │          │
+    ▼          ▼
 ┌───────┐ ┌──────────────┐
-│Python │ │  Cranelift   │
-│Runtime│ │  Compiler    │
-│(exec) │ │  → .wasm     │
+│Python │ │  WAT text    │
+│Runtime│ │  → wasmtime  │
+│(exec) │ │  (→ .wasm)   │
 └───────┘ └──────────────┘
 ```
 
@@ -363,6 +363,7 @@ JSON-based keyword files allow community contributors to add new languages witho
 | `multilingualprogramming/core/ir.py` | CoreIRProgram definition |
 | `multilingualprogramming/core/lowering.py` | AST → Core IR lowering |
 | `multilingualprogramming/codegen/python_generator.py` | Python code generation |
-| `multilingualprogramming/codegen/wasm_generator.py` | WASM code generation |
+| `multilingualprogramming/codegen/wat_generator.py` | AST → WebAssembly Text (WAT) generation |
+| `multilingualprogramming/codegen/wasm_generator.py` | WAT text → WASM binary |
 | `multilingualprogramming/runtime/backend_selector.py` | WASM/Python backend selection |
 | `multilingualprogramming/runtime/python_fallbacks.py` | Pure Python WASM fallbacks |

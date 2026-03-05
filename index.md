@@ -6,7 +6,7 @@ permalink: /
 ---
 
 <section class="hero">
-  <span class="hero-eyebrow">v0.4.0 &mdash; Now with WASM</span>
+  <span class="hero-eyebrow">v0.5.1 &mdash; Now with WASM &amp; OOP</span>
   <h1 class="hero-title">
     Write Code in<br/>
     <span class="gradient-text">Any Human Language</span>
@@ -27,7 +27,7 @@ permalink: /
     <div class="stat-label">Human Languages</div>
   </div>
   <div class="stat-item">
-    <div class="stat-value">858</div>
+    <div class="stat-value">1,797</div>
     <div class="stat-label">Test Cases</div>
   </div>
   <div class="stat-item">
@@ -39,7 +39,7 @@ permalink: /
     <div class="stat-label">Localized Builtins</div>
   </div>
   <div class="stat-item">
-    <div class="stat-value">0.4.0</div>
+    <div class="stat-value">0.5.1</div>
     <div class="stat-label">Current Version</div>
   </div>
 </div>
@@ -184,7 +184,7 @@ saludar(nombre)
 
 <div class="feature-card">
 <span class="feature-icon">🧪</span>
-<div class="feature-title">858 Tests, 78 Suites</div>
+<div class="feature-title">~1,797 Tests, 58 Files</div>
 <p class="feature-desc">Comprehensive test coverage across all 17 languages. Every language frontend is validated end-to-end: lexer → parser → semantic → codegen → execution.</p>
 </div>
 
@@ -330,15 +330,15 @@ Surface Language (.ml file)
     ┌────┴────┐
     │         │
     ▼         ▼
-┌───────┐ ┌──────┐
-│Python │ │ WASM │  Code generation targets
-│  Gen  │ │  Gen │
-└───┬───┘ └──┬───┘
-    │         │
-    ▼         ▼
+┌───────┐ ┌─────────┐
+│Python │ │   WAT   │  Code generation targets
+│  Gen  │ │   Gen   │
+└───┬───┘ └────┬────┘
+    │           │
+    ▼           ▼
 ┌───────┐ ┌──────────┐
-│Python │ │ Cranelift│
-│Runtime│ │ Compiler │
+│Python │ │ wasmtime │
+│Runtime│ │ (→ .wasm)│
 └───────┘ └──────────┘
 ```
 

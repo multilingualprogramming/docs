@@ -8,7 +8,7 @@ next_page:
   title: "Built-in Aliases"
   url: /reference/builtins/
 badges:
-  - text: "v0.4.0"
+  - text: "v0.5.1"
     type: default
   - text: "Python 3.12+"
     type: success
@@ -356,21 +356,28 @@ output = repl.eval_line("afficher(x)")
 
 ```bash
 # Run a program file
-python -m multilingualprogramming run <file.ml> --lang <code>
 multilingual run <file.ml> --lang en
 multilg run programme.ml --lang fr
 
 # Start REPL
-python -m multilingualprogramming repl
-python -m multilingualprogramming repl --lang fr
-python -m multilingualprogramming repl --show-python
+multilingual repl
+multilingual repl --lang fr --show-python --show-wat
+
+# Transpile to Python (print output, no execution)
+multilingual compile hello.ml --lang en
+
+# Build WASM bundle
+multilingual build-wasm-bundle hello.ml --lang en --out-dir ./dist
 
 # Validate a language pack
-python -m multilingualprogramming smoke --lang fr
-python -m multilingualprogramming smoke --all
+multilingual smoke --lang fr
+multilingual smoke --all
+
+# Check generated output encoding
+multilingual encoding-check-generated hello.ml --lang en
 
 # Show version
-python -m multilingualprogramming --version
+multilingual --version
 ```
 
 ---
@@ -420,4 +427,15 @@ python -m multilingualprogramming --version
 | Localized built-in aliases (41 concepts) | ✅ |
 | Surface normalization (SOV/RTL languages) | ✅ |
 
-**858 tests across 78 test suites** provide the compatibility baseline.
+**~1,797 tests across 58 test files** provide the compatibility baseline.
+
+---
+
+## Version History
+
+| Version | Highlights |
+|---------|-----------|
+| `0.5.1` | Documentation updates |
+| `0.5.0` | WAT/WASM OOP object model; class lowering with linear-memory bump allocator; inheritance with C3 MRO; `super()` resolution; WAT execution tests; SemanticAnalyzer plain-assignment fix |
+| `0.4.0` | WAT/WASM code generation; browser playground; WASM backend with 25+ Python fallbacks; 20 corpus projects |
+| `0.3.0` | Earlier milestone |

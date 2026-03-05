@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Compatibility Matrix"
-description: "Python 3.12 compatibility baseline for multilingual — 858 tests, 78 suites, 17 languages."
+description: "Python 3.12 compatibility baseline for multilingual — ~1,797 tests, 58 test files, 17 languages."
 category: "Reference"
 permalink: /reference/compatibility/
 prev_page:
@@ -12,7 +12,7 @@ prev_page:
 This matrix defines the current compatibility baseline for `multilingual`. The source of truth is:
 
 - `examples/complete_features_en.ml` and equivalents in all 17 languages
-- `tests/` (858 tests across 78 test suites)
+- `tests/` (~1,797 tests across 58 test files)
 
 **Target runtime**: CPython 3.12.x
 
@@ -187,10 +187,10 @@ SOV and RTL languages can use natural word order. The surface normalizer rewrite
 
 ## Test Coverage
 
-858 tests across 78 test suites:
+~1,797 tests across 58 test files (~19,848 lines of test code):
 
-| Test area | Suites | Description |
-|-----------|--------|-------------|
+| Test area | Files | Description |
+|-----------|-------|-------------|
 | Numerals and dates | 8 | Multilingual numerals, Unicode, Roman, complex, fractions, datetime |
 | Lexer | 2 | Tokenization and lexer behavior |
 | Parser | 5 | Expressions, statements, compounds, multilingual, errors |
@@ -200,6 +200,7 @@ SOV and RTL languages can use natural word order. The surface normalizer rewrite
 | Critical features | 8 | Triple-quoted strings, slices, parameters, tuples, comprehensions, decorators, f-strings |
 | Language completeness and CLI | 8 | Augmented assignment, membership, ternary, assert, chained assignment, CLI, REPL |
 | Advanced language features | 23 | Loop else, yield/raise from, set comprehensions, parameter separators, f-string formatting, match guards/OR/AS, global/nonlocal, builtins, exceptions, surface normalization, extended builtins, alias resolution, starred unpacking, integration, multilingual |
+| WAT/WASM backend | 5 | WAT generation, OOP/inheritance in WAT, WASM execution, corpus projects (20) |
 | Infrastructure | 10 | Keyword registry, AST nodes, AST printer, error messages, runtime builtins, REPL |
 
 ---
@@ -218,11 +219,22 @@ The following are **not** claimed as universally compatible:
 
 ---
 
+## Known Fixes (v0.5.x)
+
+| Version | Fix |
+|---------|-----|
+| v0.5.1 | Documentation updates |
+| v0.5.0 | WAT/WASM OOP object model: class lowering with linear-memory bump allocator, inheritance with C3 MRO, `super()` resolution, WAT execution tests |
+| v0.5.0 | SemanticAnalyzer: plain assignments (`x = 5`) now correctly define the variable in scope rather than triggering a false `UNDEFINED_NAME` error (was a false-positive in some languages, e.g., French) |
+| v0.5.0 | Augmented assignment (`x += 1`) now correctly reports `UNDEFINED_NAME` when the target variable has not been previously defined |
+
+---
+
 ## Recommendation
 
 When evaluating compatibility for a real codebase:
 
 1. Start from this matrix
-2. Run smoke tests: `python -m multilingualprogramming smoke --all`
-3. Run focused tests: `python -m multilingualprogramming run yourprogram.ml --lang en`
+2. Run smoke tests: `multilingual smoke --all`
+3. Run focused tests: `multilingual run yourprogram.ml --lang en`
 4. Track gaps as concrete syntax/runtime items
