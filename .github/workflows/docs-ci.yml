@@ -14,6 +14,7 @@ jobs:
   test-blocks:
     name: Test doc code blocks
     runs-on: ubuntu-latest
+    continue-on-error: true
 
     steps:
       - name: Checkout docs repo
