@@ -1,0 +1,32 @@
+required:
+  - page_id
+  - locale
+  - title
+  - path_segments
+  - source_hash
+  - status
+properties:
+  page_id:
+    type: string
+    description: Immutable cross-locale page key.
+  locale:
+    type: string
+    enum:
+      - en
+      - fr
+  title:
+    type: string
+  path_segments:
+    type: array
+    minItems: 1
+    items:
+      type: string
+  source_hash:
+    type: string
+    description: Hash-like source version marker copied from EN source to translations.
+  status:
+    type: string
+    enum:
+      - source
+      - translated
+      - needs_update

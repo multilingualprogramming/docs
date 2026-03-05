@@ -130,6 +130,8 @@ nav:
     children:
       - title: "Development Guide"
         url: "/contributing/"
+      - title: "Multilingual Docs Ops"
+        url: "/contributing/multilingual-docs/"
 
 # Collections
 collections:
@@ -160,3 +162,5 @@ exclude:
   - vendor/ruby/
   - ".sass-cache"
   - ".jekyll-cache"
+  - "docs/"
+  - "scripts/"

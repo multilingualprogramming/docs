@@ -70,6 +70,8 @@ bundle exec jekyll build
 3. Run `bundle exec jekyll serve` and verify pages render correctly.
 4. Submit a pull request.
 
+For multilingual EN/FR documentation operations (metadata model, localized routing, snippets, CI checks, and Pages-safe deploy), see [contributing/multilingual-docs.md](contributing/multilingual-docs.md).
+
 For language/runtime contribution workflow, see `contributing/` and the [main repository](https://github.com/johnsamuelwrites/multilingual).
 
 ## License

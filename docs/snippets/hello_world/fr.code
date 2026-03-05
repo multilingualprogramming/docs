@@ -1,0 +1,2 @@
+soit message = "Bonjour, monde multilingue !"
+afficher(message)
