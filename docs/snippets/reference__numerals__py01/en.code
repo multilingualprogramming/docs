@@ -1,0 +1,28 @@
+from multilingualprogramming import MPNumeral
+
+# Create from integer
+n1 = MPNumeral(42)
+
+# Create from Arabic-Indic digits
+n2 = MPNumeral("٤٢")
+
+# Create from Devanagari digits
+n3 = MPNumeral("४२")
+
+# Create from CJK numerals
+n4 = MPNumeral("四十二")
+
+# Arithmetic (all return MPNumeral)
+result = n1 + n2
+result = n1 * MPNumeral(3)
+result = n1 - MPNumeral(10)
+result = n1 / MPNumeral(6)
+
+# Conversion
+print(n1.to_int())              # 42
+print(n1.to_arabic_indic())     # ٤٢
+print(n1.to_devanagari())       # ४२
+print(n1.to_bengali())          # ৪২
+print(n1.to_cjk())              # 四十二
+print(n1.to_roman())            # XLII
+print(n1.to_scientific())       # 4.2e+01

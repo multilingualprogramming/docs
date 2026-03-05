@@ -1,0 +1,9 @@
+# Exemple FR: identifiants API Python non traduisibles
+متغير x = 42
+
+إذا x > 0:
+    اطبع("موجب")
+وإلا_إذا x < 0:
+    اطبع("سالب")
+وإلا:
+    اطبع("صفر")

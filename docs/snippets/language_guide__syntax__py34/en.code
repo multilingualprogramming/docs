@@ -1,0 +1,13 @@
+count = 0
+
+def increment():
+    global count
+    count += 1
+
+def outer():
+    x = 0
+    def inner():
+        nonlocal x
+        x += 1
+    inner()
+    return x

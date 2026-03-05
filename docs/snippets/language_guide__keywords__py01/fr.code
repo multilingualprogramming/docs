@@ -1,0 +1,23 @@
+from multilingualprogramming.keyword import KeywordRegistry
+
+registry = KeywordRegistry()
+
+# Concept → language keyword
+afficher(registry.get_keyword("COND_IF", "fr"))   # si
+afficher(registry.get_keyword("FUNC_DEF", "ja"))   # 関数
+afficher(registry.get_keyword("LOOP_FOR", "ar"))   # لكل
+afficher(registry.get_keyword("LET", "hi"))         # मान
+afficher(registry.get_keyword("CLASS_DEF", "zh"))  # 类
+
+# Language keyword → concept (reverse lookup)
+afficher(registry.get_concept("si", "fr"))          # COND_IF
+afficher(registry.get_concept("関数", "ja"))         # FUNC_DEF
+
+# Toutes les langues supportees
+afficher(registry.get_supported_languages())
+# ['en', 'fr', 'es', 'de', 'it', 'pt', 'pl', 'nl', 'sv', 'da', 'fi', 'hi', 'ar', 'bn', 'ta', 'zh', 'ja']
+
+# Tous les mots-cles pour une langue
+keywords = registry.get_all_keywords("fr")
+pour concept, keyword dans keywords.items():
+    afficher(f"  {concept}: {keyword}")

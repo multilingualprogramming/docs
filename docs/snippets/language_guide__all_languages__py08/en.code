@@ -1,0 +1,40 @@
+zij gedeelde_teller = 3
+
+def verhoog_globaal():
+    globaal gedeelde_teller
+    gedeelde_teller = gedeelde_teller + 2
+    retourneer gedeelde_teller
+
+def maak_teller(start):
+    zij totaal = start
+    def stap():
+        nietlocaal totaal
+        totaal = totaal + 1
+        retourneer totaal
+    retourneer stap
+
+zij volgende_teller = maak_teller(5)
+zij eerste_stap = volgende_teller()
+zij tweede_stap = volgende_teller()
+
+zij unieke_waarden = verzameling([1, 1, 2, 3])
+
+klasse TellerDoos:
+    def __init__(self, start_basis):
+        self.waarde = start_basis
+
+def produceer_drie():
+    voor idx in bereik(3):
+        produceer idx
+
+zij totaal_geproduceerd = som(produceer_drie())
+
+probeer:
+    als lengte(unieke_waarden) > 2:
+        gooi ValueError("boom")
+behalve ValueError als behandelde_fout:
+    zij behandeld = Waar
+uiteindelijk:
+    zij wortel_waarde = int(root_fn(16))
+
+druk_af(f"teller={verhoog_globaal()}, wortel={wortel_waarde}, totaal={totaal_geproduceerd}")

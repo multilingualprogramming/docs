@@ -1,0 +1,40 @@
+låt delad_rakare = 3
+
+def oka_global():
+    global delad_rakare
+    delad_rakare = delad_rakare + 2
+    returnera delad_rakare
+
+def skapa_rakare(start):
+    låt totalt = start
+    def steg():
+        icklokal totalt
+        totalt = totalt + 1
+        returnera totalt
+    returnera steg
+
+låt nasta_rakare = skapa_rakare(5)
+låt forsta_steg = nasta_rakare()
+låt andra_steg = nasta_rakare()
+
+låt unika_varden = uppsattning([1, 1, 2, 3])
+
+klass RakareBox:
+    def __init__(self, start_bas):
+        self.varde = start_bas
+
+def producera_tre():
+    for idx i intervall(3):
+        producera idx
+
+låt total_producerat = summa(producera_tre())
+
+forsok:
+    om langd(unika_varden) > 2:
+        hojd ValueError("boom")
+utom ValueError som hanterat_fel:
+    låt hanterat = Sant
+slutligen:
+    låt rot_varde = int(root_fn(16))
+
+skriv_ut(f"rakare={oka_global()}, rot={rot_varde}, total={total_producerat}")

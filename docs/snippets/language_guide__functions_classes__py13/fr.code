@@ -1,0 +1,4 @@
+fonction connect(host, port, *, timeout=30, retries=3):
+    afficher(f"Connecting to {host}:{port}, timeout={timeout}")
+
+connect("localhost", 5432, timeout=60)

@@ -1,0 +1,5 @@
+# Exemple FR: identifiants API Python non traduisibles
+funktion begrüßen(name):
+    zurückgeben f"Hallo, {name}!"
+
+ausgeben(begrüßen("Welt"))

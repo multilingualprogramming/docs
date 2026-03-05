@@ -1,0 +1,9 @@
+soit person = {"name": "Alice", "age": 30}
+afficher(person["name"])         # Alice
+person["city"] = "Paris"
+
+# Comprehension de dictionnaire
+soit squares = {n: n**2 pour n dans intervalle(5)}
+
+# Fusion (deballage de dictionnaires)
+soit merged = {**person, **{"country": "France"}}

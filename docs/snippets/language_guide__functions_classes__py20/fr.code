@@ -1,0 +1,7 @@
+import functools
+
+fonction my_decorator(func):
+    @functools.wraps(func)
+    fonction wrapper(*args, **kwargs):
+        retourner func(*args, **kwargs)
+    retourner wrapper

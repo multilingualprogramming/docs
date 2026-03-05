@@ -1,0 +1,4 @@
+función saludar(nombre):
+    retornar f"Hola, {nombre}!"
+
+imprimir(saludar("Mundo"))

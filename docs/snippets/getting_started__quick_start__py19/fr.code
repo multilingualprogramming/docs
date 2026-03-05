@@ -1,0 +1,9 @@
+fonction sum_all(*numbers):
+    retourner sum(numbers)
+
+fonction show_info(**details):
+    pour key, value dans details.items():
+        afficher(f"{key}: {value}")
+
+afficher(sum_all(1, 2, 3, 4))
+show_info(name="Alice", age=30)

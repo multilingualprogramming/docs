@@ -1,0 +1,5 @@
+# Exemple FR: identifiants API Python non traduisibles
+fonction saluer(nom):
+    retourner f"Bonjour, {nom}!"
+
+afficher(saluer("Monde"))

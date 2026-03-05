@@ -1,0 +1,3 @@
+let square = lambda x: x ** 2
+let numbers_ = [3, 1, 4, 1, 5]
+let sorted_ = sorted(numbers_, key=lambda x: -x)

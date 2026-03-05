@@ -1,0 +1,3 @@
+# Exemple FR: identifiants API Python non traduisibles
+pour i dans intervalle(5):
+    afficher(i)

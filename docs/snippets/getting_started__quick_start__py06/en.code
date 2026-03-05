@@ -1,0 +1,15 @@
+let first = "Hello"
+let last = "World"
+let greeting = f"{first}, {last}!"
+print(greeting)   # Hello, World!
+
+# Format specifiers
+let pi = 3.14159
+print(f"Pi is {pi:.2f}")   # Pi is 3.14
+
+# Triple-quoted strings
+let poem = """
+Line one
+Line two
+Line three
+"""

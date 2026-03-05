@@ -1,0 +1,59 @@
+import math
+from math import sqrt as root_fn
+
+soit shared_counter = 3
+
+fonction bump_global():
+    global shared_counter
+    shared_counter = shared_counter + 2
+    retourner shared_counter
+
+fonction make_counter(start):
+    soit total = start
+    fonction step():
+        nonlocal total
+        total = total + 1
+        retourner total
+    retourner step
+
+soit next_count = make_counter(5)
+soit first_step = next_count()
+soit second_step = next_count()
+
+soit zipped_pairs = list(zip([1, 2, 3], [4, 5, 6]))
+soit unique_values = set([1, 1, 2, 3])
+soit fixed_values = tuple([10, 20, 30])
+
+soit first_item, *middle_items, last_item = [1, 2, 3, 4]
+soit merged_map = {**{"x": 1}, **{"y": 2}}
+
+fonction format_tag(a, /, *, b):
+    retourner f"{a}-{b:.1f}"
+
+soit seed = 0
+soit walrus_value = (seed := seed + 9)
+
+classe CounterBox:
+    fonction __init__(self, start_base):
+        self.value = start_base
+
+classe CounterBoxChild(CounterBox):
+    fonction __init__(self, start_base):
+        super(CounterBoxChild, self).__init__(start_base)
+        self.value = self.value + 1
+
+fonction produce_three():
+    pour idx dans intervalle(3):
+        produire idx
+
+soit produced_total = sum(produce_three())
+
+try:
+    si len(unique_values) > 2:
+        raise ValueError("boom")
+except ValueError as handled_error:
+    soit handled = True
+finally:
+    soit root_value = int(root_fn(16))
+
+afficher(f"counter={bump_global()}, root={root_value}, total={produced_total}")

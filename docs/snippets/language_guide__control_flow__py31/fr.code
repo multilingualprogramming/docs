@@ -1,0 +1,12 @@
+from dataclasses import dataclass
+
+@dataclass
+classe Point:
+    x: float
+    y: float
+
+match shape:
+    case Point(x=0, y=0):
+        afficher("origin")
+    case Point(x=px, y=py):
+        afficher(f"point at {px}, {py}")

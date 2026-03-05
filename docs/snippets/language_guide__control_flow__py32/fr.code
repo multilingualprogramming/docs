@@ -1,0 +1,5 @@
+pour idx dans intervalle(100):
+    si idx == 10:
+        break
+    afficher(idx)
+# prints 0 through 9

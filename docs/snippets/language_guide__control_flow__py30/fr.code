@@ -1,0 +1,3 @@
+match data:
+    case [first, *rest] as full_list:
+        afficher(f"first={first}, full={full_list}")

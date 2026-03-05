@@ -1,0 +1,6 @@
+let numbers = [1, 2, 3, 4, 5]
+let first = numbers[0]       # 1
+let last = numbers[4]        # 5
+let slice_ = numbers[1:3]    # [2, 3]
+numbers.append(6)
+print(len(numbers))          # 6

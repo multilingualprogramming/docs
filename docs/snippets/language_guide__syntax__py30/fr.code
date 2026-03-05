@@ -1,0 +1,2 @@
+{k: v pour k, v dans pairs}
+{k: v pour k, v dans d.items() si v > 0}

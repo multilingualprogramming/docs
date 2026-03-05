@@ -1,0 +1,9 @@
+for idx in range(5):
+    print(idx)
+
+# With else
+for item in [1, 2, 3]:
+    if item == 99:
+        break
+else:
+    print("not found")

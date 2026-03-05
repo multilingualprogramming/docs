@@ -1,0 +1,16 @@
+classe Flyable:
+    fonction fly(self):
+        retourner "flying"
+
+classe Swimmable:
+    fonction swim(self):
+        retourner "swimming"
+
+classe Duck(Flyable, Swimmable):
+    fonction quack(self):
+        retourner "quack"
+
+soit donald = Duck()
+afficher(donald.fly())    # flying
+afficher(donald.swim())   # swimming
+afficher(donald.quack())  # quack

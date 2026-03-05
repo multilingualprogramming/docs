@@ -1,0 +1,2 @@
+fonction square(n):
+    retourner n ** 2

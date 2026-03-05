@@ -1,0 +1,5 @@
+fonction greet(name, greeting="Bonjour", times=1):
+    pour _ dans intervalle(times):
+        afficher(f"{greeting}, {name}")
+
+greet("Monde")

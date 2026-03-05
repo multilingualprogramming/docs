@@ -1,0 +1,7 @@
+fonction chain(*iterables):
+    pour it dans iterables:
+        produire_de it
+
+pour item dans chain([1, 2], [3, 4], [5]):
+    afficher(item)
+# 1, 2, 3, 4, 5

@@ -1,0 +1,9 @@
+def count_up(n):
+    let i = 0
+    while i < n:
+        yield i
+        i += 1
+
+for val in count_up(5):
+    print(val)
+# 0, 1, 2, 3, 4

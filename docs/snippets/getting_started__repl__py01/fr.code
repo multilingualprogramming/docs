@@ -1,0 +1,8 @@
+soit x1 = 2
+soit z1 = 3
+afficher(x1 + z1)
+
+soit total = 0
+pour idx dans intervalle(4):
+    total = total + idx
+afficher(total)

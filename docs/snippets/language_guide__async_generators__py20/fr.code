@@ -1,0 +1,12 @@
+# Exemple FR: identifiants API Python non traduisibles
+import asyncio
+
+دالة_غير_متزامنة جلب(رابط):
+    انتظر asyncio.sleep(0.1)
+    أرجع f"بيانات من {رابط}"
+
+دالة_غير_متزامنة رئيسي():
+    نتيجة = انتظر جلب("https://example.com")
+    اطبع(نتيجة)
+
+asyncio.run(رئيسي())

@@ -1,0 +1,4 @@
+from multilingualprogramming import Parser
+
+parser = Parser(language="en")
+ast = parser.parse(tokens: list[Token]) -> Program

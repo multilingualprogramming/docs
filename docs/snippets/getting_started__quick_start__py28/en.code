@@ -1,0 +1,11 @@
+let command = "quit"
+
+match command:
+    case "quit":
+        print("Quitting...")
+    case "help":
+        print("Help menu")
+    case str(c) if c.startswith("go "):
+        print(f"Going to: {c[3:]}")
+    case _:
+        print(f"Unknown command: {command}")

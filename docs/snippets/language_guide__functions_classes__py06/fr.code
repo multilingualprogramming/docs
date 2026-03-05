@@ -1,0 +1,5 @@
+# Exemple FR: identifiants API Python non traduisibles
+دالة تحية(اسم):
+    أرجع f"مرحبا، {اسم}!"
+
+اطبع(تحية("العالم"))

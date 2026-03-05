@@ -1,0 +1,5 @@
+with open("file.txt", "r") as f:
+    content = f.read()
+
+with open("in.txt") as src, open("out.txt", "w") as dst:
+    dst.write(src.read())

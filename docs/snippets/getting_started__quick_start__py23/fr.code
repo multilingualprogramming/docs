@@ -1,0 +1,15 @@
+# Comprehension de liste
+soit squares = [x**2 pour x dans intervalle(10) si x % 2 == 0]
+
+# Comprehension imbriquee
+soit matrix = [[i * j pour j dans intervalle(3)] pour i dans intervalle(3)]
+soit flat = [x pour row dans matrix pour x dans row]
+
+# Comprehension de dictionnaire
+soit word_lengths = {word: len(word) pour word dans ["apple", "banana"]}
+
+# Comprehension d'ensemble
+soit unique_lengths = {len(word) pour word dans ["hi", "hello", "hey"]}
+
+# Expression generateur
+soit total = sum(x**2 pour x dans intervalle(100))

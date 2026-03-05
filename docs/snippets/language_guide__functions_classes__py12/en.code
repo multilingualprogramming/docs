@@ -1,0 +1,5 @@
+def variadic(*args, **kwargs):
+    print("positional:", args)
+    print("keyword:", kwargs)
+
+variadic(1, 2, 3, name="Alice", age=30)

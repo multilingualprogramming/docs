@@ -1,0 +1,7 @@
+fonction print_banner(text):
+    afficher("=" * 40)
+    afficher(text.center(40))
+    afficher("=" * 40)
+    # implicit retourner None
+
+print_banner("Bonjour")

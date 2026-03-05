@@ -1,0 +1,13 @@
+count = 0
+
+fonction increment():
+    global count
+    count += 1
+
+fonction outer():
+    x = 0
+    fonction inner():
+        nonlocal x
+        x += 1
+    inner()
+    retourner x

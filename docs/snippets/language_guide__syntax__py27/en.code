@@ -1,0 +1,16 @@
+class MyClass:
+    class_var = 0
+
+    @staticmethod
+    def static_method():
+        return "static"
+
+    @classmethod
+    def class_method(cls):
+        return cls.class_var
+
+    def instance_method(self):
+        return self
+
+    def __repr__(self):
+        return f"MyClass()"

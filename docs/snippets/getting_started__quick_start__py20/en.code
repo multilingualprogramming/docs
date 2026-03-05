@@ -1,0 +1,5 @@
+def format_data(a, b, /, *, sep=", "):
+    return f"{a}{sep}{b}"
+
+print(format_data("x", "y"))         # x, y
+print(format_data("x", "y", sep="—"))  # x—y

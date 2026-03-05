@@ -1,0 +1,7 @@
+from multilingualprogramming import UnicodeNumeral
+
+u = UnicodeNumeral("٣٧")     # Arabic-Indic
+print(u.to_int())             # 37
+
+u2 = UnicodeNumeral("३७")    # Devanagari
+print(u2.to_int())            # 37

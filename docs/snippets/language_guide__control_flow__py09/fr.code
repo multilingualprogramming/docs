@@ -1,0 +1,9 @@
+pour idx dans intervalle(5):
+    afficher(idx)
+
+# With else
+pour item dans [1, 2, 3]:
+    si item == 99:
+        break
+sinon:
+    afficher("not found")

@@ -1,0 +1,8 @@
+from multilingualprogramming import NumeralConverter
+
+conv = NumeralConverter()
+print(conv.to_arabic_indic(42))    # ٤٢
+print(conv.to_devanagari(42))      # ४२
+print(conv.to_bengali(42))         # ৪২
+print(conv.to_cjk(42))             # 四十二
+print(conv.to_roman(42))           # XLII

@@ -1,0 +1,2 @@
+soit sq = lambda x: x**2
+soit add = lambda x, y: x + y

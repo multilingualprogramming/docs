@@ -1,0 +1,6 @@
+# Exemple FR: identifiants API Python non traduisibles
+soit message = "Bonjour, monde multilingue!"
+soit compteur = 3
+
+pour i dans intervalle(compteur):
+    afficher(f"[{i}] {message}")

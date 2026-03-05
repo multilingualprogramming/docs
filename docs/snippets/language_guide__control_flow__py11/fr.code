@@ -1,0 +1,3 @@
+# Exemple FR: identifiants API Python non traduisibles
+para i en rango(5):
+    imprimir(i)

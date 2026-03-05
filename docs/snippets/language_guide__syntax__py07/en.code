@@ -1,0 +1,3 @@
+let t = True
+let f = False
+let n = None

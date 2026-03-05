@@ -1,0 +1,35 @@
+class Shape:
+    def __init__(self, color="black"):
+        self.color = color
+
+    def area(self):
+        return 0
+
+    def describe(self):
+        return f"A {self.color} shape with area {self.area()}"
+
+
+class Circle(Shape):
+    def __init__(self, radius, color="black"):
+        super(Circle, self).__init__(color)
+        self.radius = radius
+
+    def area(self):
+        import math
+        return math.pi * self.radius ** 2
+
+
+class Rectangle(Shape):
+    def __init__(self, width, height, color="black"):
+        super(Rectangle, self).__init__(color)
+        self.width = width
+        self.height = height
+
+    def area(self):
+        return self.width * self.height
+
+
+let c = Circle(5, "red")
+let r = Rectangle(4, 6, "blue")
+print(c.describe())   # A red shape with area 78.539...
+print(r.describe())   # A blue shape with area 24

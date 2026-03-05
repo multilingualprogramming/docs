@@ -1,0 +1,10 @@
+soit score = 85
+
+si score >= 90:
+    afficher("A")
+sinon_si score >= 80:
+    afficher("B")
+sinon_si score >= 70:
+    afficher("C")
+sinon:
+    afficher("F")

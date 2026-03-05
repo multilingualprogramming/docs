@@ -1,0 +1,4 @@
+lexer = Lexer(language="fr")
+tokens = lexer.tokenize("si x > 0:\n    afficher(x)")
+for tok in tokens:
+    print(f"{tok.type:20} {tok.value!r}")

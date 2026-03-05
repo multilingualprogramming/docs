@@ -1,0 +1,9 @@
+# Generator expression (lazy)
+soit squares_gen = (x**2 pour x dans intervalle(10))
+
+# vs list comprehension (eager)
+soit squares_list = [x**2 pour x dans intervalle(10)]
+
+# Useful dans function calls — avoids building a list
+afficher(sum(x**2 pour x dans intervalle(100)))      # 328350
+afficher(max(len(w) pour w dans ["hello", "world", "!"]))  # 5

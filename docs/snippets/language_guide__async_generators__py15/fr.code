@@ -1,0 +1,11 @@
+import asyncio
+
+async fonction fetch_data(url):
+    await asyncio.sleep(0.1)   # simulate network delay
+    retourner f"data from {url}"
+
+async fonction main():
+    result = await fetch_data("https://example.com")
+    afficher(result)
+
+asyncio.run(main())

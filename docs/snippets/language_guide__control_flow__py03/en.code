@@ -1,0 +1,8 @@
+sea x = 42
+
+si x > 0:
+    imprimir("positivo")
+sino_si x < 0:
+    imprimir("negativo")
+sino:
+    imprimir("cero")

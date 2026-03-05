@@ -1,0 +1,10 @@
+def fibonacci():
+    let a, b = 0, 1
+    while True:
+        yield a
+        a, b = b, a + b
+
+# Take first 10 fibonacci numbers
+import itertools
+let fibs = list(itertools.islice(fibonacci(), 10))
+print(fibs)  # [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]

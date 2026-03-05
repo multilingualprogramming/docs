@@ -1,0 +1,9 @@
+def flatten(nested):
+    for item in nested:
+        if isinstance(item, list):
+            yield from flatten(item)
+        else:
+            yield item
+
+let data = [1, [2, [3, 4]], [5, 6]]
+print(list(flatten(data)))  # [1, 2, 3, 4, 5, 6]

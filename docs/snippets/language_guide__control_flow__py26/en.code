@@ -1,0 +1,9 @@
+let command = "quit"
+
+match command:
+    case "quit":
+        print("quitting")
+    case "help":
+        print("showing help")
+    case _:
+        print(f"unknown: {command}")

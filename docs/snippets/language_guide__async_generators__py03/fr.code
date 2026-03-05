@@ -1,0 +1,9 @@
+# Exemple FR: identifiants API Python non traduisibles
+función contar(n):
+    sea i = 0
+    mientras i < n:
+        producir i
+        i += 1
+
+para valor en contar(5):
+    imprimir(valor)

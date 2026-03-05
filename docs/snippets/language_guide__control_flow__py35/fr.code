@@ -1,0 +1,5 @@
+# Multiplication table
+pour ii dans intervalle(1, 4):
+    pour jj dans intervalle(1, 4):
+        afficher(f"{ii}×{jj}={ii*jj}", end="  ")
+    afficher()

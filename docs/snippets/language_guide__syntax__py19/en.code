@@ -1,0 +1,2 @@
+for idx, val in enumerate([10, 20, 30]):
+    print(idx, val)

@@ -1,0 +1,60 @@
+# Exemple FR: identifiants API Python non traduisibles
+importer math
+de math importer sqrt comme root_fn
+
+soit compteur_partage = 3
+
+déf augmenter_global():
+    mondial compteur_partage
+    compteur_partage = compteur_partage + 2
+    retourner compteur_partage
+
+déf creer_compteur(debut):
+    soit total = debut
+    déf etape():
+        nonlocal total
+        total = total + 1
+        retourner total
+    retourner etape
+
+soit prochain_compte = creer_compteur(5)
+soit premier_pas = prochain_compte()
+soit deuxieme_pas = prochain_compte()
+
+soit paires_combinees = liste(combiner([1, 2, 3], [4, 5, 6]))
+soit valeurs_uniques = ensemble([1, 1, 2, 3])
+soit valeurs_fixes = tuple([10, 20, 30])
+
+soit premier_elem, *milieu, dernier_elem = [1, 2, 3, 4]
+soit carte_fusionnee = {**{"x": 1}, **{"y": 2}}
+
+déf formater_etiquette(a, /, *, b):
+    retourner f"{a}-{b:.1f}"
+
+soit graine = 0
+soit valeur_walrus = (graine := graine + 9)
+
+classe BoiteCompteur:
+    déf __init__(self, base_debut):
+        self.valeur = base_debut
+
+classe BoiteCompteurEnfant(BoiteCompteur):
+    déf __init__(self, base_debut):
+        super(BoiteCompteurEnfant, self).__init__(base_debut)
+        self.valeur = self.valeur + 1
+
+déf produire_trois():
+    pour idx dans intervalle(3):
+        produire idx
+
+soit total_produit = somme(produire_trois())
+
+essayer:
+    si longueur(valeurs_uniques) > 2:
+        soulever ValueError("boom")
+sauf ValueError comme erreur_traitee:
+    soit traite = Vrai
+finalement:
+    soit valeur_racine = int(root_fn(16))
+
+afficher(f"compteur={augmenter_global()}, racine={valeur_racine}, total={total_produit}")

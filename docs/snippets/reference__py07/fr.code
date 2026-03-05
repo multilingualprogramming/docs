@@ -1,0 +1,9 @@
+from multilingualprogramming import Lexer, Parser, ASTPrinter
+
+lexer = Lexer(language="en")
+parser = Parser(language="en")
+printer = ASTPrinter()
+
+tokens = lexer.tokenize("soit x = 42\nafficher(x)")
+ast = parser.parse(tokens)
+printer.afficher(ast)

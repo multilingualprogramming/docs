@@ -1,0 +1,10 @@
+a == b    # equal
+a != b    # not equal
+a < b     # less than
+a > b     # greater than
+a <= b    # less or equal
+a >= b    # greater or equal
+a is b    # identity
+a is not b
+a in b    # membership
+a not in b

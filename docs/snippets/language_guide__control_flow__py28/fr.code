@@ -1,0 +1,7 @@
+match value:
+    case n si n < 0:
+        afficher("negatif")
+    case n si n == 0:
+        afficher("zero")
+    case n:
+        afficher(f"positif: {n}")

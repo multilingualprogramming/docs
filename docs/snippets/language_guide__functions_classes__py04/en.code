@@ -1,0 +1,4 @@
+funktion begrüßen(name):
+    zurückgeben f"Hallo, {name}!"
+
+ausgeben(begrüßen("Welt"))

@@ -1,0 +1,5 @@
+fonction add(x: int, y: int) -> int:
+    retourner x + y
+
+fonction process(items: list, limit: int = 10) -> dict:
+    retourner {}

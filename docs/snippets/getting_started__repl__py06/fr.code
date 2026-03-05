@@ -1,0 +1,9 @@
+# Exemple FR: identifiants API Python non traduisibles
+मान x = 2
+मान y = 3
+छापो(x + y)
+
+मान योग = 0
+के_लिए i में परास(4):
+    योग = योग + i
+छापो(योग)

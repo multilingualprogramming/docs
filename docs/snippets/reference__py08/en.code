@@ -1,0 +1,4 @@
+from multilingualprogramming import SemanticAnalyzer
+
+analyzer = SemanticAnalyzer(language="en")
+analyzer.analyze(ast: Program) -> None  # raises on errors

@@ -1,0 +1,9 @@
+# Exemple FR: identifiants API Python non traduisibles
+soit x1 = 2
+soit y1 = 3
+afficher(x1 + y)
+
+soit total = 0
+pour i dans intervalle(4):
+    total = total + i
+afficher(total)

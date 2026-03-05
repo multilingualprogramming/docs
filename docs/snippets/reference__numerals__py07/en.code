@@ -1,0 +1,3 @@
+# English program with Devanagari numeral
+let count = ४२        # equivalent to 42
+print(count + 8)     # 50

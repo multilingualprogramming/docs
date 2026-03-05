@@ -1,0 +1,49 @@
+sia contatore_condiviso = 3
+
+fonction incrementa_globale():
+    globale contatore_condiviso
+    contatore_condiviso = contatore_condiviso + 2
+    ritorna contatore_condiviso
+
+fonction crea_contatore(inizio):
+    sia totale = inizio
+    fonction passo():
+        nonlocale totale
+        totale = totale + 1
+        ritorna totale
+    ritorna passo
+
+sia prossimo_contatore = crea_contatore(5)
+sia primo_passo = prossimo_contatore()
+sia secondo_passo = prossimo_contatore()
+
+sia coppie_unite = lista(combina([1, 2, 3], [4, 5, 6]))
+sia valori_unici = insieme([1, 1, 2, 3])
+sia valori_fissi = tupla([10, 20, 30])
+
+sia primo_elem, *mezzo, ultimo_elem = [1, 2, 3, 4]
+
+classe ScatolaContatore:
+    fonction __init__(self, base_inizio):
+        self.valore = base_inizio
+
+classe ScatolaContatoreFilglio(ScatolaContatore):
+    fonction __init__(self, base_inizio):
+        super(ScatolaContatoreFilglio, self).__init__(base_inizio)
+        self.valore = self.valore + 1
+
+fonction produci_tre():
+    per idx dans intervallo(3):
+        genera idx
+
+sia totale_prodotto = somma(produci_tre())
+
+prova:
+    se lunghezza(valori_unici) > 2:
+        solleva ValueError("boom")
+tranne ValueError come errore_gestito:
+    sia gestito = Vero
+infine:
+    sia valore_radice = int(root_fn(16))
+
+stampa(f"contatore={incrementa_globale()}, radice={valore_radice}, totale={totale_prodotto}")

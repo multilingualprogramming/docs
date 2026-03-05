@@ -1,0 +1,24 @@
+classe Counter:
+    count = 0
+
+    fonction __init__(self):
+        Counter.count += 1
+        self.id = Counter.count
+
+    @classmethod
+    fonction get_count(cls):
+        retourner cls.count
+
+    @staticmethod
+    fonction describe():
+        retourner "I count instances"
+
+    fonction __repr__(self):
+        retourner f"Counter(id={self.id})"
+
+
+soit a = Counter()
+soit b = Counter()
+afficher(Counter.get_count())   # 2
+afficher(Counter.describe())    # I count instances
+afficher(a)                     # Counter(id=1)

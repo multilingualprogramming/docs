@@ -1,0 +1,4 @@
+pour i dans intervalle(1, 4):
+    pour j dans intervalle(1, 4):
+        afficher(f"{i}×{j}={i*j}", fin="  ")
+    afficher()

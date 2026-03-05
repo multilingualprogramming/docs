@@ -1,0 +1,9 @@
+# Exemple FR: identifiants API Python non traduisibles
+変数 x = 42
+
+もし x > 0:
+    表示("正")
+そうでなければもし x < 0:
+    表示("負")
+そうでなければ:
+    表示("ゼロ")

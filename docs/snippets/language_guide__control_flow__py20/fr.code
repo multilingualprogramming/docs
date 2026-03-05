@@ -1,0 +1,6 @@
+# Exemple FR: identifiants API Python non traduisibles
+sea contador = 0
+
+mientras contador < 5:
+    imprimir(contador)
+    contador += 1

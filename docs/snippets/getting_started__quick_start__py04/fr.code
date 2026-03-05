@@ -1,0 +1,10 @@
+soit a = 10
+soit b = 3
+
+afficher(a + b)    # 13
+afficher(a - b)    # 7
+afficher(a * b)    # 30
+afficher(a / b)    # 3.3333...
+afficher(a // b)   # 3   (floor division)
+afficher(a % b)    # 1   (modulo)
+afficher(a ** b)   # 1000 (power)

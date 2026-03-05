@@ -1,0 +1,3 @@
+[x**2 pour x dans intervalle(10)]
+[x pour x dans items si x > 0]
+[x pour row dans matrix pour x dans row]  # nested

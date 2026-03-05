@@ -1,0 +1,3 @@
+let count: int = 0
+let ratio: float = 0.5
+let label: str = "hello"

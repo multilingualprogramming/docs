@@ -1,0 +1,11 @@
+import asyncio
+
+async_funktion abrufen(url):
+    erwarten asyncio.sleep(0.1)
+    zurückgeben f"Daten von {url}"
+
+async_funktion hauptprogramm():
+    ergebnis = erwarten abrufen("https://beispiel.com")
+    ausgeben(ergebnis)
+
+asyncio.run(hauptprogramm())

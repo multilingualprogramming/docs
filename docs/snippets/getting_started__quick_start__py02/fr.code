@@ -1,0 +1,3 @@
+soit count: int = 0
+soit ratio: float = 0.5
+soit label: str = "hello"

@@ -1,0 +1,9 @@
+# Exemple FR: identifiants API Python non traduisibles
+sei x = 42
+
+wenn x > 0:
+    ausgeben("positiv")
+sonst_wenn x < 0:
+    ausgeben("negativ")
+sonst:
+    ausgeben("null")

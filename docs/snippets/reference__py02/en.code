@@ -1,0 +1,12 @@
+from multilingualprogramming import ProgramExecutor
+
+executor = ProgramExecutor()
+
+# Execute source string
+executor.execute(source: str, language: str = "en") -> None
+
+# Execute a file
+executor.execute_file(path: str, language: str = "en") -> None
+
+# Transpile to Python (return Python source without executing)
+python_src = executor.transpile(source: str, language: str = "en") -> str

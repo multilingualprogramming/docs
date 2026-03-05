@@ -1,0 +1,7 @@
+soit square = lambda x: x ** 2
+soit add = lambda x, b: x + b
+soit clamp = lambda val, low, high: max(low, min(high, val))
+
+afficher(square(5))       # 25
+afficher(add(3, 4))       # 7
+afficher(clamp(15, 0, 10))  # 10

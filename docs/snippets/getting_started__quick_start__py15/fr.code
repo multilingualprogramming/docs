@@ -1,0 +1,6 @@
+soit point = (3, 4)
+soit x, pt_y = point
+
+# Decomposition avec *
+soit first_, *rest_ = [1, 2, 3, 4, 5]
+soit a_, *middle_, z_ = [1, 2, 3, 4, 5]

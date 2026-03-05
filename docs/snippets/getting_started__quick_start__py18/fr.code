@@ -1,0 +1,5 @@
+fonction greet(name, greeting="Bonjour"):
+    retourner f"{greeting}, {name}!"
+
+afficher(greet("Alice"))           # Bonjour, Alice!
+afficher(greet("Bob", "Hi"))       # Hi, Bob!

@@ -1,0 +1,9 @@
+match point:
+    case (0, 0):
+        afficher("origin")
+    case (x, 0):
+        afficher(f"on x-axis at {x}")
+    case (0, y):
+        afficher(f"on y-axis at {y}")
+    case (x, y):
+        afficher(f"point at ({x}, {y})")

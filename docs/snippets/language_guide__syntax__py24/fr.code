@@ -1,0 +1,7 @@
+fonction count_up(n):
+    pour i dans intervalle(n):
+        produire i
+
+fonction chain(*iterables):
+    pour it dans iterables:
+        produire_de it

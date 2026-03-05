@@ -1,0 +1,7 @@
+soit i = 42          # integer
+soit f = 3.14        # float
+soit sci = 1.5e10    # scientific notation
+soit h = 0xFF        # hexadecimal
+soit o = 0o77        # octal
+soit b = 0b1010      # binary
+soit c = 3 + 4j      # complex number

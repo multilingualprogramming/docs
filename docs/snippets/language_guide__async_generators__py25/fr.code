@@ -1,0 +1,13 @@
+import asyncio
+
+async fonction async_intervalle(n, delay=0.01):
+    pour i dans intervalle(n):
+        await asyncio.sleep(delay)
+        produire i
+
+async fonction main():
+    async pour val dans async_intervalle(5):
+        afficher(val)
+
+asyncio.run(main())
+# 0, 1, 2, 3, 4 (with delays)

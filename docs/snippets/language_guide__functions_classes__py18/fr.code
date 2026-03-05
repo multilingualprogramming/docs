@@ -1,0 +1,15 @@
+fonction log_calls(func):
+    fonction wrapper(*args, **kwargs):
+        afficher(f"Calling {func.__name__}")
+        result = func(*args, **kwargs)
+        afficher(f"Done: {result}")
+        retourner result
+    retourner wrapper
+
+@log_calls
+fonction add(x, b):
+    retourner x + b
+
+add(3, 4)
+# Calling add
+# Done: 7

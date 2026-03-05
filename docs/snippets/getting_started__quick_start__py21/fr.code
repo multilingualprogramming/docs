@@ -1,0 +1,5 @@
+fonction add(x: int, b: int) -> int:
+    retourner x + b
+
+fonction repeat(s: str, n: int = 1) -> str:
+    retourner s * n

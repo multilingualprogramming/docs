@@ -1,0 +1,4 @@
+fonction greet(name):
+    retourner f"Bonjour, {name}!"
+
+afficher(greet("Monde"))

@@ -1,0 +1,8 @@
+let lst = [1, 2, 3]             # list
+let dct = {"a": 1, "b": 2}     # dict
+let st = {1, 2, 3}             # set
+let tpl = (1, 2, 3)            # tuple
+let empty_list = []
+let empty_dict = {}
+let empty_set = set()
+let empty_tuple = ()

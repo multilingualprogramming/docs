@@ -1,0 +1,5 @@
+# Exemple FR: identifiants API Python non traduisibles
+from multilingualprogramming import Lexer
+
+lexer = Lexer(language="en")
+tokens = lexer.tokenize(source: str) -> list[Token]

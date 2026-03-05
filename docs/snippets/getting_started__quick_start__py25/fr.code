@@ -1,0 +1,10 @@
+# E/S de fichier
+with open("data.txt", "w", encoding="utf-8") as f:
+    f.write("hello")
+
+with open("data.txt", "r", encoding="utf-8") as f:
+    soit content = f.read()
+
+# Plusieurs context managers
+with open("dans.txt") as src, open("out.txt", "w") as dst:
+    dst.write(src.read())

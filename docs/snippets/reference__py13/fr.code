@@ -1,0 +1,8 @@
+from multilingualprogramming import RomanNumeral
+
+r = RomanNumeral("XIV")
+afficher(r.to_int())    # 14
+afficher(int(r))        # 14
+
+r2 = RomanNumeral(42)
+afficher(str(r2))       # XLII

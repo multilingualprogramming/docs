@@ -1,0 +1,3 @@
+# French program with Arabic-Indic numeral
+soit total = ٣٠ + ١٢
+afficher(total)      # 42

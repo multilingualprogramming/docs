@@ -1,0 +1,7 @@
+match status:
+    case 400 | 401 | 403:
+        afficher("client error")
+    case 500 | 502 | 503:
+        afficher("server error")
+    case 200:
+        afficher("ok")

@@ -1,0 +1,5 @@
+soit count = 0
+
+tant_que count < 5:
+    afficher(count)
+    count += 1

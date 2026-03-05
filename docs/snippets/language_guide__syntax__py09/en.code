@@ -1,0 +1,8 @@
+a + b    # addition
+a - b    # subtraction
+a * b    # multiplication
+a / b    # true division
+a // b   # floor division
+a % b    # modulo
+a ** b   # power
+-a       # negation

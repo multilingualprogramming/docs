@@ -1,0 +1,9 @@
+match point:
+    case (0, 0):
+        print("origin")
+    case (x, 0):
+        print(f"on x-axis at {x}")
+    case (0, y):
+        print(f"on y-axis at {y}")
+    case (x, y):
+        print(f"point at ({x}, {y})")

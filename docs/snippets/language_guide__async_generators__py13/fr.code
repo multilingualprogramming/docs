@@ -1,0 +1,10 @@
+fonction read_chunks(filename, chunk_size=1024):
+    with open(filename, "rb") as f:
+        tant_que True:
+            chunk = f.read(chunk_size)
+            si not chunk:
+                break
+            produire chunk
+
+pour chunk dans read_chunks("large_file.bin"):
+    process(chunk)

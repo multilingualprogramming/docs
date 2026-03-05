@@ -1,0 +1,6 @@
+# Exemple FR: identifiants API Python non traduisibles
+ليكن رسالة = "مرحبا بالعالم متعدد اللغات!"
+ليكن عداد = 3
+
+لكل i في مدى(عداد):
+    اطبع(f"[{i}] {رسالة}")

@@ -1,0 +1,2 @@
+pour idx, val dans enumerate([10, 20, 30]):
+    afficher(idx, val)

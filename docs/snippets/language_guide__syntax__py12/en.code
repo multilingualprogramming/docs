@@ -1,0 +1,6 @@
+a & b    # AND
+a | b    # OR
+a ^ b    # XOR
+~a       # NOT
+a << n   # left shift
+a >> n   # right shift

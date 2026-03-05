@@ -1,0 +1,5 @@
+fonction min_max(lst):
+    retourner (min(lst), max(lst))
+
+low, high = min_max([3, 1, 4, 1, 5, 9, 2, 6])
+afficher(low, high)  # 1 9

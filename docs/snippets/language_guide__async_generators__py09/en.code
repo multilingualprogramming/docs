@@ -1,0 +1,7 @@
+def chain(*iterables):
+    for it in iterables:
+        yield from it
+
+for item in chain([1, 2], [3, 4], [5]):
+    print(item)
+# 1, 2, 3, 4, 5

@@ -1,0 +1,16 @@
+from multilingualprogramming import MPTime
+
+# Create
+t1 = MPTime(14, 30, 0)              # 14:30:00
+t2 = MPTime(14, 30, 45, 123456)     # 14:30:45.123456
+
+# Format
+print(t1.format(language="fr"))     # 14:30:00
+print(t1.format(language="ar"))     # ١٤:٣٠:٠٠  (Arabic-Indic digits)
+print(t1.format(language="ja"))     # 14時30分00秒
+
+# Properties
+print(t1.hour)                      # 14
+print(t1.minute)                    # 30
+print(t1.second)                    # 0
+print(t1.isoformat())               # "14:30:00"

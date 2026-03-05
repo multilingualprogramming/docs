@@ -1,0 +1,10 @@
+from multilingualprogramming import ComplexNumeral
+
+c1 = ComplexNumeral(3, 4)       # 3 + 4i
+afficher(c1.real)                  # 3
+afficher(c1.imag)                  # 4
+afficher(c1.magnitude())           # 5.0
+afficher(str(c1))                  # 3+4i
+
+c2 = ComplexNumeral.from_string("2+3i")
+c3 = c1 + c2

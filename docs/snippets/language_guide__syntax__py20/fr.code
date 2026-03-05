@@ -1,0 +1,6 @@
+pour i dans intervalle(10):
+    si i == 5:
+        break
+    si i % 2 == 0:
+        continue
+    pass    # no-op placeholder

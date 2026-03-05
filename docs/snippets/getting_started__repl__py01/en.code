@@ -1,0 +1,8 @@
+let x1 = 2
+let z1 = 3
+print(x1 + z1)
+
+let total = 0
+for idx in range(4):
+    total = total + idx
+print(total)

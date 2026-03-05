@@ -1,0 +1,7 @@
+let square = lambda x: x ** 2
+let add = lambda x, b: x + b
+let clamp = lambda val, low, high: max(low, min(high, val))
+
+print(square(5))       # 25
+print(add(3, 4))       # 7
+print(clamp(15, 0, 10))  # 10

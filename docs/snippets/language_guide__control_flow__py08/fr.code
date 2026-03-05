@@ -1,0 +1,9 @@
+# Exemple FR: identifiants API Python non traduisibles
+变量 x = 42
+
+如果 x > 0:
+    打印("正数")
+否则如果 x < 0:
+    打印("负数")
+否则:
+    打印("零")

@@ -1,0 +1,5 @@
+pour item dans items:
+    pass  # TODO: process item later
+
+fonction not_implemented_yet():
+    pass

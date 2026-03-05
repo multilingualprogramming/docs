@@ -1,0 +1,11 @@
+soit command = "quit"
+
+match command:
+    case "quit":
+        afficher("Quitting...")
+    case "help":
+        afficher("Help menu")
+    case str(c) si c.startswith("go "):
+        afficher(f"Going to: {c[3:]}")
+    case _:
+        afficher(f"Unknown command: {command}")

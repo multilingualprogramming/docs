@@ -1,0 +1,5 @@
+for idx in range(100):
+    if idx == 10:
+        break
+    print(idx)
+# prints 0 through 9

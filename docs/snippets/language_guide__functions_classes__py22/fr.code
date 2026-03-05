@@ -1,0 +1,10 @@
+classe Animal:
+    fonction __init__(self, name, sound):
+        self.name = name
+        self.sound = sound
+
+    fonction speak(self):
+        retourner f"{self.name} says {self.sound}"
+
+soit dog = Animal("Dog", "woof")
+afficher(dog.speak())  # Dog says woof

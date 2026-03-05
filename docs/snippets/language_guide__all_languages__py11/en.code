@@ -1,0 +1,40 @@
+olkoon yhteinen_laskuri = 3
+
+def kasvata_globaali():
+    globaali yhteinen_laskuri
+    yhteinen_laskuri = yhteinen_laskuri + 2
+    palauta yhteinen_laskuri
+
+def luo_laskuri(alku):
+    olkoon yhteensa = alku
+    def askel():
+        eipaik yhteensa
+        yhteensa = yhteensa + 1
+        palauta yhteensa
+    palauta askel
+
+olkoon seuraava_laskuri = luo_laskuri(5)
+olkoon ensimmainen_askel = seuraava_laskuri()
+olkoon toinen_askel = seuraava_laskuri()
+
+olkoon uniikit_arvot = joukko([1, 1, 2, 3])
+
+luokka LaskuriLaatikko:
+    def __init__(self, alku_pohja):
+        self.arvo = alku_pohja
+
+def tuota_kolme():
+    jokaiselle idx in valimat(3):
+        tuota idx
+
+olkoon tuotettu_yhteensa = yhteenlaske(tuota_kolme())
+
+yrita:
+    jos pituus(uniikit_arvot) > 2:
+        nosta ValueError("boom")
+paitsi ValueError kuin kasitelty_virhe:
+    olkoon kasitelty = Tosi
+viimein:
+    olkoon juuriarvo = int(root_fn(16))
+
+tulosta(f"laskuri={kasvata_globaali()}, juuri={juuriarvo}, yhteensa={tuotettu_yhteensa}")

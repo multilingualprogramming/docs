@@ -1,0 +1,23 @@
+classe Animal:
+    fonction __init__(self, name, sound):
+        self.name = name
+        self.sound = sound
+
+    fonction speak(self):
+        retourner f"{self.name} says {self.sound}"
+
+    fonction __repr__(self):
+        retourner f"Animal({self.name!r})"
+
+
+classe Dog(Animal):
+    fonction __init__(self, name):
+        super(Dog, self).__init__(name, "Woof")
+
+    fonction fetch(self, item):
+        retourner f"{self.name} fetches the {item}!"
+
+
+soit dog = Dog("Rex")
+afficher(dog.speak())        # Rex says Woof
+afficher(dog.fetch("ball"))  # Rex fetches the ball!

@@ -1,0 +1,47 @@
+seja contador_compartilhado = 3
+
+def incrementar_global():
+    global contador_compartilhado
+    contador_compartilhado = contador_compartilhado + 2
+    retornar contador_compartilhado
+
+def criar_contador(inicio):
+    seja total = inicio
+    def passo():
+        nonlocal total
+        total = total + 1
+        retornar total
+    retornar passo
+
+seja proximo_contador = criar_contador(5)
+seja primeiro_passo = proximo_contador()
+seja segundo_passo = proximo_contador()
+
+seja pares_combinados = lista(combinar([1, 2, 3], [4, 5, 6]))
+seja valores_unicos = conjunto([1, 1, 2, 3])
+seja valores_fixos = tupla([10, 20, 30])
+
+classe CaixaContador:
+    def __init__(self, base_inicio):
+        self.valor = base_inicio
+
+classe CaixaContadorFilho(CaixaContador):
+    def __init__(self, base_inicio):
+        super(CaixaContadorFilho, self).__init__(base_inicio)
+        self.valor = self.valor + 1
+
+def produzir_tres():
+    para idx em intervalo(3):
+        produzir idx
+
+seja total_produzido = soma(produzir_tres())
+
+tentar:
+    se largo(valores_unicos) > 2:
+        levantar ValueError("boom")
+exceto ValueError como erro_tratado:
+    seja tratado = Verdadeiro
+finalmente:
+    seja valor_raiz = int(root_fn(16))
+
+imprimir(f"contador={incrementar_global()}, raiz={valor_raiz}, total={total_produzido}")

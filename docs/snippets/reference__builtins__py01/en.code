@@ -1,0 +1,14 @@
+from multilingualprogramming.codegen import RuntimeBuiltins
+
+# Get all builtins (including aliases) for a language
+builtins = RuntimeBuiltins.for_language("fr")
+
+# Check if alias exists
+print("afficher" in builtins)    # True
+print("imprimir" in builtins)    # False (Spanish, not French)
+print("print" in builtins)       # True (universal)
+
+# List all localized aliases for French
+aliases = {k: v.__name__ for k, v in builtins.items()
+           if k not in dir(__builtins__)}
+print(aliases)

@@ -1,0 +1,19 @@
+# Search with pour-else
+soit target = 7
+soit numbers = [1, 3, 5, 7, 9]
+
+pour num dans numbers:
+    si num == target:
+        afficher(f"Found {target}")
+        break
+sinon:
+    afficher(f"{target} not found")
+
+# While-else
+soit x = 10
+tant_que x > 0:
+    x -= 3
+    si x == 1:
+        break
+sinon:
+    afficher("loop finished normally")

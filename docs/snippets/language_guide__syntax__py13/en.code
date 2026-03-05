@@ -1,0 +1,6 @@
+lst[0]        # index
+lst[-1]       # from end
+lst[1:3]      # slice
+lst[::2]      # step
+lst[::-1]     # reverse
+lst[1:8:2]    # start:stop:step

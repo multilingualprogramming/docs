@@ -1,0 +1,12 @@
+let s1 = "hello"
+let s2 = 'hello'
+let s3 = """
+multi-line
+string
+"""
+let name = "World"
+let f1 = f"Hello, {name}!"
+let f2 = f"Pi = {3.14159:.2f}"
+let f3 = f"{value!r}"    # repr format
+let f4 = f"{value!s}"    # str format
+let f5 = f"{value!a}"    # ascii format

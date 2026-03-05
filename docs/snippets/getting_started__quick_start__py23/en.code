@@ -1,0 +1,15 @@
+# List comprehension
+let squares = [x**2 for x in range(10) if x % 2 == 0]
+
+# Nested comprehension
+let matrix = [[i * j for j in range(3)] for i in range(3)]
+let flat = [x for row in matrix for x in row]
+
+# Dict comprehension
+let word_lengths = {word: len(word) for word in ["apple", "banana"]}
+
+# Set comprehension
+let unique_lengths = {len(word) for word in ["hi", "hello", "hey"]}
+
+# Generator expression
+let total = sum(x**2 for x in range(100))

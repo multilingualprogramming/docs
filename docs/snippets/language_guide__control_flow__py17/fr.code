@@ -1,0 +1,13 @@
+# Anglais — all languages support tuple targets
+soit pairs = [(1, "a"), (2, "b"), (3, "c")]
+
+pour index, letter dans pairs:
+    afficher(f"{index}: {letter}")
+
+# enumerate
+pour idx, val dans enumerate(["x", "y", "z"]):
+    afficher(idx, val)
+
+# zip
+pour aa, bb dans zip([1, 2, 3], ["one", "two", "three"]):
+    afficher(aa, bb)

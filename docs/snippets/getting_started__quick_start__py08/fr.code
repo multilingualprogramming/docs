@@ -1,0 +1,3 @@
+soit x = 10
+soit label = "even" si x % 2 == 0 else "odd"
+afficher(label)  # even

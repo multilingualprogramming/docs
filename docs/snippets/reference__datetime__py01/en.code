@@ -1,0 +1,31 @@
+from multilingualprogramming import MPDate
+
+# Parse from string with language hint
+d1 = MPDate.parse("15 janvier 2024", language="fr")
+print(d1.year, d1.month, d1.day)   # 2024 1 15
+
+d2 = MPDate.parse("15 de enero de 2024", language="es")
+d3 = MPDate.parse("15 يناير 2024", language="ar")
+d4 = MPDate.parse("2024年1月15日", language="ja")
+d5 = MPDate.parse("15 जनवरी 2024", language="hi")
+
+# ISO format always works
+d6 = MPDate.parse("2024-01-15")     # ISO 8601
+
+# Create from parts
+d7 = MPDate(year=2024, month=1, day=15)
+
+# Format for a language
+print(d1.format(language="fr"))     # 15 janvier 2024
+print(d1.format(language="de"))     # 15. Januar 2024
+print(d1.format(language="ar"))     # 15 يناير 2024
+print(d1.format(language="ja"))     # 2024年1月15日
+print(d1.format(language="zh"))     # 2024年1月15日
+print(d1.format(language="hi"))     # 15 जनवरी 2024
+
+# Properties
+print(d1.year)                      # 2024
+print(d1.month)                     # 1
+print(d1.day)                       # 15
+print(d1.weekday())                 # 0 (Monday)
+print(d1.isoformat())               # "2024-01-15"

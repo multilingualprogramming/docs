@@ -1,0 +1,7 @@
+import math
+from math import sqrt, pi
+from math import sqrt as root
+
+print(math.factorial(10))
+print(root(16))        # 4.0
+print(pi)              # 3.14159...

@@ -1,0 +1,10 @@
+def f(
+    pos_only_a,
+    pos_only_b,
+    /,           # positional-only boundary
+    regular,
+    *args,       # variable positional
+    kw_only,     # keyword-only (after *)
+    **kwargs     # variable keyword
+):
+    pass

@@ -1,0 +1,9 @@
+from multilingualprogramming import REPL
+
+repl = REPL(language="en", show_python=False)
+repl.run()   # starts interactive REPL
+
+# REPL programmatique (non interactif)
+repl = REPL(language="fr")
+output = repl.eval_line("soit x = 42")
+output = repl.eval_line("afficher(x)")

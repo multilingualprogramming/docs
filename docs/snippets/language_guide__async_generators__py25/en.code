@@ -1,0 +1,13 @@
+import asyncio
+
+async def async_range(n, delay=0.01):
+    for i in range(n):
+        await asyncio.sleep(delay)
+        yield i
+
+async def main():
+    async for val in async_range(5):
+        print(val)
+
+asyncio.run(main())
+# 0, 1, 2, 3, 4 (with delays)

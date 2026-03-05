@@ -1,0 +1,16 @@
+from multilingualprogramming import MPNumeral
+
+# Creer depuis plusieurs formes
+n1 = MPNumeral(42)
+n2 = MPNumeral("٤٢")       # Arabe-Indic digits
+n3 = MPNumeral("四十二")    # CJK numerals
+
+# Arithmetique
+result = n1 + n2             # returns MPNumeral
+result = n1 * MPNumeral(3)
+
+# Conversion
+afficher(n1.to_int())           # 42
+afficher(n1.to_arabic_indic())  # ٤٢
+afficher(n1.to_devanagari())    # ४२
+afficher(n1.to_cjk())           # 四十二

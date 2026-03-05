@@ -1,0 +1,10 @@
+# File I/O
+with open("data.txt", "w", encoding="utf-8") as f:
+    f.write("hello")
+
+with open("data.txt", "r", encoding="utf-8") as f:
+    let content = f.read()
+
+# Multiple context managers
+with open("in.txt") as src, open("out.txt", "w") as dst:
+    dst.write(src.read())

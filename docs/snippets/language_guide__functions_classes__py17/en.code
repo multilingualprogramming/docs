@@ -1,0 +1,13 @@
+def make_counter(start=0):
+    let count = start
+
+    def increment(by=1):
+        nonlocal count
+        count += by
+        return count
+
+    return increment
+
+counter = make_counter(10)
+print(counter())    # 11
+print(counter(5))   # 16

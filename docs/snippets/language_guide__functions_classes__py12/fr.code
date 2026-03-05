@@ -1,0 +1,5 @@
+fonction variadic(*args, **kwargs):
+    afficher("positional:", args)
+    afficher("keyword:", kwargs)
+
+variadic(1, 2, 3, name="Alice", age=30)

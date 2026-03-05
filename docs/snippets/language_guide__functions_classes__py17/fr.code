@@ -1,0 +1,13 @@
+fonction make_counter(start=0):
+    soit count = start
+
+    fonction increment(by=1):
+        nonlocal count
+        count += by
+        retourner count
+
+    retourner increment
+
+counter = make_counter(10)
+afficher(counter())    # 11
+afficher(counter(5))   # 16

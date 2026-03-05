@@ -1,0 +1,5 @@
+let message = "Hello, multilingual world!"
+let count = 3
+
+for idx in range(count):
+    print(f"[{idx}] {message}")

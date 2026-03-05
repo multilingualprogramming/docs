@@ -1,0 +1,19 @@
+from multilingualprogramming import MPDate, MPTime, MPDatetime
+
+# Parse multilingual date strings
+d = MPDate.parse("15 janvier 2024", language="fr")
+print(d.year, d.month, d.day)    # 2024 1 15
+
+d2 = MPDate.parse("15 يناير 2024", language="ar")
+
+# Format for a language
+print(d.format(language="fr"))   # 15 janvier 2024
+print(d.format(language="de"))   # 15. Januar 2024
+
+# MPTime
+t = MPTime(14, 30, 0)
+print(t.format(language="fr"))   # 14:30:00
+
+# MPDatetime
+dt = MPDatetime.now()
+print(dt.format(language="ja"))  # 2024年1月15日 14:30:00

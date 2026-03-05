@@ -1,0 +1,5 @@
+for idx in range(5):
+    if idx == 3:
+        break
+else:
+    print("Loop completed without break")

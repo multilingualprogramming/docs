@@ -1,0 +1,7 @@
+match status:
+    case 400 | 401 | 403:
+        print("client error")
+    case 500 | 502 | 503:
+        print("server error")
+    case 200:
+        print("ok")

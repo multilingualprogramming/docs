@@ -1,0 +1,22 @@
+from multilingualprogramming import (
+    Lexer, Parser, SemanticAnalyzer,
+    PythonCodeGenerator, ASTPrinter
+)
+
+source = """
+soit nums = [1, 2, 3, 4, 5]
+soit total = sum(n**2 pour n dans nums)
+afficher(total)
+"""
+language = "en"
+
+lexer = Lexer(language=language)
+parser = Parser(language=language)
+analyzer = SemanticAnalyzer(language=language)
+codegen = PythonCodeGenerator()
+
+tokens = lexer.tokenize(source)
+ast = parser.parse(tokens)
+analyzer.analyze(ast)
+python_code = codegen.generate(ast)
+afficher(python_code)

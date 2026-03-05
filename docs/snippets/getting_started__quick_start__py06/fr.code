@@ -1,0 +1,15 @@
+soit first = "Bonjour"
+soit last = "Monde"
+soit greeting = f"{first}, {last}!"
+afficher(greeting)   # Bonjour, Monde!
+
+# Specificateurs de format
+soit pi = 3.14159
+afficher(f"Pi is {pi:.2f}")   # Pi is 3.14
+
+# Chaines sur plusieurs lignes
+soit poem = """
+Line one
+Line two
+Line three
+"""

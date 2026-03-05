@@ -1,0 +1,14 @@
+fonction countdown(n):
+    tant_que n > 0:
+        produire n
+        n -= 1
+
+pour num dans countdown(5):
+    afficher(num)  # 5, 4, 3, 2, 1
+
+# produire_de
+fonction chain(*iterables):
+    pour it dans iterables:
+        produire_de it
+
+soit combined = list(chain([1, 2], [3, 4], [5]))

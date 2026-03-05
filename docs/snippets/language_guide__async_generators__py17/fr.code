@@ -1,0 +1,12 @@
+# Exemple FR: identifiants API Python non traduisibles
+import asyncio
+
+función_async obtener(url):
+    esperar asyncio.sleep(0.1)
+    retornar f"datos de {url}"
+
+función_async principal():
+    resultado = esperar obtener("https://ejemplo.com")
+    imprimir(resultado)
+
+asyncio.run(principal())

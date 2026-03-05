@@ -1,0 +1,33 @@
+import asyncio
+
+async def fetch(session, url):
+    """Simulates an async HTTP request."""
+    await asyncio.sleep(0.05)  # simulate latency
+    return {"url": url, "status": 200, "data": f"content of {url}"}
+
+async def fetch_all(urls):
+    """Fetch multiple URLs concurrently."""
+    tasks = [fetch(None, url) for url in urls]
+    results = await asyncio.gather(*tasks)
+    return results
+
+async def process_stream(data_source):
+    """Process an async iterator."""
+    let total = 0
+    async for item in data_source:
+        total += item
+    return total
+
+async def main():
+    let urls = [
+        "https://example.com/page1",
+        "https://example.com/page2",
+        "https://example.com/page3",
+    ]
+
+    print("Fetching concurrently...")
+    let results = await fetch_all(urls)
+    for r in results:
+        print(f"  {r['url']}: {r['status']}")
+
+asyncio.run(main())

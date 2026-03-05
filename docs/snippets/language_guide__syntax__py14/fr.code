@@ -1,0 +1,2 @@
+si (n := len(data)) > 10:
+    afficher(f"Long: {n}")

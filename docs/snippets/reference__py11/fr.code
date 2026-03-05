@@ -1,0 +1,21 @@
+from multilingualprogramming import KeywordRegistry
+
+registry = KeywordRegistry()
+
+# Forward lookup: concept → language keyword
+keyword = registry.get_keyword(concept: str, language: str) -> str
+# e.g., registry.get_keyword("COND_IF", "fr") → "si"
+
+# Reverse lookup: language keyword → concept
+concept = registry.get_concept(keyword: str, language: str) -> str
+# e.g., registry.get_concept("si", "fr") → "COND_IF"
+
+# Toutes les langues supportees
+langs = registry.get_supported_languages() -> list[str]
+# ["en", "fr", "es", "de", "it", "pt", "pl", "nl", "sv", "da", "fi", "hi", "ar", "bn", "ta", "zh", "ja"]
+
+# Tous les mots-cles pour une langue
+mapping = registry.get_all_keywords(language: str) -> dict[str, str]
+
+# Tous les concepts
+concepts = registry.get_all_concepts() -> list[str]

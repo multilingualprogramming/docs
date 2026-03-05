@@ -1,0 +1,23 @@
+# Exemple FR: identifiants API Python non traduisibles
+import asyncio
+
+async_classe CompteurAsync:
+    définir __init__(soi, limite):
+        soi.limite = limite
+        soi.actuel = 0
+
+    définir __aiter__(soi):
+        retourner soi
+
+    async_définir __anext__(soi):
+        si soi.actuel >= soi.limite:
+            lever StopAsyncIteration
+        attendre asyncio.sleep(0)
+        soi.actuel += 1
+        retourner soi.actuel
+
+async_fonction principale():
+    async_pour n dans CompteurAsync(5):
+        afficher(n)
+
+asyncio.run(principale())

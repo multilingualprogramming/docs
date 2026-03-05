@@ -1,0 +1,5 @@
+def add(x: int, b: int) -> int:
+    return x + b
+
+def process(items: list, limit: int = 10) -> dict:
+    return {i: items[i] for i in range(min(limit, len(items)))}

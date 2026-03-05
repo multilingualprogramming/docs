@@ -1,0 +1,24 @@
+classe Temperature:
+    fonction __init__(self, celsius):
+        self._celsius = celsius
+
+    @property
+    fonction celsius(self):
+        retourner self._celsius
+
+    @celsius.setter
+    fonction celsius(self, value):
+        si value < -273.15:
+            raise ValueError("Below absolute zero!")
+        self._celsius = value
+
+    @property
+    fonction fahrenheit(self):
+        retourner self._celsius * 9/5 + 32
+
+
+soit temp = Temperature(100)
+afficher(temp.celsius)      # 100
+afficher(temp.fahrenheit)   # 212.0
+temp.celsius = 0
+afficher(temp.fahrenheit)   # 32.0

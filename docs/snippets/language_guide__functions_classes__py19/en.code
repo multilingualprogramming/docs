@@ -1,0 +1,6 @@
+@decorator_a
+@decorator_b
+@decorator_c
+def my_func():
+    pass
+# equivalent to: decorator_a(decorator_b(decorator_c(my_func)))

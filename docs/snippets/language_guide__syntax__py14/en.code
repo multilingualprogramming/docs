@@ -1,0 +1,2 @@
+if (n := len(data)) > 10:
+    print(f"Long: {n}")

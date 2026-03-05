@@ -1,0 +1,5 @@
+fonction add(x: int, b: int) -> int:
+    retourner x + b
+
+fonction process(items: list, limit: int = 10) -> dict:
+    retourner {i: items[i] pour i dans intervalle(min(limit, len(items)))}

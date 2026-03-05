@@ -1,0 +1,8 @@
+soit x = 42
+
+si x > 0:
+    afficher("positif")
+sinon_si x < 0:
+    afficher("negatif")
+sinon:
+    afficher("zero")

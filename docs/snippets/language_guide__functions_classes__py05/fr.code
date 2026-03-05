@@ -1,0 +1,5 @@
+# Exemple FR: identifiants API Python non traduisibles
+関数 挨拶(名前):
+    戻る f"こんにちは、{名前}！"
+
+表示(挨拶("世界"))

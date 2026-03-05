@@ -1,0 +1,21 @@
+from multilingualprogramming import UnicodeNumeral
+
+# Arabic-Indic numerals
+u1 = UnicodeNumeral("٣٧")
+print(u1.to_int())    # 37
+
+# Devanagari numerals (Hindi)
+u2 = UnicodeNumeral("३७")
+print(u2.to_int())    # 37
+
+# Bengali numerals
+u3 = UnicodeNumeral("৩৭")
+print(u3.to_int())    # 37
+
+# Tamil numerals
+u4 = UnicodeNumeral("௩௭")
+print(u4.to_int())    # 37
+
+# CJK digits
+u5 = UnicodeNumeral("三七")
+print(u5.to_int())    # 37

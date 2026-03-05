@@ -1,0 +1,16 @@
+def integers_from(n):
+    while True:
+        yield n
+        n += 1
+
+def take(n, gen):
+    for _ in range(n):
+        yield next(gen)
+
+def squares(gen):
+    for x in gen:
+        yield x ** 2
+
+# Compose pipelines
+let result = list(take(5, squares(integers_from(1))))
+print(result)  # [1, 4, 9, 16, 25]

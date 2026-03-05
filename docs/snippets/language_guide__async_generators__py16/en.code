@@ -1,0 +1,11 @@
+import asyncio
+
+async_fonction récupérer(url):
+    attendre asyncio.sleep(0.1)
+    retourner f"données de {url}"
+
+async_fonction principale():
+    résultat = attendre récupérer("https://exemple.com")
+    afficher(résultat)
+
+asyncio.run(principale())

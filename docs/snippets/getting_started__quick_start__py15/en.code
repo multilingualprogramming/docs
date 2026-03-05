@@ -1,0 +1,6 @@
+let point = (3, 4)
+let x, pt_y = point
+
+# Starred unpacking
+let first_, *rest_ = [1, 2, 3, 4, 5]
+let a_, *middle_, z_ = [1, 2, 3, 4, 5]

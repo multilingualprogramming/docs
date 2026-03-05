@@ -1,0 +1,45 @@
+niech wspolny_licznik = 3
+
+fonction zwieksz_globalny():
+    globalny wspolny_licznik
+    wspolny_licznik = wspolny_licznik + 2
+    zwroc wspolny_licznik
+
+fonction stworz_licznik(start):
+    niech suma = start
+    fonction krok():
+        nielokalny suma
+        suma = suma + 1
+        zwroc suma
+    zwroc krok
+
+niech nastepny_licznik = stworz_licznik(5)
+niech pierwszy_krok = nastepny_licznik()
+niech drugi_krok = nastepny_licznik()
+
+niech unikalne = zbior([1, 1, 2, 3])
+
+klasa PudelkoLicznika:
+    fonction __init__(self, baza_start):
+        self.wartosc = baza_start
+
+klasa PudelkoLicznikaDziecko(PudelkoLicznika):
+    fonction __init__(self, baza_start):
+        super(PudelkoLicznikaDziecko, self).__init__(baza_start)
+        self.wartosc = self.wartosc + 1
+
+fonction produkuj_trzy():
+    dla idx w zakresie(3):
+        wyprodu idx
+
+niech suma_wyprodukowana = sumuj(produkuj_trzy())
+
+sprobuj:
+    jezeli dlugosc(unikalne) > 2:
+        wrzuc ValueError("boom")
+poza ValueError jako obsluzony_blad:
+    niech obsluzony = Prawda
+wreszcie:
+    niech wartosc_pierwiastka = int(root_fn(16))
+
+wypisz(f"licznik={zwieksz_globalny()}, pierwiastek={wartosc_pierwiastka}, suma={suma_wyprodukowana}")

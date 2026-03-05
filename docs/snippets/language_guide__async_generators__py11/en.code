@@ -1,0 +1,9 @@
+# Generator expression (lazy)
+let squares_gen = (x**2 for x in range(10))
+
+# vs list comprehension (eager)
+let squares_list = [x**2 for x in range(10)]
+
+# Useful in function calls — avoids building a list
+print(sum(x**2 for x in range(100)))      # 328350
+print(max(len(w) for w in ["hello", "world", "!"]))  # 5

@@ -1,0 +1,11 @@
+import asyncio
+
+async def fetch(url):
+    await asyncio.sleep(0.1)
+    return f"result from {url}"
+
+async def main():
+    result = await fetch("https://example.com")
+    print(result)
+
+asyncio.run(main())

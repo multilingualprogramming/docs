@@ -1,0 +1,8 @@
+soit lst = [1, 2, 3]             # list
+soit dct = {"a": 1, "b": 2}     # dict
+soit st = {1, 2, 3}             # set
+soit tpl = (1, 2, 3)            # tuple
+soit empty_list = []
+soit empty_dict = {}
+soit empty_set = set()
+soit empty_tuple = ()

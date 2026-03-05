@@ -1,0 +1,9 @@
+soit command = "quit"
+
+match command:
+    case "quit":
+        afficher("quitting")
+    case "help":
+        afficher("showing help")
+    case _:
+        afficher(f"unknown: {command}")

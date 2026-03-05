@@ -1,0 +1,7 @@
+def count_up(n):
+    for i in range(n):
+        yield i
+
+def chain(*iterables):
+    for it in iterables:
+        yield from it

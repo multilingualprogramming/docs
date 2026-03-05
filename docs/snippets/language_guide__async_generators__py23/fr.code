@@ -1,0 +1,23 @@
+import asyncio
+
+classe AsyncResource:
+    async fonction __aenter__(self):
+        afficher("acquiring resource")
+        await asyncio.sleep(0)
+        retourner self
+
+    async fonction __aexit__(self, exc_type, exc, tb):
+        afficher("releasing resource")
+        await asyncio.sleep(0)
+        retourner False
+
+    async fonction use(self):
+        retourner "resource data"
+
+
+async fonction main():
+    async with AsyncResource() as res:
+        data = await res.use()
+        afficher(data)
+
+asyncio.run(main())

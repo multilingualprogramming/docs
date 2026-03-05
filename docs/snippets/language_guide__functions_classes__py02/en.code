@@ -1,0 +1,4 @@
+fonction saluer(nom):
+    retourner f"Bonjour, {nom}!"
+
+afficher(saluer("Monde"))

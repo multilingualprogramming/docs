@@ -1,0 +1,22 @@
+from multilingualprogramming import NumeralConverter
+
+conv = NumeralConverter()
+
+# To various scripts
+afficher(conv.to_arabic_indic(42))     # ٤٢
+afficher(conv.to_devanagari(42))       # ४२
+afficher(conv.to_bengali(42))          # ৪২
+afficher(conv.to_tamil(42))            # ௪௨
+afficher(conv.to_cjk(42))              # 四十二
+afficher(conv.to_roman(42))            # XLII
+
+# From various scripts to integer
+afficher(conv.to_int("٤٢"))            # 42 (Arabe-Indic)
+afficher(conv.to_int("४२"))            # 42 (Devanagari)
+afficher(conv.to_int("XLII"))          # 42 (Roman)
+afficher(conv.to_int("四十二"))         # 42 (CJK)
+
+# Detect script
+afficher(conv.detect_script("٤٢"))     # "arabic_indic"
+afficher(conv.detect_script("四十二"))  # "cjk"
+afficher(conv.detect_script("XIV"))    # "roman"

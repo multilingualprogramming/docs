@@ -1,0 +1,5 @@
+soit message = "Bonjour, monde multilingue !"
+soit count = 3
+
+pour idx dans intervalle(count):
+    afficher(f"[{idx}] {message}")

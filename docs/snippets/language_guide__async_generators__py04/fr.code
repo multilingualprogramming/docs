@@ -1,0 +1,8 @@
+funktion zaehlen(n):
+    sei i = 0
+    solange i < n:
+        ergeben i
+        i += 1
+
+für wert dans zaehlen(5):
+    ausgeben(wert)

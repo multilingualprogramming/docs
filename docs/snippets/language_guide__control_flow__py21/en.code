@@ -1,0 +1,5 @@
+sei zaehler = 0
+
+solange zaehler < 5:
+    ausgeben(zaehler)
+    zaehler += 1

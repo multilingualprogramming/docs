@@ -1,0 +1,33 @@
+executor = ProgramExecutor()
+
+# Execute English program
+executor.execute("""
+let x = 10
+let y = 20
+print(f"Sum: {x + y}")
+""", language="en")
+
+# Execute French program
+executor.execute("""
+soit x = 10
+soit y = 20
+afficher(f"Somme: {x + y}")
+""", language="fr")
+
+# Execute Japanese program
+executor.execute("""
+変数 x = 10
+変数 y = 20
+表示(f"合計: {x + y}")
+""", language="ja")
+
+# Transpile to Python
+python_code = executor.transpile("""
+let items = [1, 2, 3]
+for i in items:
+    print(i)
+""", language="en")
+print(python_code)
+# items = [1, 2, 3]
+# for i in items:
+#     print(i)

@@ -1,0 +1,11 @@
+for idx in range(5):
+    print(idx)   # 0, 1, 2, 3, 4
+
+# Iterate over a list
+let fruits = ["apple", "banana", "cherry"]
+for fruit in fruits:
+    print(fruit)
+
+# With enumerate
+for idx, fruit in enumerate(fruits):
+    print(f"{idx}: {fruit}")

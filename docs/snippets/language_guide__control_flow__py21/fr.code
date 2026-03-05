@@ -1,0 +1,6 @@
+# Exemple FR: identifiants API Python non traduisibles
+sei zaehler = 0
+
+solange zaehler < 5:
+    ausgeben(zaehler)
+    zaehler += 1

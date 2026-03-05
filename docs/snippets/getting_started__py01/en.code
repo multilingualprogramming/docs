@@ -1,0 +1,3 @@
+from multilingualprogramming.runtime.backend_selector import BackendSelector
+selector = BackendSelector()
+print(f"WASM available: {selector.is_wasm_available()}")

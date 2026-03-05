@@ -1,0 +1,9 @@
+# Exemple FR: identifiants API Python non traduisibles
+soit x = 42
+
+si x > 0:
+    afficher("positif")
+sinon_si x < 0:
+    afficher("négatif")
+sinon:
+    afficher("zéro")

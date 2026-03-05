@@ -1,0 +1,9 @@
+fonction flatten(nested):
+    pour item dans nested:
+        si isinstance(item, list):
+            produire_de flatten(item)
+        sinon:
+            produire item
+
+soit data = [1, [2, [3, 4]], [5, 6]]
+afficher(list(flatten(data)))  # [1, 2, 3, 4, 5, 6]

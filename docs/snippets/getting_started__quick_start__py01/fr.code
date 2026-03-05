@@ -1,0 +1,5 @@
+soit x = 42
+soit name = "Alice"
+soit pi = 3.14159
+soit active = True
+soit nothing = None

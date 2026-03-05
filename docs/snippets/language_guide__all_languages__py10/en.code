@@ -1,0 +1,40 @@
+lad delt_taeller = 3
+
+def oeg_global():
+    global delt_taeller
+    delt_taeller = delt_taeller + 2
+    returner delt_taeller
+
+def opret_taeller(start):
+    lad total = start
+    def trin():
+        ikkelokal total
+        total = total + 1
+        returner total
+    returner trin
+
+lad naeste_taeller = opret_taeller(5)
+lad foerste_trin = naeste_taeller()
+lad andet_trin = naeste_taeller()
+
+lad unikke_vaerdier = saet([1, 1, 2, 3])
+
+klasse TaellerBoks:
+    def __init__(self, start_basis):
+        self.vaerdi = start_basis
+
+def producere_tre():
+    for idx i omrade(3):
+        producere idx
+
+lad samlet_produceret = sum(producere_tre())
+
+provedet:
+    hvis laengde(unikke_vaerdier) > 2:
+        kast ValueError("boom")
+undtagen ValueError som behandlet_fejl:
+    lad behandlet = Sand
+endelig:
+    lad rod_vaerdi = int(root_fn(16))
+
+udskriv(f"taeller={oeg_global()}, rod={rod_vaerdi}, total={samlet_produceret}")

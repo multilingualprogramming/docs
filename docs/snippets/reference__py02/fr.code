@@ -1,0 +1,12 @@
+from multilingualprogramming import ProgramExecutor
+
+executor = ProgramExecutor()
+
+# Executer une chaine source
+executor.execute(source: str, language: str = "en") -> None
+
+# Executer un fichier
+executor.execute_file(path: str, language: str = "en") -> None
+
+# Transpiler vers Python (retourner Python source without executing)
+python_src = executor.transpile(source: str, language: str = "en") -> str

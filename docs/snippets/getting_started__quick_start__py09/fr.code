@@ -1,0 +1,3 @@
+soit data = [1, 2, 3, 4, 5]
+si (n := len(data)) > 3:
+    afficher(f"Long list: {n} items")

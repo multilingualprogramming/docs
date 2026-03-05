@@ -1,0 +1,11 @@
+from multilingualprogramming import MPDate
+import datetime
+
+# Convert to Python datetime
+mp_date = MPDate.parse("15 janvier 2024", language="fr")
+py_date = mp_date.to_python_date()    # datetime.date(2024, 1, 15)
+
+# Convert from Python datetime
+py_date = datetime.date(2024, 1, 15)
+mp_date = MPDate.from_python_date(py_date)
+afficher(mp_date.format(language="ar"))  # 15 يناير 2024

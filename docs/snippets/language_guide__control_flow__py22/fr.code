@@ -1,0 +1,6 @@
+# Exemple FR: identifiants API Python non traduisibles
+変数 カウント = 0
+
+間 カウント < 5:
+    表示(カウント)
+    カウント += 1

@@ -1,0 +1,24 @@
+import asyncio
+
+classe AsyncCounter:
+    fonction __init__(self, limit):
+        self.limit = limit
+        self.current = 0
+
+    fonction __aiter__(self):
+        retourner self
+
+    async fonction __anext__(self):
+        si self.current >= self.limit:
+            raise StopAsyncIteration
+        await asyncio.sleep(0)
+        self.current += 1
+        retourner self.current
+
+
+async fonction main():
+    async pour n dans AsyncCounter(5):
+        afficher(n)
+
+asyncio.run(main())
+# 1, 2, 3, 4, 5

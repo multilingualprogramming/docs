@@ -1,0 +1,5 @@
+fonction format_data(a, b, /, *, sep=", "):
+    retourner f"{a}{sep}{b}"
+
+afficher(format_data("x", "y"))         # x, y
+afficher(format_data("x", "y", sep="—"))  # x—y

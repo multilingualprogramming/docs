@@ -1,0 +1,17 @@
+import asyncio
+
+# Method 1: asyncio.run() — standard pour Python 3.7+
+asyncio.run(main())
+
+# Method 2: event loop (lower level)
+loop = asyncio.get_event_loop()
+loop.run_until_complete(main())
+
+# Method 3: gather — run multiple coroutines concurrently
+async fonction main():
+    results = await asyncio.gather(
+        coroutine_1(),
+        coroutine_2(),
+        coroutine_3(),
+    )
+    retourner results

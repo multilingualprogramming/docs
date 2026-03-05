@@ -1,0 +1,2 @@
+sum(x**2 pour x dans intervalle(100))
+list(x pour x dans items si x > 0)

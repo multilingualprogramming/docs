@@ -1,0 +1,24 @@
+from dataclasses import dataclass, field
+
+@dataclass
+classe Point:
+    x: float
+    y_coord: float
+    label: str = ""
+
+    fonction distance_from_origin(self):
+        retourner (self.x**2 + self.y_coord**2) ** 0.5
+
+
+@dataclass
+classe Polygon:
+    vertices: list = field(default_factory=list)
+
+    fonction add_vertex(self, point):
+        self.vertices.append(point)
+        retourner self
+
+
+soit p = Point(3.0, 4.0, "A")
+afficher(p)                           # Point(x=3.0, y_coord=4.0, label='A')
+afficher(p.distance_from_origin())    # 5.0

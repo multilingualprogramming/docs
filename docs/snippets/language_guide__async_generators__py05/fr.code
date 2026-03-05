@@ -1,0 +1,9 @@
+# Exemple FR: identifiants API Python non traduisibles
+関数 カウント(n):
+    変数 i = 0
+    間 i < n:
+        産出 i
+        i += 1
+
+毎 値 中 カウント(5):
+    表示(値)

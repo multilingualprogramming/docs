@@ -1,0 +1,12 @@
+soit s1 = "hello"
+soit s2 = 'hello'
+soit s3 = """
+multi-line
+string
+"""
+soit name = "Monde"
+soit f1 = f"Bonjour, {name}!"
+soit f2 = f"Pi = {3.14159:.2f}"
+soit f3 = f"{value!r}"    # repr format
+soit f4 = f"{value!s}"    # str format
+soit f5 = f"{value!a}"    # ascii format

@@ -1,0 +1,13 @@
+# English — all languages support tuple targets
+let pairs = [(1, "a"), (2, "b"), (3, "c")]
+
+for index, letter in pairs:
+    print(f"{index}: {letter}")
+
+# enumerate
+for idx, val in enumerate(["x", "y", "z"]):
+    print(idx, val)
+
+# zip
+for aa, bb in zip([1, 2, 3], ["one", "two", "three"]):
+    print(aa, bb)

@@ -1,0 +1,5 @@
+let x = 42
+let name = "Alice"
+let pi = 3.14159
+let active = True
+let nothing = None

@@ -1,0 +1,5 @@
+pour idx dans intervalle(5):
+    si idx == 3:
+        break
+sinon:
+    afficher("Boucle terminee sans break")

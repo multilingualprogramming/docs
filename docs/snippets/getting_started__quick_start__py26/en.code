@@ -1,0 +1,14 @@
+def countdown(n):
+    while n > 0:
+        yield n
+        n -= 1
+
+for num in countdown(5):
+    print(num)  # 5, 4, 3, 2, 1
+
+# yield from
+def chain(*iterables):
+    for it in iterables:
+        yield from it
+
+let combined = list(chain([1, 2], [3, 4], [5]))

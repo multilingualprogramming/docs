@@ -1,0 +1,7 @@
+# Exemple FR: identifiants API Python non traduisibles
+a & b    # AND
+a | b    # OR
+a ^ b    # XOR
+~a       # NOT
+a << n   # left shift
+a >> n   # right shift

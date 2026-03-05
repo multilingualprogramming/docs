@@ -1,0 +1,20 @@
+from multilingualprogramming import MPDatetime
+
+# Current datetime
+dt = MPDatetime.now()
+
+# Create from parts
+dt1 = MPDatetime(year=2024, month=1, day=15, hour=14, minute=30, second=0)
+
+# Parse
+dt2 = MPDatetime.parse("15 janvier 2024 14:30:00", language="fr")
+
+# Format
+afficher(dt1.format(language="fr"))    # 15 janvier 2024 à 14:30:00
+afficher(dt1.format(language="de"))    # 15. Januar 2024 um 14:30:00
+afficher(dt1.format(language="ja"))    # 2024年1月15日 14時30分00秒
+afficher(dt1.format(language="ar"))    # 15 يناير 2024 الساعة 14:30:00
+
+# Components
+afficher(dt1.date())                   # MPDate(2024, 1, 15)
+afficher(dt1.time())                   # MPTime(14, 30, 0)

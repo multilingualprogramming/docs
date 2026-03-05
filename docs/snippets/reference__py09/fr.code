@@ -1,0 +1,5 @@
+# Exemple FR: identifiants API Python non traduisibles
+from multilingualprogramming import PythonCodeGenerator
+
+codegen = PythonCodeGenerator()
+python_src = codegen.generate(ast: Program) -> str

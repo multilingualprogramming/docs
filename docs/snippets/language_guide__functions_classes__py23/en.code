@@ -1,0 +1,10 @@
+classe Animal:
+    définir __init__(soi, nom, son):
+        soi.nom = nom
+        soi.son = son
+
+    définir parler(soi):
+        retourner f"{soi.nom} dit {soi.son}"
+
+soit chien = Animal("Chien", "ouaf")
+afficher(chien.parler())

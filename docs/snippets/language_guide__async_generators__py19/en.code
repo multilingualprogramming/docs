@@ -1,0 +1,11 @@
+import asyncio
+
+非同期関数 取得(url):
+    待つ asyncio.sleep(0.1)
+    戻る f"{url}からのデータ"
+
+非同期関数 メイン():
+    結果 = 待つ 取得("https://example.com")
+    表示(結果)
+
+asyncio.run(メイン())

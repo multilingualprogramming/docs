@@ -1,0 +1,5 @@
+# Exemple FR: identifiants API Python non traduisibles
+कार्य अभिवादन(नाम):
+    वापस f"नमस्ते, {नाम}!"
+
+छापो(अभिवादन("दुनिया"))

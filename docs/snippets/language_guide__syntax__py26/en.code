@@ -1,0 +1,17 @@
+def my_decorator(func):
+    def wrapper(*args, **kwargs):
+        print("before")
+        result = func(*args, **kwargs)
+        print("after")
+        return result
+    return wrapper
+
+@my_decorator
+def hello():
+    print("hello!")
+
+# Multiple decorators (applied bottom-up)
+@decorator1
+@decorator2
+def my_func():
+    pass

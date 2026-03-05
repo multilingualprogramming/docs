@@ -1,0 +1,3 @@
+# Anglais program with Devanagari numeral
+soit count = ४२        # equivalent to 42
+afficher(count + 8)     # 50

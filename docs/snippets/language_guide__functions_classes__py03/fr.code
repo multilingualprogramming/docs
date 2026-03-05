@@ -1,0 +1,5 @@
+# Exemple FR: identifiants API Python non traduisibles
+función saludar(nombre):
+    retornar f"Hola, {nombre}!"
+
+imprimir(saludar("Mundo"))

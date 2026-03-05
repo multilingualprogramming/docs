@@ -1,0 +1,26 @@
+from multilingualprogramming import (
+    ProgramExecutor,
+    REPL,
+    Lexer,
+    Parser,
+    SemanticAnalyzer,
+    PythonCodeGenerator,
+    KeywordRegistry,
+    MPNumeral,
+    MPDate,
+)
+
+# Execute a multilingual program
+executor = ProgramExecutor()
+executor.execute("""
+let greeting = "Hello"
+let times = 3
+for i in range(times):
+    print(f"{greeting} #{i+1}")
+""", language="en")
+
+# Inspect keywords for a language
+registry = KeywordRegistry()
+print(registry.get_keyword("COND_IF", "fr"))   # "si"
+print(registry.get_keyword("FUNC_DEF", "ja"))   # "関数"
+print(registry.get_keyword("LOOP_FOR", "ar"))   # "لكل"

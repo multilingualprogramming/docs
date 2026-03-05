@@ -1,0 +1,59 @@
+importieren math
+von math importieren sqrt als root_fn
+
+sei gemeinsamer_zaehler = 3
+
+def erhoehe_global():
+    global gemeinsamer_zaehler
+    gemeinsamer_zaehler = gemeinsamer_zaehler + 2
+    zurueck gemeinsamer_zaehler
+
+def erstelle_zaehler(start):
+    sei gesamt = start
+    def schritt():
+        nichtlokal gesamt
+        gesamt = gesamt + 1
+        zurueck gesamt
+    zurueck schritt
+
+sei naechster_zaehler = erstelle_zaehler(5)
+sei erster_schritt = naechster_zaehler()
+sei zweiter_schritt = naechster_zaehler()
+
+sei gezippte_paare = liste(kombinieren([1, 2, 3], [4, 5, 6]))
+sei eindeutige_werte = menge([1, 1, 2, 3])
+sei feste_werte = tupel([10, 20, 30])
+
+sei erstes_elem, *mitte, letztes_elem = [1, 2, 3, 4]
+sei zusammengefuehrt = {**{"x": 1}, **{"y": 2}}
+
+def format_tag(a, /, *, b):
+    zurueck f"{a}-{b:.1f}"
+
+sei startpunkt = 0
+sei walrus_wert = (startpunkt := startpunkt + 9)
+
+klasse ZaehlerBox:
+    def __init__(self, start_basis):
+        self.wert = start_basis
+
+klasse ZaehlerBoxKind(ZaehlerBox):
+    def __init__(self, start_basis):
+        super(ZaehlerBoxKind, self).__init__(start_basis)
+        self.wert = self.wert + 1
+
+def drei_erzeugen():
+    für idx in bereich(3):
+        erzeugen idx
+
+sei gesamt_erzeugt = summe(drei_erzeugen())
+
+versuche:
+    wenn länge(eindeutige_werte) > 2:
+        ausloesen ValueError("boom")
+ausser ValueError als behandelter_fehler:
+    sei behandelt = Wahr
+schliesslich:
+    sei wurzel_wert = int(root_fn(16))
+
+ausgeben(f"zaehler={erhoehe_global()}, wurzel={wurzel_wert}, gesamt={gesamt_erzeugt}")

@@ -1,0 +1,7 @@
+import re
+
+soit lines = ["hello world", "foo bar", "test 123"]
+
+pour line dans lines:
+    si m := re.search(r"\d+", line):
+        afficher(f"Found number: {m.group()} dans '{line}'")

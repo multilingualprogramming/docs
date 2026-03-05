@@ -1,0 +1,9 @@
+fonction count_up(n):
+    soit i = 0
+    tant_que i < n:
+        produire i
+        i += 1
+
+pour val dans count_up(5):
+    afficher(val)
+# 0, 1, 2, 3, 4

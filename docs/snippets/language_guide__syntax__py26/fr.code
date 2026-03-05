@@ -1,0 +1,17 @@
+fonction my_decorator(func):
+    fonction wrapper(*args, **kwargs):
+        afficher("before")
+        result = func(*args, **kwargs)
+        afficher("after")
+        retourner result
+    retourner wrapper
+
+@my_decorator
+fonction hello():
+    afficher("hello!")
+
+# Multiple decorators (applied bottom-up)
+@decorator1
+@decorator2
+fonction my_func():
+    pass

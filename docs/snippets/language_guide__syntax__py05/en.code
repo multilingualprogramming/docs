@@ -1,0 +1,7 @@
+let i = 42          # integer
+let f = 3.14        # float
+let sci = 1.5e10    # scientific notation
+let h = 0xFF        # hexadecimal
+let o = 0o77        # octal
+let b = 0b1010      # binary
+let c = 3 + 4j      # complex number

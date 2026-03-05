@@ -1,0 +1,11 @@
+pour idx dans intervalle(5):
+    afficher(idx)   # 0, 1, 2, 3, 4
+
+# Parcourir une liste
+soit fruits = ["apple", "banana", "cherry"]
+pour fruit dans fruits:
+    afficher(fruit)
+
+# Avec enumerate
+pour idx, fruit dans enumerate(fruits):
+    afficher(f"{idx}: {fruit}")

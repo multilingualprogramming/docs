@@ -1,0 +1,7 @@
+match value:
+    case n if n < 0:
+        print("negative")
+    case n if n == 0:
+        print("zero")
+    case n:
+        print(f"positive: {n}")

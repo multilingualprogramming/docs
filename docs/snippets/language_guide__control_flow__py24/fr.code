@@ -1,0 +1,6 @@
+# Exemple FR: identifiants API Python non traduisibles
+चर गिनती = 0
+
+जबकि गिनती < 5:
+    छापो(गिनती)
+    गिनती += 1

@@ -1,0 +1,4 @@
+soit a, b, c = [1, 2, 3]
+soit first, *rest = [1, 2, 3, 4]
+soit a_, *mid, last_ = [1, 2, 3, 4, 5]
+soit x_, y_ = (10, 20)

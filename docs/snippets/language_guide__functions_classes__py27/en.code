@@ -1,0 +1,16 @@
+class Flyable:
+    def fly(self):
+        return "flying"
+
+class Swimmable:
+    def swim(self):
+        return "swimming"
+
+class Duck(Flyable, Swimmable):
+    def quack(self):
+        return "quack"
+
+let donald = Duck()
+print(donald.fly())    # flying
+print(donald.swim())   # swimming
+print(donald.quack())  # quack

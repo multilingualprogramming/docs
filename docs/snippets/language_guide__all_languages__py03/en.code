@@ -1,0 +1,59 @@
+importar math
+de math importar sqrt como root_fn
+
+sea contador_compartido = 3
+
+def incrementar_global():
+    global contador_compartido
+    contador_compartido = contador_compartido + 2
+    retornar contador_compartido
+
+def crear_contador(inicio):
+    sea total = inicio
+    def paso():
+        nonlocal total
+        total = total + 1
+        retornar total
+    retornar paso
+
+sea proximo_contador = crear_contador(5)
+sea primer_paso = proximo_contador()
+sea segundo_paso = proximo_contador()
+
+sea pares_combinados = lista(combinar([1, 2, 3], [4, 5, 6]))
+sea valores_unicos = conjunto([1, 1, 2, 3])
+sea valores_fijos = tupla([10, 20, 30])
+
+sea primer_elem, *medio, ultimo_elem = [1, 2, 3, 4]
+sea mapa_fusionado = {**{"x": 1}, **{"y": 2}}
+
+def formatear_etiqueta(a, /, *, b):
+    retornar f"{a}-{b:.1f}"
+
+sea semilla = 0
+sea valor_walrus = (semilla := semilla + 9)
+
+clase CajaContador:
+    def __init__(self, base_inicio):
+        self.valor = base_inicio
+
+clase CajaContadorHijo(CajaContador):
+    def __init__(self, base_inicio):
+        super(CajaContadorHijo, self).__init__(base_inicio)
+        self.valor = self.valor + 1
+
+def producir_tres():
+    para idx en rango(3):
+        producir idx
+
+sea total_producido = suma(producir_tres())
+
+intentar:
+    si largo(valores_unicos) > 2:
+        lanzar ValueError("boom")
+excepto ValueError como error_manejado:
+    sea manejado = Verdadero
+finalmente:
+    sea valor_raiz = int(root_fn(16))
+
+imprimir(f"contador={incrementar_global()}, raiz={valor_raiz}, total={total_producido}")

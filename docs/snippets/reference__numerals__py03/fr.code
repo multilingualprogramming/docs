@@ -1,0 +1,17 @@
+from multilingualprogramming import RomanNumeral
+
+# From Roman string
+r1 = RomanNumeral("XIV")
+afficher(r1.to_int())      # 14
+afficher(int(r1))          # 14
+
+r2 = RomanNumeral("XLII")
+afficher(r2.to_int())      # 42
+
+# From integer
+r3 = RomanNumeral(2024)
+afficher(str(r3))          # MMXXIV
+
+# Arithmetique
+r4 = RomanNumeral("X") + RomanNumeral("V")
+afficher(str(r4))          # XV

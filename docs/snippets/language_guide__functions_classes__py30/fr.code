@@ -1,0 +1,27 @@
+classe Vector:
+    fonction __init__(self, x, y_val):
+        self.x = x
+        self.y_val = y_val
+
+    fonction __add__(self, other):
+        retourner Vector(self.x + other.x, self.y_val + other.y_val)
+
+    fonction __mul__(self, scalar):
+        retourner Vector(self.x * scalar, self.y_val * scalar)
+
+    fonction __len__(self):
+        retourner 2
+
+    fonction __repr__(self):
+        retourner f"Vector({self.x}, {self.y_val})"
+
+    fonction __eq__(self, other):
+        retourner self.x == other.x and self.y_val == other.y_val
+
+
+soit v1 = Vector(1, 2)
+soit v2 = Vector(3, 4)
+afficher(v1 + v2)       # Vector(4, 6)
+afficher(v1 * 3)        # Vector(3, 6)
+afficher(len(v1))       # 2
+afficher(v1 == Vector(1, 2))  # True

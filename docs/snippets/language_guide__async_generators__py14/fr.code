@@ -1,0 +1,16 @@
+fonction integers_from(n):
+    tant_que True:
+        produire n
+        n += 1
+
+fonction take(n, gen):
+    pour _ dans intervalle(n):
+        produire next(gen)
+
+fonction squares(gen):
+    pour x dans gen:
+        produire x ** 2
+
+# Compose pipelines
+soit result = list(take(5, squares(integers_from(1))))
+afficher(result)  # [1, 4, 9, 16, 25]

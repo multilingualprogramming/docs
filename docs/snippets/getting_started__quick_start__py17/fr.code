@@ -1,0 +1,2 @@
+soit unique = {1, 2, 3, 2, 1}   # {1, 2, 3}
+soit evens = {x pour x dans intervalle(10) si x % 2 == 0}
