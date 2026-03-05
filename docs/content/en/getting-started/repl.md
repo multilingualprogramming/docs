@@ -214,81 +214,27 @@ Expected output: `6`
 
 **English:**
 
-```python
-let x1 = 2
-let z1 = 3
-print(x1 + z1)
-
-let total = 0
-for idx in range(4):
-    total = total + idx
-print(total)
-```
+{{snippet:getting_started__repl__py01}}
 
 **French:**
 
-```python
-soit x1 = 2
-soit y1 = 3
-afficher(x1 + y)
-
-soit total = 0
-pour i dans intervalle(4):
-    total = total + i
-afficher(total)
-```
+{{snippet:getting_started__repl__py02}}
 
 **German:**
 
-```python
-sei x = 2
-sei y = 3
-ausgeben(x + y)
-
-sei total = 0
-für i in bereich(4):
-    total = total + i
-ausgeben(total)
-```
+{{snippet:getting_started__repl__py03}}
 
 **Japanese:**
 
-```python
-変数 x = 2
-変数 y = 3
-表示(x + y)
-
-変数 合計 = 0
-毎 i 中 範囲(4):
-    合計 = 合計 + i
-表示(合計)
-```
+{{snippet:getting_started__repl__py04}}
 
 **Arabic:**
 
-```python
-ليكن x = 2
-ليكن y = 3
-اطبع(x + y)
-
-ليكن المجموع = 0
-لكل i في مدى(4):
-    المجموع = المجموع + i
-اطبع(المجموع)
-```
+{{snippet:getting_started__repl__py05}}
 
 **Hindi:**
 
-```python
-मान x = 2
-मान y = 3
-छापो(x + y)
-
-मान योग = 0
-के_लिए i में परास(4):
-    योग = योग + i
-छापो(योग)
-```
+{{snippet:getting_started__repl__py06}}
 
 ---
 

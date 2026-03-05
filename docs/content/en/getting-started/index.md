@@ -68,11 +68,7 @@ python -c "import multilingualprogramming; print('OK')"
 
 Check WASM availability:
 
-```python
-from multilingualprogramming.runtime.backend_selector import BackendSelector
-selector = BackendSelector()
-print(f"WASM available: {selector.is_wasm_available()}")
-```
+{{snippet:getting_started__py01}}
 
 ---
 
@@ -82,13 +78,7 @@ print(f"WASM available: {selector.is_wasm_available()}")
 
 Create a file `hello_en.ml`:
 
-```python
-let message = "Hello, multilingual world!"
-let count = 3
-
-for idx in range(count):
-    print(f"[{idx}] {message}")
-```
+{{snippet:getting_started__py02}}
 
 Run it:
 
@@ -100,13 +90,7 @@ python -m multilingualprogramming run hello_en.ml --lang en
 
 Create `hello_fr.ml`:
 
-```python
-soit message = "Bonjour, monde multilingue!"
-soit compteur = 3
-
-pour i dans intervalle(compteur):
-    afficher(f"[{i}] {message}")
-```
+{{snippet:getting_started__py03}}
 
 Run:
 
@@ -118,13 +102,7 @@ python -m multilingualprogramming run hello_fr.ml --lang fr
 
 Create `hello_ja.ml`:
 
-```python
-変数 メッセージ = "こんにちは、多言語の世界！"
-変数 カウント = 3
-
-毎 i 中 範囲(カウント):
-    表示(f"[{i}] {メッセージ}")
-```
+{{snippet:getting_started__py04}}
 
 Run:
 
@@ -136,13 +114,7 @@ python -m multilingualprogramming run hello_ja.ml --lang ja
 
 Create `hello_ar.ml`:
 
-```python
-ليكن رسالة = "مرحبا بالعالم متعدد اللغات!"
-ليكن عداد = 3
-
-لكل i في مدى(عداد):
-    اطبع(f"[{i}] {رسالة}")
-```
+{{snippet:getting_started__py05}}
 
 Run:
 
@@ -219,34 +191,7 @@ multilingual --version
 
 ## Use as a Python Library
 
-```python
-from multilingualprogramming import (
-    ProgramExecutor,
-    REPL,
-    Lexer,
-    Parser,
-    SemanticAnalyzer,
-    PythonCodeGenerator,
-    KeywordRegistry,
-    MPNumeral,
-    MPDate,
-)
-
-# Execute a multilingual program
-executor = ProgramExecutor()
-executor.execute("""
-let greeting = "Hello"
-let times = 3
-for i in range(times):
-    print(f"{greeting} #{i+1}")
-""", language="en")
-
-# Inspect keywords for a language
-registry = KeywordRegistry()
-print(registry.get_keyword("COND_IF", "fr"))   # "si"
-print(registry.get_keyword("FUNC_DEF", "ja"))   # "関数"
-print(registry.get_keyword("LOOP_FOR", "ar"))   # "لكل"
-```
+{{snippet:getting_started__py06}}
 
 ---
 

@@ -179,19 +179,7 @@ python -m multilingualprogramming --version
 
 ### Full verification
 
-```python
-#!/usr/bin/env python3
-import sys
-import platform
-from multilingualprogramming.runtime.backend_selector import BackendSelector
-
-print(f"Python: {sys.version}")
-print(f"Platform: {platform.system()} {platform.machine()}")
-
-selector = BackendSelector()
-print(f"WASM Available: {selector.is_wasm_available()}")
-print(f"Backend: {selector.backend}")
-```
+{{snippet:getting_started__installation__py01}}
 
 ---
 
@@ -233,10 +221,7 @@ pip install multilingualprogramming
 
 WASM runs via emulation on Apple Silicon. Use Python fallback:
 
-```python
-from multilingualprogramming.runtime.backend_selector import BackendSelector, Backend
-selector = BackendSelector(prefer_backend=Backend.PYTHON)
-```
+{{snippet:getting_started__installation__py02}}
 
 ### Windows `ImportError`
 

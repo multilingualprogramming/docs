@@ -123,14 +123,7 @@ multilingual supports the full Python operator set plus Unicode alternatives whe
 
 Operators are not localized per language (they use the universal symbol set). However, some natural-language alternatives exist for boolean operators:
 
-```python
-# All equivalent in English:
-x and y
-x AND y  # case insensitive in some contexts
-
-# In Japanese, 'かつ' is 'and', 'または' is 'or'
-# In Arabic, 'و' is 'and', 'أو' is 'or'
-```
+{{snippet:reference__operators__py01}}
 
 Use `:ops` in the REPL to see the current language's operator descriptions:
 

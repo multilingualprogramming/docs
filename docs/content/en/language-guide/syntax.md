@@ -38,10 +38,7 @@ See [Keywords Reference](/language-guide/keywords/) for the full mapping.
 ```
 
 Examples:
-```python
-let x = 42
-let name: str = "Alice"
-```
+{{snippet:language_guide__syntax__py01}}
 
 ### Constants
 
@@ -49,10 +46,7 @@ let name: str = "Alice"
 const IDENTIFIER = expression
 ```
 
-```python
-const MAX_SIZE = 1000
-const PI = 3.14159
-```
+{{snippet:language_guide__syntax__py02}}
 
 ### Chained Assignment
 
@@ -61,10 +55,7 @@ identifier = identifier = expression
 [LET] a = [LET] b = expression
 ```
 
-```python
-let a = let b = let c = 0
-x = y = z = 10
-```
+{{snippet:language_guide__syntax__py03}}
 
 ### Delete
 
@@ -74,20 +65,7 @@ del identifier
 
 ### Augmented Assignment
 
-```python
-x += 5
-x -= 3
-x *= 2
-x /= 4
-x //= 3
-x %= 7
-x **= 2
-x &= 0xFF
-x |= 0x01
-x ^= 0x10
-x <<= 2
-x >>= 1
-```
+{{snippet:language_guide__syntax__py04}}
 
 ---
 
@@ -95,53 +73,19 @@ x >>= 1
 
 ### Numbers
 
-```python
-let i = 42          # integer
-let f = 3.14        # float
-let sci = 1.5e10    # scientific notation
-let h = 0xFF        # hexadecimal
-let o = 0o77        # octal
-let b = 0b1010      # binary
-let c = 3 + 4j      # complex number
-```
+{{snippet:language_guide__syntax__py05}}
 
 ### Strings
 
-```python
-let s1 = "hello"
-let s2 = 'hello'
-let s3 = """
-multi-line
-string
-"""
-let name = "World"
-let f1 = f"Hello, {name}!"
-let f2 = f"Pi = {3.14159:.2f}"
-let f3 = f"{value!r}"    # repr format
-let f4 = f"{value!s}"    # str format
-let f5 = f"{value!a}"    # ascii format
-```
+{{snippet:language_guide__syntax__py06}}
 
 ### Booleans and None
 
-```python
-let t = True
-let f = False
-let n = None
-```
+{{snippet:language_guide__syntax__py07}}
 
 ### Collections
 
-```python
-let lst = [1, 2, 3]             # list
-let dct = {"a": 1, "b": 2}     # dict
-let st = {1, 2, 3}             # set
-let tpl = (1, 2, 3)            # tuple
-let empty_list = []
-let empty_dict = {}
-let empty_set = set()
-let empty_tuple = ()
-```
+{{snippet:language_guide__syntax__py08}}
 
 ---
 
@@ -149,68 +93,27 @@ let empty_tuple = ()
 
 ### Arithmetic
 
-```python
-a + b    # addition
-a - b    # subtraction
-a * b    # multiplication
-a / b    # true division
-a // b   # floor division
-a % b    # modulo
-a ** b   # power
--a       # negation
-```
+{{snippet:language_guide__syntax__py09}}
 
 ### Comparison
 
-```python
-a == b    # equal
-a != b    # not equal
-a < b     # less than
-a > b     # greater than
-a <= b    # less or equal
-a >= b    # greater or equal
-a is b    # identity
-a is not b
-a in b    # membership
-a not in b
-```
+{{snippet:language_guide__syntax__py10}}
 
 ### Boolean
 
-```python
-a and b
-a or b
-not a
-```
+{{snippet:language_guide__syntax__py11}}
 
 ### Bitwise
 
-```python
-a & b    # AND
-a | b    # OR
-a ^ b    # XOR
-~a       # NOT
-a << n   # left shift
-a >> n   # right shift
-```
+{{snippet:language_guide__syntax__py12}}
 
 ### Slicing
 
-```python
-lst[0]        # index
-lst[-1]       # from end
-lst[1:3]      # slice
-lst[::2]      # step
-lst[::-1]     # reverse
-lst[1:8:2]    # start:stop:step
-```
+{{snippet:language_guide__syntax__py13}}
 
 ### Walrus Operator
 
-```python
-if (n := len(data)) > 10:
-    print(f"Long: {n}")
-```
+{{snippet:language_guide__syntax__py14}}
 
 ### Ternary Expression
 
@@ -218,24 +121,15 @@ if (n := len(data)) > 10:
 value_if_true [IF] condition [ELSE] value_if_false
 ```
 
-```python
-let label = "even" if x % 2 == 0 else "odd"
-```
+{{snippet:language_guide__syntax__py15}}
 
 ### Unpacking
 
-```python
-let a, b, c = [1, 2, 3]
-let first, *rest = [1, 2, 3, 4]
-let a_, *mid, last_ = [1, 2, 3, 4, 5]
-let x_, y_ = (10, 20)
-```
+{{snippet:language_guide__syntax__py16}}
 
 ### Dict/Set Unpacking
 
-```python
-let merged = {**d1, **d2}
-```
+{{snippet:language_guide__syntax__py17}}
 
 ### Lambda
 
@@ -243,10 +137,7 @@ let merged = {**d1, **d2}
 lambda params: expression
 ```
 
-```python
-let sq = lambda x: x**2
-let add = lambda x, y: x + y
-```
+{{snippet:language_guide__syntax__py18}}
 
 ---
 
@@ -273,10 +164,7 @@ let add = lambda x, y: x + y
 ```
 
 Tuple target:
-```python
-for idx, val in enumerate([10, 20, 30]):
-    print(idx, val)
-```
+{{snippet:language_guide__syntax__py19}}
 
 ### while loop
 
@@ -305,14 +193,7 @@ match expression:
 
 ### break / continue / pass
 
-```python
-for i in range(10):
-    if i == 5:
-        break
-    if i % 2 == 0:
-        continue
-    pass    # no-op placeholder
-```
+{{snippet:language_guide__syntax__py20}}
 
 ---
 
@@ -334,38 +215,15 @@ for i in range(10):
 
 ### Parameter Types
 
-```python
-def f(
-    pos_only_a,
-    pos_only_b,
-    /,          # positional-only boundary
-    regular,
-    *args,      # variable positional
-    kw_only,    # keyword-only
-    **kwargs    # variable keyword
-):
-    pass
-```
+{{snippet:language_guide__syntax__py21}}
 
 ### Default Values
 
-```python
-def greet(name, greeting="Hello", times=1):
-    for _ in range(times):
-        print(f"{greeting}, {name}")
-
-greet("World")
-```
+{{snippet:language_guide__syntax__py22}}
 
 ### Type Annotations
 
-```python
-def add(x: int, y: int) -> int:
-    return x + y
-
-def process(items: list, limit: int = 10) -> dict:
-    return {}
-```
+{{snippet:language_guide__syntax__py23}}
 
 ### Generators
 
@@ -375,15 +233,7 @@ def process(items: list, limit: int = 10) -> dict:
     [YIELD] [FROM] iterable
 ```
 
-```python
-def count_up(n):
-    for i in range(n):
-        yield i
-
-def chain(*iterables):
-    for it in iterables:
-        yield from it
-```
+{{snippet:language_guide__syntax__py24}}
 
 ### Async Functions
 
@@ -396,41 +246,11 @@ def chain(*iterables):
         block
 ```
 
-```python
-import asyncio
-
-async def fetch(url):
-    await asyncio.sleep(0.1)
-    return f"result from {url}"
-
-async def main():
-    result = await fetch("https://example.com")
-    print(result)
-
-asyncio.run(main())
-```
+{{snippet:language_guide__syntax__py25}}
 
 ### Decorators
 
-```python
-def my_decorator(func):
-    def wrapper(*args, **kwargs):
-        print("before")
-        result = func(*args, **kwargs)
-        print("after")
-        return result
-    return wrapper
-
-@my_decorator
-def hello():
-    print("hello!")
-
-# Multiple decorators (applied bottom-up)
-@decorator1
-@decorator2
-def my_func():
-    pass
-```
+{{snippet:language_guide__syntax__py26}}
 
 ---
 
@@ -457,24 +277,7 @@ def my_func():
 
 ### Class with Decorators
 
-```python
-class MyClass:
-    class_var = 0
-
-    @staticmethod
-    def static_method():
-        return "static"
-
-    @classmethod
-    def class_method(cls):
-        return cls.class_var
-
-    def instance_method(self):
-        return self
-
-    def __repr__(self):
-        return f"MyClass()"
-```
+{{snippet:language_guide__syntax__py27}}
 
 ---
 
@@ -522,13 +325,7 @@ class MyClass:
     block
 ```
 
-```python
-with open("file.txt", "r") as f:
-    content = f.read()
-
-with open("in.txt") as src, open("out.txt", "w") as dst:
-    dst.write(src.read())
-```
+{{snippet:language_guide__syntax__py28}}
 
 ---
 
@@ -536,32 +333,19 @@ with open("in.txt") as src, open("out.txt", "w") as dst:
 
 ### List Comprehension
 
-```python
-[x**2 for x in range(10)]
-[x for x in items if x > 0]
-[x for row in matrix for x in row]  # nested
-```
+{{snippet:language_guide__syntax__py29}}
 
 ### Dict Comprehension
 
-```python
-{k: v for k, v in pairs}
-{k: v for k, v in d.items() if v > 0}
-```
+{{snippet:language_guide__syntax__py30}}
 
 ### Set Comprehension
 
-```python
-{x**2 for x in range(10)}
-{len(w) for w in words if w}
-```
+{{snippet:language_guide__syntax__py31}}
 
 ### Generator Expression
 
-```python
-sum(x**2 for x in range(100))
-list(x for x in items if x > 0)
-```
+{{snippet:language_guide__syntax__py32}}
 
 ---
 
@@ -574,12 +358,7 @@ list(x for x in items if x > 0)
 [FROM] module [IMPORT] *
 ```
 
-```python
-import math
-from math import sqrt
-from math import sqrt as root
-from os import *
-```
+{{snippet:language_guide__syntax__py33}}
 
 ---
 
@@ -590,21 +369,7 @@ from os import *
 [NONLOCAL] identifier
 ```
 
-```python
-count = 0
-
-def increment():
-    global count
-    count += 1
-
-def outer():
-    x = 0
-    def inner():
-        nonlocal x
-        x += 1
-    inner()
-    return x
-```
+{{snippet:language_guide__syntax__py34}}
 
 ---
 
@@ -626,51 +391,4 @@ def outer():
 
 ## Supported Exception Types (45+)
 
-```python
-BaseException
-Exception
-ArithmeticError
-FloatingPointError
-OverflowError
-ZeroDivisionError
-LookupError
-IndexError
-KeyError
-NameError
-UnboundLocalError
-TypeError
-ValueError
-AttributeError
-ImportError
-ModuleNotFoundError
-OSError
-FileNotFoundError
-FileExistsError
-PermissionError
-IOError
-RuntimeError
-RecursionError
-NotImplementedError
-StopIteration
-StopAsyncIteration
-GeneratorExit
-SystemExit
-KeyboardInterrupt
-MemoryError
-BufferError
-EOFError
-ConnectionError
-TimeoutError
-UnicodeError
-UnicodeDecodeError
-UnicodeEncodeError
-SyntaxError
-IndentationError
-TabError
-AssertionError
-SystemError
-ReferenceError
-ExceptionGroup
-BaseExceptionGroup
-# ... and all Warning subclasses
-```
+{{snippet:language_guide__syntax__py35}}

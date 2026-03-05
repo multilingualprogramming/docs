@@ -14,37 +14,7 @@ This is the complete reference for the `multilingualprogramming` package. It cov
 
 ## Package Overview
 
-```python
-from multilingualprogramming import (
-    # Execution
-    ProgramExecutor,
-    REPL,
-
-    # Pipeline components
-    Lexer,
-    Parser,
-    SemanticAnalyzer,
-    ASTPrinter,
-    PythonCodeGenerator,
-
-    # Keyword registry
-    KeywordRegistry,
-    KeywordValidator,
-
-    # Numerals
-    MPNumeral,
-    UnicodeNumeral,
-    RomanNumeral,
-    ComplexNumeral,
-    FractionNumeral,
-    NumeralConverter,
-
-    # Date/time
-    MPDate,
-    MPTime,
-    MPDatetime,
-)
-```
+{{snippet:reference__py01}}
 
 ---
 
@@ -52,58 +22,11 @@ from multilingualprogramming import (
 
 The main high-level API for executing multilingual programs.
 
-```python
-from multilingualprogramming import ProgramExecutor
-
-executor = ProgramExecutor()
-
-# Execute source string
-executor.execute(source: str, language: str = "en") -> None
-
-# Execute a file
-executor.execute_file(path: str, language: str = "en") -> None
-
-# Transpile to Python (return Python source without executing)
-python_src = executor.transpile(source: str, language: str = "en") -> str
-```
+{{snippet:reference__py02}}
 
 **Examples:**
 
-```python
-executor = ProgramExecutor()
-
-# Execute English program
-executor.execute("""
-let x = 10
-let y = 20
-print(f"Sum: {x + y}")
-""", language="en")
-
-# Execute French program
-executor.execute("""
-soit x = 10
-soit y = 20
-afficher(f"Somme: {x + y}")
-""", language="fr")
-
-# Execute Japanese program
-executor.execute("""
-変数 x = 10
-変数 y = 20
-表示(f"合計: {x + y}")
-""", language="ja")
-
-# Transpile to Python
-python_code = executor.transpile("""
-let items = [1, 2, 3]
-for i in items:
-    print(i)
-""", language="en")
-print(python_code)
-# items = [1, 2, 3]
-# for i in items:
-#     print(i)
-```
+{{snippet:reference__py03}}
 
 ---
 
@@ -111,12 +34,7 @@ print(python_code)
 
 ### Lexer
 
-```python
-from multilingualprogramming import Lexer
-
-lexer = Lexer(language="en")
-tokens = lexer.tokenize(source: str) -> list[Token]
-```
+{{snippet:reference__py04}}
 
 Each `Token` has:
 - `type` — token type concept (e.g., `COND_IF`, `LOOP_FOR`, `IDENTIFIER`, `NUMBER`)
@@ -124,108 +42,33 @@ Each `Token` has:
 - `line` — line number (1-based)
 - `column` — column number (1-based)
 
-```python
-lexer = Lexer(language="fr")
-tokens = lexer.tokenize("si x > 0:\n    afficher(x)")
-for tok in tokens:
-    print(f"{tok.type:20} {tok.value!r}")
-```
+{{snippet:reference__py05}}
 
 ### Parser
 
-```python
-from multilingualprogramming import Parser
-
-parser = Parser(language="en")
-ast = parser.parse(tokens: list[Token]) -> Program
-```
+{{snippet:reference__py06}}
 
 The `Program` AST node contains a list of `Statement` nodes. See `multilingualprogramming/parser/ast_nodes.py` for the full node hierarchy.
 
-```python
-from multilingualprogramming import Lexer, Parser, ASTPrinter
-
-lexer = Lexer(language="en")
-parser = Parser(language="en")
-printer = ASTPrinter()
-
-tokens = lexer.tokenize("let x = 42\nprint(x)")
-ast = parser.parse(tokens)
-printer.print(ast)
-```
+{{snippet:reference__py07}}
 
 ### SemanticAnalyzer
 
-```python
-from multilingualprogramming import SemanticAnalyzer
-
-analyzer = SemanticAnalyzer(language="en")
-analyzer.analyze(ast: Program) -> None  # raises on errors
-```
+{{snippet:reference__py08}}
 
 ### PythonCodeGenerator
 
-```python
-from multilingualprogramming import PythonCodeGenerator
-
-codegen = PythonCodeGenerator()
-python_src = codegen.generate(ast: Program) -> str
-```
+{{snippet:reference__py09}}
 
 **Full pipeline example:**
 
-```python
-from multilingualprogramming import (
-    Lexer, Parser, SemanticAnalyzer,
-    PythonCodeGenerator, ASTPrinter
-)
-
-source = """
-let nums = [1, 2, 3, 4, 5]
-let total = sum(n**2 for n in nums)
-print(total)
-"""
-language = "en"
-
-lexer = Lexer(language=language)
-parser = Parser(language=language)
-analyzer = SemanticAnalyzer(language=language)
-codegen = PythonCodeGenerator()
-
-tokens = lexer.tokenize(source)
-ast = parser.parse(tokens)
-analyzer.analyze(ast)
-python_code = codegen.generate(ast)
-print(python_code)
-```
+{{snippet:reference__py10}}
 
 ---
 
 ## KeywordRegistry
 
-```python
-from multilingualprogramming import KeywordRegistry
-
-registry = KeywordRegistry()
-
-# Forward lookup: concept → language keyword
-keyword = registry.get_keyword(concept: str, language: str) -> str
-# e.g., registry.get_keyword("COND_IF", "fr") → "si"
-
-# Reverse lookup: language keyword → concept
-concept = registry.get_concept(keyword: str, language: str) -> str
-# e.g., registry.get_concept("si", "fr") → "COND_IF"
-
-# All supported languages
-langs = registry.get_supported_languages() -> list[str]
-# ["en", "fr", "es", "de", "it", "pt", "pl", "nl", "sv", "da", "fi", "hi", "ar", "bn", "ta", "zh", "ja"]
-
-# All keywords for a language
-mapping = registry.get_all_keywords(language: str) -> dict[str, str]
-
-# All concepts
-concepts = registry.get_all_concepts() -> list[str]
-```
+{{snippet:reference__py11}}
 
 **Concept IDs (51 total, 7 categories):**
 
@@ -245,104 +88,31 @@ concepts = registry.get_all_concepts() -> list[str]
 
 ### MPNumeral
 
-```python
-from multilingualprogramming import MPNumeral
-
-# Create from various forms
-n1 = MPNumeral(42)
-n2 = MPNumeral("٤٢")       # Arabic-Indic digits
-n3 = MPNumeral("四十二")    # CJK numerals
-
-# Arithmetic
-result = n1 + n2             # returns MPNumeral
-result = n1 * MPNumeral(3)
-
-# Conversion
-print(n1.to_int())           # 42
-print(n1.to_arabic_indic())  # ٤٢
-print(n1.to_devanagari())    # ४२
-print(n1.to_cjk())           # 四十二
-```
+{{snippet:reference__py12}}
 
 ### RomanNumeral
 
-```python
-from multilingualprogramming import RomanNumeral
-
-r = RomanNumeral("XIV")
-print(r.to_int())    # 14
-print(int(r))        # 14
-
-r2 = RomanNumeral(42)
-print(str(r2))       # XLII
-```
+{{snippet:reference__py13}}
 
 ### UnicodeNumeral
 
-```python
-from multilingualprogramming import UnicodeNumeral
-
-u = UnicodeNumeral("٣٧")     # Arabic-Indic
-print(u.to_int())             # 37
-
-u2 = UnicodeNumeral("३७")    # Devanagari
-print(u2.to_int())            # 37
-```
+{{snippet:reference__py14}}
 
 ### NumeralConverter
 
-```python
-from multilingualprogramming import NumeralConverter
-
-conv = NumeralConverter()
-print(conv.to_arabic_indic(42))    # ٤٢
-print(conv.to_devanagari(42))      # ४२
-print(conv.to_bengali(42))         # ৪২
-print(conv.to_cjk(42))             # 四十二
-print(conv.to_roman(42))           # XLII
-```
+{{snippet:reference__py15}}
 
 ---
 
 ## Date and Time
 
-```python
-from multilingualprogramming import MPDate, MPTime, MPDatetime
-
-# Parse multilingual date strings
-d = MPDate.parse("15 janvier 2024", language="fr")
-print(d.year, d.month, d.day)    # 2024 1 15
-
-d2 = MPDate.parse("15 يناير 2024", language="ar")
-
-# Format for a language
-print(d.format(language="fr"))   # 15 janvier 2024
-print(d.format(language="de"))   # 15. Januar 2024
-
-# MPTime
-t = MPTime(14, 30, 0)
-print(t.format(language="fr"))   # 14:30:00
-
-# MPDatetime
-dt = MPDatetime.now()
-print(dt.format(language="ja"))  # 2024年1月15日 14:30:00
-```
+{{snippet:reference__py16}}
 
 ---
 
 ## REPL
 
-```python
-from multilingualprogramming import REPL
-
-repl = REPL(language="en", show_python=False)
-repl.run()   # starts interactive REPL
-
-# Programmatic REPL (non-interactive)
-repl = REPL(language="fr")
-output = repl.eval_line("soit x = 42")
-output = repl.eval_line("afficher(x)")
-```
+{{snippet:reference__py17}}
 
 ---
 

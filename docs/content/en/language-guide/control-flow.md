@@ -28,107 +28,35 @@ Control flow in multilingual uses the same Python semantics with localized keywo
 
 ### English
 
-```python
-let x = 42
-
-if x > 0:
-    print("positive")
-elif x < 0:
-    print("negative")
-else:
-    print("zero")
-```
+{{snippet:language_guide__control_flow__py01}}
 
 ### French
 
-```python
-soit x = 42
-
-si x > 0:
-    afficher("positif")
-sinon_si x < 0:
-    afficher("négatif")
-sinon:
-    afficher("zéro")
-```
+{{snippet:language_guide__control_flow__py02}}
 
 ### Spanish
 
-```python
-sea x = 42
-
-si x > 0:
-    imprimir("positivo")
-sino_si x < 0:
-    imprimir("negativo")
-sino:
-    imprimir("cero")
-```
+{{snippet:language_guide__control_flow__py03}}
 
 ### German
 
-```python
-sei x = 42
-
-wenn x > 0:
-    ausgeben("positiv")
-sonst_wenn x < 0:
-    ausgeben("negativ")
-sonst:
-    ausgeben("null")
-```
+{{snippet:language_guide__control_flow__py04}}
 
 ### Japanese
 
-```python
-変数 x = 42
-
-もし x > 0:
-    表示("正")
-そうでなければもし x < 0:
-    表示("負")
-そうでなければ:
-    表示("ゼロ")
-```
+{{snippet:language_guide__control_flow__py05}}
 
 ### Arabic
 
-```python
-متغير x = 42
-
-إذا x > 0:
-    اطبع("موجب")
-وإلا_إذا x < 0:
-    اطبع("سالب")
-وإلا:
-    اطبع("صفر")
-```
+{{snippet:language_guide__control_flow__py06}}
 
 ### Hindi
 
-```python
-चर x = 42
-
-यदि x > 0:
-    छापो("धनात्मक")
-अथवा_यदि x < 0:
-    छापो("ऋणात्मक")
-अन्यथा:
-    छापो("शून्य")
-```
+{{snippet:language_guide__control_flow__py07}}
 
 ### Chinese
 
-```python
-变量 x = 42
-
-如果 x > 0:
-    打印("正数")
-否则如果 x < 0:
-    打印("负数")
-否则:
-    打印("零")
-```
+{{snippet:language_guide__control_flow__py08}}
 
 ---
 
@@ -145,84 +73,39 @@ sonst:
 
 ### English
 
-```python
-for idx in range(5):
-    print(idx)
-
-# With else
-for item in [1, 2, 3]:
-    if item == 99:
-        break
-else:
-    print("not found")
-```
+{{snippet:language_guide__control_flow__py09}}
 
 ### French
 
-```python
-pour i dans intervalle(5):
-    afficher(i)
-```
+{{snippet:language_guide__control_flow__py10}}
 
 ### Spanish
 
-```python
-para i en rango(5):
-    imprimir(i)
-```
+{{snippet:language_guide__control_flow__py11}}
 
 ### German
 
-```python
-für i in bereich(5):
-    ausgeben(i)
-```
+{{snippet:language_guide__control_flow__py12}}
 
 ### Japanese
 
-```python
-毎 i 中 範囲(5):
-    表示(i)
-```
+{{snippet:language_guide__control_flow__py13}}
 
 ### Arabic
 
-```python
-لكل i في مدى(5):
-    اطبع(i)
-```
+{{snippet:language_guide__control_flow__py14}}
 
 ### Hindi
 
-```python
-प्रत्येक i में परास(5):
-    छापो(i)
-```
+{{snippet:language_guide__control_flow__py15}}
 
 ### Chinese
 
-```python
-对于 i 在 范围(5):
-    打印(i)
-```
+{{snippet:language_guide__control_flow__py16}}
 
 ### Tuple Unpacking in For
 
-```python
-# English — all languages support tuple targets
-let pairs = [(1, "a"), (2, "b"), (3, "c")]
-
-for index, letter in pairs:
-    print(f"{index}: {letter}")
-
-# enumerate
-for idx, val in enumerate(["x", "y", "z"]):
-    print(idx, val)
-
-# zip
-for aa, bb in zip([1, 2, 3], ["one", "two", "three"]):
-    print(aa, bb)
-```
+{{snippet:language_guide__control_flow__py17}}
 
 ---
 
@@ -239,83 +122,35 @@ for aa, bb in zip([1, 2, 3], ["one", "two", "three"]):
 
 ### English
 
-```python
-let count = 0
-
-while count < 5:
-    print(count)
-    count += 1
-```
+{{snippet:language_guide__control_flow__py18}}
 
 ### French
 
-```python
-soit compteur = 0
-
-tant_que compteur < 5:
-    afficher(compteur)
-    compteur += 1
-```
+{{snippet:language_guide__control_flow__py19}}
 
 ### Spanish
 
-```python
-sea contador = 0
-
-mientras contador < 5:
-    imprimir(contador)
-    contador += 1
-```
+{{snippet:language_guide__control_flow__py20}}
 
 ### German
 
-```python
-sei zaehler = 0
-
-solange zaehler < 5:
-    ausgeben(zaehler)
-    zaehler += 1
-```
+{{snippet:language_guide__control_flow__py21}}
 
 ### Japanese
 
-```python
-変数 カウント = 0
-
-間 カウント < 5:
-    表示(カウント)
-    カウント += 1
-```
+{{snippet:language_guide__control_flow__py22}}
 
 ### Arabic
 
-```python
-متغير عداد = 0
-
-طالما عداد < 5:
-    اطبع(عداد)
-    عداد += 1
-```
+{{snippet:language_guide__control_flow__py23}}
 
 ### Hindi
 
-```python
-चर गिनती = 0
-
-जबकि गिनती < 5:
-    छापो(गिनती)
-    गिनती += 1
-```
+{{snippet:language_guide__control_flow__py24}}
 
 ### Chinese
 
-```python
-变量 计数 = 0
-
-当 计数 < 5:
-    打印(计数)
-    计数 += 1
-```
+{{snippet:language_guide__control_flow__py25}}
 
 ---
 
@@ -345,80 +180,27 @@ match expression:
 
 ### Literal Patterns
 
-```python
-let command = "quit"
-
-match command:
-    case "quit":
-        print("quitting")
-    case "help":
-        print("showing help")
-    case _:
-        print(f"unknown: {command}")
-```
+{{snippet:language_guide__control_flow__py26}}
 
 ### Value Capture
 
-```python
-match point:
-    case (0, 0):
-        print("origin")
-    case (x, 0):
-        print(f"on x-axis at {x}")
-    case (0, y):
-        print(f"on y-axis at {y}")
-    case (x, y):
-        print(f"point at ({x}, {y})")
-```
+{{snippet:language_guide__control_flow__py27}}
 
 ### Guard Conditions
 
-```python
-match value:
-    case n if n < 0:
-        print("negative")
-    case n if n == 0:
-        print("zero")
-    case n:
-        print(f"positive: {n}")
-```
+{{snippet:language_guide__control_flow__py28}}
 
 ### OR Patterns
 
-```python
-match status:
-    case 400 | 401 | 403:
-        print("client error")
-    case 500 | 502 | 503:
-        print("server error")
-    case 200:
-        print("ok")
-```
+{{snippet:language_guide__control_flow__py29}}
 
 ### AS Pattern
 
-```python
-match data:
-    case [first, *rest] as full_list:
-        print(f"first={first}, full={full_list}")
-```
+{{snippet:language_guide__control_flow__py30}}
 
 ### Class Patterns
 
-```python
-from dataclasses import dataclass
-
-@dataclass
-class Point:
-    x: float
-    y: float
-
-match shape:
-    case Point(x=0, y=0):
-        print("origin")
-    case Point(x=px, y=py):
-        print(f"point at {px}, {py}")
-```
+{{snippet:language_guide__control_flow__py31}}
 
 ---
 
@@ -428,94 +210,37 @@ These keywords are universal (not localized) across all languages.
 
 ### break — Exit a loop early
 
-```python
-for idx in range(100):
-    if idx == 10:
-        break
-    print(idx)
-# prints 0 through 9
-```
+{{snippet:language_guide__control_flow__py32}}
 
 ### continue — Skip current iteration
 
-```python
-for idx in range(10):
-    if idx % 2 == 0:
-        continue
-    print(idx)
-# prints 1, 3, 5, 7, 9
-```
+{{snippet:language_guide__control_flow__py33}}
 
 ### pass — No-op placeholder
 
-```python
-for item in items:
-    pass  # TODO: process item later
-
-def not_implemented_yet():
-    pass
-```
+{{snippet:language_guide__control_flow__py34}}
 
 ---
 
 ## Nested Loops
 
-```python
-# Multiplication table
-for ii in range(1, 4):
-    for jj in range(1, 4):
-        print(f"{ii}×{jj}={ii*jj}", end="  ")
-    print()
-```
+{{snippet:language_guide__control_flow__py35}}
 
 French version:
 
-```python
-pour i dans intervalle(1, 4):
-    pour j dans intervalle(1, 4):
-        afficher(f"{i}×{j}={i*j}", fin="  ")
-    afficher()
-```
+{{snippet:language_guide__control_flow__py36}}
 
 ---
 
 ## Loop-Else Idiom
 
-```python
-# Search with for-else
-let target = 7
-let numbers = [1, 3, 5, 7, 9]
-
-for num in numbers:
-    if num == target:
-        print(f"Found {target}")
-        break
-else:
-    print(f"{target} not found")
-
-# While-else
-let x = 10
-while x > 0:
-    x -= 3
-    if x == 1:
-        break
-else:
-    print("loop finished normally")
-```
+{{snippet:language_guide__control_flow__py37}}
 
 ---
 
 ## Walrus Operator in Conditions
 
-```python
-import re
-
-let lines = ["hello world", "foo bar", "test 123"]
-
-for line in lines:
-    if m := re.search(r"\d+", line):
-        print(f"Found number: {m.group()} in '{line}'")
-```
+{{snippet:language_guide__control_flow__py38}}
 
 ---
 

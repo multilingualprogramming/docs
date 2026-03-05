@@ -17,27 +17,15 @@ This guide walks through the core language features in 10 minutes using English.
 
 Use `let` to declare a variable:
 
-```python
-let x = 42
-let name = "Alice"
-let pi = 3.14159
-let active = True
-let nothing = None
-```
+{{snippet:getting_started__quick_start__py01}}
 
 Type annotations are optional:
 
-```python
-let count: int = 0
-let ratio: float = 0.5
-let label: str = "hello"
-```
+{{snippet:getting_started__quick_start__py02}}
 
 Chained assignment:
 
-```python
-let a = let b = let c = 0
-```
+{{snippet:getting_started__quick_start__py03}}
 
 ---
 
@@ -45,51 +33,17 @@ let a = let b = let c = 0
 
 Standard arithmetic operators:
 
-```python
-let a = 10
-let b = 3
-
-print(a + b)    # 13
-print(a - b)    # 7
-print(a * b)    # 30
-print(a / b)    # 3.3333...
-print(a // b)   # 3   (floor division)
-print(a % b)    # 1   (modulo)
-print(a ** b)   # 1000 (power)
-```
+{{snippet:getting_started__quick_start__py04}}
 
 Augmented assignment:
 
-```python
-let x = 10
-x += 5    # x = 15
-x -= 3    # x = 12
-x *= 2    # x = 24
-x //= 4   # x = 6
-x **= 2   # x = 36
-```
+{{snippet:getting_started__quick_start__py05}}
 
 ---
 
 ## Strings and F-Strings
 
-```python
-let first = "Hello"
-let last = "World"
-let greeting = f"{first}, {last}!"
-print(greeting)   # Hello, World!
-
-# Format specifiers
-let pi = 3.14159
-print(f"Pi is {pi:.2f}")   # Pi is 3.14
-
-# Triple-quoted strings
-let poem = """
-Line one
-Line two
-Line three
-"""
-```
+{{snippet:getting_started__quick_start__py06}}
 
 ---
 
@@ -97,34 +51,15 @@ Line three
 
 ### if / elif / else
 
-```python
-let score = 85
-
-if score >= 90:
-    print("A")
-elif score >= 80:
-    print("B")
-elif score >= 70:
-    print("C")
-else:
-    print("F")
-```
+{{snippet:getting_started__quick_start__py07}}
 
 ### Ternary (inline if)
 
-```python
-let x = 10
-let label = "even" if x % 2 == 0 else "odd"
-print(label)  # even
-```
+{{snippet:getting_started__quick_start__py08}}
 
 ### Walrus Operator
 
-```python
-let data = [1, 2, 3, 4, 5]
-if (n := len(data)) > 3:
-    print(f"Long list: {n} items")
-```
+{{snippet:getting_started__quick_start__py09}}
 
 ---
 
@@ -132,49 +67,19 @@ if (n := len(data)) > 3:
 
 ### for loop
 
-```python
-for idx in range(5):
-    print(idx)   # 0, 1, 2, 3, 4
-
-# Iterate over a list
-let fruits = ["apple", "banana", "cherry"]
-for fruit in fruits:
-    print(fruit)
-
-# With enumerate
-for idx, fruit in enumerate(fruits):
-    print(f"{idx}: {fruit}")
-```
+{{snippet:getting_started__quick_start__py10}}
 
 ### for / else
 
-```python
-for idx in range(5):
-    if idx == 3:
-        break
-else:
-    print("Loop completed without break")
-```
+{{snippet:getting_started__quick_start__py11}}
 
 ### while loop
 
-```python
-let count = 0
-while count < 5:
-    print(count)
-    count += 1
-```
+{{snippet:getting_started__quick_start__py12}}
 
 ### break and continue
 
-```python
-for idx in range(10):
-    if idx % 2 == 0:
-        continue   # skip even
-    if idx > 7:
-        break
-    print(idx)   # 1, 3, 5, 7
-```
+{{snippet:getting_started__quick_start__py13}}
 
 ---
 
@@ -182,240 +87,83 @@ for idx in range(10):
 
 ### Lists
 
-```python
-let numbers = [1, 2, 3, 4, 5]
-let first = numbers[0]       # 1
-let last = numbers[4]        # 5
-let slice_ = numbers[1:3]    # [2, 3]
-numbers.append(6)
-print(len(numbers))          # 6
-```
+{{snippet:getting_started__quick_start__py14}}
 
 ### Tuples
 
-```python
-let point = (3, 4)
-let x, pt_y = point
-
-# Starred unpacking
-let first_, *rest_ = [1, 2, 3, 4, 5]
-let a_, *middle_, z_ = [1, 2, 3, 4, 5]
-```
+{{snippet:getting_started__quick_start__py15}}
 
 ### Dictionaries
 
-```python
-let person = {"name": "Alice", "age": 30}
-print(person["name"])         # Alice
-person["city"] = "Paris"
-
-# Dict comprehension
-let squares = {n: n**2 for n in range(5)}
-
-# Merging (dict unpacking)
-let merged = {**person, **{"country": "France"}}
-```
+{{snippet:getting_started__quick_start__py16}}
 
 ### Sets
 
-```python
-let unique = {1, 2, 3, 2, 1}   # {1, 2, 3}
-let evens = {x for x in range(10) if x % 2 == 0}
-```
+{{snippet:getting_started__quick_start__py17}}
 
 ---
 
 ## Functions
 
-```python
-def greet(name, greeting="Hello"):
-    return f"{greeting}, {name}!"
-
-print(greet("Alice"))           # Hello, Alice!
-print(greet("Bob", "Hi"))       # Hi, Bob!
-```
+{{snippet:getting_started__quick_start__py18}}
 
 ### *args and **kwargs
 
-```python
-def sum_all(*numbers):
-    return sum(numbers)
-
-def show_info(**details):
-    for key, value in details.items():
-        print(f"{key}: {value}")
-
-print(sum_all(1, 2, 3, 4))
-show_info(name="Alice", age=30)
-```
+{{snippet:getting_started__quick_start__py19}}
 
 ### Positional-Only and Keyword-Only
 
-```python
-def format_data(a, b, /, *, sep=", "):
-    return f"{a}{sep}{b}"
-
-print(format_data("x", "y"))         # x, y
-print(format_data("x", "y", sep="—"))  # x—y
-```
+{{snippet:getting_started__quick_start__py20}}
 
 ### Type Annotations
 
-```python
-def add(x: int, b: int) -> int:
-    return x + b
-
-def repeat(s: str, n: int = 1) -> str:
-    return s * n
-```
+{{snippet:getting_started__quick_start__py21}}
 
 ### Lambda
 
-```python
-let square = lambda x: x ** 2
-let numbers_ = [3, 1, 4, 1, 5]
-let sorted_ = sorted(numbers_, key=lambda x: -x)
-```
+{{snippet:getting_started__quick_start__py22}}
 
 ---
 
 ## Comprehensions
 
-```python
-# List comprehension
-let squares = [x**2 for x in range(10) if x % 2 == 0]
-
-# Nested comprehension
-let matrix = [[i * j for j in range(3)] for i in range(3)]
-let flat = [x for row in matrix for x in row]
-
-# Dict comprehension
-let word_lengths = {word: len(word) for word in ["apple", "banana"]}
-
-# Set comprehension
-let unique_lengths = {len(word) for word in ["hi", "hello", "hey"]}
-
-# Generator expression
-let total = sum(x**2 for x in range(100))
-```
+{{snippet:getting_started__quick_start__py23}}
 
 ---
 
 ## Classes
 
-```python
-class Animal:
-    def __init__(self, name, sound):
-        self.name = name
-        self.sound = sound
-
-    def speak(self):
-        return f"{self.name} says {self.sound}"
-
-    def __repr__(self):
-        return f"Animal({self.name!r})"
-
-
-class Dog(Animal):
-    def __init__(self, name):
-        super(Dog, self).__init__(name, "Woof")
-
-    def fetch(self, item):
-        return f"{self.name} fetches the {item}!"
-
-
-let dog = Dog("Rex")
-print(dog.speak())        # Rex says Woof
-print(dog.fetch("ball"))  # Rex fetches the ball!
-```
+{{snippet:getting_started__quick_start__py24}}
 
 ---
 
 ## Context Managers
 
-```python
-# File I/O
-with open("data.txt", "w", encoding="utf-8") as f:
-    f.write("hello")
-
-with open("data.txt", "r", encoding="utf-8") as f:
-    let content = f.read()
-
-# Multiple context managers
-with open("in.txt") as src, open("out.txt", "w") as dst:
-    dst.write(src.read())
-```
+{{snippet:getting_started__quick_start__py25}}
 
 ---
 
 ## Generators
 
-```python
-def countdown(n):
-    while n > 0:
-        yield n
-        n -= 1
-
-for num in countdown(5):
-    print(num)  # 5, 4, 3, 2, 1
-
-# yield from
-def chain(*iterables):
-    for it in iterables:
-        yield from it
-
-let combined = list(chain([1, 2], [3, 4], [5]))
-```
+{{snippet:getting_started__quick_start__py26}}
 
 ---
 
 ## Async / Await
 
-```python
-import asyncio
-
-async def fetch_data(url):
-    await asyncio.sleep(0.1)  # simulate I/O
-    return f"Data from {url}"
-
-async def main():
-    let result = await fetch_data("https://example.com")
-    print(result)
-
-asyncio.run(main())
-```
+{{snippet:getting_started__quick_start__py27}}
 
 ---
 
 ## Pattern Matching
 
-```python
-let command = "quit"
-
-match command:
-    case "quit":
-        print("Quitting...")
-    case "help":
-        print("Help menu")
-    case str(c) if c.startswith("go "):
-        print(f"Going to: {c[3:]}")
-    case _:
-        print(f"Unknown command: {command}")
-```
+{{snippet:getting_started__quick_start__py28}}
 
 ---
 
 ## Imports
 
-```python
-import math
-from math import sqrt, pi
-from math import sqrt as root
-
-print(math.factorial(10))
-print(root(16))        # 4.0
-print(pi)              # 3.14159...
-```
+{{snippet:getting_started__quick_start__py29}}
 
 ---
 

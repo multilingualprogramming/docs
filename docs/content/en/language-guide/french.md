@@ -318,23 +318,4 @@ Moyenne: 3.0
 
 ## API Python
 
-```python
-from multilingualprogramming import ProgramExecutor
-
-executor = ProgramExecutor()
-
-# Exécuter du code français
-executor.execute("""
-soit items = [1, 2, 3]
-afficher(somme(items))
-""", language="fr")
-
-# Transpiler vers Python sans exécuter
-python_code = executor.transpile("""
-pour i dans intervalle(5):
-    afficher(i)
-""", language="fr")
-print(python_code)
-# for i in range(5):
-#     print(i)
-```
+{{snippet:language_guide__french__py01}}
