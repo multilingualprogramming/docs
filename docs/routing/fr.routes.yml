@@ -1,4 +1,36 @@
 getting_started:
-  path: /fr/docs/guides/prise-en-main
-syntax_reference:
-  path: /fr/docs/reference/syntaxe
+  path: /fr/docs/demarrage
+getting_started__installation:
+  path: /fr/docs/demarrage/installation
+getting_started__quick_start:
+  path: /fr/docs/demarrage/demarrage-rapide
+getting_started__repl:
+  path: /fr/docs/demarrage/repl
+language_guide:
+  path: /fr/docs/guide-langage
+language_guide__all_languages:
+  path: /fr/docs/guide-langage/toutes-langues
+language_guide__async_generators:
+  path: /fr/docs/guide-langage/asynchrone-generateurs
+language_guide__control_flow:
+  path: /fr/docs/guide-langage/controle-flux
+language_guide__french:
+  path: /fr/docs/guide-langage/francais
+language_guide__functions_classes:
+  path: /fr/docs/guide-langage/fonctions-classes
+language_guide__keywords:
+  path: /fr/docs/guide-langage/mots-cles
+language_guide__syntax:
+  path: /fr/docs/guide-langage/syntaxe
+reference:
+  path: /fr/docs/references
+reference__builtins:
+  path: /fr/docs/references/fonctions-integrees
+reference__compatibility:
+  path: /fr/docs/references/compatibilite
+reference__datetime:
+  path: /fr/docs/references/date-heure
+reference__numerals:
+  path: /fr/docs/references/numeraux
+reference__operators:
+  path: /fr/docs/references/operateurs

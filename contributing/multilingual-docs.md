@@ -25,11 +25,13 @@ This repository keeps documentation authoring in Markdown while adding a strict 
 docs/
   content/
     en/
-      guides/
+      getting-started/
+      language-guide/
       reference/
     fr/
-      guides/
-      reference/
+      demarrage/
+      guide-langage/
+      references/
   routing/
     en.routes.yml
     fr.routes.yml
@@ -60,7 +62,6 @@ page_id: getting_started
 locale: en
 title: Getting Started
 path_segments:
-  - guides
   - getting-started
 source_hash: 9f2a1c
 status: source
@@ -75,8 +76,7 @@ page_id: getting_started
 locale: fr
 title: Prise en main
 path_segments:
-  - guides
-  - prise-en-main
+  - demarrage
 source_hash: 9f2a1c
 status: translated
 ---
@@ -105,6 +105,7 @@ Rules:
 - For each referenced snippet ID:
   - `docs/snippets/<id>/en.code` must exist.
   - `docs/snippets/<id>/fr.code` must exist.
+- Inline runnable Python blocks are disallowed in `docs/content`; CI enforces snippet-token usage.
 
 This prevents drift between localized runnable examples.
 

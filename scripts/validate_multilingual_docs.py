@@ -14,6 +14,7 @@ import yaml
 REQUIRED_KEYS = {"page_id", "locale", "title", "path_segments", "source_hash", "status"}
 SUPPORTED_LOCALES = ("en", "fr")
 SNIPPET_TOKEN_RE = re.compile(r"\{\{\s*snippet:([a-zA-Z0-9_-]+)\s*\}\}")
+PY_BLOCK_RE = re.compile(r"```python\s*\n(.*?)\n```", re.DOTALL)
 
 
 @dataclass
@@ -118,6 +119,10 @@ def validate_snippets(repo_root: Path, page: DocPage, errors: list[str]) -> None
             errors.append(
                 f"{page.file_path}: missing snippet variant for {snippet_id!r} locale {page.locale}"
             )
+    if PY_BLOCK_RE.search(page.body):
+        errors.append(
+            f"{page.file_path}: inline runnable Python block found; use {{snippet:<id>}} instead"
+        )
 
 
 def main() -> int:
