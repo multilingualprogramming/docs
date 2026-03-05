@@ -81,16 +81,13 @@ jobs:
         id: pages
         uses: actions/configure-pages@v5
 
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
+      - name: Build with GitHub Pages Jekyll
+        uses: actions/jekyll-build-pages@v1
         with:
-          ruby-version: "3.3"
-          bundler-cache: true
-
-      - name: Build Jekyll site
+          source: ./
+          destination: ./_site
         env:
           JEKYLL_ENV: production
-        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
 
       - name: Sanity-check Pages artifact
         run: python scripts/check_pages_artifact.py --site-dir _site --base-path "${{ steps.pages.outputs.base_path }}"
