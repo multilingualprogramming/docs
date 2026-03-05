@@ -7,6 +7,7 @@ path_segments:
 - operators
 source_hash: 7ce7e4343a9f
 status: source
+permalink: /en/docs/reference/operators/
 ---
 
 multilingual supports the full Python operator set plus Unicode alternatives where applicable.

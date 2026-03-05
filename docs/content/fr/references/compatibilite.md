@@ -7,6 +7,7 @@ path_segments:
 - compatibilite
 source_hash: 5200c7a76a88
 status: translated
+permalink: /fr/docs/references/compatibilite/
 ---
 
 

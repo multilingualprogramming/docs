@@ -7,6 +7,7 @@ path_segments:
 - numerals
 source_hash: fbb7f9155632
 status: source
+permalink: /en/docs/reference/numerals/
 ---
 
 multilingual provides first-class support for numerals in multiple scripts and representations.

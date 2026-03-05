@@ -7,6 +7,7 @@ path_segments:
 - installation
 source_hash: 7febf671956e
 status: translated
+permalink: /fr/docs/demarrage/installation/
 ---
 
 ## Exigences systeme

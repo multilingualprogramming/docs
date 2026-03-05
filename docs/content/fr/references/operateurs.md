@@ -7,6 +7,7 @@ path_segments:
 - operateurs
 source_hash: 7ce7e4343a9f
 status: translated
+permalink: /fr/docs/references/operateurs/
 ---
 
 

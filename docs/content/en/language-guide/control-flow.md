@@ -7,6 +7,7 @@ path_segments:
 - control-flow
 source_hash: 76561f72de89
 status: source
+permalink: /en/docs/language-guide/control-flow/
 ---
 
 Control flow in multilingual uses the same Python semantics with localized keywords. All constructs work identically across all 17 supported languages — only the surface keywords differ.
@@ -260,4 +261,4 @@ French version:
 
 > `break`, `continue`, and `pass` are universal across all 17 languages.
 
-See [Keywords Reference](/language-guide/keywords/) for all 17 languages including Italian, Portuguese, Polish, Dutch, Swedish, Danish, Finnish, Bengali, and Tamil.
+See [Keywords Reference](/en/docs/language-guide/keywords/) for all 17 languages including Italian, Portuguese, Polish, Dutch, Swedish, Danish, Finnish, Bengali, and Tamil.

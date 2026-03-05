@@ -7,6 +7,7 @@ path_segments:
 - repl
 source_hash: 4444b80aad58
 status: source
+permalink: /en/docs/getting-started/repl/
 ---
 
 The multilingual REPL (Read-Eval-Print Loop) is a language-switching interactive environment for writing and testing programs in any of the 17 supported languages.

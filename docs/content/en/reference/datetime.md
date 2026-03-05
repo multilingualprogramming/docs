@@ -7,6 +7,7 @@ path_segments:
 - datetime
 source_hash: 4e5871b97df0
 status: source
+permalink: /en/docs/reference/datetime/
 ---
 
 multilingual provides multilingual date and time classes that parse and format dates using the conventions of 17 supported languages.

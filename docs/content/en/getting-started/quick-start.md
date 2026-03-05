@@ -7,9 +7,10 @@ path_segments:
 - quick-start
 source_hash: c17c2ed2a7d8
 status: source
+permalink: /en/docs/getting-started/quick-start/
 ---
 
-This guide walks through the core language features in 10 minutes using English. Every construct shown here is available in all 17 languages — see the [Language Guide](/language-guide/all-languages/) for equivalents.
+This guide walks through the core language features in 10 minutes using English. Every construct shown here is available in all 17 languages — see the [Language Guide](/en/docs/language-guide/all-languages/) for equivalents.
 
 ---
 
@@ -170,4 +171,4 @@ Augmented assignment:
 ## Next: All 17 Languages
 
 Every feature above is available in all 17 supported languages.
-See [All Languages Reference](/language-guide/all-languages/) for the complete keyword and syntax mapping.
+See [All Languages Reference](/en/docs/language-guide/all-languages/) for the complete keyword and syntax mapping.

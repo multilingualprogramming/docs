@@ -7,6 +7,7 @@ path_segments:
 - keywords
 source_hash: 98cc9a927f70
 status: source
+permalink: /en/docs/language-guide/keywords/
 ---
 
 All keywords in multilingual map to **semantic concepts** — not raw tokens. The lexer resolves language-specific surface keywords to concepts; the parser and codegen operate on concepts only.

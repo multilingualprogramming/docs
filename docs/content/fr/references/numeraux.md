@@ -7,6 +7,7 @@ path_segments:
 - numeraux
 source_hash: fbb7f9155632
 status: translated
+permalink: /fr/docs/references/numeraux/
 ---
 
 

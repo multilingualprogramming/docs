@@ -6,6 +6,7 @@ path_segments:
 - demarrage
 source_hash: 9b9c8ca97172
 status: translated
+permalink: /fr/docs/demarrage/
 ---
 
 ## Qu'est-ce que multilingual ?
@@ -200,7 +201,7 @@ multilingual --version
 <div class="card-grid">
 
 <div class="card">
-<a href="/getting-started/installation/">
+<a href="/fr/docs/demarrage/installation/">
 <span class="card-icon">📦</span>
 <h3>Details d'installation</h3>
 <p>Configuration par plateforme, prerequis WASM, environnements virtuels.</p>
@@ -208,7 +209,7 @@ multilingual --version
 </div>
 
 <div class="card">
-<a href="/getting-started/quick-start/">
+<a href="/fr/docs/demarrage/demarrage-rapide/">
 <span class="card-icon">🚀</span>
 <h3>Exemples de demarrage rapide</h3>
 <p>Tour en 10 minutes des principales fonctionnalites du langage.</p>
@@ -216,7 +217,7 @@ multilingual --version
 </div>
 
 <div class="card">
-<a href="/language-guide/">
+<a href="/fr/docs/guide-langage/">
 <span class="card-icon">📖</span>
 <h3>Guide du langage</h3>
 <p>Reference syntaxique complete pour les 17 langues.</p>

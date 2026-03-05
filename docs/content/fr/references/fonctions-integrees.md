@@ -7,6 +7,7 @@ path_segments:
 - fonctions-integrees
 source_hash: 3b6205ba8915
 status: translated
+permalink: /fr/docs/references/fonctions-integrees/
 ---
 
 

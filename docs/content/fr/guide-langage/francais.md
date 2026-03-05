@@ -7,6 +7,7 @@ path_segments:
 - francais
 source_hash: 8aaca71d7f2f
 status: translated
+permalink: /fr/docs/guide-langage/francais/
 ---
 
 
@@ -237,7 +238,7 @@ Certains built-ins universels ont des alias localisés. Les noms universels Pyth
 | `ensemble` | `set` |
 | `tuple` | `tuple` |
 
-Voir la [référence des alias built-in](/reference/builtins/) pour la liste complète.
+Voir la [référence des alias built-in](/fr/docs/references/fonctions-integrees/) pour la liste complète.
 
 ---
 

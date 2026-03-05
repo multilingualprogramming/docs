@@ -7,6 +7,7 @@ path_segments:
 - date-heure
 source_hash: 4e5871b97df0
 status: translated
+permalink: /fr/docs/references/date-heure/
 ---
 
 

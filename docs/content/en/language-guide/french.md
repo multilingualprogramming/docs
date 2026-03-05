@@ -7,6 +7,7 @@ path_segments:
 - french
 source_hash: 8aaca71d7f2f
 status: source
+permalink: /en/docs/language-guide/french/
 ---
 
 Ce guide présente la programmation avec `multilingual` en français. Il couvre les capacités du langage, le flux d'exécution, les exemples pratiques, et les points d'extension.
@@ -235,7 +236,7 @@ Certains built-ins universels ont des alias localisés. Les noms universels Pyth
 | `ensemble` | `set` |
 | `tuple` | `tuple` |
 
-Voir la [référence des alias built-in](/reference/builtins/) pour la liste complète.
+Voir la [référence des alias built-in](/en/docs/reference/builtins/) pour la liste complète.
 
 ---
 

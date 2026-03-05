@@ -7,6 +7,7 @@ path_segments:
 - all-languages
 source_hash: 897bd24154cc
 status: source
+permalink: /en/docs/language-guide/all-languages/
 ---
 
 This page provides complete program examples for all 17 supported languages, demonstrating variables, control flow, functions, and classes. Each example is a complete, runnable program.

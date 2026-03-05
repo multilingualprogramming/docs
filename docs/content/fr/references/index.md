@@ -6,6 +6,7 @@ path_segments:
 - references
 source_hash: 7daaacafc108
 status: translated
+permalink: /fr/docs/references/
 ---
 
 

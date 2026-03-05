@@ -7,6 +7,7 @@ path_segments:
 - toutes-langues
 source_hash: 897bd24154cc
 status: translated
+permalink: /fr/docs/guide-langage/toutes-langues/
 ---
 
 

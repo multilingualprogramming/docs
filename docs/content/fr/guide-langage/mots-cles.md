@@ -7,6 +7,7 @@ path_segments:
 - mots-cles
 source_hash: 98cc9a927f70
 status: translated
+permalink: /fr/docs/guide-langage/mots-cles/
 ---
 
 

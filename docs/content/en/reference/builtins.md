@@ -7,6 +7,7 @@ path_segments:
 - builtins
 source_hash: 3b6205ba8915
 status: source
+permalink: /en/docs/reference/builtins/
 ---
 
 multilingual provides localized aliases for 41 commonly used Python built-in functions. Universal English names are **always available** in all languages — aliases are additive.

@@ -7,9 +7,10 @@ path_segments:
 - demarrage-rapide
 source_hash: c17c2ed2a7d8
 status: translated
+permalink: /fr/docs/demarrage/demarrage-rapide/
 ---
 
-> Ce guide presente les fonctionnalites principales du langage en 10 minutes avec des exemples en anglais. Chaque construction presentee ici existe dans les 17 langues - voir le [Guide du langage](/language-guide/all-languages/) pour les equivalences.
+> Ce guide presente les fonctionnalites principales du langage en 10 minutes avec des exemples en anglais. Chaque construction presentee ici existe dans les 17 langues - voir le [Guide du langage](/fr/docs/guide-langage/toutes-langues/) pour les equivalences.
 
 ---
 
@@ -170,4 +171,4 @@ Affectation augmentee :
 ## Suite : les 17 langues
 
 Toutes les fonctionnalites ci-dessus sont disponibles dans les 17 langues supportees.
-Voir [Reference toutes les langues](/language-guide/all-languages/) pour le mapping complet des mots-cles et de la syntaxe.
+Voir [Reference toutes les langues](/fr/docs/guide-langage/toutes-langues/) pour le mapping complet des mots-cles et de la syntaxe.

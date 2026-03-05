@@ -7,6 +7,7 @@ path_segments:
 - controle-flux
 source_hash: 76561f72de89
 status: translated
+permalink: /fr/docs/guide-langage/controle-flux/
 ---
 
 
@@ -262,4 +263,4 @@ Version francaise :
 
 > `break`, `continue`, and `pass` are universal across all 17 languages.
 
-Voir [Reference des mots-cles](/language-guide/keywords/) pour les 17 langues, y compris italien, portugais, polonais, neerlandais, suedois, danois, finnois, bengali et tamoul.
+Voir [Reference des mots-cles](/fr/docs/guide-langage/mots-cles/) pour les 17 langues, y compris italien, portugais, polonais, neerlandais, suedois, danois, finnois, bengali et tamoul.

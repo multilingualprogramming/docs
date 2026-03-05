@@ -7,13 +7,14 @@ path_segments:
 - syntaxe
 source_hash: 1a1df4d35040
 status: translated
+permalink: /fr/docs/guide-langage/syntaxe/
 ---
 
 
 
 Cette page est la reference syntaxique definitive pour multilingual. Les mots-cles affiches sous forme `[CONCEPT]` representent des concepts semantiques - remplacez-les par le mot-cle approprie pour la langue choisie.
 
-Voir [Reference des mots-cles](/language-guide/keywords/) pour le mapping complet.
+Voir [Reference des mots-cles](/fr/docs/guide-langage/mots-cles/) pour le mapping complet.
 
 ---
 

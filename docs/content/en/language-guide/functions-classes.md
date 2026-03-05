@@ -7,6 +7,7 @@ path_segments:
 - functions-classes
 source_hash: b0f5ca5c422c
 status: source
+permalink: /en/docs/language-guide/functions-classes/
 ---
 
 Functions and classes in multilingual work exactly like Python, with localized keywords for `def`, `class`, `return`, `self`, and related constructs. Identifiers (variable names, function names, class names) are never translated — they remain as-is in the generated Python.
@@ -203,4 +204,4 @@ Decorators are applied bottom-up:
 
 > `super`, `lambda`, `pass` are universal across all 17 languages.
 
-See [Keywords Reference](/language-guide/keywords/) for all 17 languages.
+See [Keywords Reference](/en/docs/language-guide/keywords/) for all 17 languages.

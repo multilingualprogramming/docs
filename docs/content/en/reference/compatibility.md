@@ -7,6 +7,7 @@ path_segments:
 - compatibility
 source_hash: 5200c7a76a88
 status: source
+permalink: /en/docs/reference/compatibility/
 ---
 
 This matrix defines the current compatibility baseline for `multilingual`. The source of truth is:

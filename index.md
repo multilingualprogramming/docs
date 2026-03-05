@@ -15,8 +15,8 @@ permalink: /
     <strong>multilingual</strong> is a programming language with one formal semantic core and multiple natural-language frontends. Write in English, French, Spanish, Japanese, Arabic, Hindi and more &mdash; compile to Python or WASM.
   </p>
   <div class="hero-actions">
-    <a href="{{ '/getting-started/' | relative_url }}" class="btn btn-primary">Get Started &rarr;</a>
-    <a href="{{ '/language-guide/' | relative_url }}" class="btn btn-secondary">Language Guide</a>
+    <a href="{{ '/en/docs/getting-started/' | relative_url }}" class="btn btn-primary">Get Started &rarr;</a>
+    <a href="{{ '/en/docs/language-guide/' | relative_url }}" class="btn btn-secondary">Language Guide</a>
     <a href="https://github.com/johnsamuelwrites/multilingual" class="btn btn-secondary" target="_blank" rel="noopener">View on GitHub</a>
   </div>
 </section>
@@ -216,22 +216,22 @@ saludar(nombre)
   <p class="section-desc">Each language is a full first-class frontend with localized keywords, error messages, builtins, and REPL support.</p>
 
 <div class="lang-grid">
-  <a href="{{ '/language-guide/all-languages/#english' | relative_url }}" class="lang-pill">
+  <a href="{{ '/en/docs/language-guide/all-languages/#english' | relative_url }}" class="lang-pill">
     English <span class="lang-code">en</span>
   </a>
-  <a href="{{ '/language-guide/all-languages/#french' | relative_url }}" class="lang-pill">
+  <a href="{{ '/en/docs/language-guide/all-languages/#french' | relative_url }}" class="lang-pill">
     French <span class="lang-code">fr</span>
   </a>
-  <a href="{{ '/language-guide/all-languages/#spanish' | relative_url }}" class="lang-pill">
+  <a href="{{ '/en/docs/language-guide/all-languages/#spanish' | relative_url }}" class="lang-pill">
     Spanish <span class="lang-code">es</span>
   </a>
-  <a href="{{ '/language-guide/all-languages/#japanese' | relative_url }}" class="lang-pill">
+  <a href="{{ '/en/docs/language-guide/all-languages/#japanese' | relative_url }}" class="lang-pill">
     Japanese <span class="lang-code">ja</span>
   </a>
-  <a href="{{ '/language-guide/all-languages/#arabic' | relative_url }}" class="lang-pill">
+  <a href="{{ '/en/docs/language-guide/all-languages/#arabic' | relative_url }}" class="lang-pill">
     Arabic <span class="lang-code">ar</span>
   </a>
-  <a href="{{ '/language-guide/all-languages/#hindi' | relative_url }}" class="lang-pill">
+  <a href="{{ '/en/docs/language-guide/all-languages/#hindi' | relative_url }}" class="lang-pill">
     Hindi <span class="lang-code">hi</span>
   </a>
 </div>

@@ -7,11 +7,12 @@ path_segments:
 - syntax
 source_hash: 1a1df4d35040
 status: source
+permalink: /en/docs/language-guide/syntax/
 ---
 
 This page is the definitive syntax reference for multilingual. Keywords shown in `[CONCEPT]` form refer to semantic concepts — replace them with the appropriate keyword for your chosen language.
 
-See [Keywords Reference](/language-guide/keywords/) for the full mapping.
+See [Keywords Reference](/en/docs/language-guide/keywords/) for the full mapping.
 
 ---
 

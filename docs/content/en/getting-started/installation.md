@@ -7,6 +7,7 @@ path_segments:
 - installation
 source_hash: 7febf671956e
 status: source
+permalink: /en/docs/getting-started/installation/
 ---
 
 ## System Requirements

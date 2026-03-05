@@ -6,6 +6,7 @@ path_segments:
 - guide-langage
 source_hash: f82e154d80f9
 status: translated
+permalink: /fr/docs/guide-langage/
 ---
 
 
@@ -74,7 +75,7 @@ Un meme programme - dans n'importe quelle langue - produit un comportement ident
 <div class="card-grid">
 
 <div class="card">
-<a href="/language-guide/syntax/">
+<a href="/fr/docs/guide-langage/syntaxe/">
 <span class="card-icon">📐</span>
 <h3>Reference de syntaxe</h3>
 <p>Syntaxe complete pour toutes les constructions : variables, controle de flux, fonctions, classes, async, exceptions, comprehensions.</p>
@@ -82,7 +83,7 @@ Un meme programme - dans n'importe quelle langue - produit un comportement ident
 </div>
 
 <div class="card">
-<a href="/language-guide/keywords/">
+<a href="/fr/docs/guide-langage/mots-cles/">
 <span class="card-icon">🔑</span>
 <h3>Mots-cles</h3>
 <p>Table complete des mots-cles : 51 concepts semantiques sur 17 langues.</p>
@@ -90,7 +91,7 @@ Un meme programme - dans n'importe quelle langue - produit un comportement ident
 </div>
 
 <div class="card">
-<a href="/language-guide/control-flow/">
+<a href="/fr/docs/guide-langage/controle-flux/">
 <span class="card-icon">🔀</span>
 <h3>Controle de flux</h3>
 <p>if/elif/else, for, while, match/case, break, continue avec exemples dans chaque langue.</p>
@@ -98,7 +99,7 @@ Un meme programme - dans n'importe quelle langue - produit un comportement ident
 </div>
 
 <div class="card">
-<a href="/language-guide/functions-classes/">
+<a href="/fr/docs/guide-langage/fonctions-classes/">
 <span class="card-icon">🏗️</span>
 <h3>Fonctions et classes</h3>
 <p>def, class, decorators, inheritance, generators, lambdas — with all 17 language forms.</p>
@@ -106,7 +107,7 @@ Un meme programme - dans n'importe quelle langue - produit un comportement ident
 </div>
 
 <div class="card">
-<a href="/language-guide/async-generators/">
+<a href="/fr/docs/guide-langage/asynchrone-generateurs/">
 <span class="card-icon">⚙️</span>
 <h3>Async et generateurs</h3>
 <p>async def, await, async for, async with, yield, yield from.</p>
@@ -114,7 +115,7 @@ Un meme programme - dans n'importe quelle langue - produit un comportement ident
 </div>
 
 <div class="card">
-<a href="/language-guide/all-languages/">
+<a href="/fr/docs/guide-langage/toutes-langues/">
 <span class="card-icon">🌐</span>
 <h3>Les 17 langues</h3>
 <p>Exemples complets de programmes dans chaque langue supportee avec couverture fonctionnelle complete.</p>

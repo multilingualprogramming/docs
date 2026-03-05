@@ -6,6 +6,7 @@ path_segments:
 - getting-started
 source_hash: 9b9c8ca97172
 status: source
+permalink: /en/docs/getting-started/
 ---
 
 ## What is multilingual?
@@ -200,7 +201,7 @@ multilingual --version
 <div class="card-grid">
 
 <div class="card">
-<a href="/getting-started/installation/">
+<a href="/en/docs/getting-started/installation/">
 <span class="card-icon">📦</span>
 <h3>Installation Details</h3>
 <p>Platform-specific setup, WASM requirements, virtual environments.</p>
@@ -208,7 +209,7 @@ multilingual --version
 </div>
 
 <div class="card">
-<a href="/getting-started/quick-start/">
+<a href="/en/docs/getting-started/quick-start/">
 <span class="card-icon">🚀</span>
 <h3>Quick Start Examples</h3>
 <p>10-minute tour of the main language features.</p>
@@ -216,7 +217,7 @@ multilingual --version
 </div>
 
 <div class="card">
-<a href="/language-guide/">
+<a href="/en/docs/language-guide/">
 <span class="card-icon">📖</span>
 <h3>Language Guide</h3>
 <p>Complete syntax reference for all 17 languages.</p>

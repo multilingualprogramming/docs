@@ -7,6 +7,7 @@ path_segments:
 - async-generators
 source_hash: ef520f55de2d
 status: source
+permalink: /en/docs/language-guide/async-generators/
 ---
 
 Generators and async constructs in multilingual support the full Python model with localized keywords for `yield`, `async`, `await`, `async for`, and `async with`.
@@ -193,4 +194,4 @@ A function that combines `async def` and `yield` is an async generator:
 | async for | `async for` | `async_pour` | `para_async` | `async_für` | `非同期毎` | `غير_متزامن_لكل` | `असंकालिक_प्रत्येक` | `异步对于` |
 | async with | `async with` | `async_avec` | `async_con` | `async_mit` | `非同期と共に` | `غير_متزامن_مع` | `असंकालिक_साथ` | `异步以` |
 
-See [Keywords Reference](/language-guide/keywords/) for all 17 languages.
+See [Keywords Reference](/en/docs/language-guide/keywords/) for all 17 languages.

@@ -7,6 +7,7 @@ path_segments:
 - fonctions-classes
 source_hash: b0f5ca5c422c
 status: translated
+permalink: /fr/docs/guide-langage/fonctions-classes/
 ---
 
 
@@ -205,4 +206,4 @@ Decorators are applied bottom-up:
 
 > `super`, `lambda`, `pass` are universal across all 17 languages.
 
-Voir [Reference des mots-cles](/language-guide/keywords/) pour les 17 langues.
+Voir [Reference des mots-cles](/fr/docs/guide-langage/mots-cles/) pour les 17 langues.

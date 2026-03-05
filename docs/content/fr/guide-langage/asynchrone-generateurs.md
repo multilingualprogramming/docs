@@ -7,6 +7,7 @@ path_segments:
 - asynchrone-generateurs
 source_hash: ef520f55de2d
 status: translated
+permalink: /fr/docs/guide-langage/asynchrone-generateurs/
 ---
 
 
@@ -195,4 +196,4 @@ A function that combines `async def` and `yield` is an async generator:
 | async for | `async for` | `async_pour` | `para_async` | `async_für` | `非同期毎` | `غير_متزامن_لكل` | `असंकालिक_प्रत्येक` | `异步对于` |
 | async with | `async with` | `async_avec` | `async_con` | `async_mit` | `非同期と共に` | `غير_متزامن_مع` | `असंकालिक_साथ` | `异步以` |
 
-Voir [Reference des mots-cles](/language-guide/keywords/) pour les 17 langues.
+Voir [Reference des mots-cles](/fr/docs/guide-langage/mots-cles/) pour les 17 langues.

@@ -6,6 +6,7 @@ path_segments:
 - language-guide
 source_hash: f82e154d80f9
 status: source
+permalink: /en/docs/language-guide/
 ---
 
 The Language Guide covers all 17 supported human languages and the complete set of constructs you can use to write multilingual programs.
@@ -72,7 +73,7 @@ The same program — in any language — produces identical behavior.
 <div class="card-grid">
 
 <div class="card">
-<a href="/language-guide/syntax/">
+<a href="/en/docs/language-guide/syntax/">
 <span class="card-icon">📐</span>
 <h3>Syntax Reference</h3>
 <p>Complete syntax for every construct: variables, control flow, functions, classes, async, exceptions, comprehensions.</p>
@@ -80,7 +81,7 @@ The same program — in any language — produces identical behavior.
 </div>
 
 <div class="card">
-<a href="/language-guide/keywords/">
+<a href="/en/docs/language-guide/keywords/">
 <span class="card-icon">🔑</span>
 <h3>Keywords</h3>
 <p>Full keyword table: all 51 semantic concepts across all 17 languages.</p>
@@ -88,7 +89,7 @@ The same program — in any language — produces identical behavior.
 </div>
 
 <div class="card">
-<a href="/language-guide/control-flow/">
+<a href="/en/docs/language-guide/control-flow/">
 <span class="card-icon">🔀</span>
 <h3>Control Flow</h3>
 <p>if/elif/else, for, while, match/case, break, continue with examples in every language.</p>
@@ -96,7 +97,7 @@ The same program — in any language — produces identical behavior.
 </div>
 
 <div class="card">
-<a href="/language-guide/functions-classes/">
+<a href="/en/docs/language-guide/functions-classes/">
 <span class="card-icon">🏗️</span>
 <h3>Functions & Classes</h3>
 <p>def, class, decorators, inheritance, generators, lambdas — with all 17 language forms.</p>
@@ -104,7 +105,7 @@ The same program — in any language — produces identical behavior.
 </div>
 
 <div class="card">
-<a href="/language-guide/async-generators/">
+<a href="/en/docs/language-guide/async-generators/">
 <span class="card-icon">⚙️</span>
 <h3>Async & Generators</h3>
 <p>async def, await, async for, async with, yield, yield from.</p>
@@ -112,7 +113,7 @@ The same program — in any language — produces identical behavior.
 </div>
 
 <div class="card">
-<a href="/language-guide/all-languages/">
+<a href="/en/docs/language-guide/all-languages/">
 <span class="card-icon">🌐</span>
 <h3>All 17 Languages</h3>
 <p>Complete program examples in every supported language with full feature coverage.</p>

@@ -6,6 +6,7 @@ path_segments:
 - reference
 source_hash: 7daaacafc108
 status: source
+permalink: /en/docs/reference/
 ---
 
 This is the complete reference for the `multilingualprogramming` package. It covers all public APIs, language features, CLI commands, and the Python compatibility baseline.
