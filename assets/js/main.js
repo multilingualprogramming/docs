@@ -3,6 +3,7 @@
   'use strict';
 
   const baseUrl = (document.querySelector('meta[name="base-url"]') || {}).content || '';
+  const pageLocale = (document.documentElement.lang || 'en').toLowerCase();
 
 
   /* ================================================================
@@ -98,6 +99,14 @@
     return /^\s*(import\s+\w+|from\s+\w+\s+import\s+|#!\/usr\/bin\/env\s+python\d*(?:\.\d+)*)/m.test(src);
   }
 
+  function defaultExecutionLanguage() {
+    return pageLocale === 'fr' ? 'fr' : 'en';
+  }
+
+  function resolveExecutionLanguage(pre, code) {
+    return pre.dataset.lang || code.dataset.lang || defaultExecutionLanguage();
+  }
+
   /* Render output (stdout + optional stderr) into a .code-output element. */
   function renderOutput(container, { stdout, stderr }) {
     container.innerHTML = '';
@@ -134,6 +143,11 @@
   const replToggle = document.getElementById('repl-toggle');
 
   if (replPanel && replToggle) {
+    const replLangSelect = document.getElementById('repl-lang');
+    if (replLangSelect && [...replLangSelect.options].some(option => option.value === pageLocale)) {
+      replLangSelect.value = pageLocale;
+    }
+
     /* Show panel on toggle click. */
     replToggle.addEventListener('click', () => {
       const open = !replPanel.hidden;
@@ -162,7 +176,7 @@
     /* Run button — compile and execute via Pyodide ProgramExecutor. */
     document.getElementById('repl-run-btn').addEventListener('click', async () => {
       const src    = document.getElementById('repl-input').value.trim();
-      const lang   = document.getElementById('repl-lang').value;
+      const lang   = replLangSelect.value;
       const output = document.getElementById('repl-output');
       if (!src) return;
 
@@ -204,7 +218,7 @@ _repl_errs = '\\n'.join(_r.errors) if _r.errors else ''
       }
 
       const src = document.getElementById('repl-input').value.trim();
-      const lang = document.getElementById('repl-lang').value;
+      const lang = replLangSelect.value;
 
       output.innerHTML = '<span class="repl-output-placeholder">Generating WAT…</span>';
       output.dataset.mode = 'wat';
@@ -281,7 +295,7 @@ except Exception as _e:
 
     runBtn.addEventListener('click', async () => {
       const src  = code.textContent.trim();
-      const lang = pre.dataset.lang || 'en';
+      const lang = resolveExecutionLanguage(pre, code);
       runBtn.textContent = '…';
       runBtn.disabled    = true;
       outputPanel.hidden = false;
@@ -330,7 +344,7 @@ _block_errs = '\\n'.join(_r.errors) if _r.errors else ''
       outputPanel.innerHTML = '<span class="output-running">Generating WAT…</span>';
 
       const src  = code.textContent.trim();
-      const lang = pre.dataset.lang || 'en';
+      const lang = resolveExecutionLanguage(pre, code);
 
       try {
         await ensureReplPyodide();
