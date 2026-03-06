@@ -7,6 +7,7 @@ ProgramExecutor — the same engine used by the browser REPL and inline
 Run buttons (Pyodide client-side).
 
 Run locally (requires multilingualprogramming installed):
+    pip install multilingualprogramming
     pytest _tests/ -v
 
 Each code block becomes its own parametrized test case, identified by
@@ -20,7 +21,10 @@ from pathlib import Path
 
 import pytest
 
-from multilingualprogramming.codegen.executor import ProgramExecutor
+try:
+    from multilingualprogramming.codegen.executor import ProgramExecutor
+except ModuleNotFoundError:
+    ProgramExecutor = None
 
 # ---------------------------------------------------------------------------
 # Configuration — language tags that are not executable multilingual source.
@@ -100,7 +104,7 @@ def _collect_blocks():
 # Test
 # ---------------------------------------------------------------------------
 
-@pytest.mark.parametrize('code', _collect_blocks())
+@pytest.mark.parametrize('code', _collect_blocks() if ProgramExecutor is not None else [])
 def test_block(code):
     """
     Each executable code block in the docs must execute without errors
@@ -111,3 +115,13 @@ def test_block(code):
         f'ProgramExecutor reported failure:\n' +
         '\n'.join(result.errors or ['(no error details)'])
     )
+
+
+def test_program_executor_dependency_available():
+    """
+    Make dependency absence an explicit skip instead of a collection-time error.
+    """
+    if ProgramExecutor is None:
+        pytest.skip(
+            "Install multilingualprogramming from PyPI with 'pip install multilingualprogramming' to run docs code-block execution tests."
+        )

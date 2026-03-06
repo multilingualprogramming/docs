@@ -32,8 +32,15 @@ This repository contains the Jekyll site source for the documentation portal, in
 
 Prerequisites:
 
+- Python 3.x
 - Ruby 3.x
 - Bundler
+
+Install the Python package used by the docs tests:
+
+```bash
+pip install multilingualprogramming
+```
 
 Install dependencies:
 
