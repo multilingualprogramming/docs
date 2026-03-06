@@ -1,0 +1,1 @@
+selector.call_function("fibonacci", 1)  # Triggers loading and caching

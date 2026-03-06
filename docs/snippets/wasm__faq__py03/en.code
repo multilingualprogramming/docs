@@ -1,0 +1,4 @@
+from multilingualprogramming.runtime.backend_selector import BackendSelector
+s = BackendSelector()
+print(f"WASM available: {s.is_wasm_available()}")
+print(f"Current backend: {s.backend}")  # "wasm" or "python"

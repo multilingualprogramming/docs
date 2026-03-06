@@ -1,0 +1,10 @@
+import os
+
+let data = os.urandom(1024 * 1024)  # 1MB
+let key = b"secret_key"
+
+# XOR cipher — WASM gives 100x speedup on large data
+def xor_cipher(data, key):
+    return bytes(b ^ key[i % len(key)] for i, b in enumerate(data))
+
+let encrypted = xor_cipher(data, key)

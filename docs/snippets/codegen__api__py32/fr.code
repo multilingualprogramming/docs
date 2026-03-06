@@ -1,0 +1,8 @@
+from multilingualprogramming.runtime.backend_selector import BackendRegistry, Backend
+
+registry = BackendRegistry()
+registry.register_python("double", lambda x: x * 2)
+registry.register_wasm("double", "dist/double.wasm")
+
+print(registry.get_backend("double", Backend.PYTHON))
+print(registry.get_backend("double", Backend.WASM))

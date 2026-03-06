@@ -1,0 +1,13 @@
+import cProfile
+from multilingualprogramming import ProgramExecutor
+
+code = """
+let nums = [i for i in range(1000)]
+let total = sum(n**2 for n in nums)
+print(total)
+"""
+
+with cProfile.Profile() as prof:
+    ProgramExecutor().execute(code, language="en")
+
+prof.print_stats(sort="cumulative", limit=20)

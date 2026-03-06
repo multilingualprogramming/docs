@@ -1,0 +1,10 @@
+from multilingualprogramming.runtime.backend_selector import BackendSelector, Backend
+
+# Force le repli Python
+sel_py = BackendSelector(prefer_backend=Backend.PYTHON)
+
+# Force WASM si disponible
+sel_wasm = BackendSelector(prefer_backend=Backend.WASM)
+
+# Auto (comportement par defaut)
+sel_auto = BackendSelector()

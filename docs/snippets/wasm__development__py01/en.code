@@ -1,0 +1,6 @@
+# Generate large dataset
+let size = 500
+let matrix = [[i * size + j for j in range(size)] for i in range(size)]
+
+# WASM accelerates this 100x
+let transposed = matrix_transpose(matrix)

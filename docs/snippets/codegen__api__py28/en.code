@@ -1,0 +1,5 @@
+from multilingualprogramming.runtime.backend_selector import Backend
+
+Backend.WASM    # Use WebAssembly backend
+Backend.PYTHON  # Use Python fallback
+Backend.AUTO    # Auto-select (WASM if available, else Python)

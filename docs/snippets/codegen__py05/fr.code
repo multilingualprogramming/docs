@@ -1,0 +1,9 @@
+from multilingualprogramming.codegen import RuntimeBuiltins
+
+# Get namespace for a language
+builtins = RuntimeBuiltins.for_language("fr")
+
+# Contains:
+# - All Python built-in functions
+# - Localized aliases for all 41 concepts
+# - e.g., "afficher" → print, "intervalle" → range, "longueur" → len

@@ -1,0 +1,19 @@
+from multilingualprogramming import ProgramExecutor
+from multilingualprogramming.exceptions import (
+    ParseError,
+    SemanticError,
+    RuntimeExecutionError,
+)
+
+executor = ProgramExecutor(language="fr")
+
+try:
+    result = executor.execute(source)
+    if not result.success:
+        print(result.errors)
+except ParseError as err:
+    print(f"Erreur d'analyse syntaxique (ligne {err.line}) : {err}")
+except SemanticError as err:
+    print(f"Erreur semantique : {err}")
+except RuntimeExecutionError as err:
+    print(f"Erreur d'execution : {err}")

@@ -1,0 +1,6 @@
+from multilingualprogramming.core.lowering import lower_to_core_ir
+
+core = lower_to_core_ir(ast, source_language="fr")
+print(core.source_language)   # "fr"
+print(core.core_version)      # "1.0"
+print(core.ast)               # CoreAST root node

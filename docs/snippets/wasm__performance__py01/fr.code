@@ -1,0 +1,38 @@
+import time
+from multilingualprogramming.runtime.backend_selector import BackendSelector, Backend
+
+def benchmark(operation_name: str, *args, n_runs: int = 100):
+    """Compare WASM vs Python performance."""
+
+    # Python backend
+    python_selector = BackendSelector(prefer_backend=Backend.PYTHON)
+    python_times = []
+    for _ in range(n_runs):
+        start = time.perf_counter()
+        python_selector.call_function(operation_name, *args)
+        python_times.append(time.perf_counter() - start)
+    python_avg = sum(python_times) / n_runs
+
+    # WASM backend
+    if BackendSelector().is_wasm_available():
+        wasm_selector = BackendSelector(prefer_backend=Backend.WASM)
+        wasm_times = []
+        for _ in range(n_runs):
+            start = time.perf_counter()
+            wasm_selector.call_function(operation_name, *args)
+            wasm_times.append(time.perf_counter() - start)
+        wasm_avg = sum(wasm_times) / n_runs
+        speedup = python_avg / wasm_avg
+        print(f"{operation_name}:")
+        print(f"  Python: {python_avg*1000:.2f}ms")
+        print(f"  WASM:   {wasm_avg*1000:.2f}ms")
+        print(f"  Speedup: {speedup:.1f}x")
+    else:
+        print(f"{operation_name}: WASM not available (Python: {python_avg*1000:.2f}ms)")
+
+# Run benchmarks
+benchmark("fibonacci", 30, n_runs=1000)
+benchmark("matrix_multiply",
+          [[1]*100 for _ in range(100)],
+          [[2]*100 for _ in range(100)],
+          n_runs=10)

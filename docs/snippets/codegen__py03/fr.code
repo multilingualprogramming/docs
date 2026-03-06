@@ -1,0 +1,11 @@
+# English source
+executor.transpile("let x = 42\nprint(x)", language="en")
+# → "x = 42\nprint(x)"
+
+# French source — identical output
+executor.transpile("soit x = 42\nafficher(x)", language="fr")
+# → "x = 42\nprint(x)"
+
+# Japanese source — identical output
+executor.transpile("変数 x = 42\n表示(x)", language="ja")
+# → "x = 42\nprint(x)"

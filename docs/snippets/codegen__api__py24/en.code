@@ -1,0 +1,2 @@
+class WasmCodeGenerator:
+    def __init__(self, target: WasmTarget | None = None)

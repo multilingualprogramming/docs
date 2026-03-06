@@ -1,0 +1,20 @@
+from multilingualprogramming import Lexer, Parser, RuntimeBuiltins
+from multilingualprogramming.codegen import PythonCodeGenerator
+from multilingualprogramming.codegen.runtime_builtins import make_exec_globals
+from multilingualprogramming.core.lowering import lower_to_core_ir
+
+source = "afficher(longueur([1, 2, 3]))"
+language = "fr"
+
+lexer = Lexer(source, language=language)
+tokens = lexer.tokenize()
+parser = Parser(tokens, source_language=language)
+ast = parser.parse()
+core = lower_to_core_ir(ast, source_language=language)
+
+python_code = PythonCodeGenerator().generate(core)
+exec(python_code, make_exec_globals(language))
+
+# Equivalent lower-level form:
+namespace = RuntimeBuiltins(language).namespace()
+namespace.update({"__name__": "__main__", "__package__": None, "__spec__": None})

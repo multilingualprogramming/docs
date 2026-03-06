@@ -1,0 +1,14 @@
+# Execution namespace includes:
+{
+    # Universal names (always available)
+    "print": print,
+    "range": range,
+    "len": len,
+    # ...
+
+    # Localized aliases (per language)
+    "afficher": print,          # fr
+    "intervalle": range,        # fr
+    "longueur": len,            # fr
+    # ...
+}

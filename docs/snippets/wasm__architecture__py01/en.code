@@ -1,0 +1,4 @@
+from multilingualprogramming.codegen.wat_generator import WATCodeGenerator
+
+gen = WATCodeGenerator()
+wat_text = gen.generate(ast)   # returns WAT source as a string

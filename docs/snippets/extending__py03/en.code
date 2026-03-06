@@ -1,0 +1,5 @@
+# tests/error_messages_test.py
+def test_xx_has_all_error_messages():
+    registry = ErrorMessageRegistry()
+    for key in registry.get_all_message_keys():
+        assert "xx" in registry.get_languages_for_message(key)

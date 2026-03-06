@@ -1,0 +1,8 @@
+# multilingualprogramming/core/ir.py
+
+@dataclass
+class CoreIRProgram:
+    ast: Program              # The parsed AST
+    source_language: str      # e.g., "fr", "ja", "ar"
+    core_version: str = "0.1"
+    frontend_metadata: dict = field(default_factory=dict)

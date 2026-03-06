@@ -1,0 +1,7 @@
+from multilingualprogramming import ProgramExecutor
+
+print(ProgramExecutor(language="en").transpile("let x = 42\nprint(x)"))
+print(ProgramExecutor(language="fr").transpile("soit x = 42\nafficher(x)"))
+print(ProgramExecutor(language="ja").transpile("変数 x = 42\n表示(x)"))
+print(ProgramExecutor(language="ar").transpile("متغير x = 42\nاطبع(x)"))
+print(ProgramExecutor(language="zh").transpile("变量 x = 42\n打印(x)"))

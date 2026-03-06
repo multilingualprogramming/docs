@@ -1,0 +1,28 @@
+import time
+from multilingualprogramming.runtime.backend_selector import BackendSelector, Backend
+
+def benchmark(func_name, *args, n=10):
+    sel_py = BackendSelector(prefer_backend=Backend.PYTHON)
+    sel_wasm = BackendSelector(prefer_backend=Backend.WASM)
+
+    # Warm up WASM (first call loads module)
+    sel_wasm.call_function(func_name, *args)
+
+    # Python timing
+    start = time.perf_counter()
+    for _ in range(n):
+        sel_py.call_function(func_name, *args)
+    py_time = (time.perf_counter() - start) / n
+
+    # WASM timing
+    start = time.perf_counter()
+    for _ in range(n):
+        sel_wasm.call_function(func_name, *args)
+    wasm_time = (time.perf_counter() - start) / n
+
+    speedup = py_time / wasm_time if wasm_time > 0 else float('inf')
+    print(f"Python: {py_time*1000:.2f}ms/call")
+    print(f"WASM:   {wasm_time*1000:.2f}ms/call")
+    print(f"Speedup: {speedup:.1f}x")
+
+benchmark("fibonacci", 25)

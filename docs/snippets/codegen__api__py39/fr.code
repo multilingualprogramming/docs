@@ -1,0 +1,18 @@
+from multilingualprogramming import ProgramExecutor
+
+FRENCH_SOURCE = """
+from math import sqrt
+
+fonction hypotenuse(a, b):
+    retourner sqrt(a**2 + b**2)
+
+pour n dans intervalle(1, 6):
+    afficher(f"hypotenuse({n}, {n+1}) = {hypotenuse(n, n+1):.4f}")
+"""
+
+executor = ProgramExecutor(language="fr")
+result = executor.execute(FRENCH_SOURCE)
+print(result.output)
+
+python_code = executor.transpile(FRENCH_SOURCE)
+print(python_code)

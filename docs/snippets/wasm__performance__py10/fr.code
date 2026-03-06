@@ -1,0 +1,3 @@
+# Increase linear memory
+config = BackendConfig(memory_pages=8192)
+selector = BackendSelector(config=config)

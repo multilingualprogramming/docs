@@ -1,0 +1,7 @@
+# Hindi natural for loop
+परास(4) में के_लिए i:   # iterable-first (SOV)
+    छापो(i)
+
+# Canonical (also accepted)
+के_लिए i में परास(4):
+    छापो(i)

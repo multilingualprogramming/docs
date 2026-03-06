@@ -1,0 +1,2 @@
+class Lexer:
+    def __init__(self, source: str, language: str | None = None)

@@ -1,0 +1,8 @@
+from dataclasses import dataclass, field
+
+@dataclass
+class CoreIRProgram:
+    ast: Program              # required: the Core AST
+    source_language: str      # required: e.g., "en", "fr", "ja"
+    core_version: str = "0.1" # default: current core version
+    frontend_metadata: dict = field(default_factory=dict)  # optional

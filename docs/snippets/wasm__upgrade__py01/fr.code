@@ -1,0 +1,5 @@
+from multilingualprogramming.runtime.backend_selector import BackendSelector
+
+selector = BackendSelector()
+print(f"WASM Enabled: {selector.is_wasm_available()}")
+# If True, you're getting 50-100x speedups automatically!

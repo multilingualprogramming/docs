@@ -1,0 +1,17 @@
+# tests/frontend_equivalence_test.py
+
+def get_ast_repr(source: str, language: str) -> str:
+    lexer = Lexer(language=language)
+    parser = Parser(language=language)
+    tokens = lexer.tokenize(source)
+    ast = parser.parse(tokens)
+    printer = ASTPrinter()
+    return printer.print(ast)
+
+def test_let_equivalence():
+    en_ast = get_ast_repr("let x = 42", "en")
+    fr_ast = get_ast_repr("soit x = 42", "fr")
+    ja_ast = get_ast_repr("変数 x = 42", "ja")
+    ar_ast = get_ast_repr("ليكن x = 42", "ar")
+
+    assert en_ast == fr_ast == ja_ast == ar_ast

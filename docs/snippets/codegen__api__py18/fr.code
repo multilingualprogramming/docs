@@ -1,0 +1,6 @@
+@dataclass
+class CoreIRProgram:
+    ast: Program
+    source_language: str
+    core_version: str = "0.1"
+    frontend_metadata: dict[str, Any] = field(default_factory=dict)

@@ -1,0 +1,8 @@
+# Install with NumPy support
+pip install multilingualprogramming[performance]
+
+# In your program, numpy is available
+import numpy as np
+let arr = np.array([1, 2, 3, 4, 5])
+let total = np.sum(arr)
+print(total)

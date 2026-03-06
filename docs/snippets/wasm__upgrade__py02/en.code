@@ -1,0 +1,15 @@
+from multilingualprogramming import ProgramExecutor
+
+source = """
+def fibonacci(n):
+    if n <= 1:
+        return n
+    return fibonacci(n-1) + fibonacci(n-2)
+
+print(fibonacci(30))
+"""
+
+executor = ProgramExecutor()
+executor.execute(source, language="en")
+# In v0.3: ~2 seconds
+# In v0.4: ~20ms with WASM (100x faster — automatically!)

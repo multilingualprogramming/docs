@@ -1,0 +1,2 @@
+# The host_shim.js / wasmtime Python bindings handle this automatically.
+# Output is collected in a buffer and returned after __main() completes.

@@ -1,0 +1,10 @@
+from multilingualprogramming.codegen import PythonCodeGenerator
+
+# Default settings
+codegen = PythonCodeGenerator(
+    indent_spaces=4,          # indentation width
+    emit_type_annotations=True,  # preserve type annotations in output
+    normalize_whitespace=True,    # normalize spacing
+)
+
+python_src = codegen.generate(ast)

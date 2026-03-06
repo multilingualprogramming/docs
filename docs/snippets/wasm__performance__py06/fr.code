@@ -1,0 +1,7 @@
+# NumPy fallback is 5-10x faster than pure Python for matrix ops
+import numpy as np
+from multilingualprogramming.runtime.python_fallbacks import MatrixOperations
+
+# With numpy installed, MatrixOperations automatically uses numpy
+# when WASM is not available
+result = MatrixOperations.multiply(a, b)  # numpy path if WASM unavailable

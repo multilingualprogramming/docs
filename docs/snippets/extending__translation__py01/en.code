@@ -1,0 +1,6 @@
+from multilingualprogramming.keyword import KeywordValidator
+
+validator = KeywordValidator()
+errors = validator.validate_language("xx")
+for error in errors:
+    print(error)

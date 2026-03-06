@@ -1,0 +1,3 @@
+# For matrices > 512MB, increase memory pages
+config = BackendConfig(memory_pages=8192)  # 512MB
+selector = BackendSelector(config=config)

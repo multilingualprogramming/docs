@@ -1,0 +1,8 @@
+import threading
+
+def worker(data):
+    # Each thread gets its own selector
+    selector = BackendSelector()
+    return selector.call_function("fibonacci", data)
+
+threads = [threading.Thread(target=worker, args=(i,)) for i in range(10)]

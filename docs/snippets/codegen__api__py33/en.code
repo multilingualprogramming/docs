@@ -1,0 +1,10 @@
+from multilingualprogramming.runtime.backend_selector import BackendSelector, Backend
+
+# Force Python fallback
+sel_py = BackendSelector(prefer_backend=Backend.PYTHON)
+
+# Force WASM if available
+sel_wasm = BackendSelector(prefer_backend=Backend.WASM)
+
+# Auto (default behavior)
+sel_auto = BackendSelector()

@@ -1,0 +1,4 @@
+# Increase memory allocation
+from multilingualprogramming.runtime.backend_selector import BackendConfig
+config = BackendConfig(memory_pages=8192)  # 512MB
+selector = BackendSelector(config=config)

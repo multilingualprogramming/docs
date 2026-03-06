@@ -1,0 +1,5 @@
+# tests/runtime_builtins_test.py
+def test_xx_print_alias():
+    builtins = RuntimeBuiltins.for_language("xx")
+    assert "your_print_word" in builtins
+    assert builtins["your_print_word"] is print

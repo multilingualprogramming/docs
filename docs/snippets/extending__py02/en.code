@@ -1,0 +1,10 @@
+# tests/executor_test.py
+def test_xx_basic_program():
+    executor = ProgramExecutor()
+    source = """
+your_let_keyword x = 5
+your_let_keyword y = 10
+your_print_word(x + y)
+"""
+    output = executor.execute(source, language="xx")
+    assert "15" in output

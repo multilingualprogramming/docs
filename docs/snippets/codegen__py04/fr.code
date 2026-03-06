@@ -1,0 +1,30 @@
+from multilingualprogramming import (
+    Lexer, Parser, SemanticAnalyzer,
+    PythonCodeGenerator
+)
+from multilingualprogramming.core.lowering import lower_to_core_ir
+
+source = """
+let nums = [1, 2, 3]
+let total = sum(n**2 for n in nums)
+print(f"Sum of squares: {total}")
+"""
+language = "en"
+
+# Pipeline
+lexer = Lexer(language=language)
+parser = Parser(language=language)
+analyzer = SemanticAnalyzer(language=language)
+codegen = PythonCodeGenerator()
+
+tokens = lexer.tokenize(source)
+ast = parser.parse(tokens)
+core = lower_to_core_ir(ast, source_language=language)
+analyzer.analyze(core.ast)
+python_code = codegen.generate(core.ast)
+
+print(python_code)
+# Output:
+# nums = [1, 2, 3]
+# total = sum(n ** 2 for n in nums)
+# print(f"Sum of squares: {total}")

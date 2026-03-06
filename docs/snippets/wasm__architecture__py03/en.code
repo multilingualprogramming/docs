@@ -1,0 +1,10 @@
+from multilingualprogramming.runtime.backend_selector import (
+    BackendSelector, Backend
+)
+
+# Auto-select (wasmtime if available, else Python)
+sel = BackendSelector()
+result = sel.call_function("fibonacci", 30)
+
+# Force Python for debugging
+sel_py = BackendSelector(prefer_backend=Backend.PYTHON)

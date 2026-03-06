@@ -1,0 +1,2 @@
+class Parser:
+    def __init__(self, tokens, source_language: str | None = None, max_depth: int | None = None)

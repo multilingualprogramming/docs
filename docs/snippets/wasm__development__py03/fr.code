@@ -1,0 +1,18 @@
+from multilingualprogramming.runtime.backend_selector import (
+    BackendSelector,
+    BackendRegistry,
+    BackendConfig,
+    Backend,
+)
+
+# Basic usage
+selector = BackendSelector()
+result = selector.call_function("fibonacci", 30)
+print(result)
+
+# Force Python for debugging
+python_selector = BackendSelector(prefer_backend=Backend.PYTHON)
+result = python_selector.call_function("fibonacci", 30)
+
+# Check backend per call
+print(f"Using: {selector.backend}")

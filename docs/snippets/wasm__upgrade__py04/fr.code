@@ -1,0 +1,12 @@
+from multilingualprogramming.runtime.backend_selector import BackendSelector, Backend
+
+def test_fibonacci_python_backend():
+    selector = BackendSelector(prefer_backend=Backend.PYTHON)
+    result = selector.call_function("fibonacci", 10)
+    assert len(result) == 10
+
+def test_fibonacci_wasm_backend():
+    selector = BackendSelector(prefer_backend=Backend.WASM)
+    if selector.is_wasm_available():
+        result = selector.call_function("fibonacci", 10)
+        assert len(result) == 10

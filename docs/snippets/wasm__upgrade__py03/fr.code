@@ -1,0 +1,13 @@
+from multilingualprogramming.runtime.backend_selector import BackendSelector, Backend
+
+# Auto-detect (recommended — default behavior)
+selector = BackendSelector()
+result = selector.call_function("fibonacci", 30)
+
+# Force Python (for debugging)
+selector_py = BackendSelector(prefer_backend=Backend.PYTHON)
+result = selector_py.call_function("fibonacci", 30)
+
+# Force WASM
+selector_wasm = BackendSelector(prefer_backend=Backend.WASM)
+result = selector_wasm.call_function("fibonacci", 30)

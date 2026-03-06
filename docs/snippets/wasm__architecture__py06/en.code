@@ -1,0 +1,6 @@
+class NewOperations:
+    @staticmethod
+    def my_operation(x: int, y: int) -> int:
+        return x * y
+
+FALLBACK_REGISTRY["my_operation"] = NewOperations.my_operation

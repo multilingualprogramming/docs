@@ -343,6 +343,6 @@ Surface Language (.ml file)
 ```
 
 <div style="margin-top:1.5rem">
-  <a href="/design/" class="btn btn-secondary">Read Architecture Docs &rarr;</a>
+  <a href="{{ '/en/docs/design/' | relative_url }}" class="btn btn-secondary">Read Architecture Docs &rarr;</a>
 </div>
 </section>

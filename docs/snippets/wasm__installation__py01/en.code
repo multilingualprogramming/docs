@@ -1,0 +1,8 @@
+from multilingualprogramming.runtime.backend_selector import BackendSelector, Backend
+
+selector = BackendSelector()
+print(f"WASM Available: {selector.is_wasm_available()}")
+
+# Test a function
+result = selector.call_function("fibonacci", 10)
+print(f"Fibonacci(10): {result}")

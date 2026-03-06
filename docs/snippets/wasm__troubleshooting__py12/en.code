@@ -1,0 +1,1 @@
+selector = BackendSelector(prefer_backend=Backend.PYTHON)

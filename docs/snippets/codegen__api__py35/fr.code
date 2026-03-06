@@ -1,0 +1,8 @@
+class REPL:
+    def __init__(
+        self,
+        language: str | None = None,
+        show_python: bool = False,
+        show_wat: bool = False,
+        show_rust: bool = False,
+    )

@@ -1,0 +1,3 @@
+class RuntimeBuiltins:
+    def __init__(self, source_language: str = "en")
+    def namespace(self) -> dict

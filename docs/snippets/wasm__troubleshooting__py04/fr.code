@@ -1,0 +1,3 @@
+import os, multilingualprogramming
+wasm_dir = os.path.join(os.path.dirname(multilingualprogramming.__file__), 'wasm')
+print(os.listdir(wasm_dir))  # Should contain .wasm files

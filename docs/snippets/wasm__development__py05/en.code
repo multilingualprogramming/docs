@@ -1,0 +1,13 @@
+# In multilingualprogramming/runtime/python_fallbacks.py
+
+class MyOperations:
+    @staticmethod
+    def my_compute(x: int, y: int) -> int:
+        """Pure Python fallback implementation."""
+        result = 0
+        for i in range(x):
+            result += i * y
+        return result
+
+# Register in FALLBACK_REGISTRY
+FALLBACK_REGISTRY["my_compute"] = MyOperations.my_compute

@@ -1,0 +1,13 @@
+from multilingualprogramming import Lexer
+
+source = "soit x = 42\nafficher(x)"
+lexer = Lexer(source, language="fr")
+tokens = lexer.tokenize()
+
+for tok in tokens:
+    print(tok)
+# Token(type=KEYWORD, value='soit', ...)
+# Token(type=IDENTIFIER, value='x', ...)
+# Token(type=OPERATOR, value='=', ...)
+# Token(type=NUMERAL, value='42', ...)
+# ...

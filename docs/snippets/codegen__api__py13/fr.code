@@ -1,0 +1,4 @@
+from multilingualprogramming import ASTPrinter
+
+printer = ASTPrinter()
+print(printer.print(ast))

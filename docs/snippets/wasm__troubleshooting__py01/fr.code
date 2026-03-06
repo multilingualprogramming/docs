@@ -1,0 +1,8 @@
+from multilingualprogramming.runtime.backend_selector import BackendSelector
+import sys, platform
+
+selector = BackendSelector()
+print(f"WASM Available: {selector.is_wasm_available()}")
+print(f"Current Backend: {selector.backend}")
+print(f"Python: {sys.version}")
+print(f"Platform: {platform.system()} {platform.machine()}")

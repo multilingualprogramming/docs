@@ -1,0 +1,2 @@
+class PythonCodeGenerator:
+    def __init__(self, indent_str: str = "    ")

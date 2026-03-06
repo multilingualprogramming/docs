@@ -1,0 +1,16 @@
+# In tests/wasm_corpus_test.py
+
+def test_my_compute_wasm():
+    from multilingualprogramming.runtime.backend_selector import BackendSelector, Backend
+
+    # Python result
+    py_sel = BackendSelector(prefer_backend=Backend.PYTHON)
+    py_result = py_sel.call_function("my_compute", 100, 5)
+
+    # WASM result (if available)
+    if BackendSelector().is_wasm_available():
+        wasm_sel = BackendSelector(prefer_backend=Backend.WASM)
+        wasm_result = wasm_sel.call_function("my_compute", 100, 5)
+        assert py_result == wasm_result
+
+    assert py_result == sum(i * 5 for i in range(100))

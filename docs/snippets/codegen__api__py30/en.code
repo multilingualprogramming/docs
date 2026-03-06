@@ -1,0 +1,2 @@
+result = sel.call_function("fibonacci", 30)
+print(result)  # 832040

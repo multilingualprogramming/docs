@@ -1,0 +1,15 @@
+from multilingualprogramming.runtime.backend_selector import BackendRegistry
+
+registry = BackendRegistry()
+
+# Register a Python implementation
+def my_add(x: int, y: int) -> int:
+    return x + y
+
+registry.register_python("my_add", my_add)
+
+# Register a WASM implementation (path to .wasm binary)
+registry.register_wasm("my_add_fast", "./my_add.wasm")
+
+# Call using best available backend
+result = registry.call("my_add", 5, 3)

@@ -1,0 +1,5 @@
+from multilingualprogramming import SemanticAnalyzer
+
+analyzer = SemanticAnalyzer(source_language="fr")
+errors = analyzer.analyze(core.ast)
+print(errors)  # [] si le programme est valide

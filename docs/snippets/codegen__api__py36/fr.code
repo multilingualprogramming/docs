@@ -1,0 +1,4 @@
+from multilingualprogramming import REPL
+
+repl = REPL(language="fr", show_python=True, show_wat=True)
+repl.run()

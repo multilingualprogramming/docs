@@ -1,0 +1,9 @@
+from multilingualprogramming.runtime.backend_selector import BackendSelector
+
+# Preload at application startup
+selector = BackendSelector()
+if selector.is_wasm_available():
+    # Warm up: triggers module loading
+    selector.call_function("fibonacci", 1)
+    selector.call_function("matrix_multiply", [[1]], [[1]])
+    print("WASM modules preloaded")

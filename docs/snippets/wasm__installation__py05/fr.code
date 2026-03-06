@@ -1,0 +1,18 @@
+   print(BackendSelector().is_wasm_available())
+   ```
+
+2. Check operation is registered:
+   ```python
+   from multilingualprogramming.runtime.python_fallbacks import FALLBACK_REGISTRY
+   print("matrix_multiply" in FALLBACK_REGISTRY)
+   ```
+
+3. Check current backend:
+   ```python
+   print(BackendSelector().backend)
+   ```
+
+### Windows ImportError
+
+Install Visual C++ Redistributables or:
+

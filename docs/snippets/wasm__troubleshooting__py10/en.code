@@ -1,0 +1,6 @@
+import sys
+matrix_size = 10000
+matrix = [[1.0] * matrix_size for _ in range(matrix_size)]
+size_mb = sys.getsizeof(matrix) / 1024 / 1024
+print(f"Matrix: {size_mb:.1f} MB")
+# Warning if > 64MB (WASM default)

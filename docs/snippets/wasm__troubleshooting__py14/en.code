@@ -1,0 +1,10 @@
+# Add timeout
+from multilingualprogramming.runtime.backend_selector import BackendConfig
+config = BackendConfig(timeout_ms=5000)  # 5 second timeout
+selector = BackendSelector(config=config)
+
+try:
+    result = selector.call_function("long_operation", *args)
+except RuntimeError as err:
+    print(f"Timeout: {err}")
+    # Fall back to Python

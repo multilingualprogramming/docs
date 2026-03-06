@@ -1,0 +1,52 @@
+#!/usr/bin/env python3
+"""WASM diagnostic script for multilingual."""
+import sys
+import platform
+import importlib
+
+print("=" * 60)
+print("multilingual WASM Diagnostic Report")
+print("=" * 60)
+
+print(f"\nSystem:")
+print(f"  Python: {sys.version}")
+print(f"  Platform: {platform.system()} {platform.machine()}")
+print(f"  Architecture: {platform.architecture()[0]}")
+
+print(f"\nInstallation:")
+try:
+    import multilingualprogramming
+    print(f"  multilingualprogramming: ✓ {multilingualprogramming.__version__}")
+except ImportError as err:
+    print(f"  multilingualprogramming: ✗ {err}")
+
+try:
+    import wasmtime
+    print(f"  wasmtime: ✓")
+except ImportError:
+    print(f"  wasmtime: ✗ (not installed)")
+
+try:
+    import numpy
+    print(f"  numpy: ✓ {numpy.__version__}")
+except ImportError:
+    print(f"  numpy: ✗ (optional)")
+
+print(f"\nWASM Backend:")
+try:
+    from multilingualprogramming.runtime.backend_selector import BackendSelector
+    s = BackendSelector()
+    print(f"  Available: {s.is_wasm_available()}")
+    print(f"  Backend: {s.backend}")
+except Exception as err:
+    print(f"  Error: {err}")
+
+print(f"\nFallback Functions:")
+try:
+    from multilingualprogramming.runtime.python_fallbacks import FALLBACK_REGISTRY
+    print(f"  Registered: {len(FALLBACK_REGISTRY)} functions")
+    print(f"  Functions: {', '.join(sorted(FALLBACK_REGISTRY.keys())[:10])}...")
+except Exception as err:
+    print(f"  Error: {err}")
+
+print("\n" + "=" * 60)

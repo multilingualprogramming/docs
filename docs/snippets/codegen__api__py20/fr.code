@@ -1,0 +1,23 @@
+from multilingualprogramming import RuntimeBuiltins
+
+# Espace de noms francais
+fr_builtins = RuntimeBuiltins("fr").namespace()
+
+# Les noms universels sont toujours presents
+print("print" in fr_builtins)      # True
+print("range" in fr_builtins)      # True
+print("len" in fr_builtins)        # True
+
+# Alias localises ajoutes
+print("afficher" in fr_builtins)   # True  (print)
+print("longueur" in fr_builtins)   # True  (len)
+
+# Les alias d'autres langues ne sont pas ajoutes
+print("imprimir" in fr_builtins)   # False (espagnol)
+
+aliases = {
+    name: value.__name__
+    for name, value in fr_builtins.items()
+    if callable(value) and name not in dir(__builtins__)
+}
+print(aliases)

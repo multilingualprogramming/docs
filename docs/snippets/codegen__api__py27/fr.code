@@ -1,0 +1,2 @@
+class BackendSelector:
+    def __init__(self, prefer_backend: Backend = Backend.AUTO)

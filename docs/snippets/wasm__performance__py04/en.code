@@ -1,0 +1,8 @@
+# Computation-heavy inner loop → WASM shines
+from multilingualprogramming.runtime.python_fallbacks import MatrixOperations
+
+# Instead of nested Python loops:
+result = MatrixOperations.multiply(large_matrix_a, large_matrix_b)
+
+# Rather than:
+result = [[sum(a[i][k]*b[k][j] for k in range(n)) for j in range(m)] for i in range(n)]

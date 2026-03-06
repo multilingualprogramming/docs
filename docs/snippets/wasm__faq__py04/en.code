@@ -1,0 +1,5 @@
+from multilingualprogramming.runtime.backend_selector import BackendSelector, Backend
+selector = BackendSelector(prefer_backend=Backend.PYTHON)
+# or
+import os
+os.environ["MULTILINGUAL_BACKEND"] = "python"

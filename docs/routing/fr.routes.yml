@@ -1,3 +1,29 @@
+codegen:
+  path: /fr/docs/generation-code
+codegen__api:
+  path: /fr/docs/generation-code/api
+contributing:
+  path: /fr/docs/contribution
+contributing__multilingual_docs:
+  path: /fr/docs/contribution/documentation-multilingue
+design:
+  path: /fr/docs/conception
+design__core_spec:
+  path: /fr/docs/conception/specification-coeur
+design__frontend_contracts:
+  path: /fr/docs/conception/contrats-frontend
+design__related_work:
+  path: /fr/docs/conception/travaux-lies
+design__stdlib_localization:
+  path: /fr/docs/conception/localisation-bibliotheque-standard
+design__surface_normalization:
+  path: /fr/docs/conception/normalisation-surface
+extending:
+  path: /fr/docs/extension
+extending__cnl_scope:
+  path: /fr/docs/extension/perimetre-cnl
+extending__translation:
+  path: /fr/docs/extension/traduction
 getting_started:
   path: /fr/docs/demarrage
 getting_started__installation:
@@ -34,3 +60,19 @@ reference__numerals:
   path: /fr/docs/references/numeraux
 reference__operators:
   path: /fr/docs/references/operateurs
+wasm:
+  path: /fr/docs/wasm
+wasm__architecture:
+  path: /fr/docs/wasm/architecture
+wasm__development:
+  path: /fr/docs/wasm/developpement
+wasm__faq:
+  path: /fr/docs/wasm/faq
+wasm__installation:
+  path: /fr/docs/wasm/installation
+wasm__performance:
+  path: /fr/docs/wasm/performance
+wasm__troubleshooting:
+  path: /fr/docs/wasm/depannage
+wasm__upgrade:
+  path: /fr/docs/wasm/mise-a-niveau

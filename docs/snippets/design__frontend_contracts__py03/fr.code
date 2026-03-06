@@ -1,0 +1,18 @@
+def execute_and_capture(source: str, language: str) -> str:
+    import io, sys
+    old_stdout = sys.stdout
+    sys.stdout = io.StringIO()
+    ProgramExecutor().execute(source, language=language)
+    output = sys.stdout.getvalue()
+    sys.stdout = old_stdout
+    return output
+
+def test_output_equivalence():
+    programs = {
+        "en": "let x = 10\nlet y = 20\nprint(x + y)",
+        "fr": "soit x = 10\nsoit y = 20\nafficher(x + y)",
+        "ja": "変数 x = 10\n変数 y = 20\n表示(x + y)",
+        "ar": "ليكن x = 10\nليكن y = 20\naطبع(x + y)",
+    }
+    outputs = {lang: execute_and_capture(src, lang) for lang, src in programs.items()}
+    assert len(set(outputs.values())) == 1  # All outputs identical

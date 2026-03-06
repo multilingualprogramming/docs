@@ -1,0 +1,9 @@
+# tests/surface_normalizer_test.py
+def test_xx_surface_config_valid():
+    # Ensure config stays schema-valid
+    normalizer = SurfaceNormalizer()
+    assert normalizer.validate_config()
+
+def test_xx_for_loop_normalized():
+    # Test that your surface form normalizes correctly
+    ...

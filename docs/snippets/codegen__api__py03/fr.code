@@ -1,0 +1,13 @@
+from multilingualprogramming import ProgramExecutor
+
+executor = ProgramExecutor(language="en")
+
+result = executor.execute("""
+let nums = [1, 2, 3, 4, 5]
+let total = sum(nums)
+print(f"Total: {total}")
+""")
+
+print(result.output)         # Total: 15
+print(result.success)        # True
+print(result.python_source)  # Python genere

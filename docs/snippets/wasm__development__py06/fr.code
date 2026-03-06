@@ -1,0 +1,14 @@
+# In multilingualprogramming/codegen/wasm_generator.py
+
+def generate_my_compute_wasm(self, x_type="i64", y_type="i64") -> str:
+    """Generate Rust code for my_compute."""
+    return f"""
+#[no_mangle]
+pub extern "C" fn my_compute(x: {x_type}, y: {y_type}) -> {x_type} {{
+    let mut result: {x_type} = 0;
+    for i in 0..x {{
+        result += i * y;
+    }}
+    result
+}}
+"""

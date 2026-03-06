@@ -1,0 +1,5 @@
+from multilingualprogramming.codegen import PythonCodeGenerator
+
+codegen = PythonCodeGenerator(indent_str="    ")
+python_source = codegen.generate(core)
+print(python_source)

@@ -1,0 +1,13 @@
+from multilingualprogramming.runtime.python_fallbacks import FALLBACK_REGISTRY
+
+# List all registered functions
+print(f"Registered: {len(FALLBACK_REGISTRY)} functions")
+print(sorted(FALLBACK_REGISTRY.keys()))
+
+# Check if a function is registered
+print("fibonacci" in FALLBACK_REGISTRY)   # True / False
+
+# Get the Python implementation
+fn = FALLBACK_REGISTRY.get("fibonacci")
+import inspect
+print(inspect.signature(fn))

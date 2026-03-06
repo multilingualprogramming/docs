@@ -1,0 +1,6 @@
+from multilingualprogramming import Lexer, Parser
+
+lexer = Lexer("soit x = 42", language="fr")
+tokens = lexer.tokenize()
+parser = Parser(tokens, source_language="fr")
+ast = parser.parse()

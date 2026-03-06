@@ -1,0 +1,8 @@
+# tests/keyword_registry_test.py
+def test_xx_in_supported_languages():
+    registry = KeywordRegistry()
+    assert "xx" in registry.get_supported_languages()
+
+def test_xx_cond_if():
+    registry = KeywordRegistry()
+    assert registry.get_keyword("COND_IF", "xx") == "your_if_keyword"

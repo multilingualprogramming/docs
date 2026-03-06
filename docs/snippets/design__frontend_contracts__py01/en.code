@@ -1,0 +1,6 @@
+from multilingualprogramming.core.lowering import lower_to_core_ir
+
+core = lower_to_core_ir(ast, source_language="fr")
+# core.ast — the Program node
+# core.source_language — "fr"
+# core.core_version — "0.1"

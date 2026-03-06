@@ -1,0 +1,2 @@
+from multilingualprogramming.runtime.python_fallbacks import FALLBACK_REGISTRY
+print("fibonacci" in FALLBACK_REGISTRY)

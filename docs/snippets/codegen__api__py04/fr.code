@@ -1,0 +1,10 @@
+executor = ProgramExecutor(language="en")
+
+python_code = executor.transpile("""
+let x = 42
+print(x)
+""")
+
+print(python_code)
+# x = 42
+# print(x)

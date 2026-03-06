@@ -1,0 +1,10 @@
+from multilingualprogramming.runtime.backend_selector import BackendSelector, Backend
+
+# Auto-detect (WASM if available, else Python) — DEFAULT
+selector_auto = BackendSelector(prefer_backend=Backend.AUTO)
+
+# Always Python (for testing or debugging)
+selector_python = BackendSelector(prefer_backend=Backend.PYTHON)
+
+# Force WASM (fails if unavailable)
+selector_wasm = BackendSelector(prefer_backend=Backend.WASM)

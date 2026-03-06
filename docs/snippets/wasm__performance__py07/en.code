@@ -1,0 +1,11 @@
+from multilingualprogramming.runtime.backend_selector import BackendConfig
+
+config = BackendConfig(
+    prefer_backend=Backend.AUTO,
+    cranelift=True,
+    vectorization=True,
+    simd=True,
+    cache=True,
+    memory_pages=1024,
+)
+selector = BackendSelector(config=config)

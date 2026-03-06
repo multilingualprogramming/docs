@@ -1,0 +1,29 @@
+from multilingualprogramming import (
+    Lexer,
+    Parser,
+    SemanticAnalyzer,
+    ASTPrinter,
+    PythonCodeGenerator,
+    ProgramExecutor,
+    REPL,
+    RuntimeBuiltins,
+    WATCodeGenerator,
+    KeywordRegistry,
+)
+
+from multilingualprogramming.codegen.wasm_generator import (
+    WasmCodeGenerator,
+    WasmBuildConfig,
+    WasmTarget,
+)
+
+from multilingualprogramming.core.lowering import lower_to_core_ir
+from multilingualprogramming.runtime.backend_selector import (
+    BackendSelector,
+    Backend,
+    BackendRegistry,
+    get_backend_selector,
+    get_current_backend,
+    is_wasm_available,
+)
+from multilingualprogramming.runtime.python_fallbacks import FALLBACK_REGISTRY

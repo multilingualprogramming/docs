@@ -1,3 +1,29 @@
+codegen:
+  path: /en/docs/codegen
+codegen__api:
+  path: /en/docs/codegen/api
+contributing:
+  path: /en/docs/contributing
+contributing__multilingual_docs:
+  path: /en/docs/contributing/multilingual-docs
+design:
+  path: /en/docs/design
+design__core_spec:
+  path: /en/docs/design/core-spec
+design__frontend_contracts:
+  path: /en/docs/design/frontend-contracts
+design__related_work:
+  path: /en/docs/design/related-work
+design__stdlib_localization:
+  path: /en/docs/design/stdlib-localization
+design__surface_normalization:
+  path: /en/docs/design/surface-normalization
+extending:
+  path: /en/docs/extending
+extending__cnl_scope:
+  path: /en/docs/extending/cnl-scope
+extending__translation:
+  path: /en/docs/extending/translation
 getting_started:
   path: /en/docs/getting-started
 getting_started__installation:
@@ -34,3 +60,19 @@ reference__numerals:
   path: /en/docs/reference/numerals
 reference__operators:
   path: /en/docs/reference/operators
+wasm:
+  path: /en/docs/wasm
+wasm__architecture:
+  path: /en/docs/wasm/architecture
+wasm__development:
+  path: /en/docs/wasm/development
+wasm__faq:
+  path: /en/docs/wasm/faq
+wasm__installation:
+  path: /en/docs/wasm/installation
+wasm__performance:
+  path: /en/docs/wasm/performance
+wasm__troubleshooting:
+  path: /en/docs/wasm/troubleshooting
+wasm__upgrade:
+  path: /en/docs/wasm/upgrade

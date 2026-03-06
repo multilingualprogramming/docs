@@ -1,0 +1,18 @@
+from multilingualprogramming.core.ir import CoreIRProgram
+from multilingualprogramming.core.lowering import lower_to_core_ir
+from multilingualprogramming import Lexer, Parser
+
+# Parse source
+lexer = Lexer(language="fr")
+parser = Parser(language="fr")
+
+source = "soit x = 42\nafficher(x)"
+tokens = lexer.tokenize(source)
+ast = parser.parse(tokens)
+
+# Wrap in CoreIRProgram
+core = lower_to_core_ir(ast, source_language="fr")
+
+print(core.source_language)  # "fr"
+print(core.core_version)     # "0.1"
+print(type(core.ast).__name__)  # "Program"

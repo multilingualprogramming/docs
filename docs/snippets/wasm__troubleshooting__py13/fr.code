@@ -1,0 +1,5 @@
+# If you get type errors, check the function signature:
+from multilingualprogramming.runtime.python_fallbacks import FALLBACK_REGISTRY
+fn = FALLBACK_REGISTRY.get("my_function")
+import inspect
+print(inspect.signature(fn))

@@ -1,0 +1,5 @@
+from multilingualprogramming.codegen.wasm_generator import WasmCodeGenerator
+
+wasm_gen = WasmCodeGenerator()
+rust_intermediate = wasm_gen.generate(ast)
+print(rust_intermediate[:200])

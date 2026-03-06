@@ -1,0 +1,44 @@
+#!/usr/bin/env python3
+import sys
+import platform
+from multilingualprogramming.runtime.backend_selector import BackendSelector
+from multilingualprogramming.runtime.python_fallbacks import (
+    MatrixOperations,
+    NumericOperations,
+    FALLBACK_REGISTRY,
+)
+
+print("=" * 60)
+print("Multilingual Programming — WASM Installation Check")
+print("=" * 60)
+
+print(f"\n1. System Information:")
+print(f"   Platform: {platform.system()}")
+print(f"   Python: {sys.version}")
+print(f"   Architecture: {platform.machine()}")
+
+selector = BackendSelector()
+print(f"\n2. WASM Support:")
+print(f"   Available: {selector.is_wasm_available()}")
+print(f"   Current Backend: {selector.backend}")
+
+print(f"\n3. Fallback Functions:")
+print(f"   Registered: {len(FALLBACK_REGISTRY)} functions")
+
+print(f"\n4. Basic Operations:")
+try:
+    fib = NumericOperations.fibonacci(10)
+    print(f"   ✓ Fibonacci(10): {fib}")
+
+    result = MatrixOperations.multiply([[1, 2], [3, 4]], [[5, 6], [7, 8]])
+    print(f"   ✓ Matrix multiply: success")
+except Exception as err:
+    print(f"   ✗ Error: {err}")
+
+print("\n" + "=" * 60)
+if selector.is_wasm_available():
+    print("✓ WASM support enabled — 50–100x speedups active!")
+else:
+    print("⚠ WASM not available — using Python fallback")
+    print("  To enable WASM: pip install wasmtime")
+print("=" * 60)

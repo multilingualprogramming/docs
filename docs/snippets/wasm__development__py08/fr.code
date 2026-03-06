@@ -1,0 +1,26 @@
+import pytest
+from multilingualprogramming.runtime.backend_selector import BackendSelector, Backend
+
+@pytest.fixture
+def python_selector():
+    return BackendSelector(prefer_backend=Backend.PYTHON)
+
+@pytest.fixture
+def wasm_selector():
+    selector = BackendSelector(prefer_backend=Backend.WASM)
+    if not selector.is_wasm_available():
+        pytest.skip("WASM not available")
+    return selector
+
+def test_fibonacci_equivalence(python_selector, wasm_selector):
+    for n in range(0, 20):
+        py_result = python_selector.call_function("fibonacci", n)
+        wasm_result = wasm_selector.call_function("fibonacci", n)
+        assert py_result == wasm_result, f"Mismatch at n={n}: {py_result} != {wasm_result}"
+
+def test_matrix_multiply_equivalence(python_selector, wasm_selector):
+    a = [[1, 2, 3], [4, 5, 6]]
+    b = [[7, 8], [9, 10], [11, 12]]
+    py_result = python_selector.call_function("matrix_multiply", a, b)
+    wasm_result = wasm_selector.call_function("matrix_multiply", a, b)
+    assert py_result == wasm_result

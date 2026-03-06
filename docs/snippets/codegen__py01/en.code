@@ -1,0 +1,16 @@
+from multilingualprogramming import ProgramExecutor
+
+executor = ProgramExecutor()
+
+# Transpile without executing
+python_code = executor.transpile("""
+let items = [1, 2, 3, 4, 5]
+let squares = [x**2 for x in items]
+print(squares)
+""", language="en")
+
+print(python_code)
+# Output:
+# items = [1, 2, 3, 4, 5]
+# squares = [x ** 2 for x in items]
+# print(squares)

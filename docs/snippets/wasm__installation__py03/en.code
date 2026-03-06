@@ -1,0 +1,14 @@
+from multilingualprogramming.runtime.backend_selector import BackendSelector, Backend
+
+# Auto-detect (default): WASM if available, else Python
+selector = BackendSelector(prefer_backend=Backend.AUTO)
+
+# Force Python fallback (debugging, testing)
+selector = BackendSelector(prefer_backend=Backend.PYTHON)
+
+# Force WASM (will raise RuntimeError if unavailable)
+selector = BackendSelector(prefer_backend=Backend.WASM)
+try:
+    result = selector.call_function("fibonacci", 10)
+except RuntimeError as err:
+    print(f"WASM not available: {err}")

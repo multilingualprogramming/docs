@@ -1,0 +1,1 @@
+print(BackendSelector().backend)  # Should be "wasm"

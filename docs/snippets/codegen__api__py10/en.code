@@ -1,0 +1,2 @@
+class SemanticAnalyzer:
+    def __init__(self, source_language: str = "en")

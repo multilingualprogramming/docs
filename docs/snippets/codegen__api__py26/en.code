@@ -1,0 +1,5 @@
+from multilingualprogramming.codegen.wasm_generator import WasmBuildConfig
+
+build = WasmBuildConfig(output_path="module.wasm")
+build.build(rust_intermediate)
+print(build.get_rust_code()[:200])

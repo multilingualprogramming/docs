@@ -1,0 +1,23 @@
+   print(BackendSelector().backend)  # should be "wasm"
+   ```
+
+2. Check operation size (must be > 1ms for WASM to win):
+   ```python
+   import time
+   start = time.perf_counter()
+   result = your_operation()
+   print(f"Time: {(time.perf_counter()-start)*1000:.2f}ms")
+   ```
+
+3. Verify module caching is working (second call should be faster):
+   ```python
+   for i in range(5):
+       start = time.perf_counter()
+       selector.call_function("fibonacci", 30)
+       print(f"Call {i}: {(time.perf_counter()-start)*1000:.2f}ms")
+   ```
+
+### Issue: High first-call latency
+
+Module loading takes 10-50ms. Pre-warm at startup:
+
