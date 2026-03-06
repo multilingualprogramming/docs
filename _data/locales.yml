@@ -2,9 +2,9 @@
   label: English
   native_label: English
   docs_enabled: true
-  docs_home_page_id: getting_started
+  docs_home_page_id: home
 - code: fr
   label: French
   native_label: Francais
   docs_enabled: true
-  docs_home_page_id: getting_started
+  docs_home_page_id: home

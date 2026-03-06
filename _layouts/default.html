@@ -38,7 +38,8 @@
   <!-- Top navigation -->
   <header class="site-header" role="banner">
     <nav class="nav-container" aria-label="Main navigation">
-      <a class="nav-brand" href="{{ '/' | relative_url }}">
+      {% capture nav_home_url %}{% include localized-url.html page_id='home' fallback_url='/' locale=current_locale %}{% endcapture %}
+      <a class="nav-brand" href="{{ nav_home_url | strip }}">
         <img class="brand-icon" src="{{ '/assets/images/logo.svg' | relative_url }}" alt="" aria-hidden="true" />
         <span class="brand-name">multilingual</span>
         <span class="brand-version">v{{ site.version }}</span>

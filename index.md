@@ -1,5 +1,7 @@
 ---
 layout: home
+page_id: home
+locale: en
 title: "Multilingual Programming Language"
 description: "Write programs in English, French, Spanish, Japanese, Arabic, Hindi and more. One formal core. Python and WASM backends."
 permalink: /
