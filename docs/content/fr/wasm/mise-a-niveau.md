@@ -1,7 +1,7 @@
 ---
 page_id: wasm__upgrade
 locale: fr
-title: Mise ? niveau WASM
+title: Mise à niveau WASM
 path_segments:
 - wasm
 - mise-a-niveau
@@ -10,7 +10,7 @@ status: translated
 permalink: /fr/docs/wasm/mise-a-niveau/
 ---
 
-Proc?dez aux mises ? niveau en validant les d?pendances, en relan?ant les tests et en comparant les performances avant/apr?s.
+Procédez aux mises à niveau en validant les dépendances, en relançant les tests et en comparant les performances avant/après.
 
 {{snippet:wasm__upgrade__py01}}
 

@@ -10,51 +10,51 @@ status: translated
 permalink: /fr/docs/demarrage/installation/
 ---
 
-## Exigences systeme
+## Exigences système
 
-| Exigence | Minimum | Recommande |
+| Exigence | Minimum | Recommandé |
 |-------------|---------|-------------|
-| Python | 3.12+ | 3.12.x or 3.13.x |
-| RAM | 256 MB | 512 MB (with WASM) |
-| Disk | 50 MB | 150 MB (with WASM) |
-| OS | Windows, Linux, macOS | Any |
+| Python | 3.12+ | 3.12.x ou 3.13.x |
+| RAM | 256 MB | 512 MB (avec WASM) |
+| Disque | 50 MB | 150 MB (avec WASM) |
+| OS | Windows, Linux, macOS | Tous |
 
 ---
 
 ## Options d'installation
 
-### Option 1 — Python Only (Minimal)
+### Option 1 - Python seul (minimal)
 
 ```bash
 pip install multilingualprogramming
 ```
 
-- Prise en charge complete des 17 langues
-- Backend d'execution Python
-- Sans acceleration WASM
+- Prise en charge complète des 17 langues
+- Backend d'exécution Python
+- Sans accélération WASM
 - Taille d'installation ~50 MB
 
-### Option 2 - Python + WASM (recommande)
+### Option 2 - Python + WASM (recommandé)
 
 ```bash
 pip install multilingualprogramming[wasm]
 ```
 
-- Prise en charge complete des 17 langues
-- 50–100x speedup on matrix, crypto, scientific operations
-- Repli automatique vers Python si WASM indisponible
+- Prise en charge complète des 17 langues
+- Accélération de 50 à 100x sur les matrices, la crypto et les calculs scientifiques
+- Repli automatique vers Python si WASM est indisponible
 - Taille d'installation ~150 MB
-- Necessite : `wasmtime` (installe automatiquement)
+- Nécessite `wasmtime` (installé automatiquement)
 
-### Option 3 — Maximum Performance
+### Option 3 - Performance maximale
 
 ```bash
 pip install multilingualprogramming[performance]
 ```
 
-- Toutes les fonctionnalites WASM
-- Replis optimises avec NumPy
-- Execution hybride WASM + NumPy
+- Toutes les fonctionnalités WASM
+- Replis optimisés avec NumPy
+- Exécution hybride WASM + NumPy
 - Taille d'installation ~250 MB
 
 ---
@@ -64,49 +64,49 @@ pip install multilingualprogramming[performance]
 ### Linux
 
 ```bash
-# Verifier Python 3.12+
+# Vérifier Python 3.12+
 python3 --version
 
 # Installer
 python3 -m pip install multilingualprogramming[wasm]
 
-# Verifier
+# Vérifier
 python3 -c "from multilingualprogramming.runtime.backend_selector import BackendSelector; print('OK')"
 ```
 
 ### macOS
 
 ```bash
-# Installer Python 3.12 via Homebrew (optional)
+# Installer Python 3.12 via Homebrew (optionnel)
 brew install python@3.12
 
 # Installer
 python3 -m pip install multilingualprogramming[wasm]
 
-# Verifier
+# Vérifier
 python3 -c "import multilingualprogramming; print('OK')"
 ```
 
 ### Windows
 
 ```powershell
-# PowerShell (execution en utilisateur standard)
+# PowerShell (exécution en utilisateur standard)
 python -m pip install multilingualprogramming[wasm]
 
-# Verifier
+# Vérifier
 python -c "import multilingualprogramming; print('OK')"
 ```
 
-> **Note** : Si `python` est introuvable, essayez `py -3.12` ou verifiez que Python est dans votre PATH.
+> **Note** : Si `python` est introuvable, essayez `py -3.12` ou vérifiez que Python est dans votre `PATH`.
 
 ---
 
 ## Environnements virtuels
 
-L'utilisation d'un environnement virtuel est recommandee :
+L'utilisation d'un environnement virtuel est recommandée :
 
 ```bash
-# Creer un environnement virtuel
+# Créer un environnement virtuel
 python -m venv ml-env
 
 # Activer
@@ -116,7 +116,7 @@ ml-env\Scripts\activate         # Windows
 # Installer
 pip install multilingualprogramming[wasm]
 
-# Desactiver a la fin
+# Désactiver à la fin
 deactivate
 ```
 
@@ -151,51 +151,51 @@ docker run -it multilingual-app
 
 ## Compilation depuis la source
 
-Pour le developpement ou la contribution :
+Pour le développement ou la contribution :
 
 ```bash
 git clone https://github.com/johnsamuelwrites/multilingual.git
 cd multilingual
 
-# Installer in development mode with all extras
+# Installer en mode développement avec tous les extras
 pip install -e ".[dev,wasm]"
 
-# Executer les tests
+# Exécuter les tests
 python -m pytest -q
 
-# Executer le lint
+# Exécuter le lint
 python -m pylint $(git ls-files '*.py')
 ```
 
 ---
 
-## Verifier l'installation
+## Vérifier l'installation
 
-### Verification rapide
+### Vérification rapide
 
 ```bash
 python -c "import multilingualprogramming; print('OK')"
 python -m multilingualprogramming --version
 ```
 
-### Verification complete
+### Vérification complète
 
 {{snippet:getting_started__installation__py01}}
 
 ---
 
-## Dependances
+## Dépendances
 
 | Package | Version | Objectif |
 |---------|---------|---------|
 | roman | >=3.3 | Prise en charge des chiffres romains |
-| python-dateutil | >=2.8 | Analyse multilingue date/heure |
-| wasmtime | >=1.0.0 | Execution WASM (optionnel) |
-| numpy | any | Replis numeriques optimises (optionnel) |
+| python-dateutil | >=2.8 | Analyse multilingue date / heure |
+| wasmtime | >=1.0.0 | Exécution WASM (optionnel) |
+| numpy | any | Replis numériques optimisés (optionnel) |
 
 ---
 
-## Desinstallation
+## Désinstallation
 
 ```bash
 # Supprimer le package
@@ -207,11 +207,11 @@ pip uninstall wasmtime
 
 ---
 
-## Depannage
+## Dépannage
 
 ### `ModuleNotFoundError: No module named 'multilingualprogramming'`
 
-Verifiez que vous avez installe pour la bonne version de Python :
+Vérifiez que vous avez installé pour la bonne version de Python :
 
 ```bash
 which python && python --version
@@ -220,7 +220,7 @@ pip install multilingualprogramming
 
 ### WASM not available on macOS ARM64
 
-WASM fonctionne via emulation sur Apple Silicon. Utilisez le repli Python :
+WASM fonctionne via émulation sur Apple Silicon. Utilisez le repli Python :
 
 {{snippet:getting_started__installation__py02}}
 
@@ -238,4 +238,4 @@ pip install --upgrade wasmtime
 ERROR: Requires Python >= 3.12
 ```
 
-Mettez Python a jour vers 3.12+ puis reinstallez.
+Mettez Python à jour vers 3.12+ puis réinstallez.

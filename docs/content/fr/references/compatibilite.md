@@ -1,7 +1,7 @@
 ---
 page_id: reference__compatibility
 locale: fr
-title: Compatibilite
+title: Compatibilité
 path_segments:
 - references
 - compatibilite
@@ -10,234 +10,232 @@ status: translated
 permalink: /fr/docs/references/compatibilite/
 ---
 
+Cette matrice décrit l'état actuel de compatibilité de `multilingual`. La source de vérité repose sur :
 
-
-Cette matrice definit la base actuelle de compatibilite pour `multilingual`. La source de verite est :
-
-- `examples/complete_features_en.ml` and equivalents in all 17 languages
-- `tests/` (~1,797 tests across 58 test files)
+- `examples/complete_features_en.ml` et ses équivalents dans les 17 langues
+- `tests/` (environ 1 797 tests répartis sur 58 fichiers de test)
 
 **Runtime cible** : CPython 3.12.x
 
 ---
 
-## Perimetre
+## Périmètre
 
-`multilingual` supports a broad Python 3.12-aligned syntax and runtime subset. It is **not** full drop-in compatibility for every existing Python project or third-party ecosystem. It is a forward-compilation framework: surface language → Core AST → Python.
+`multilingual` prend en charge un large sous-ensemble de la syntaxe et du runtime alignés sur Python 3.12. Il ne s'agit **pas** d'une compatibilité totale avec tous les projets Python existants ni avec tous les écosystèmes tiers. Il s'agit d'un cadre de compilation vers l'avant : langage de surface -> Core AST -> Python.
 
 ---
 
-## Langues supportees
+## Langues prises en charge
 
-17 langues naturelles avec mots-cles et messages d'erreur localises :
+17 langues naturelles avec mots-clés et messages d'erreur localisés :
 
-| Language | Code | `if` keyword |
+| Langue | Code | Mot-clé `if` |
 |----------|------|-------------|
-| English | `en` | `if` |
-| French | `fr` | `si` |
-| Spanish | `es` | `si` |
-| German | `de` | `wenn` |
-| Italian | `it` | `se` |
-| Portuguese | `pt` | `se` |
-| Polish | `pl` | `jezeli` |
-| Dutch | `nl` | `als` |
-| Swedish | `sv` | `om` |
-| Danish | `da` | `hvis` |
-| Finnish | `fi` | `jos` |
+| Anglais | `en` | `if` |
+| Français | `fr` | `si` |
+| Espagnol | `es` | `si` |
+| Allemand | `de` | `wenn` |
+| Italien | `it` | `se` |
+| Portugais | `pt` | `se` |
+| Polonais | `pl` | `jezeli` |
+| Néerlandais | `nl` | `als` |
+| Suédois | `sv` | `om` |
+| Danois | `da` | `hvis` |
+| Finnois | `fi` | `jos` |
 | Hindi | `hi` | `अगर` |
-| Arabic | `ar` | `إذا` |
+| Arabe | `ar` | `إذا` |
 | Bengali | `bn` | `যদি` |
-| Tamil | `ta` | `என்றால்` |
-| Chinese | `zh` | `如果` |
-| Japanese | `ja` | `もし` |
+| Tamoul | `ta` | `என்றால்` |
+| Chinois | `zh` | `如果` |
+| Japonais | `ja` | `もし` |
 
 ---
 
-## Constructions coeur
+## Constructions cœur
 
-| Area | Status | Notes |
+| Domaine | Statut | Notes |
 |------|--------|-------|
 | Imports | ✅ | `import math`, `from math import sqrt as root_fn` |
-| Wildcard imports | ✅ | `from os import *` |
-| Variable declarations | ✅ | `let x = 0`, `const PI = 3.14` |
-| Type annotations | ✅ | `let x: int = 0`, `def f(x: int) -> str:` |
-| Arithmetic and expressions | ✅ | `+`, `-`, `*`, `/`, `//`, `%`, `**`, bitwise ops |
-| Augmented assignment | ✅ | `+=`, `-=`, `*=`, `/=`, `**=`, `//=`, `%=`, `&=`, `\|=`, `^=`, `<<=`, `>>=` |
-| Chained assignment | ✅ | `a = b = c = 0` |
-| Starred unpacking | ✅ | `a, *rest = [1, 2, 3]`, `first, *mid, last = items` |
+| Imports génériques | ✅ | `from os import *` |
+| Déclarations de variables | ✅ | `let x = 0`, `const PI = 3.14` |
+| Annotations de type | ✅ | `let x: int = 0`, `def f(x: int) -> str:` |
+| Arithmétique et expressions | ✅ | `+`, `-`, `*`, `/`, `//`, `%`, `**`, opérateurs binaires |
+| Affectation augmentée | ✅ | `+=`, `-=`, `*=`, `/=`, `**=`, `//=`, `%=`, `&=`, `\|=`, `^=`, `<<=`, `>>=` |
+| Affectation chaînée | ✅ | `a = b = c = 0` |
+| Dépaquetage étoilé | ✅ | `a, *rest = [1, 2, 3]`, `first, *mid, last = items` |
 
 ---
 
-## Structures de donnees
+## Structures de données
 
-| Area | Status | Notes |
+| Domaine | Statut | Notes |
 |------|--------|-------|
-| Lists | ✅ | literals, iteration, indexing, slicing |
-| Dictionaries | ✅ | literals, comprehensions, unpacking (`**d`) |
-| Sets | ✅ | literals, comprehensions |
-| Tuples | ✅ | literals, unpacking |
-| Strings | ✅ | single/double/triple quotes, f-strings |
-| F-string format specs | ✅ | `f"{x:.2f}"`, `f"{x!r}"`, `f"{x!s}"`, `f"{x!a}"` |
-| Hex/octal/binary literals | ✅ | `0xFF`, `0o77`, `0b1010` |
-| Scientific notation | ✅ | `1.5e10` |
+| Listes | ✅ | littéraux, itération, indexation, tranches |
+| Dictionnaires | ✅ | littéraux, compréhensions, dépaquetage (`**d`) |
+| Ensembles | ✅ | littéraux, compréhensions |
+| Tuples | ✅ | littéraux, dépaquetage |
+| Chaînes | ✅ | guillemets simples, doubles, triples, f-strings |
+| Spécificateurs de format f-string | ✅ | `f"{x:.2f}"`, `f"{x!r}"`, `f"{x!s}"`, `f"{x!a}"` |
+| Littéraux hexadécimaux, octaux et binaires | ✅ | `0xFF`, `0o77`, `0b1010` |
+| Notation scientifique | ✅ | `1.5e10` |
 
 ---
 
-## Controle de flux
+## Contrôle de flux
 
-| Area | Status | Notes |
+| Domaine | Statut | Notes |
 |------|--------|-------|
-| `if` / `elif` / `else` | ✅ | full conditional chains |
-| `while` loops | ✅ | `while condition:` |
-| `while` / `else` | ✅ | else block when loop completes without `break` |
-| `for` loops | ✅ | `for item in items:`, tuple unpacking targets |
-| `for` / `else` | ✅ | else block when loop completes without `break` |
-| `break` / `continue` | ✅ | loop control |
-| `pass` | ✅ | no-op placeholder |
-| `match` / `case` | ✅ | structural pattern matching |
-| `case` guard clauses | ✅ | `case n if n > 0:` |
-| `case` OR patterns | ✅ | `case 1 \| 2 \| 3:` |
-| `case` AS bindings | ✅ | `case pattern as name:` |
-| `case _` (default) | ✅ | wildcard/default case |
-| Ternary expressions | ✅ | `x if cond else y` |
+| `if` / `elif` / `else` | ✅ | chaînes conditionnelles complètes |
+| Boucles `while` | ✅ | `while condition:` |
+| `while` / `else` | ✅ | bloc `else` lorsque la boucle se termine sans `break` |
+| Boucles `for` | ✅ | `for item in items:`, cibles avec dépaquetage de tuple |
+| `for` / `else` | ✅ | bloc `else` lorsque la boucle se termine sans `break` |
+| `break` / `continue` | ✅ | contrôle de boucle |
+| `pass` | ✅ | instruction vide |
+| `match` / `case` | ✅ | filtrage structurel de motifs |
+| Gardes `case` | ✅ | `case n if n > 0:` |
+| Motifs `case` avec OU | ✅ | `case 1 \| 2 \| 3:` |
+| Liaisons `case ... as` | ✅ | `case pattern as name:` |
+| `case _` (par défaut) | ✅ | motif générique / cas par défaut |
+| Expressions ternaires | ✅ | `x if cond else y` |
 
 ---
 
 ## Fonctions et classes
 
-| Area | Status | Notes |
+| Domaine | Statut | Notes |
 |------|--------|-------|
-| Function definitions | ✅ | `def f(x):`, with defaults, `*args`, `**kwargs` |
-| Positional-only params | ✅ | `def f(a, b, /, c):` |
-| Keyword-only params | ✅ | `def f(a, *, b):` |
-| Return annotations | ✅ | `def f() -> int:` |
-| Decorators | ✅ | `@decorator` on functions and classes |
-| Lambda expressions | ✅ | `lambda x: x + 1` |
-| `yield` / `yield from` | ✅ | generator functions and delegation |
-| `async def` / `await` | ✅ | async functions, `async for`, `async with` |
-| Class definitions | ✅ | inheritance, methods, attributes |
-| Walrus operator | ✅ | `(x := expr)` |
+| Définitions de fonctions | ✅ | `def f(x):`, avec valeurs par défaut, `*args`, `**kwargs` |
+| Paramètres positionnels uniquement | ✅ | `def f(a, b, /, c):` |
+| Paramètres nommés uniquement | ✅ | `def f(a, *, b):` |
+| Annotations de retour | ✅ | `def f() -> int:` |
+| Décorateurs | ✅ | `@decorator` sur fonctions et classes |
+| Expressions lambda | ✅ | `lambda x: x + 1` |
+| `yield` / `yield from` | ✅ | fonctions génératrices et délégation |
+| `async def` / `await` | ✅ | fonctions asynchrones, `async for`, `async with` |
+| Définitions de classes | ✅ | héritage, méthodes, attributs |
+| Opérateur morse | ✅ | `(x := expr)` |
 
 ---
 
 ## Gestion des erreurs
 
-| Area | Status | Notes |
+| Domaine | Statut | Notes |
 |------|--------|-------|
-| `try` / `except` / `else` / `finally` | ✅ | full exception handling |
-| `raise` | ✅ | bare `raise`, `raise ValueError("msg")` |
-| `raise` ... `from` | ✅ | exception chaining: `raise X from Y` |
+| `try` / `except` / `else` / `finally` | ✅ | gestion complète des exceptions |
+| `raise` | ✅ | `raise`, `raise ValueError("msg")` |
+| `raise` ... `from` | ✅ | chaînage d'exceptions |
 | `assert` | ✅ | `assert expr`, `assert expr, msg` |
 
 ---
 
-## Portee et variables
+## Portée et variables
 
-| Area | Status | Notes |
+| Domaine | Statut | Notes |
 |------|--------|-------|
-| `global` | ✅ | declares global scope |
-| `nonlocal` | ✅ | declares enclosing scope |
+| `global` | ✅ | déclare la portée globale |
+| `nonlocal` | ✅ | déclare la portée englobante |
 | `del` | ✅ | `del variable` |
 
 ---
 
-## Comprehensions et generateurs
+## Compréhensions et générateurs
 
-| Area | Status | Notes |
+| Domaine | Statut | Notes |
 |------|--------|-------|
-| List comprehensions | ✅ | `[x for x in items if cond]`, nested |
-| Dict comprehensions | ✅ | `{k: v for k, v in items}` |
-| Set comprehensions | ✅ | `{x for x in items if cond}`, nested |
-| Generator expressions | ✅ | `(x for x in items)` |
+| Compréhensions de listes | ✅ | `[x for x in items if cond]`, imbriquées |
+| Compréhensions de dictionnaires | ✅ | `{k: v for k, v in items}` |
+| Compréhensions d'ensembles | ✅ | `{x for x in items if cond}`, imbriquées |
+| Expressions génératrices | ✅ | `(x for x in items)` |
 
 ---
 
-## Context Managers
+## Gestionnaires de contexte
 
-| Area | Status | Notes |
+| Domaine | Statut | Notes |
 |------|--------|-------|
-| `with` statement | ✅ | `with open(f) as h:` |
-| Multiple contexts | ✅ | `with A() as a, B() as b:` |
-| `async with` | ✅ | async context managers |
+| Instruction `with` | ✅ | `with open(f) as h:` |
+| Contextes multiples | ✅ | `with A() as a, B() as b:` |
+| `async with` | ✅ | gestionnaires de contexte asynchrones |
 
 ---
 
-## Built-in Coverage
+## Couverture des builtins
 
-| Coverage area | Status | Notes |
+| Domaine | Statut | Notes |
 |---------------|--------|-------|
-| Python keywords (3.12) | ✅ Complete | 51 concept IDs, 7 categories |
-| Universal built-in functions | ✅ 70+ available | `len`, `range`, `abs`, `pow`, `divmod`, `complex`, `format`, `ascii`, `compile`, `eval`, `exec`, `globals`, `locals`, `issubclass`, `delattr`, `slice`, `aiter`, `anext`, and more |
-| Exception types | ✅ 45+ | `BaseException`, `ValueError`, `TypeError`, `KeyError`, `ModuleNotFoundError`, `ExceptionGroup`, `BaseExceptionGroup`, all warnings, and more |
-| Special values | ✅ | `True`, `False`, `None`, `Ellipsis`, `NotImplemented` |
-| Localized built-in aliases | ✅ 41 concepts | 41 builtins with aliases in all 16 non-English languages |
-| Canonical Python built-in names | ✅ | Always usable in all languages |
+| Mots-clés Python (3.12) | ✅ Complète | 51 identifiants de concepts, 7 catégories |
+| Fonctions built-in universelles | ✅ 70+ disponibles | `len`, `range`, `abs`, `pow`, `divmod`, `complex`, `format`, `ascii`, `compile`, `eval`, `exec`, `globals`, `locals`, `issubclass`, `delattr`, `slice`, `aiter`, `anext`, etc. |
+| Types d'exceptions | ✅ 45+ | `BaseException`, `ValueError`, `TypeError`, `KeyError`, `ModuleNotFoundError`, `ExceptionGroup`, `BaseExceptionGroup`, tous les warnings, etc. |
+| Valeurs spéciales | ✅ | `True`, `False`, `None`, `Ellipsis`, `NotImplemented` |
+| Alias built-in localisés | ✅ 41 concepts | 41 builtins avec alias dans les 16 langues non anglaises |
+| Noms built-in Python canoniques | ✅ | Toujours utilisables dans toutes les langues |
 
 ---
 
 ## Normalisation de syntaxe de surface
 
-Les langues SOV et RTL peuvent utiliser un ordre de mots naturel. Le normaliseur de surface reecrit les tokens vers un ordre canonique avant le parsing.
+Les langues SOV et RTL peuvent utiliser un ordre de mots naturel. Le normaliseur de surface réécrit les tokens dans un ordre canonique avant le parsing.
 
-| Statement | Languages with normalization | Example |
+| Instruction | Langues avec normalisation | Exemple |
 |-----------|------------------------------|---------|
-| `for` loop | `ja`, `ar`, `es`, `pt`, `hi`, `bn`, `ta` | Iterable-first: `範囲(6) 内の 各 i に対して:` |
-| `while` loop | `ja`, `ar`, `hi`, `bn`, `ta` | Condition-first |
-| `if` statement | `ja`, `ar`, `hi`, `bn`, `ta` | Condition-first |
-| `with` statement | `ja`, `ar`, `hi`, `bn`, `ta` | Expression-first |
+| Boucle `for` | `ja`, `ar`, `es`, `pt`, `hi`, `bn`, `ta` | Iterable-first |
+| Boucle `while` | `ja`, `ar`, `hi`, `bn`, `ta` | Condition-first |
+| Instruction `if` | `ja`, `ar`, `hi`, `bn`, `ta` | Condition-first |
+| Instruction `with` | `ja`, `ar`, `hi`, `bn`, `ta` | Expression-first |
 
 ---
 
-## Test Coverage
+## Couverture de tests
 
-~1,797 tests across 58 test files (~19,848 lines of test code):
+Environ 1 797 tests répartis sur 58 fichiers de test :
 
-| Test area | Files | Description |
+| Domaine | Fichiers | Description |
 |-----------|-------|-------------|
-| Numerals and dates | 8 | Multilingual numerals, Unicode, Roman, complex, fractions, datetime |
-| Lexer | 2 | Tokenization and lexer behavior |
-| Parser | 5 | Expressions, statements, compounds, multilingual, errors |
-| Semantic analysis | 6 | Scopes, constants, control flow, definitions, multilingual errors, symbol table |
-| Code generation | 4 | Expressions, statements, compounds, multilingual |
-| Execution | 4 | Basic, multilingual, transpile, errors |
-| Critical features | 8 | Triple-quoted strings, slices, parameters, tuples, comprehensions, decorators, f-strings |
-| Language completeness and CLI | 8 | Augmented assignment, membership, ternary, assert, chained assignment, CLI, REPL |
-| Advanced language features | 23 | Loop else, yield/raise from, set comprehensions, parameter separators, f-string formatting, match guards/OR/AS, global/nonlocal, builtins, exceptions, surface normalization, extended builtins, alias resolution, starred unpacking, integration, multilingual |
-| WAT/WASM backend | 5 | WAT generation, OOP/inheritance in WAT, WASM execution, corpus projects (20) |
-| Infrastructure | 10 | Keyword registry, AST nodes, AST printer, error messages, runtime builtins, REPL |
+| Numéraux et dates | 8 | Numéraux multilingues, Unicode, chiffres romains, complexes, fractions, date / heure |
+| Lexer | 2 | Tokenisation et comportement du lexer |
+| Parser | 5 | Expressions, instructions, structures composées, multilingue, erreurs |
+| Analyse sémantique | 6 | Portées, constantes, contrôle de flux, définitions, erreurs multilingues, table des symboles |
+| Génération de code | 4 | Expressions, instructions, structures composées, multilingue |
+| Exécution | 4 | Basique, multilingue, transpilation, erreurs |
+| Fonctionnalités critiques | 8 | Chaînes triple-quoted, slices, paramètres, tuples, compréhensions, décorateurs, f-strings |
+| Couverture du langage et CLI | 8 | Affectation augmentée, appartenance, ternaire, assert, affectation chaînée, CLI, REPL |
+| Fonctionnalités avancées | 23 | `loop else`, `yield from`, `raise from`, compréhensions d'ensembles, séparateurs de paramètres, formatage f-string, gardes `match`, `global`, `nonlocal`, builtins, exceptions, normalisation de surface, alias, dépaquetage étoilé, intégration |
+| Backend WAT / WASM | 5 | Génération WAT, POO / héritage en WAT, exécution WASM, projets corpus |
+| Infrastructure | 10 | Registre des mots-clés, nœuds AST, AST printer, messages d'erreur, builtins runtime, REPL |
 
 ---
 
-## Not Guaranteed
+## Non garanti
 
-Les points suivants **ne sont pas** annonces comme universellement compatibles :
+Les points suivants **ne sont pas** annoncés comme universellement compatibles :
 
-- Arbitrary Python projects running unchanged
-- Full behavioral parity with all CPython edge cases
-- Full third-party package/runtime ecosystem compatibility
-- Chaque scenario avance de metaprogrammation/introspection
-- Alias de localisation complets pour toutes les fonctions builtins CPython (41 sur 70+ ont des alias)
-- Starred unpacking in deeply nested expression contexts
-- Complex decorator chains with arguments
+- Tous les projets Python inchangés
+- Une parité comportementale complète avec tous les cas limites de CPython
+- Une compatibilité complète avec tous les écosystèmes tiers
+- Tous les scénarios avancés de métaprogrammation / introspection
+- Des alias localisés pour l'intégralité des builtins CPython
+- Le dépaquetage étoilé dans certains contextes d'expressions très imbriqués
+- Certaines chaînes complexes de décorateurs avec arguments
 
 ---
 
-## Known Fixes (v0.5.x)
+## Correctifs connus (v0.5.x)
 
-| Version | Fix |
+| Version | Correctif |
 |---------|-----|
-| v0.5.1 | Documentation updates |
-| v0.5.0 | WAT/WASM OOP object model: class lowering with linear-memory bump allocator, inheritance with C3 MRO, `super()` resolution, WAT execution tests |
-| v0.5.0 | SemanticAnalyzer: plain assignments (`x = 5`) now correctly define the variable in scope rather than triggering a false `UNDEFINED_NAME` error (was a false-positive in some languages, e.g., French) |
-| v0.5.0 | Augmented assignment (`x += 1`) now correctly reports `UNDEFINED_NAME` when the target variable has not been previously defined |
+| v0.5.1 | Mises à jour de documentation |
+| v0.5.0 | Modèle objet POO WAT / WASM : abaissement des classes avec allocateur linéaire, héritage avec MRO C3, résolution de `super()`, tests d'exécution WAT |
+| v0.5.0 | `SemanticAnalyzer` gère correctement les affectations simples (`x = 5`) dans la portée |
+| v0.5.0 | L'affectation augmentée (`x += 1`) signale correctement `UNDEFINED_NAME` si la variable n'a pas été définie auparavant |
 
 ---
 
-## Recommendation
+## Recommandation
 
-When evaluating compatibility for a real codebase:
+Pour évaluer la compatibilité sur un vrai code :
 
 1. Partir de cette matrice
-2. Executer les smoke tests : `multilingual smoke --all`
-3. Executer des tests cibles : `multilingual run yourprogram.ml --lang en`
-4. Track gaps as concrete syntax/runtime items
+2. Exécuter les smoke tests : `multilingual smoke --all`
+3. Exécuter des tests ciblés : `multilingual run yourprogram.ml --lang en`
+4. Suivre les écarts comme des éléments concrets de syntaxe ou de runtime

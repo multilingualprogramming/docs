@@ -1,7 +1,7 @@
 ---
 page_id: wasm__development
 locale: fr
-title: D?veloppement WASM
+title: Développement WASM
 path_segments:
 - wasm
 - developpement
@@ -10,7 +10,7 @@ status: translated
 permalink: /fr/docs/wasm/developpement/
 ---
 
-Cette page d?crit les bonnes pratiques pour d?velopper des fonctionnalit?s compatibles WASM, tester la g?n?ration WAT et valider les replis Python.
+Cette page décrit les bonnes pratiques pour développer des fonctionnalités compatibles WASM, tester la génération WAT et valider les replis Python.
 
 {{snippet:wasm__development__py01}}
 

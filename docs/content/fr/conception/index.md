@@ -9,13 +9,13 @@ status: translated
 permalink: /fr/docs/conception/
 ---
 
-Cette section explique le mod?le en couches, le noyau s?mantique, la normalisation de surface et les contrats frontend.
+Cette section explique le modèle en couches, le noyau sémantique, la normalisation de surface et les contrats frontend.
 
-- [Sp?cification du c?ur](/fr/design/core-spec/)
-- [Contrats frontend](/fr/design/frontend-contracts/)
-- [Normalisation de surface](/fr/design/surface-normalization/)
-- [Localisation de la biblioth?que standard](/fr/design/stdlib-localization/)
-- [Travaux li?s](/fr/design/related-work/)
+- [Spécification du cœur](/fr/docs/conception/specification-coeur/)
+- [Contrats frontend](/fr/docs/conception/contrats-frontend/)
+- [Normalisation de surface](/fr/docs/conception/normalisation-surface/)
+- [Localisation de la bibliothèque standard](/fr/docs/conception/localisation-bibliotheque-standard/)
+- [Travaux liés](/fr/docs/conception/travaux-lies/)
 
 {{snippet:design__py01}}
 

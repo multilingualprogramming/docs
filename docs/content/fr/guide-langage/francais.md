@@ -1,7 +1,7 @@
 ---
 page_id: language_guide__french
 locale: fr
-title: Guide francais
+title: Guide français
 path_segments:
 - guide-langage
 - francais
@@ -10,39 +10,30 @@ status: translated
 permalink: /fr/docs/guide-langage/francais/
 ---
 
-
-
-Ce guide présente la programmation avec `multilingual` en français. Il couvre les capacités du langage, le flux d'exécution, les exemples pratiques, et les points d'extension.
+Ce guide présente la programmation avec `multilingual` en français. Il couvre les capacités du langage, le flux d'exécution, des exemples pratiques et les principaux points d'extension.
 
 ---
 
 ## Objectif du projet
 
-`multilingual` permet d'écrire du code dans plusieurs langues humaines, tout en conservant un modèle sémantique unique.
+`multilingual` permet d'écrire du code dans plusieurs langues humaines tout en conservant un modèle sémantique unique.
 
 Concrètement :
 
-- vous écrivez des mots-clés dans votre langue (ex. `soit`, `pour`, `dans`, `afficher`) ;
-- le compilateur interne les mappe vers des concepts universels ;
-- le code est transpilé en Python puis exécuté.
+- vous écrivez les mots-clés dans votre langue, par exemple `soit`, `pour`, `dans`, `afficher`
+- le compilateur les mappe vers des concepts universels
+- le code est transpilé en Python puis exécuté
 
 ---
 
 ## Démarrage rapide
 
-Les fichiers source du langage utilisent l'extension `.ml` (par exemple `bonjour.ml`).
+Les fichiers source utilisent l'extension `.ml`.
 
 ```bash
-# Installation
 pip install multilingualprogramming
-
-# Lancer le REPL en français
 multilingual repl --lang fr
-
-# Afficher aussi le Python généré
 multilingual repl --lang fr --show-python
-
-# Exécuter un fichier source
 multilingual run bonjour.ml --lang fr
 ```
 
@@ -54,7 +45,7 @@ afficher("Bonjour le monde")
 
 ---
 
-## Capacités principales du langage
+## Capacités principales
 
 ### Variables et affectation
 
@@ -80,17 +71,15 @@ pour i dans intervalle(5):
     somme = somme + i
 afficher(somme)
 ```
-Sortie : `10`
 
 ### Fonctions
 
 ```text
-fonction carré(x):
+fonction carre(x):
     retourner x * x
 
-afficher(carré(6))
+afficher(carre(6))
 ```
-Sortie : `36`
 
 ### Collections et slicing
 
@@ -99,15 +88,13 @@ soit valeurs = [10, 20, 30, 40]
 afficher(valeurs[1:3])
 afficher(valeurs[::-1])
 ```
-Sortie : `[20, 30]` puis `[40, 30, 20, 10]`
 
 ### Compréhensions
 
 ```text
-soit carrés = [x * x pour x dans intervalle(6)]
-afficher(carrés)
+soit carres = [x * x pour x dans intervalle(6)]
+afficher(carres)
 ```
-Sortie : `[0, 1, 4, 9, 16, 25]`
 
 ---
 
@@ -115,17 +102,16 @@ Sortie : `[0, 1, 4, 9, 16, 25]`
 
 ```text
 classe Compteur:
-    fonction __init__(soi, départ):
-        soi.valeur = départ
+    fonction __init__(soi, depart):
+        soi.valeur = depart
 
-    fonction incrémenter(soi):
+    fonction incrementer(soi):
         soi.valeur = soi.valeur + 1
         retourner soi.valeur
 
 soit c = Compteur(10)
-afficher(c.incrémenter())
+afficher(c.incrementer())
 ```
-Sortie : `11`
 
 ---
 
@@ -133,14 +119,13 @@ Sortie : `11`
 
 ```text
 importer math
-depuis math importer sqrt comme root_fn
+de math importer sqrt comme root_fn
 afficher(root_fn(16))
 ```
-Sortie : `4.0`
 
 ---
 
-## Gestion d'exceptions
+## Gestion des exceptions
 
 ```text
 essayer:
@@ -158,25 +143,23 @@ finalement:
 ```text
 importer asyncio
 
-async_fonction télécharger(url: chaine) -> chaine:
+async_fonction telecharger(url: chaine) -> chaine:
     retourner f"contenu simulé pour {url}"
 
 async_fonction lire(url: chaine) -> chaine:
-    retourner attendre télécharger(url)
+    retourner attendre telecharger(url)
 
 afficher(asyncio.run(lire("https://exemple.fr")))
 ```
-Sortie : `contenu simulé pour https://exemple.fr`
 
 ---
 
-## Opérateur walrus (`:=`)
+## Opérateur morse
 
 ```text
-soit résultat = (n := 10) + 5
-afficher(n, résultat)
+soit resultat = (n := 10) + 5
+afficher(n, resultat)
 ```
-Sortie : `10 15`
 
 ---
 
@@ -188,7 +171,6 @@ tant_que compteur < 5:
     compteur = compteur + 1
 afficher(compteur)
 ```
-Sortie : `5`
 
 ---
 
@@ -206,20 +188,17 @@ afficher(drapeau_ok)
 
 ```text
 soit base = {"langue": "fr", "niveau": "intermédiaire"}
-soit extra = {"niveau": "avancé", "thème": "tests"}
+soit extra = {"niveau": "avancé", "theme": "tests"}
 soit profil = {**base, **extra}
 afficher(profil)
 ```
-Sortie : `{'langue': 'fr', 'niveau': 'avancé', 'thème': 'tests'}`
 
 ---
 
-## Alias français des built-ins
+## Alias français des fonctions intégrées
 
-Certains built-ins universels ont des alias localisés. Les noms universels Python restent utilisables en parallèle.
-
-| Alias français | Built-in Python |
-|----------------|-----------------|
+| Alias français | Nom universel |
+|----------------|---------------|
 | `afficher` | `print` |
 | `intervalle` | `range` |
 | `longueur` | `len` |
@@ -228,17 +207,12 @@ Certains built-ins universels ont des alias localisés. Les noms universels Pyth
 | `ouvrir` | `open` |
 | `trie` | `sorted` |
 | `inverse` | `reversed` |
-| `énumérer` | `enumerate` |
+| `enumerer` | `enumerate` |
 | `combiner` | `zip` |
 | `appliquer` | `map` |
 | `filtrer` | `filter` |
-| `type` | `type` |
-| `liste` | `list` |
-| `dico` | `dict` |
-| `ensemble` | `set` |
-| `tuple` | `tuple` |
 
-Voir la [référence des alias built-in](/fr/docs/references/fonctions-integrees/) pour la liste complète.
+Voir la [référence des fonctions intégrées](/fr/docs/references/fonctions-integrees/) pour la liste complète.
 
 ---
 
@@ -248,10 +222,10 @@ Voir la [référence des alias built-in](/fr/docs/references/fonctions-integrees
 |----------|-------------|
 | `:help` | Afficher l'aide |
 | `:language fr` | Forcer la langue française |
-| `:python` | Activer/désactiver l'affichage du Python généré |
-| `:reset` | Vider l'état de la session |
+| `:python` | Afficher ou masquer le Python généré |
+| `:reset` | Réinitialiser la session |
 | `:kw fr` | Lister les mots-clés français |
-| `:ops fr` | Lister les symboles et opérateurs |
+| `:ops fr` | Lister les opérateurs |
 | `:q` | Quitter |
 
 ---
@@ -260,29 +234,29 @@ Voir la [référence des alias built-in](/fr/docs/references/fonctions-integrees
 
 Le flux est identique pour toutes les langues :
 
-```
+```text
 Source français (.ml)
-      │
-      ▼  Lexer (tokenisation Unicode)
+      |
+      v  Lexer
 Tokens
-      │
-      ▼  Parser
+      |
+      v  Parser
 AST surface
-      │
-      ▼  lower_to_core_ir()
+      |
+      v  lower_to_core_ir()
 CoreIRProgram
-      │
-      ▼  SemanticAnalyzer
+      |
+      v  SemanticAnalyzer
 AST validé
-      │
-      ▼  PythonCodeGenerator
-Code Python (str)
-      │
-      ▼  exec() avec RuntimeBuiltins
+      |
+      v  PythonCodeGenerator
+Code Python
+      |
+      v  exec() avec RuntimeBuiltins
 Résultat
 ```
 
-Ce design permet d'ajouter des langues sans réécrire parser/codegen.
+Ce design permet d'ajouter des langues sans réécrire le parseur ni la génération de code.
 
 ---
 
@@ -302,20 +276,14 @@ sinon:
     afficher("Aucune valeur paire")
 ```
 
-Sortie attendue :
-```
-Pairs: [2, 4]
-Moyenne: 3.0
-```
-
 ---
 
 ## Bonnes pratiques
 
-- Utiliser un seul style lexical par fichier (français ou autre) pour garder le code lisible
-- Vérifier les mots-clés disponibles via `:kw fr`
-- Activer `--show-python` au débogage pour comprendre la transpilation
-- Écrire des tests de bout en bout avec `ProgramExecutor` pour valider la sémantique
+- utiliser un seul style lexical par fichier
+- vérifier les mots-clés disponibles avec `:kw fr`
+- activer `--show-python` pour le débogage
+- écrire des tests de bout en bout avec `ProgramExecutor`
 
 ---
 

@@ -1,7 +1,7 @@
 ---
 page_id: reference__numerals
 locale: fr
-title: Numeraux
+title: Numéraux
 path_segments:
 - references
 - numeraux
@@ -10,75 +10,73 @@ status: translated
 permalink: /fr/docs/references/numeraux/
 ---
 
-
-
-multilingual provides first-class support for numerals in multiple scripts and representations.
+`multilingual` prend en charge nativement les numéraux dans plusieurs écritures et représentations.
 
 ---
 
-## MPNumeral
+## `MPNumeral`
 
-Base multilingual numeral class. Supports arithmetic across numeral scripts.
+Classe de base des numéraux multilingues. Elle permet les opérations arithmétiques entre différentes écritures numériques.
 
 {{snippet:reference__numerals__py01}}
 
 ---
 
-## UnicodeNumeral
+## `UnicodeNumeral`
 
-Handles numerals in Unicode scripts.
+Gère les numéraux dans les écritures Unicode.
 
 {{snippet:reference__numerals__py02}}
 
 ---
 
-## RomanNumeral
+## `RomanNumeral`
 
 {{snippet:reference__numerals__py03}}
 
 ---
 
-## ComplexNumeral
+## `ComplexNumeral`
 
 {{snippet:reference__numerals__py04}}
 
 ---
 
-## FractionNumeral
+## `FractionNumeral`
 
 {{snippet:reference__numerals__py05}}
 
 ---
 
-## NumeralConverter
+## `NumeralConverter`
 
-Utility class for converting between numeral systems.
+Classe utilitaire pour convertir entre différents systèmes numériques.
 
 {{snippet:reference__numerals__py06}}
 
 ---
 
-## Supported Numeral Scripts
+## Écritures numériques prises en charge
 
-| Script | Example | Language use |
-|--------|---------|-------------|
-| Arabic (0-9) | `42` | Universal |
-| Arabic-Indic | `٤٢` | Arabic |
-| Devanagari | `४२` | Hindi, Sanskrit |
+| Écriture | Exemple | Usage |
+|----------|---------|-------|
+| Arabe occidental | `42` | Usage universel |
+| Arabe oriental | `٤٢` | Arabe |
+| Devanagari | `४२` | Hindi |
 | Bengali | `৪২` | Bengali |
 | Tamil | `௪௨` | Tamil |
-| CJK | `四十二` | Chinese, Japanese |
-| Roman | `XLII` | Latin, historical |
-| Scientific | `4.2e+01` | Universal |
+| CJK | `四十二` | Chinois, japonais |
+| Romain | `XLII` | Usage historique |
+| Scientifique | `4.2e+01` | Usage universel |
 
 ---
 
-## Utilisation des numeraux dans les programmes
+## Utilisation dans les programmes
 
-Multilingual programs can use any supported numeral literal directly:
+Les programmes `multilingual` peuvent utiliser directement n'importe quel littéral numérique pris en charge :
 
 {{snippet:reference__numerals__py07}}
 
 {{snippet:reference__numerals__py08}}
 
-Le lexer reconnait les numeraux dans toutes les ecritures supportees et les normalise vers la representation canonique entier/flottant avant le parsing.
+Le lexer reconnaît ces écritures et les normalise vers une représentation canonique avant le parsing.

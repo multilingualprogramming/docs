@@ -10,6 +10,6 @@ status: translated
 permalink: /fr/docs/extension/traduction/
 ---
 
-Cette page formalise les r?gles de traduction pour conserver une grammaire d?terministe et coh?rente entre les langues.
+Cette page formalise les règles de traduction pour conserver une grammaire déterministe et cohérente entre les langues.
 
 {{snippet:extending__translation__py01}}

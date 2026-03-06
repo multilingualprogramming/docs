@@ -1,7 +1,7 @@
 ---
 page_id: extending__cnl_scope
 locale: fr
-title: P?rim?tre CNL
+title: Périmètre CNL
 path_segments:
 - extension
 - perimetre-cnl
@@ -10,4 +10,4 @@ status: translated
 permalink: /fr/docs/extension/perimetre-cnl/
 ---
 
-Le projet suit une strat?gie CNL: formes non ambigu?s, testables et compatibles avec le noyau s?mantique commun.
+Le projet suit une stratégie CNL : formes non ambiguës, testables et compatibles avec le noyau sémantique commun.

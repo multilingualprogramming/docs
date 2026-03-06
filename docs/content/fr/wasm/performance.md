@@ -10,9 +10,9 @@ status: translated
 permalink: /fr/docs/wasm/performance/
 ---
 
-Le backend WASM acc?l?re les charges de calcul (matrices, traitement num?rique, crypto) selon les plateformes et les op?rations.
+Le backend WASM accélère les charges de calcul (matrices, traitement numérique, crypto) selon les plateformes et les opérations.
 
-Mesurez toujours sur vos cas r?els avec des benchmarks reproductibles.
+Mesurez toujours sur vos cas réels avec des benchmarks reproductibles.
 
 {{snippet:wasm__performance__py01}}
 

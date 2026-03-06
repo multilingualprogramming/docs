@@ -1,7 +1,7 @@
 ---
 page_id: codegen__api
 locale: fr
-title: Reference de l'API de generation de code
+title: Référence de l'API de génération de code
 path_segments:
 - generation-code
 - api
@@ -10,7 +10,7 @@ status: translated
 permalink: /fr/docs/generation-code/api/
 ---
 
-Cette page documente l'API actuelle `0.5.1` de transpilation, d'execution et de generation WAT/WASM.
+Cette page documente l'API actuelle `0.5.1` de transpilation, d'exécution et de génération WAT/WASM.
 
 ---
 
@@ -20,19 +20,19 @@ Cette page documente l'API actuelle `0.5.1` de transpilation, d'execution et de 
 
 ---
 
-## ProgramExecutor
+## `ProgramExecutor`
 
-Point d'entree haut niveau pour tout le pipeline.
+Point d'entrée de haut niveau pour l'ensemble du pipeline.
 
 {{snippet:codegen__api__py02}}
 
-### Methodes
+### Méthodes
 
 #### `execute(source, capture_output=True, globals_dict=None) -> ExecutionResult`
 
-Execute le lexing, le parsing, l'abaissement Core IR, l'analyse semantique optionnelle, la generation Python, puis `exec()`.
+Exécute le lexing, le parsing, l'abaissement Core IR, l'analyse sémantique optionnelle, la génération Python, puis `exec()`.
 
-Le resultat expose:
+Le résultat expose notamment :
 - `output`
 - `python_source`
 - `errors`
@@ -43,13 +43,13 @@ Le resultat expose:
 
 #### `transpile(source) -> str`
 
-Genere le Python sans l'executer:
+Génère le Python sans l'exécuter :
 
 {{snippet:codegen__api__py04}}
 
-#### Transpilation multilingue
+### Transpilation multilingue
 
-Toutes les variantes linguistiques convergent vers le meme pipeline interne:
+Toutes les variantes linguistiques convergent vers le même pipeline interne :
 
 {{snippet:codegen__api__py05}}
 
@@ -61,7 +61,7 @@ Le lexer prend le texte source et, en option, un indice de langue.
 
 {{snippet:codegen__api__py06}}
 
-### Methodes
+### Méthodes
 
 #### `tokenize() -> list[Token]`
 
@@ -71,11 +71,11 @@ Le lexer prend le texte source et, en option, un indice de langue.
 
 ## Parser
 
-Le parser consomme un flux de jetons deja produit.
+Le parser consomme un flux de jetons déjà produit.
 
 {{snippet:codegen__api__py08}}
 
-### Methodes
+### Méthodes
 
 #### `parse() -> Program`
 
@@ -83,15 +83,15 @@ Le parser consomme un flux de jetons deja produit.
 
 ---
 
-## SemanticAnalyzer
+## `SemanticAnalyzer`
 
-Valide les portees et les contraintes semantiques du programme partage.
+Valide les portées et les contraintes sémantiques du programme partagé.
 
-Depuis mars 2026, une affectation simple comme `x = 1` definit la variable si necessaire, tandis qu'une affectation augmentee comme `x += 1` exige toujours une definition prealable.
+Depuis mars 2026, une affectation simple comme `x = 1` définit la variable si nécessaire, tandis qu'une affectation augmentée comme `x += 1` exige toujours une définition préalable.
 
 {{snippet:codegen__api__py10}}
 
-### Methodes
+### Méthodes
 
 #### `analyze(ast: Program) -> list[SemanticError]`
 
@@ -99,13 +99,13 @@ Depuis mars 2026, une affectation simple comme `x = 1` definit la variable si ne
 
 ---
 
-## ASTPrinter
+## `ASTPrinter`
 
-Affichage formate de l'AST pour le debogage.
+Affichage formaté de l'AST pour le débogage.
 
 {{snippet:codegen__api__py12}}
 
-### Methodes
+### Méthodes
 
 #### `print(ast) -> str`
 
@@ -113,13 +113,13 @@ Affichage formate de l'AST pour le debogage.
 
 ---
 
-## PythonCodeGenerator
+## `PythonCodeGenerator`
 
-Transpile l'AST partage ou un `CoreIRProgram` en code Python.
+Transpile l'AST partagé ou un `CoreIRProgram` en code Python.
 
 {{snippet:codegen__api__py14}}
 
-### Methodes
+### Méthodes
 
 #### `generate(node) -> str`
 
@@ -135,7 +135,7 @@ Transpile l'AST partage ou un `CoreIRProgram` en code Python.
 
 ### `lower_to_core_ir(ast, source_language, frontend_name="lexer_parser") -> CoreIRProgram`
 
-Convertit le programme parse dans la representation coeur forward-only utilisee par les generateurs.
+Convertit le programme parsé dans la représentation cœur forward-only utilisée par les générateurs.
 
 {{snippet:codegen__api__py17}}
 
@@ -145,52 +145,52 @@ Convertit le programme parse dans la representation coeur forward-only utilisee 
 
 ---
 
-## RuntimeBuiltins
+## `RuntimeBuiltins`
 
-Construit l'espace de noms runtime du Python genere.
+Construit l'espace de noms runtime du Python généré.
 
 {{snippet:codegen__api__py19}}
 
 ### `namespace() -> dict`
 
-Inclut:
+Inclut :
 - les builtins Python universels
-- les builtins localises comme `afficher`
-- les alias localises issus de `builtins_aliases.json` comme `longueur`
+- les builtins localisés comme `afficher`
+- les alias localisés issus de `builtins_aliases.json` comme `longueur`
 
 {{snippet:codegen__api__py20}}
 
 ### `make_exec_globals(language="en", extra=None) -> dict`
 
-Helper recommande si vous utilisez `exec()` directement:
+Helper recommandé si vous utilisez `exec()` directement :
 
 {{snippet:codegen__api__py21}}
 
 ---
 
-## WATCodeGenerator
+## `WATCodeGenerator`
 
-Generateur principal cote WASM. Il produit directement du WAT a partir de l'AST partage ou d'un `CoreIRProgram`.
+Générateur principal côté WASM. Il produit directement du WAT à partir de l'AST partagé ou d'un `CoreIRProgram`.
 
 {{snippet:codegen__api__py22}}
 
-### Methodes
+### Méthodes
 
 #### `generate(program) -> str`
 
-Compile le programme complet en chaine WAT:
+Compile le programme complet en chaîne WAT :
 
 {{snippet:codegen__api__py23}}
 
-Le module genere importe `env.print_str`, `env.print_f64`, `env.print_bool`, `env.print_sep` et `env.print_newline`, puis exporte `__main`.
+Le module généré importe `env.print_str`, `env.print_f64`, `env.print_bool`, `env.print_sep` et `env.print_newline`, puis exporte `__main`.
 
-### CLI: `build-wasm-bundle`
+### CLI : `build-wasm-bundle`
 
 ```bash
 multilingual build-wasm-bundle programme.ml --out-dir wasm-out
 ```
 
-Cette commande ecrit:
+Cette commande écrit :
 - `module.wat`
 - `module.wasm`
 - `host_shim.js`
@@ -198,31 +198,31 @@ Cette commande ecrit:
 
 ---
 
-## WasmCodeGenerator
+## `WasmCodeGenerator`
 
-Ancien generateur base sur un intermediaire Rust, dans `multilingualprogramming.codegen.wasm_generator`.
+Ancien générateur basé sur un intermédiaire Rust, dans `multilingualprogramming.codegen.wasm_generator`.
 
 {{snippet:codegen__api__py24}}
 
-### Methodes
+### Méthodes
 
 #### `generate(program) -> str`
 
-Retourne le code Rust intermediaire:
+Retourne le code Rust intermédiaire :
 
 {{snippet:codegen__api__py25}}
 
 ### `WasmBuildConfig`
 
-Helper pour conserver ou construire cet intermediaire:
+Helper pour conserver ou construire cet intermédiaire :
 
 {{snippet:codegen__api__py26}}
 
 ---
 
-## BackendSelector
+## `BackendSelector`
 
-Selecteur runtime entre le repli Python et l'execution via module WASM.
+Sélecteur runtime entre le repli Python et l'exécution via module WASM.
 
 {{snippet:codegen__api__py27}}
 
@@ -238,27 +238,27 @@ Selecteur runtime entre le repli Python et l'execution via module WASM.
 
 {{snippet:codegen__api__py30}}
 
-### Representation
+### Représentation
 
-Le backend effectif apparait dans `repr()`:
+Le backend effectif apparaît dans `repr()` :
 
 {{snippet:codegen__api__py31}}
 
 ### `BackendRegistry`
 
-Permet d'enregistrer des implementations Python et WASM par nom:
+Permet d'enregistrer des implémentations Python et WASM par nom :
 
 {{snippet:codegen__api__py32}}
 
-### Selection explicite du backend
+### Sélection explicite du backend
 
 {{snippet:codegen__api__py33}}
 
 ---
 
-## FALLBACK_REGISTRY
+## `FALLBACK_REGISTRY`
 
-Implementations Python de repli utilisees quand WASM est indisponible ou non selectionne.
+Implémentations Python de repli utilisées quand WASM est indisponible ou non sélectionné.
 
 {{snippet:codegen__api__py34}}
 
@@ -266,11 +266,11 @@ Implementations Python de repli utilisees quand WASM est indisponible ou non sel
 
 ## REPL
 
-Boucle interactive avec apercus optionnels du Python genere, du WAT et du pont Rust/Wasmtime.
+Boucle interactive avec aperçus optionnels du Python généré, du WAT et du pont Rust/Wasmtime.
 
 {{snippet:codegen__api__py35}}
 
-### Methodes
+### Méthodes
 
 #### `run() -> None`
 
@@ -285,16 +285,16 @@ Boucle interactive avec apercus optionnels du Python genere, du WAT et du pont R
 | `:python` | Basculer l'aperçu Python |
 | `:wat` / `:wasm` | Basculer l'aperçu WAT |
 | `:rust` / `:wasmtime` | Basculer l'aperçu Rust/Wasmtime |
-| `:reset` | Reinitialiser l'etat |
-| `:kw [lang]` | Lister les mots-cles |
-| `:ops [lang]` | Lister les operateurs et symboles |
+| `:reset` | Réinitialiser l'état |
+| `:kw [lang]` | Lister les mots-clés |
+| `:ops [lang]` | Lister les opérateurs et symboles |
 | `:q` | Quitter |
 
 ---
 
-## KeywordRegistry
+## `KeywordRegistry`
 
-Acces programmatique aux correspondances concept ↔ mot-cle.
+Accès programmatique aux correspondances concept ↔ mot-clé.
 
 {{snippet:codegen__api__py37}}
 
@@ -302,14 +302,14 @@ Acces programmatique aux correspondances concept ↔ mot-cle.
 
 ## Gestion des erreurs
 
-Les exceptions frontend vivent dans `multilingualprogramming.exceptions`, tandis que `ProgramExecutor.execute()` renvoie en general les echecs via `ExecutionResult.errors`.
+Les exceptions frontend vivent dans `multilingualprogramming.exceptions`, tandis que `ProgramExecutor.execute()` renvoie en général les échecs via `ExecutionResult.errors`.
 
 {{snippet:codegen__api__py38}}
 
 ---
 
-## Exemple complet de reference
+## Exemple complet de référence
 
-Execution et transpilation d'une source francaise de bout en bout:
+Exécution et transpilation d'une source française de bout en bout :
 
 {{snippet:codegen__api__py39}}

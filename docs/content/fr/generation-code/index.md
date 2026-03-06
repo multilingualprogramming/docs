@@ -1,7 +1,7 @@
 ---
 page_id: codegen
 locale: fr
-title: G?n?ration de code Python
+title: Génération de code Python
 path_segments:
 - generation-code
 source_hash: 5929fb8cc4b6
@@ -9,9 +9,9 @@ status: translated
 permalink: /fr/docs/generation-code/
 ---
 
-Le g?n?rateur Python ?met du code ex?cutable ? partir de l AST c?ur. Les programmes source en diff?rentes langues produisent un Python ?quivalent.
+Le générateur Python émet du code exécutable à partir de l'AST cœur. Les programmes source dans différentes langues produisent un Python équivalent.
 
-- [R?f?rence API](/fr/codegen/api/)
+- [Référence API](/fr/docs/generation-code/api/)
 
 {{snippet:codegen__py01}}
 

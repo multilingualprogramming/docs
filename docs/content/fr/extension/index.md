@@ -9,10 +9,10 @@ status: translated
 permalink: /fr/docs/extension/
 ---
 
-Ajoutez de nouvelles langues via les fichiers de ressources (mots-cl?s, erreurs, commandes REPL, alias builtins) et validez par tests.
+Ajoutez de nouvelles langues via les fichiers de ressources (mots-clés, erreurs, commandes REPL, alias des fonctions intégrées) et validez le tout par des tests.
 
-- [Directives de traduction](/fr/extending/translation/)
-- [P?rim?tre CNL](/fr/extending/cnl-scope/)
+- [Directives de traduction](/fr/docs/extension/traduction/)
+- [Périmètre CNL](/fr/docs/extension/perimetre-cnl/)
 
 {{snippet:extending__py01}}
 

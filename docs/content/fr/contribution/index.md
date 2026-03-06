@@ -1,7 +1,7 @@
 ---
 page_id: contributing
 locale: fr
-title: Contribution et developpement
+title: Contribution et développement
 path_segments:
 - contribution
 source_hash: 246c35a74a08
@@ -9,13 +9,13 @@ status: translated
 permalink: /fr/docs/contribution/
 ---
 
-Ce guide reflete le flux de developpement actuel en `0.5.1`.
+Ce guide reflète le flux de développement actuel en `0.5.1`.
 
-- [Documentation multilingue](/fr/contributing/multilingual-docs/)
+- [Documentation multilingue](/fr/docs/contribution/documentation-multilingue/)
 
 ---
 
-## Installation de developpement
+## Installation de développement
 
 ```bash
 python -m venv .venv
@@ -60,12 +60,12 @@ python -m pytest -m wasm tests/
 python -m pytest -k "inheritance" tests/
 ```
 
-D'apres la reference locale actuelle:
+D'après la référence locale actuelle :
 - environ 58 fichiers de tests
 - environ 1 797 tests
 - 2 tests ignores attendus pour `rustc wasm32`
 
-Fichiers cles:
+Fichiers clés :
 - `tests/lexer_test.py`
 - `tests/parser_test.py`
 - `tests/semantic_analyzer_test.py`
@@ -112,7 +112,7 @@ python -m multilingualprogramming repl --show-python --show-wat --show-rust
 
 ## Points d'attention
 
-- Les affectations simples definissent maintenant les variables pendant l'analyse semantique.
+- Les affectations simples définissent maintenant les variables pendant l'analyse sémantique.
 - Le REPL prend en charge `:wat` / `:wasm` et `:rust` / `:wasmtime`.
-- `WATCodeGenerator` est le backend WASM principal; le generateur Rust intermediaire est legacy.
-- Si vous ajoutez un concept de mot-cle, mettez aussi a jour `tests/keyword_registry_test.py`.
+- `WATCodeGenerator` est le backend WASM principal ; le générateur Rust intermédiaire est hérité de l'ancien flux.
+- Si vous ajoutez un concept de mot-clé, mettez aussi à jour `tests/keyword_registry_test.py`.

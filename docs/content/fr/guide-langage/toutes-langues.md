@@ -10,11 +10,9 @@ status: translated
 permalink: /fr/docs/guide-langage/toutes-langues/
 ---
 
+Cette page fournit des exemples de programmes complets pour les 17 langues prises en charge, avec variables, contrôle de flux, fonctions et classes. Chaque exemple est exécutable tel quel.
 
-
-Cette page fournit des exemples de programmes complets pour les 17 langues supportees, avec variables, controle de flux, fonctions et classes. Chaque exemple est executable tel quel.
-
-Tous les programmes produisent la meme sortie quelle que soit la langue utilisee.
+Tous les programmes produisent la même sortie quelle que soit la langue utilisée.
 
 ---
 
@@ -22,18 +20,18 @@ Tous les programmes produisent la meme sortie quelle que soit la langue utilisee
 
 {{snippet:language_guide__all_languages__py01}}
 
-**Execution :**
+**Exécution :**
 ```bash
 python -m multilingualprogramming run program.ml --lang en
 ```
 
 ---
 
-## Francais (`fr`) {#french}
+## Français (`fr`) {#french}
 
 {{snippet:language_guide__all_languages__py02}}
 
-**Execution :**
+**Exécution :**
 ```bash
 python -m multilingualprogramming run programme.ml --lang fr
 ```
@@ -52,43 +50,43 @@ python -m multilingualprogramming run programme.ml --lang fr
 
 ---
 
-## Italian (`it`) {#italian}
+## Italien (`it`) {#italian}
 
 {{snippet:language_guide__all_languages__py05}}
 
 ---
 
-## Portuguese (`pt`) {#portuguese}
+## Portugais (`pt`) {#portuguese}
 
 {{snippet:language_guide__all_languages__py06}}
 
 ---
 
-## Polish (`pl`) {#polish}
+## Polonais (`pl`) {#polish}
 
 {{snippet:language_guide__all_languages__py07}}
 
 ---
 
-## Dutch (`nl`) {#dutch}
+## Néerlandais (`nl`) {#dutch}
 
 {{snippet:language_guide__all_languages__py08}}
 
 ---
 
-## Swedish (`sv`) {#swedish}
+## Suédois (`sv`) {#swedish}
 
 {{snippet:language_guide__all_languages__py09}}
 
 ---
 
-## Danish (`da`) {#danish}
+## Danois (`da`) {#danish}
 
 {{snippet:language_guide__all_languages__py10}}
 
 ---
 
-## Finnish (`fi`) {#finnish}
+## Finnois (`fi`) {#finnish}
 
 {{snippet:language_guide__all_languages__py11}}
 
@@ -98,7 +96,7 @@ python -m multilingualprogramming run programme.ml --lang fr
 
 {{snippet:language_guide__all_languages__py12}}
 
-**Execution :**
+**Exécution :**
 ```bash
 python -m multilingualprogramming run program.ml --lang hi
 ```
@@ -109,7 +107,7 @@ python -m multilingualprogramming run program.ml --lang hi
 
 {{snippet:language_guide__all_languages__py13}}
 
-**Execution :**
+**Exécution :**
 ```bash
 python -m multilingualprogramming run program.ml --lang ar
 ```
@@ -128,11 +126,11 @@ python -m multilingualprogramming run program.ml --lang ar
 
 ---
 
-## Chinese Simplified (`zh`) {#chinese}
+## Chinois simplifié (`zh`) {#chinese}
 
 {{snippet:language_guide__all_languages__py16}}
 
-**Execution :**
+**Exécution :**
 ```bash
 python -m multilingualprogramming run program.ml --lang zh
 ```
@@ -143,38 +141,35 @@ python -m multilingualprogramming run program.ml --lang zh
 
 {{snippet:language_guide__all_languages__py17}}
 
-**Execution :**
+**Exécution :**
 ```bash
 python -m multilingualprogramming run program.ml --lang ja
 ```
 
 ---
 
-## Surface Normalization (SOV/RTL Languages)
+## Normalisation de surface
 
-Pour des langues comme le japonais, l'arabe, l'hindi, le bengali et le tamoul, l'ordre naturel des mots differe de la grammaire positionnelle par defaut. Le normaliseur de surface reecrit ces formes avant le parsing.
+Pour des langues comme le japonais, l'arabe, l'hindi, le bengali et le tamoul, l'ordre naturel des mots peut différer de la grammaire positionnelle par défaut. Le normaliseur de surface réécrit ces formes avant le parsing.
 
-### Japonais — for loop (iterable-first)
+### Japonais : boucle `for`
 
-Natural form (accepted):
+Forme naturelle :
 {{snippet:language_guide__all_languages__py18}}
 
-Canonical form (also accepted):
+Forme canonique :
 {{snippet:language_guide__all_languages__py19}}
 
-Both compile to the same Core AST.
+Les deux compilent vers le même Core AST.
 
-### Arabe — for loop
+### Arabe : boucle `for`
 
-Natural form:
+Forme naturelle :
 {{snippet:language_guide__all_languages__py20}}
 
-### Execution de tous les exemples
+### Exécution de tous les exemples
 
 ```bash
-# Validate all 17 languages
 python -m multilingualprogramming smoke --all
-
-# Executer le smoke test d'une langue specifique
 python -m multilingualprogramming smoke --lang fr
 ```

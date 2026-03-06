@@ -10,25 +10,25 @@ status: translated
 permalink: /fr/docs/demarrage/repl/
 ---
 
-> Le REPL multilingual (Read-Eval-Print Loop) est un environnement interactif avec changement de langue pour ecrire et tester des programmes dans l'une des 17 langues supportees.
+> Le REPL multilingual (Read-Eval-Print Loop) est un environnement interactif avec changement de langue pour écrire et tester des programmes dans l'une des 17 langues supportées.
 
 ---
 
-## Demarrage du REPL
+## Démarrage du REPL
 
 ```bash
-# Defaut (anglais)
+# Défaut (anglais)
 python -m multilingualprogramming repl
 
-# Demarrer dans une langue specifique
+# Démarrer dans une langue spécifique
 python -m multilingualprogramming repl --lang fr
 python -m multilingualprogramming repl --lang ja
 python -m multilingualprogramming repl --lang ar
 
-# Avec apercu Python (afficher le Python genere avec la sortie)
+# Avec aperçu Python
 python -m multilingualprogramming repl --show-python
 
-# Avec apercu WAT (afficher le texte WebAssembly genere avec la sortie)
+# Avec aperçu WAT
 python -m multilingualprogramming repl --show-wat
 
 # Alias de commande court
@@ -43,14 +43,14 @@ multilg repl --lang de
 |---------|-------------|
 | `:help` | Afficher toutes les commandes REPL disponibles |
 | `:language <code>` | Changer la langue active (ex. `:language fr`) |
-| `:python` | Activer/desactiver l'apercu Python (afficher le Python genere) |
-| ` :wat` ou `:wasm` | Activer/desactiver l'apercu WAT (afficher le texte WebAssembly genere) |
-| ` :rust` ou `:wasmtime` | Activer/desactiver le mode d'execution wasmtime (WASM au lieu de Python) |
-| `:reset` | Reinitialiser l'etat de l'interpreteur (vider variables/fonctions) |
-| `:kw` | Lister les mots-cles de la langue courante |
-| `:kw XX` | Lister les mots-cles pour le code langue XX |
-| `:ops` | Lister les operateurs de la langue courante |
-| `:ops XX` | Lister les operateurs pour le code langue XX |
+| `:python` | Activer / désactiver l'aperçu Python |
+| `:wat` ou `:wasm` | Activer / désactiver l'aperçu WAT |
+| `:rust` ou `:wasmtime` | Activer / désactiver le mode d'exécution wasmtime |
+| `:reset` | Réinitialiser l'état de l'interpréteur |
+| `:kw` | Lister les mots-clés de la langue courante |
+| `:kw XX` | Lister les mots-clés pour le code langue XX |
+| `:ops` | Lister les opérateurs de la langue courante |
+| `:ops XX` | Lister les opérateurs pour le code langue XX |
 | `:q` | Quitter le REPL |
 
 ---
@@ -87,7 +87,7 @@ multilingual [ja]> 表示(値)
 42
 ```
 
-### Mode apercu Python
+### Mode aperçu Python
 
 ```
 multilingual [en]> :python
@@ -104,9 +104,9 @@ multilingual [en]> for i in items:
 6
 ```
 
-### Mode apercu WAT
+### Mode aperçu WAT
 
-Utilisez `:wat` (ou `:wasm`) pour activer/desactiver l'affichage du format texte WebAssembly compile avec chaque resultat :
+Utilisez `:wat` (ou `:wasm`) pour activer / désactiver l'affichage du format texte WebAssembly compilé avec chaque résultat :
 
 ```
 multilingual [en]> :wat
@@ -121,7 +121,7 @@ multilingual [en]> :wat
 WAT preview: OFF
 ```
 
-Utilisez `:rust` (ou `:wasmtime`) pour basculer l'execution vers le backend wasmtime :
+Utilisez `:rust` (ou `:wasmtime`) pour basculer l'exécution vers le backend wasmtime :
 
 ```
 multilingual [en]> :wasmtime
@@ -135,30 +135,21 @@ Backend: Python
 
 ---
 
-### Inspection des mots-cles
+### Inspection des mots-clés
 
 ```
 multilingual [fr]> :kw
 Keywords for French (fr):
-  if          → si
-  elif        → sinonsi
-  else        → sinon
-  for         → pour
-  in          → dans
-  while       → tantque
-  def         → déf
-  return      → retourner
-  let         → soit
-  class       → classe
-  ...
-
-multilingual> :kw ar
-Keywords for Arabic (ar):
-  if      → إذا
-  for     → لكل
-  while   → بينما
-  def     → دالة
-  let     → ليكن
+  if          -> si
+  elif        -> sinonsi
+  else        -> sinon
+  for         -> pour
+  in          -> dans
+  while       -> tantque
+  def         -> déf
+  return      -> retourner
+  let         -> soit
+  class       -> classe
   ...
 ```
 
@@ -166,23 +157,23 @@ Keywords for Arabic (ar):
 
 ## Codes de langue
 
-| Langue | Code | Mot-cle exemple |
+| Langue | Code | Mot-clé exemple |
 |----------|------|----------------|
 | Anglais | `en` | `if` |
-| Francais | `fr` | `si` |
+| Français | `fr` | `si` |
 | Espagnol | `es` | `si` |
 | Allemand | `de` | `wenn` |
 | Italien | `it` | `se` |
 | Portugais | `pt` | `se` |
 | Polonais | `pl` | `jezeli` |
-| Neerlandais | `nl` | `als` |
-| Suedois | `sv` | `om` |
+| Néerlandais | `nl` | `als` |
+| Suédois | `sv` | `om` |
 | Danois | `da` | `hvis` |
 | Finnois | `fi` | `jos` |
 | Hindi | `hi` | `अगर` |
-| Arabic | `ar` | `إذا` |
+| Arabe | `ar` | `إذا` |
 | Bengali | `bn` | `যদি` |
-| Tamil | `ta` | `என்றால்` |
+| Tamoul | `ta` | `என்றால்` |
 | Chinois | `zh` | `如果` |
 | Japonais | `ja` | `もし` |
 
@@ -190,9 +181,9 @@ Keywords for Arabic (ar):
 
 ## Smoke tests
 
-Petits extraits de validation pour verifier qu'une langue fonctionne correctement.
+Petits extraits de validation pour vérifier qu'une langue fonctionne correctement.
 
-### Snippet A — Variables and Print
+### Snippet A - Variables et affichage
 
 ```
 <LET> x = 2
@@ -200,9 +191,9 @@ Petits extraits de validation pour verifier qu'une langue fonctionne correctemen
 <PRINT>(x + y)
 ```
 
-Remplacez `<LET>` et `<PRINT>` par les mots-cles specifiques a la langue. Sortie attendue : `5`
+Remplacez `<LET>` et `<PRINT>` par les mots-clés spécifiques à la langue. Sortie attendue : `5`
 
-### Snippet B — For Loop
+### Snippet B - Boucle `for`
 
 ```
 <LET> total = 0
@@ -217,7 +208,7 @@ Sortie attendue : `6`
 
 {{snippet:getting_started__repl__py01}}
 
-**Francais :**
+**Français :**
 
 {{snippet:getting_started__repl__py02}}
 
@@ -241,9 +232,9 @@ Sortie attendue : `6`
 
 ## Conseils REPL
 
-- Saisie multi-ligne : continuez avec `...` pour les blocs (if, for, def, class)
-- Les variables et fonctions definies dans une langue persistent apres `:language` (les identifiants restent, les mots-cles changent)
-- `:reset` efface tout l'etat, y compris variables et definitions de fonctions
-- Utilisez `:python` pour comprendre le code Python genere
-- Utilisez `:wat` pour inspecter le format texte WebAssembly compile depuis votre code
-- Utilisez `:wasmtime` pour executer via le backend WASM au lieu de Python
+- Saisie multi-ligne : continuez avec `...` pour les blocs (`if`, `for`, `def`, `class`)
+- Les variables et fonctions définies dans une langue persistent après `:language`
+- `:reset` efface tout l'état, y compris les variables et les définitions de fonctions
+- Utilisez `:python` pour comprendre le code Python généré
+- Utilisez `:wat` pour inspecter le format texte WebAssembly compilé depuis votre code
+- Utilisez `:wasmtime` pour exécuter via le backend WASM au lieu de Python

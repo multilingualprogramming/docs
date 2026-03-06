@@ -1,0 +1,12 @@
+{% assign resolved_title = include.fallback_title | default: '' %}
+{% assign target_locale = include.locale | default: page.locale | default: 'en' %}
+{% if include.page_id %}
+  {% assign candidates = site.pages | where: "page_id", include.page_id %}
+  {% for candidate in candidates %}
+    {% if candidate.locale == target_locale and candidate.title %}
+      {% assign resolved_title = candidate.title %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+{{ resolved_title }}

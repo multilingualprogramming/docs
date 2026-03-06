@@ -1,7 +1,7 @@
 ---
 page_id: reference__operators
 locale: fr
-title: Operateurs
+title: Opérateurs
 path_segments:
 - references
 - operateurs
@@ -10,149 +10,127 @@ status: translated
 permalink: /fr/docs/references/operateurs/
 ---
 
-
-
-multilingual prend en charge l'ensemble complet des operateurs Python, avec alternatives Unicode lorsque c'est pertinent.
+`multilingual` prend en charge l'ensemble des opérateurs Python, avec quelques alternatives Unicode lorsque cela est pertinent.
 
 ---
 
-## Arithmetique Operators
+## Opérateurs arithmétiques
 
-| Operator | Unicode alt | Meaning | Example |
-|----------|-------------|---------|---------|
+| Opérateur | Alternative Unicode | Signification | Exemple |
+|-----------|---------------------|---------------|---------|
 | `+` | — | Addition | `x + y` |
-| `-` | — | Subtraction | `x - y` |
+| `-` | — | Soustraction | `x - y` |
 | `*` | `×` | Multiplication | `x * y` |
-| `/` | `÷` | True division | `x / y` |
-| `//` | — | Floor division | `x // y` |
+| `/` | `÷` | Division réelle | `x / y` |
+| `//` | — | Division entière | `x // y` |
 | `%` | — | Modulo | `x % y` |
-| `**` | — | Power | `x ** y` |
-| `-` (unary) | — | Negation | `-x` |
-| `+` (unary) | — | Positive | `+x` |
+| `**` | — | Puissance | `x ** y` |
 
 ---
 
-## Operateurs de comparaison
+## Opérateurs de comparaison
 
-| Operator | Unicode alt | Meaning | Example |
-|----------|-------------|---------|---------|
-| `==` | — | Equal | `x == y` |
-| `!=` | `≠` | Not equal | `x != y` |
-| `<` | — | Less than | `x < y` |
-| `>` | — | Greater than | `x > y` |
-| `<=` | `≤` | Less or equal | `x <= y` |
-| `>=` | `≥` | Greater or equal | `x >= y` |
-
----
-
-## Operateurs d'affectation
-
-| Operator | Meaning | Example |
-|----------|---------|---------|
-| `=` | Assignment | `x = 5` |
-| `+=` | Add and assign | `x += 3` |
-| `-=` | Subtract and assign | `x -= 2` |
-| `*=` | Multiply and assign | `x *= 4` |
-| `/=` | Divide and assign | `x /= 2` |
-| `//=` | Floor-divide and assign | `x //= 3` |
-| `%=` | Modulo and assign | `x %= 7` |
-| `**=` | Power and assign | `x **= 2` |
-| `&=` | Bitwise AND assign | `x &= 0xFF` |
-| `\|=` | Bitwise OR assign | `x \|= 0x01` |
-| `^=` | Bitwise XOR assign | `x ^= 0x10` |
-| `<<=` | Left shift assign | `x <<= 2` |
-| `>>=` | Right shift assign | `x >>= 1` |
-| `:=` | Walrus (assign + return) | `(n := len(data))` |
+| Opérateur | Alternative Unicode | Signification | Exemple |
+|-----------|---------------------|---------------|---------|
+| `==` | — | Égalité | `x == y` |
+| `!=` | `≠` | Différence | `x != y` |
+| `<` | — | Inférieur à | `x < y` |
+| `>` | — | Supérieur à | `x > y` |
+| `<=` | `≤` | Inférieur ou égal à | `x <= y` |
+| `>=` | `≥` | Supérieur ou égal à | `x >= y` |
 
 ---
 
-## Operateurs booleens
+## Opérateurs d'affectation
 
-| Concept | Keyword forms (per language) | Meaning |
-|---------|------------------------------|---------|
-| `AND` | `and` (en), `et` (fr), `und` (de), `かつ` (ja), `و` (ar) | Logical AND |
-| `OR` | `or` (en), `ou` (fr), `oder` (de), `または` (ja), `أو` (ar) | Logical OR |
-| `NOT` | `not` (en), `pas` (fr), `nicht` (de), `ではない` (ja), `ليس` (ar) | Logical NOT |
-
----
-
-## Identite et appartenance
-
-| Concept | Keyword | Meaning | Example |
-|---------|---------|---------|---------|
-| `IS` | `is` | Identity check | `x is None` |
-| `IS_NOT` | `is not` | Negative identity | `x is not None` |
-| `IN_OP` | `in` | Membership | `x in [1,2,3]` |
-| `NOT_IN` | `not in` | Non-membership | `x not in items` |
+| Opérateur | Signification | Exemple |
+|-----------|---------------|---------|
+| `=` | Affectation | `x = 5` |
+| `+=` | Ajouter et affecter | `x += 3` |
+| `-=` | Soustraire et affecter | `x -= 2` |
+| `*=` | Multiplier et affecter | `x *= 4` |
+| `/=` | Diviser et affecter | `x /= 2` |
+| `//=` | Diviser entière et affecter | `x //= 3` |
+| `%=` | Modulo et affecter | `x %= 7` |
+| `**=` | Élever à la puissance et affecter | `x **= 2` |
+| `:=` | Opérateur morse | `(n := len(data))` |
 
 ---
 
-## Operateurs binaires
+## Opérateurs booléens
 
-| Operator | Meaning | Example |
-|----------|---------|---------|
-| `&` | Bitwise AND | `x & 0xFF` |
-| `\|` | Bitwise OR | `x \| 0x01` |
-| `^` | Bitwise XOR | `x ^ 0x10` |
-| `~` | Bitwise NOT | `~x` |
-| `<<` | Left shift | `x << 2` |
-| `>>` | Right shift | `x >> 1` |
+| Concept | Formes de mot-clé | Signification |
+|---------|-------------------|---------------|
+| `AND` | `and`, `et` | ET logique |
+| `OR` | `or`, `ou` | OU logique |
+| `NOT` | `not`, `pas` | NON logique |
 
 ---
 
-## Delimiteurs
+## Identité et appartenance
 
-| Symbol | Unicode alt | Meaning |
-|--------|-------------|---------|
-| `(` `)` | — | Parentheses |
-| `[` `]` | — | Square brackets |
-| `{` `}` | — | Curly brackets |
-| `:` | — | Block/slice separator |
-| `,` | — | Separator |
-| `.` | — | Attribute access |
-| `...` | `…` | Ellipsis |
+| Concept | Mot-clé | Signification | Exemple |
+|---------|---------|---------------|---------|
+| `IS` | `is` | Test d'identité | `x is None` |
+| `IS_NOT` | `is not` | Négation d'identité | `x is not None` |
+| `IN_OP` | `in` | Appartenance | `x in [1, 2, 3]` |
+| `NOT_IN` | `not in` | Non-appartenance | `x not in items` |
 
 ---
 
-## Delimiteurs de litteraux de date
+## Opérateurs binaires
 
-| Symbol | Meaning | Example |
-|--------|---------|---------|
-| `\|...\|` | Date literal | `\|2024-01-15\|` |
+| Opérateur | Signification | Exemple |
+|-----------|---------------|---------|
+| `&` | ET binaire | `x & 0xFF` |
+| `\|` | OU binaire | `x \| 0x01` |
+| `^` | XOR binaire | `x ^ 0x10` |
+| `~` | NON binaire | `~x` |
+| `<<` | Décalage à gauche | `x << 2` |
+| `>>` | Décalage à droite | `x >> 1` |
 
 ---
 
-## Localisation des operateurs
+## Délimiteurs
 
-Les operateurs ne sont pas localises par langue (ils utilisent un jeu de symboles universel). Cependant, certaines alternatives en langue naturelle existent pour les operateurs booleens :
+| Symbole | Signification |
+|---------|---------------|
+| `(` `)` | Parenthèses |
+| `[` `]` | Crochets |
+| `{` `}` | Accolades |
+| `:` | Séparateur de bloc ou de slice |
+| `,` | Séparateur |
+| `.` | Accès à un attribut |
+| `...` | Ellipse |
+
+---
+
+## Littéraux de date
+
+| Symbole | Signification | Exemple |
+|---------|---------------|---------|
+| `\|...\|` | Littéral de date | `\|2024-01-15\|` |
+
+---
+
+## Localisation des opérateurs
+
+Les opérateurs symboliques ne sont pas localisés. En revanche, certaines formes textuelles changent selon la langue pour les opérateurs booléens :
 
 {{snippet:reference__operators__py01}}
 
-Utilisez `:ops` dans le REPL pour voir la description des operateurs de la langue courante :
-
-```
-multilingual [fr]> :ops
-Operators for French (fr):
-  +    addition
-  -    soustraction
-  *    multiplication
-  /    division
-  //   division entière
-  %    modulo
-  **   puissance
-  ...
-```
+Utilisez `:ops` dans le REPL pour afficher la description des opérateurs de la langue courante.
 
 ---
 
-## Precedence des operateurs
+## Précédence
 
-Suit la precedence des operateurs Python (du plus eleve au plus faible) :
+La précédence suit les règles Python, du plus fort au plus faible :
 
-| Level | Operators |
-|-------|-----------|
-| 1 (highest) | `**` |
-| 2 | `+x`, `-x`, `~x` (unary) |
+| Niveau | Opérateurs |
+|--------|------------|
+| 1 | `**` |
+| 2 | `+x`, `-x`, `~x` |
 | 3 | `*`, `@`, `/`, `//`, `%` |
 | 4 | `+`, `-` |
 | 5 | `<<`, `>>` |
@@ -162,6 +140,6 @@ Suit la precedence des operateurs Python (du plus eleve au plus faible) :
 | 9 | `==`, `!=`, `<`, `>`, `<=`, `>=`, `is`, `is not`, `in`, `not in` |
 | 10 | `not` |
 | 11 | `and` |
-| 12 (lowest) | `or` |
+| 12 | `or` |
 
-Les parentheses peuvent toujours etre utilisees pour forcer la precedence.
+Les parenthèses permettent toujours de forcer l'ordre d'évaluation.

@@ -1,7 +1,7 @@
 ---
 page_id: getting_started__quick_start
 locale: fr
-title: Demarrage rapide
+title: Démarrage rapide
 path_segments:
 - demarrage
 - demarrage-rapide
@@ -10,13 +10,13 @@ status: translated
 permalink: /fr/docs/demarrage/demarrage-rapide/
 ---
 
-> Ce guide presente les fonctionnalites principales du langage en 10 minutes avec des exemples en anglais. Chaque construction presentee ici existe dans les 17 langues - voir le [Guide du langage](/fr/docs/guide-langage/toutes-langues/) pour les equivalences.
+> Ce guide présente les principales fonctionnalités du langage en quelques minutes avec des exemples en anglais. Chaque construction existe dans les 17 langues ; voir le [Guide du langage](/fr/docs/guide-langage/toutes-langues/) pour les équivalences.
 
 ---
 
 ## Variables
 
-Utilisez `let` pour declarer une variable :
+Utilisez `let` pour déclarer une variable :
 
 {{snippet:getting_started__quick_start__py01}}
 
@@ -24,41 +24,39 @@ Les annotations de type sont optionnelles :
 
 {{snippet:getting_started__quick_start__py02}}
 
-Affectation chainee :
+Affectation chaînée :
 
 {{snippet:getting_started__quick_start__py03}}
 
 ---
 
-## Arithmetique
-
-Operateurs arithmetiques standard :
+## Arithmétique
 
 {{snippet:getting_started__quick_start__py04}}
 
-Affectation augmentee :
+### Affectation augmentée
 
 {{snippet:getting_started__quick_start__py05}}
 
 ---
 
-## Chaines et f-strings
+## Chaînes et f-strings
 
 {{snippet:getting_started__quick_start__py06}}
 
 ---
 
-## Controle de flux
+## Contrôle de flux
 
-### if / elif / else
+### `if` / `elif` / `else`
 
 {{snippet:getting_started__quick_start__py07}}
 
-### Ternaire (if en ligne)
+### Ternaire
 
 {{snippet:getting_started__quick_start__py08}}
 
-### Operateur walrus
+### Opérateur morse
 
 {{snippet:getting_started__quick_start__py09}}
 
@@ -66,25 +64,25 @@ Affectation augmentee :
 
 ## Boucles
 
-### boucle for
+### Boucle `for`
 
 {{snippet:getting_started__quick_start__py10}}
 
-### for / else
+### `for` / `else`
 
 {{snippet:getting_started__quick_start__py11}}
 
-### boucle while
+### Boucle `while`
 
 {{snippet:getting_started__quick_start__py12}}
 
-### break et continue
+### `break` et `continue`
 
 {{snippet:getting_started__quick_start__py13}}
 
 ---
 
-## Structures de donnees
+## Structures de données
 
 ### Listes
 
@@ -108,11 +106,11 @@ Affectation augmentee :
 
 {{snippet:getting_started__quick_start__py18}}
 
-### *args et **kwargs
+### `*args` et `**kwargs`
 
 {{snippet:getting_started__quick_start__py19}}
 
-### Positionnels seuls et nommes seuls
+### Paramètres positionnels et nommés
 
 {{snippet:getting_started__quick_start__py20}}
 
@@ -126,7 +124,7 @@ Affectation augmentee :
 
 ---
 
-## Comprehensions
+## Compréhensions
 
 {{snippet:getting_started__quick_start__py23}}
 
@@ -138,25 +136,25 @@ Affectation augmentee :
 
 ---
 
-## Context managers
+## Gestionnaires de contexte
 
 {{snippet:getting_started__quick_start__py25}}
 
 ---
 
-## Generateurs
+## Générateurs
 
 {{snippet:getting_started__quick_start__py26}}
 
 ---
 
-## Async / Await
+## `async` / `await`
 
 {{snippet:getting_started__quick_start__py27}}
 
 ---
 
-## Pattern matching
+## Filtrage par motifs
 
 {{snippet:getting_started__quick_start__py28}}
 
@@ -170,5 +168,5 @@ Affectation augmentee :
 
 ## Suite : les 17 langues
 
-Toutes les fonctionnalites ci-dessus sont disponibles dans les 17 langues supportees.
-Voir [Reference toutes les langues](/fr/docs/guide-langage/toutes-langues/) pour le mapping complet des mots-cles et de la syntaxe.
+Toutes les fonctionnalités ci-dessus existent dans les 17 langues prises en charge.
+Voir la [référence toutes les langues](/fr/docs/guide-langage/toutes-langues/) pour le mapping complet des mots-clés et de la syntaxe.

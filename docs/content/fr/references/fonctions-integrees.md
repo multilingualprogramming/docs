@@ -1,7 +1,7 @@
 ---
 page_id: reference__builtins
 locale: fr
-title: Fonctions integrees
+title: Fonctions intégrées
 path_segments:
 - references
 - fonctions-integrees
@@ -10,9 +10,7 @@ status: translated
 permalink: /fr/docs/references/fonctions-integrees/
 ---
 
-
-
-multilingual provides localized aliases for 41 commonly used Python built-in functions. Universal English names are **always available** in all languages — aliases are additive.
+multilingual fournit des alias localisés pour 41 fonctions intégrées Python courantes. Les noms anglais universels restent **toujours disponibles** dans toutes les langues ; les alias sont simplement ajoutés en complément.
 
 ---
 
@@ -28,13 +26,13 @@ afficher(intervalle(5))    # French aliases
 print(range(5))            # Universal name — still works in French!
 
 # In Japanese — both work
-表示(範囲(5))               # Japanese aliases
-print(range(5))            # Universal still works
+表示(範囲(5))
+print(range(5))
 ```
 
 ---
 
-## Table complete des alias
+## Table complète des alias
 
 ### E/S de base
 
@@ -44,7 +42,7 @@ print(range(5))            # Universal still works
 | `input` | saisie | entrada | eingabe | 入力 | إدخال | इनपुट | 输入 |
 | `open` | ouvrir | abrir | oeffnen | 開く | افتح | खोलो | 打开 |
 
-### Operations de sequence
+### Opérations de séquence
 
 | Builtin | fr | es | de | ja | ar | hi | zh |
 |---------|----|----|----|----|----|----|-----|
@@ -58,24 +56,24 @@ print(range(5))            # Universal still works
 | `map` | appliquer | aplicar | anwenden | マップ | طبِّق | लागू | 映射 |
 | `filter` | filtrer | filtrar | filtern | フィルター | رشِّح | फ़िल्टर | 过滤 |
 
-### Mathematiques
+### Mathématiques
 
 | Builtin | fr | es | de | ja | ar | hi | zh |
 |---------|----|----|----|----|----|----|-----|
-| `abs` | valeur\_abs | abs | absolutwert | 絶対値 | قيمة\_مطلقة | परम\_मूल्य | 绝对值 |
+| `abs` | valeur_abs | abs | absolutwert | 絶対値 | قيمة_مطلقة | परम_मूल्य | 绝对值 |
 | `min` | minimum | minimo | minimum | 最小 | أصغر | न्यूनतम | 最小值 |
 | `max` | maximum | maximo | maximum | 最大 | أكبر | अधिकतम | 最大值 |
 | `round` | arrondir | redondear | runden | 丸める | أقرب | गोल | 四舍五入 |
 | `pow` | puissance | potencia | potenz | べき乗 | أس | घात | 幂 |
-| `divmod` | divmod | divmod | divmod | 除算余り | قسمة\_مع\_باقي | भाग\_और\_शेष | 整除 |
+| `divmod` | divmod | divmod | divmod | 除算余り | قسمة_مع_باقي | भाग_और_शेष | 整除 |
 
 ### Fonctions de type
 
 | Builtin | fr | es | de | ja | ar | hi | zh |
 |---------|----|----|----|----|----|----|-----|
 | `type` | type | tipo | typ | 型 | نوع | प्रकार | 类型 |
-| `isinstance` | estinstance | esinstancia | istinstanz | インスタンス確認 | هل\_نوع | उदाहरण\_है | 是实例 |
-| `issubclass` | soussclasse | essubclase | istunterklasse | サブクラス確認 | هل\_فئة\_فرعية | उपवर्ग\_है | 是子类 |
+| `isinstance` | estinstance | esinstancia | istinstanz | インスタンス確認 | هل_نوع | उदाहरण_है | 是实例 |
+| `issubclass` | sousclasse | essubclase | istunterklasse | サブクラス確認 | هل_فئة_فرعية | उपवर्ग_है | 是子类 |
 | `repr` | repr | repr | repr | 表現 | تمثيل | प्रतिनिधित्व | 表示 |
 | `str` | chaine | cadena | zeichenkette | 文字列 | سلسلة | स्ट्रिंग | 字符串 |
 | `int` | entier | entero | ganzzahl | 整数 | صحيح | पूर्णांक | 整数 |
@@ -90,7 +88,7 @@ print(range(5))            # Universal still works
 | `dict` | dico | dicc | dict | 辞書 | قاموس | शब्दकोश | 字典 |
 | `set` | ensemble | conjunto | menge | 集合 | مجموعة | समुच्चय | 集合 |
 | `tuple` | tuple | tupla | tupel | タプル | تيوبل | ट्यूपल | 元组 |
-| `frozenset` | ensemble\_gele | conjuntofijo | frozenset | 凍結集合 | مجموعة\_ثابتة | जमाया\_सेट | 冻结集合 |
+| `frozenset` | ensemble_gele | conjuntofijo | frozenset | 凍結集合 | مجموعة_ثابتة | जमाया_सेट | 冻结集合 |
 | `bytes` | octets | bytes | bytes | バイト列 | بايتات | बाइट | 字节 |
 
 ### Introspection
@@ -98,14 +96,14 @@ print(range(5))            # Universal still works
 | Builtin | fr | es | de | ja | ar | hi | zh |
 |---------|----|----|----|----|----|----|-----|
 | `dir` | repertoire | directorio | verzeichnis | ディレクトリ | دليل | निर्देशिका | 目录 |
-| `hasattr` | aattribut | tieneattr | hatattr | 属性あり | له\_خاصية | विशेषता\_है | 有属性 |
-| `getattr` | getattr | obtenerattr | getattr | 属性取得 | احصل\_على\_خاصية | विशेषता\_प | 获取属性 |
-| `setattr` | setattr | asignarattr | setattr | 属性設定 | حدد\_خاصية | विशेषता\_स | 设置属性 |
-| `delattr` | delattr | eliminarattr | delattr | 属性削除 | احذف\_خاصية | विशेषता\_ह | 删除属性 |
-| `callable` | appelable | invocable | aufrufbar | 呼び出し可能 | قابل\_للاستدعاء | कॉल\_योग्य | 可调用 |
+| `hasattr` | aattribut | tieneattr | hatattr | 属性あり | له_خاصية | विशेषता_है | 有属性 |
+| `getattr` | getattr | obtenerattr | getattr | 属性取得 | احصل_على_خاصية | विशेषता_प | 获取属性 |
+| `setattr` | setattr | asignarattr | setattr | 属性設定 | حدد_خاصية | विशेषता_स | 设置属性 |
+| `delattr` | delattr | eliminarattr | delattr | 属性削除 | احذف_خاصية | विशेषता_ह | 删除属性 |
+| `callable` | appelable | invocable | aufrufbar | 呼び出し可能 | قابل_للاستدعاء | कॉल_योग्य | 可调用 |
 | `hash` | hacher | hash | hash | ハッシュ | هاش | हैश | 哈希 |
 
-### Iteration
+### Itération
 
 | Builtin | fr | es | de | ja | ar | hi | zh |
 |---------|----|----|----|----|----|----|-----|
@@ -114,17 +112,17 @@ print(range(5))            # Universal still works
 | `any` | quelconque | cualquiera | irgendein | どれか | أي | कोई | 任意 |
 | `all` | tous | todos | alle | すべて | كل | सब | 所有 |
 
-### Chaines/Encodage
+### Chaînes et encodage
 
 | Builtin | fr | es | de | ja | ar | hi | zh |
 |---------|----|----|----|----|----|----|-----|
 | `chr` | chr | chr | chr | 文字 | حرف | वर्ण | 字符 |
-| `ord` | ord | ord | ord | 文字コード | رمز\_حرف | कोड | 编码 |
+| `ord` | ord | ord | ord | 文字コード | رمز_حرف | कोड | 编码 |
 | `format` | formater | formatear | formatieren | フォーマット | تنسيق | प्रारूप | 格式化 |
 
 ---
 
-## Verification des alias disponibles
+## Vérification des alias disponibles
 
 {{snippet:reference__builtins__py01}}
 
@@ -132,7 +130,7 @@ print(range(5))            # Universal still works
 
 ## REPL : lister les alias
 
-Dans le REPL, utilisez `:kw` pour voir tous les alias de mots-cles et de builtins de la langue courante :
+Dans le REPL, utilisez `:kw` pour voir tous les alias de mots-clés et de builtins de la langue courante :
 
 ```
 multilingual [fr]> :kw
@@ -142,4 +140,4 @@ multilingual [fr]> :kw
 
 ## Ajouter plus d'alias
 
-Des alias supplementaires peuvent etre ajoutes via `multilingualprogramming/resources/usm/builtins_aliases.json`. Voir [Translation Guidelines](/extending/translation/) pour la procedure.
+Des alias supplémentaires peuvent être ajoutés via `multilingualprogramming/resources/usm/builtins_aliases.json`. Voir les [directives de traduction](/fr/docs/extension/traduction/) pour la procédure.

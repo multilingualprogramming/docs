@@ -10,79 +10,77 @@ status: translated
 permalink: /fr/docs/references/date-heure/
 ---
 
-
-
-multilingual provides multilingual date and time classes that parse and format dates using the conventions of 17 supported languages.
+`multilingual` fournit des classes de date et d'heure multilingues capables d'analyser et de formater les dates selon les conventions des langues prises en charge.
 
 ---
 
-## MPDate
+## `MPDate`
 
-Multilingual date class with localized parsing and formatting.
+Classe de date multilingue avec analyse et formatage localisés.
 
 {{snippet:reference__datetime__py01}}
 
 ---
 
-## MPTime
+## `MPTime`
 
-Multilingual time class.
+Classe d'heure multilingue.
 
 {{snippet:reference__datetime__py02}}
 
 ---
 
-## MPDatetime
+## `MPDatetime`
 
-Combined datetime class.
+Classe combinée pour la date et l'heure.
 
 {{snippet:reference__datetime__py03}}
 
 ---
 
-## Month Names by Language
+## Exemples de mois
 
-| Month | en | fr | de | es | ja | ar | hi | zh |
-|-------|----|----|----|----|----|----|----|----|
-| 1 | January | janvier | Januar | enero | 1月 | يناير | जनवरी | 一月 |
-| 2 | February | février | Februar | febrero | 2月 | فبراير | फरवरी | 二月 |
-| 3 | March | mars | März | marzo | 3月 | مارس | मार्च | 三月 |
-| 4 | April | avril | April | abril | 4月 | أبريل | अप्रैल | 四月 |
-| 5 | May | mai | Mai | mayo | 5月 | مايو | मई | 五月 |
-| 6 | June | juin | Juni | junio | 6月 | يونيو | जून | 六月 |
-| 7 | July | juillet | Juli | julio | 7月 | يوليو | जुलाई | 七月 |
-| 8 | August | août | August | agosto | 8月 | أغسطس | अगस्त | 八月 |
-| 9 | September | septembre | September | septiembre | 9月 | سبتمبر | सितंबर | 九月 |
-| 10 | October | octobre | Oktober | octubre | 10月 | أكتوبر | अक्टूबर | 十月 |
-| 11 | November | novembre | November | noviembre | 11月 | نوفمبر | नवंबर | 十一月 |
-| 12 | December | décembre | Dezember | diciembre | 12月 | ديسمبر | दिसंबर | 十二月 |
+| Numéro | Anglais | Français |
+|--------|---------|-----------|
+| 1 | January | janvier |
+| 2 | February | février |
+| 3 | March | mars |
+| 4 | April | avril |
+| 5 | May | mai |
+| 6 | June | juin |
+| 7 | July | juillet |
+| 8 | August | août |
+| 9 | September | septembre |
+| 10 | October | octobre |
+| 11 | November | novembre |
+| 12 | December | décembre |
 
 ---
 
-## Resource Files
+## Fichiers de ressources
 
-Date/time resources are stored in:
+Les ressources de date et d'heure sont stockées dans :
 
-```
+```text
 multilingualprogramming/resources/datetime/
-├── months.json      # Month names in all languages
-├── weekdays.json    # Weekday names in all languages
-├── eras.json        # Era names (AD/BC, etc.) in all languages
-└── formats.json     # Date/time format templates per language
+├── months.json      # Noms des mois
+├── weekdays.json    # Noms des jours
+├── eras.json        # Noms des ères
+└── formats.json     # Formats par langue
 ```
 
 ---
 
-## Date Literals in Programs
+## Littéraux de date dans les programmes
 
-multilingual programs support date literals using dedicated delimiters:
+Les programmes `multilingual` prennent en charge les littéraux de date via des délimiteurs dédiés :
 
 {{snippet:reference__datetime__py04}}
 
 ---
 
-## Integration with datetime Module
+## Intégration avec `datetime`
 
-MPDate/MPTime are interoperable with Python's standard `datetime` module:
+`MPDate` et `MPTime` sont interopérables avec le module standard `datetime` de Python :
 
 {{snippet:reference__datetime__py05}}

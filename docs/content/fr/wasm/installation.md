@@ -16,7 +16,7 @@ Installez le support WASM avec :
 pip install multilingualprogramming[wasm]
 ```
 
-V?rifiez ensuite la disponibilit? WASM dans votre environnement d ex?cution.
+Vérifiez ensuite la disponibilité de WASM dans votre environnement d'exécution.
 
 {{snippet:wasm__installation__py01}}
 

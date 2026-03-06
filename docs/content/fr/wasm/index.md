@@ -9,15 +9,15 @@ status: translated
 permalink: /fr/docs/wasm/
 ---
 
-Cette section pr?sente le backend WASM, les performances, l installation, l architecture et le d?pannage.
+Cette section présente le backend WASM, les performances, l'installation, l'architecture et le dépannage.
 
-- [Installation](/fr/wasm/installation/)
-- [Architecture](/fr/wasm/architecture/)
-- [Performance](/fr/wasm/performance/)
-- [D?veloppement](/fr/wasm/development/)
-- [D?pannage](/fr/wasm/troubleshooting/)
-- [FAQ](/fr/wasm/faq/)
-- [Mise ? niveau](/fr/wasm/upgrade/)
+- [Installation](/fr/docs/wasm/installation/)
+- [Architecture](/fr/docs/wasm/architecture/)
+- [Performance](/fr/docs/wasm/performance/)
+- [Développement](/fr/docs/wasm/developpement/)
+- [Dépannage](/fr/docs/wasm/depannage/)
+- [FAQ](/fr/docs/wasm/faq/)
+- [Mise à niveau](/fr/docs/wasm/mise-a-niveau/)
 
 {{snippet:wasm__py01}}
 

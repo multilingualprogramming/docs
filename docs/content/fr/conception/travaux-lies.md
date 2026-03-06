@@ -1,7 +1,7 @@
 ---
 page_id: design__related_work
 locale: fr
-title: Travaux li?s
+title: Travaux liés
 path_segments:
 - conception
 - travaux-lies
@@ -10,4 +10,4 @@ status: translated
 permalink: /fr/docs/conception/travaux-lies/
 ---
 
-Comparaison avec les approches CNL, transpilation multi-frontends et compilation orient?e concepts.
+Comparaison avec les approches CNL, la transpilation multi-frontends et la compilation orientée concepts.

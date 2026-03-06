@@ -10,7 +10,7 @@ status: translated
 permalink: /fr/docs/wasm/architecture/
 ---
 
-Le pipeline WASM suit la cha?ne : source multilingue -> AST c?ur -> g?n?ration WAT -> module WASM -> ex?cution via runtime.
+Le pipeline WASM suit la chaîne : source multilingue -> AST cœur -> génération WAT -> module WASM -> exécution via runtime.
 
 Le backend Python reste disponible comme repli automatique.
 

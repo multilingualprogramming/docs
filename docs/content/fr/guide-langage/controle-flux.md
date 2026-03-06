@@ -1,7 +1,7 @@
 ---
 page_id: language_guide__control_flow
 locale: fr
-title: Controle de flux
+title: Contrôle de flux
 path_segments:
 - guide-langage
 - controle-flux
@@ -10,13 +10,11 @@ status: translated
 permalink: /fr/docs/guide-langage/controle-flux/
 ---
 
-
-
-Le controle de flux dans multilingual utilise la meme semantique que Python avec des mots-cles localises. Toutes les constructions se comportent de facon identique dans les 17 langues supportees - seuls les mots-cles de surface changent.
+Le contrôle de flux de `multilingual` reprend la sémantique de Python avec des mots-clés localisés. Les constructions se comportent de la même façon dans les 17 langues prises en charge ; seuls les mots-clés de surface changent.
 
 ---
 
-## Conditionals — if / elif / else
+## Conditions : `if` / `elif` / `else`
 
 ### Syntaxe
 
@@ -33,7 +31,7 @@ Le controle de flux dans multilingual utilise la meme semantique que Python avec
 
 {{snippet:language_guide__control_flow__py01}}
 
-### Francais
+### Français
 
 {{snippet:language_guide__control_flow__py02}}
 
@@ -57,13 +55,13 @@ Le controle de flux dans multilingual utilise la meme semantique que Python avec
 
 {{snippet:language_guide__control_flow__py07}}
 
-### Chinese
+### Chinois
 
 {{snippet:language_guide__control_flow__py08}}
 
 ---
 
-## For Loop
+## Boucle `for`
 
 ### Syntaxe
 
@@ -71,14 +69,14 @@ Le controle de flux dans multilingual utilise la meme semantique que Python avec
 [FOR] target [IN] iterable:
     block
 [ELSE]:
-    block   # runs if loop completed without break
+    block   # exécuté si la boucle se termine sans break
 ```
 
 ### Anglais
 
 {{snippet:language_guide__control_flow__py09}}
 
-### Francais
+### Français
 
 {{snippet:language_guide__control_flow__py10}}
 
@@ -102,17 +100,17 @@ Le controle de flux dans multilingual utilise la meme semantique que Python avec
 
 {{snippet:language_guide__control_flow__py15}}
 
-### Chinese
+### Chinois
 
 {{snippet:language_guide__control_flow__py16}}
 
-### Tuple Unpacking in For
+### Dépaquetage de tuples
 
 {{snippet:language_guide__control_flow__py17}}
 
 ---
 
-## While Loop
+## Boucle `while`
 
 ### Syntaxe
 
@@ -120,14 +118,14 @@ Le controle de flux dans multilingual utilise la meme semantique que Python avec
 [LOOP_WHILE] condition:
     block
 [ELSE]:
-    block   # runs if condition became false (no break)
+    block   # exécuté si la condition devient fausse sans break
 ```
 
 ### Anglais
 
 {{snippet:language_guide__control_flow__py18}}
 
-### Francais
+### Français
 
 {{snippet:language_guide__control_flow__py19}}
 
@@ -151,15 +149,15 @@ Le controle de flux dans multilingual utilise la meme semantique que Python avec
 
 {{snippet:language_guide__control_flow__py24}}
 
-### Chinese
+### Chinois
 
 {{snippet:language_guide__control_flow__py25}}
 
 ---
 
-## Match / Case (Pattern Matching)
+## `match` / `case`
 
-Pattern matching (Python 3.10+) uses the `match` keyword, which is universal (not localized). Case patterns follow standard Python syntax.
+Le filtrage par motifs de Python 3.10+ utilise le mot-clé universel `match`, non localisé. Les motifs gardent la syntaxe standard de Python.
 
 ### Syntaxe
 
@@ -178,89 +176,84 @@ match expression:
     case ClassName(attr=value):
         block
     case _:
-        block   # wildcard / default
+        block   # joker / cas par défaut
 ```
 
-### Literal Patterns
+### Motifs littéraux
 
 {{snippet:language_guide__control_flow__py26}}
 
-### Value Capture
+### Capture de valeurs
 
 {{snippet:language_guide__control_flow__py27}}
 
-### Guard Conditions
+### Conditions de garde
 
 {{snippet:language_guide__control_flow__py28}}
 
-### OR Patterns
+### Motifs alternatifs
 
 {{snippet:language_guide__control_flow__py29}}
 
-### AS Pattern
+### Motif `as`
 
 {{snippet:language_guide__control_flow__py30}}
 
-### Class Patterns
+### Motifs de classes
 
 {{snippet:language_guide__control_flow__py31}}
 
 ---
 
-## Break / Continue / Pass
+## `break` / `continue` / `pass`
 
-These keywords are universal (not localized) across all languages.
+Ces mots-clés sont universels et ne sont pas localisés.
 
-### break — Exit a loop early
+### `break` : sortir d'une boucle
 
 {{snippet:language_guide__control_flow__py32}}
 
-### continue — Skip current iteration
+### `continue` : passer à l'itération suivante
 
 {{snippet:language_guide__control_flow__py33}}
 
-### pass — No-op placeholder
+### `pass` : instruction vide
 
 {{snippet:language_guide__control_flow__py34}}
 
 ---
 
-## Nested Loops
+## Boucles imbriquées
 
 {{snippet:language_guide__control_flow__py35}}
 
-Version francaise :
+Version française :
 
 {{snippet:language_guide__control_flow__py36}}
 
 ---
 
-## Loop-Else Idiom
+## Idiome `loop-else`
 
 {{snippet:language_guide__control_flow__py37}}
 
 ---
 
-## Walrus Operator in Conditions
+## Opérateur morse dans les conditions
 
 {{snippet:language_guide__control_flow__py38}}
 
 ---
 
-## Table complete des mots-cles de controle de flux
+## Repères de vocabulaire
 
-| Concept | en | fr | es | de | ja | ar | hi | zh |
-|---------|----|----|----|----|----|----|----|----|
-| if | `if` | `si` | `si` | `wenn` | `もし` | `إذا` | `यदि` | `如果` |
-| elif | `elif` | `sinon_si` | `sino_si` | `sonst_wenn` | `そうでなければもし` | `وإلا_إذا` | `अथवा_यदि` | `否则如果` |
-| else | `else` | `sinon` | `sino` | `sonst` | `そうでなければ` | `وإلا` | `अन्यथा` | `否则` |
-| for | `for` | `pour` | `para` | `für` | `毎` | `لكل` | `प्रत्येक` | `对于` |
-| in (for) | `in` | `dans` | `en` | `in` | `中` | `في` | `में` | `在` |
-| while | `while` | `tant_que` | `mientras` | `solange` | `間` | `طالما` | `जबकि` | `当` |
-| break | `break` | `break` | `break` | `break` | `break` | `break` | `break` | `break` |
-| continue | `continue` | `continue` | `continue` | `continue` | `continue` | `continue` | `continue` | `continue` |
-| pass | `pass` | `pass` | `pass` | `pass` | `pass` | `pass` | `pass` | `pass` |
+| Concept | Anglais | Français |
+|---------|---------|-----------|
+| Condition | `if` | `si` |
+| Sinon si | `elif` | `sinon_si` |
+| Sinon | `else` | `sinon` |
+| Boucle | `for` | `pour` |
+| Appartenance dans une boucle | `in` | `dans` |
+| Tant que | `while` | `tant_que` |
 
-> `break`, `continue`, and `pass` are universal across all 17 languages.
-
-Voir [Reference des mots-cles](/fr/docs/guide-langage/mots-cles/) pour les 17 langues, y compris italien, portugais, polonais, neerlandais, suedois, danois, finnois, bengali et tamoul.
+Voir la [Référence des mots-clés](/fr/docs/guide-langage/mots-cles/) pour la liste complète des 17 langues.

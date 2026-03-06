@@ -10,30 +10,28 @@ status: translated
 permalink: /fr/docs/guide-langage/syntaxe/
 ---
 
+Cette page sert de référence syntaxique pour `multilingual`. Les mots-clés affichés sous la forme `[CONCEPT]` représentent des concepts sémantiques ; remplacez-les par le mot-clé approprié à la langue choisie.
 
-
-Cette page est la reference syntaxique definitive pour multilingual. Les mots-cles affiches sous forme `[CONCEPT]` representent des concepts semantiques - remplacez-les par le mot-cle approprie pour la langue choisie.
-
-Voir [Reference des mots-cles](/fr/docs/guide-langage/mots-cles/) pour le mapping complet.
+Voir la [Référence des mots-clés](/fr/docs/guide-langage/mots-cles/) pour le mapping complet.
 
 ---
 
 ## Conventions de syntaxe
 
-- `[LET]` — variable declaration keyword (`let`, `soit`, `sei`, `変数`, `مان`, ...)
-- `[IF]` — conditional (`if`, `si`, `wenn`, `もし`, `إذا`, ...)
-- `[FOR]` — for loop keyword
-- `[DEF]` — function definition
-- `[CLASS]` — class definition
-- `[RETURN]` — return statement
-- Identifiers are any Unicode sequence (not translated)
-- String literals: `"..."`, `'...'`, `"""..."""`, `f"..."`
+- `[LET]` : mot-clé de déclaration de variable (`let`, `soit`, `sei`, etc.)
+- `[IF]` : condition
+- `[FOR]` : boucle `for`
+- `[DEF]` : définition de fonction
+- `[CLASS]` : définition de classe
+- `[RETURN]` : instruction de retour
+- Les identifiants peuvent utiliser Unicode et ne sont pas traduits
+- Les chaînes utilisent `"..."`, `'...'`, `"""..."""` ou `f"..."`
 
 ---
 
-## Variables et declarations
+## Variables et déclarations
 
-### Declaration de variable
+### Déclaration de variable
 
 ```text
 [LET] identifier = expression
@@ -51,7 +49,7 @@ const IDENTIFIER = expression
 
 {{snippet:language_guide__syntax__py02}}
 
-### Affectation chainee
+### Affectation chaînée
 
 ```text
 identifier = identifier = expression
@@ -66,23 +64,23 @@ identifier = identifier = expression
 del identifier
 ```
 
-### Affectation augmentee
+### Affectation augmentée
 
 {{snippet:language_guide__syntax__py04}}
 
 ---
 
-## Literaux
+## Littéraux
 
 ### Nombres
 
 {{snippet:language_guide__syntax__py05}}
 
-### Chaines
+### Chaînes
 
 {{snippet:language_guide__syntax__py06}}
 
-### Booleens et None
+### Booléens et `None`
 
 {{snippet:language_guide__syntax__py07}}
 
@@ -94,7 +92,7 @@ del identifier
 
 ## Expressions
 
-### Arithmetique
+### Arithmétique
 
 {{snippet:language_guide__syntax__py09}}
 
@@ -102,11 +100,11 @@ del identifier
 
 {{snippet:language_guide__syntax__py10}}
 
-### Booleen
+### Booléens
 
 {{snippet:language_guide__syntax__py11}}
 
-### Bitwise
+### Opérateurs bit à bit
 
 {{snippet:language_guide__syntax__py12}}
 
@@ -114,11 +112,11 @@ del identifier
 
 {{snippet:language_guide__syntax__py13}}
 
-### Walrus Operator
+### Opérateur morse
 
 {{snippet:language_guide__syntax__py14}}
 
-### Ternary Expression
+### Expression ternaire
 
 ```text
 value_if_true [IF] condition [ELSE] value_if_false
@@ -126,11 +124,11 @@ value_if_true [IF] condition [ELSE] value_if_false
 
 {{snippet:language_guide__syntax__py15}}
 
-### Unpacking
+### Dépaquetage
 
 {{snippet:language_guide__syntax__py16}}
 
-### Dict/Set Unpacking
+### Dépaquetage de dictionnaires et d'ensembles
 
 {{snippet:language_guide__syntax__py17}}
 
@@ -144,9 +142,9 @@ lambda params: expression
 
 ---
 
-## Controle de flux
+## Contrôle de flux
 
-### if / elif / else
+### `if` / `elif` / `else`
 
 ```text
 [IF] condition:
@@ -157,28 +155,28 @@ lambda params: expression
     block
 ```
 
-### for loop
+### Boucle `for`
 
 ```text
 [FOR] target [IN] iterable:
     block
 [ELSE]:
-    block  # runs if no break
+    block  # exécuté s'il n'y a pas de break
 ```
 
-Tuple target:
+Cible tuple :
 {{snippet:language_guide__syntax__py19}}
 
-### while loop
+### Boucle `while`
 
 ```text
 [LOOP_WHILE] condition:
     block
 [ELSE]:
-    block  # runs if no break
+    block  # exécuté s'il n'y a pas de break
 ```
 
-### match / case
+### `match` / `case`
 
 ```text
 match expression:
@@ -191,10 +189,10 @@ match expression:
     case pattern [AS] name:
         block
     case _:
-        block  # default/wildcard
+        block  # cas par défaut
 ```
 
-### break / continue / pass
+### `break` / `continue` / `pass`
 
 {{snippet:language_guide__syntax__py20}}
 
@@ -202,33 +200,33 @@ match expression:
 
 ## Fonctions
 
-### Basic Definition
+### Définition simple
 
 ```text
 [DEF] name(params):
     block
 ```
 
-### With Return
+### Avec retour
 
 ```text
 [DEF] name(params):
     [RETURN] expression
 ```
 
-### Types de parametres
+### Types de paramètres
 
 {{snippet:language_guide__syntax__py21}}
 
-### Valeurs par defaut
+### Valeurs par défaut
 
 {{snippet:language_guide__syntax__py22}}
 
-### Type Annotations
+### Annotations de type
 
 {{snippet:language_guide__syntax__py23}}
 
-### Generateurs
+### Générateurs
 
 ```text
 [DEF] name(params):
@@ -251,7 +249,7 @@ match expression:
 
 {{snippet:language_guide__syntax__py25}}
 
-### Decorators
+### Décorateurs
 
 {{snippet:language_guide__syntax__py26}}
 
@@ -259,7 +257,7 @@ match expression:
 
 ## Classes
 
-### Basic Class
+### Classe simple
 
 ```text
 [CLASS] Name:
@@ -270,7 +268,7 @@ match expression:
         [RETURN] expression
 ```
 
-### Inheritance
+### Héritage
 
 ```text
 [CLASS] Child(Parent):
@@ -278,7 +276,7 @@ match expression:
         super(Child, self).__init__(params)
 ```
 
-### Class with Decorators
+### Classe avec décorateurs
 
 {{snippet:language_guide__syntax__py27}}
 
@@ -286,7 +284,7 @@ match expression:
 
 ## Gestion des exceptions
 
-### try / except / else / finally
+### `try` / `except` / `else` / `finally`
 
 ```text
 [TRY]:
@@ -296,20 +294,20 @@ match expression:
 [EXCEPT] (Type1, Type2) [AS] name:
     block
 [ELSE]:
-    block  # runs if no exception
+    block
 [FINALLY]:
-    block  # always runs
+    block
 ```
 
-### raise
+### `raise`
 
 ```text
 [RAISE] ExceptionType("message")
-[RAISE]                          # re-raise current exception
-[RAISE] ExceptionA [FROM] ExceptionB  # chaining
+[RAISE]
+[RAISE] ExceptionA [FROM] ExceptionB
 ```
 
-### assert
+### `assert`
 
 ```text
 [ASSERT] condition
@@ -318,7 +316,7 @@ match expression:
 
 ---
 
-## Context Managers
+## Gestionnaires de contexte
 
 ```text
 [WITH] expression [AS] name:
@@ -332,21 +330,21 @@ match expression:
 
 ---
 
-## Comprehensions
+## Compréhensions
 
-### Comprehension de liste
+### Compréhension de liste
 
 {{snippet:language_guide__syntax__py29}}
 
-### Dict Comprehension
+### Compréhension de dictionnaire
 
 {{snippet:language_guide__syntax__py30}}
 
-### Set Comprehension
+### Compréhension d'ensemble
 
 {{snippet:language_guide__syntax__py31}}
 
-### Generator Expression
+### Expression génératrice
 
 {{snippet:language_guide__syntax__py32}}
 
@@ -365,7 +363,7 @@ match expression:
 
 ---
 
-## Global and Nonlocal
+## Portée : `global` et `nonlocal`
 
 ```text
 [GLOBAL] identifier
@@ -376,22 +374,22 @@ match expression:
 
 ---
 
-## Special Values and Operators
+## Valeurs et opérateurs spéciaux
 
-| Expression | Meaning |
-|-----------|---------|
-| `True` | Boolean true |
-| `False` | Boolean false |
-| `None` | Null value |
-| `Ellipsis` / `...` | Ellipsis literal |
-| `NotImplemented` | Not-implemented sentinel |
-| `is` | Identity check |
-| `is not` | Negative identity |
-| `in` | Membership check |
-| `not in` | Negative membership |
+| Expression | Signification |
+|-----------|---------------|
+| `True` | Booléen vrai |
+| `False` | Booléen faux |
+| `None` | Valeur nulle |
+| `Ellipsis` / `...` | Littéral d'ellipse |
+| `NotImplemented` | Marqueur de non-implémentation |
+| `is` | Test d'identité |
+| `is not` | Négation d'identité |
+| `in` | Test d'appartenance |
+| `not in` | Négation d'appartenance |
 
 ---
 
-## Supported Exception Types (45+)
+## Types d'exceptions pris en charge
 
 {{snippet:language_guide__syntax__py35}}

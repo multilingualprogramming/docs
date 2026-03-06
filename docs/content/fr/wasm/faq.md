@@ -10,7 +10,7 @@ status: translated
 permalink: /fr/docs/wasm/faq/
 ---
 
-FAQ sur les performances, la compatibilit?, les limitations connues et les sc?narios de repli Python.
+FAQ sur les performances, la compatibilité, les limitations connues et les scénarios de repli Python.
 
 {{snippet:wasm__faq__py01}}
 

@@ -1,7 +1,7 @@
 ---
 page_id: wasm__troubleshooting
 locale: fr
-title: D?pannage WASM
+title: Dépannage WASM
 path_segments:
 - wasm
 - depannage
@@ -10,7 +10,7 @@ status: translated
 permalink: /fr/docs/wasm/depannage/
 ---
 
-En cas de probl?me, v?rifiez la version Python, la pr?sence des d?pendances WASM, la compatibilit? plateforme et les journaux d ex?cution.
+En cas de problème, vérifiez la version Python, la présence des dépendances WASM, la compatibilité de la plateforme et les journaux d'exécution.
 
 {{snippet:wasm__troubleshooting__py01}}
 

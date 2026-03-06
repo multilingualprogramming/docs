@@ -21,6 +21,22 @@ layout: default
         {% if page.description %}
         <p class="content-description">{{ page.description }}</p>
         {% endif %}
+        {% if page.locale == 'fr' and page.status and page.status != 'translated' %}
+        <div class="callout callout-warning">
+          <div class="callout-content">
+            <strong>Traduction en cours</strong>
+            <p>Cette page n'est pas encore entierement validee en francais. Certaines sections peuvent rester en anglais ou etre en cours de mise a jour.</p>
+          </div>
+        </div>
+        {% endif %}
+        {% if page.locale != 'fr' and page.status and page.status != 'source' and page.status != 'translated' %}
+        <div class="callout callout-warning">
+          <div class="callout-content">
+            <strong>Translation in progress</strong>
+            <p>This page is not fully validated yet. Some sections may still be untranslated or lag behind the English source.</p>
+          </div>
+        </div>
+        {% endif %}
         {% if page.badges %}
         <div class="content-badges">
           {% for badge in page.badges %}

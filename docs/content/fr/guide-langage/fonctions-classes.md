@@ -10,13 +10,11 @@ status: translated
 permalink: /fr/docs/guide-langage/fonctions-classes/
 ---
 
-
-
-Les fonctions et classes dans multilingual fonctionnent comme en Python, avec des mots-cles localises pour `def`, `class`, `return`, `self` et les constructions associees. Les identifiants (variables, fonctions, classes) ne sont jamais traduits - ils restent tels quels dans le Python genere.
+Les fonctions et les classes de `multilingual` fonctionnent comme en Python, avec des mots-clés localisés pour `def`, `class`, `return`, `self` et les constructions associées. Les identifiants ne sont jamais traduits : ils sont conservés tels quels dans le Python généré.
 
 ---
 
-## Definitions de fonctions
+## Définitions de fonctions
 
 ### Syntaxe
 
@@ -29,7 +27,7 @@ Les fonctions et classes dans multilingual fonctionnent comme en Python, avec de
 
 {{snippet:language_guide__functions_classes__py01}}
 
-### Francais
+### Français
 
 {{snippet:language_guide__functions_classes__py02}}
 
@@ -53,71 +51,71 @@ Les fonctions et classes dans multilingual fonctionnent comme en Python, avec de
 
 {{snippet:language_guide__functions_classes__py07}}
 
-### Chinese
+### Chinois
 
 {{snippet:language_guide__functions_classes__py08}}
 
 ---
 
-## Types de parametres
+## Types de paramètres
 
-Toutes les formes de parametres Python sont supportees dans toutes les langues :
+Toutes les formes de paramètres Python sont prises en charge :
 
 {{snippet:language_guide__functions_classes__py09}}
 
-### Valeurs par defaut
+### Valeurs par défaut
 
 {{snippet:language_guide__functions_classes__py10}}
 
-### Type Annotations
+### Annotations de type
 
 {{snippet:language_guide__functions_classes__py11}}
 
-### *args and **kwargs
+### `*args` et `**kwargs`
 
 {{snippet:language_guide__functions_classes__py12}}
 
-### Keyword-Only Arguments
+### Arguments uniquement nommés
 
 {{snippet:language_guide__functions_classes__py13}}
 
 ---
 
-## Return Values
+## Valeurs de retour
 
-### Single Value
+### Valeur simple
 
 {{snippet:language_guide__functions_classes__py14}}
 
-### Multiple Values (tuple)
+### Valeurs multiples
 
 {{snippet:language_guide__functions_classes__py15}}
 
-### No Return (None)
+### Sans retour explicite
 
 {{snippet:language_guide__functions_classes__py16}}
 
 ---
 
-## Fonctions imbriquees et closures
+## Fonctions imbriquées et fermetures
 
 {{snippet:language_guide__functions_classes__py17}}
 
 ---
 
-## Decorators
+## Décorateurs
 
-### Basic Decorator
+### Décorateur simple
 
 {{snippet:language_guide__functions_classes__py18}}
 
-### Multiple Decorators
+### Décorateurs multiples
 
-Decorators are applied bottom-up:
+Les décorateurs sont appliqués du bas vers le haut :
 
 {{snippet:language_guide__functions_classes__py19}}
 
-### functools.wraps
+### `functools.wraps`
 
 {{snippet:language_guide__functions_classes__py20}}
 
@@ -129,7 +127,7 @@ Decorators are applied bottom-up:
 
 ---
 
-## Class Definitions
+## Définitions de classes
 
 ### Syntaxe
 
@@ -146,7 +144,7 @@ Decorators are applied bottom-up:
 
 {{snippet:language_guide__functions_classes__py22}}
 
-### Francais
+### Français
 
 {{snippet:language_guide__functions_classes__py23}}
 
@@ -160,50 +158,50 @@ Decorators are applied bottom-up:
 
 ---
 
-## Inheritance
+## Héritage
 
-### Single Inheritance
+### Héritage simple
 
 {{snippet:language_guide__functions_classes__py26}}
 
-### Multiple Inheritance
+### Héritage multiple
 
 {{snippet:language_guide__functions_classes__py27}}
 
 ---
 
-## Class Features
+## Fonctionnalités de classe
 
-### Class and Static Methods
+### Méthodes de classe et méthodes statiques
 
 {{snippet:language_guide__functions_classes__py28}}
 
-### Properties
+### Propriétés
 
 {{snippet:language_guide__functions_classes__py29}}
 
-### Dunder Methods
+### Méthodes spéciales
 
 {{snippet:language_guide__functions_classes__py30}}
 
 ---
 
-## Dataclasses
+## `dataclasses`
 
 {{snippet:language_guide__functions_classes__py31}}
 
 ---
 
-## Function Keyword Table
+## Repères de vocabulaire
 
-| Concept | en | fr | es | de | ja | ar | hi | zh |
-|---------|----|----|----|----|----|----|----|----|
-| def | `def` | `fonction` | `función` | `funktion` | `関数` | `دالة` | `कार्य` | `函数` |
-| return | `return` | `retourner` | `retornar` | `zurückgeben` | `戻る` | `أرجع` | `वापस` | `返回` |
-| class | `class` | `classe` | `clase` | `klasse` | `クラス` | `فئة` | `वर्ग` | `类` |
-| self | `self` | `soi` | `yo` | `selbst` | `自分` | `النفس` | `स्वयं` | `自身` |
-| super | `super` | `super` | `super` | `super` | `super` | `super` | `super` | `super` |
+| Concept | Anglais | Français |
+|---------|---------|-----------|
+| Définition de fonction | `def` | `fonction` |
+| Retour | `return` | `retourner` |
+| Définition de classe | `class` | `classe` |
+| Référence à l'instance | `self` | `soi` |
+| Appel au parent | `super` | `super` |
 
-> `super`, `lambda`, `pass` are universal across all 17 languages.
+`super`, `lambda` et `pass` restent universels dans toutes les langues.
 
-Voir [Reference des mots-cles](/fr/docs/guide-langage/mots-cles/) pour les 17 langues.
+Voir la [Référence des mots-clés](/fr/docs/guide-langage/mots-cles/) pour la liste complète des 17 langues.

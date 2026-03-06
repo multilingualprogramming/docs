@@ -1,7 +1,7 @@
 ---
 page_id: reference
 locale: fr
-title: Reference technique
+title: Référence technique
 path_segments:
 - references
 source_hash: 7daaacafc108
@@ -9,9 +9,7 @@ status: translated
 permalink: /fr/docs/references/
 ---
 
-
-
-Voici la reference complete du package `multilingualprogramming`. Elle couvre les APIs publiques, les fonctionnalites du langage, les commandes CLI et la base de compatibilite Python.
+Cette section rassemble la référence technique de `multilingualprogramming` : API publiques, pipeline de compilation, commandes CLI et base de compatibilité Python.
 
 ---
 
@@ -21,9 +19,9 @@ Voici la reference complete du package `multilingualprogramming`. Elle couvre le
 
 ---
 
-## ProgramExecutor
+## `ProgramExecutor`
 
-API principale de haut niveau pour executer des programmes multilingual.
+API de haut niveau pour exécuter des programmes `multilingual`.
 
 {{snippet:reference__py02}}
 
@@ -40,10 +38,10 @@ API principale de haut niveau pour executer des programmes multilingual.
 {{snippet:reference__py04}}
 
 Chaque `Token` contient :
-- `type` — token type concept (e.g., `COND_IF`, `LOOP_FOR`, `IDENTIFIER`, `NUMBER`)
-- `value` — raw string value from source
-- `line` — line number (1-based)
-- `column` — column number (1-based)
+- `type` : concept de token, par exemple `COND_IF`, `LOOP_FOR`, `IDENTIFIER` ou `NUMBER`
+- `value` : valeur textuelle lue dans la source
+- `line` : numéro de ligne, à partir de 1
+- `column` : numéro de colonne, à partir de 1
 
 {{snippet:reference__py05}}
 
@@ -51,15 +49,15 @@ Chaque `Token` contient :
 
 {{snippet:reference__py06}}
 
-Le noeud AST `Program` contient une liste de noeuds `Statement`. Voir `multilingualprogramming/parser/ast_nodes.py` pour la hierarchie complete.
+Le nœud AST `Program` contient une liste de nœuds `Statement`. Voir `multilingualprogramming/parser/ast_nodes.py` pour la hiérarchie complète.
 
 {{snippet:reference__py07}}
 
-### SemanticAnalyzer
+### Analyse sémantique
 
 {{snippet:reference__py08}}
 
-### PythonCodeGenerator
+### Génération de code Python
 
 {{snippet:reference__py09}}
 
@@ -69,39 +67,39 @@ Le noeud AST `Program` contient une liste de noeuds `Statement`. Voir `multiling
 
 ---
 
-## KeywordRegistry
+## `KeywordRegistry`
 
 {{snippet:reference__py11}}
 
-**IDs de concepts (51 au total, 7 categories) :**
+**Catégories de concepts :**
 
-| Category | Concepts |
-|----------|---------|
-| `control_flow` | `COND_IF`, `COND_ELIF`, `COND_ELSE`, `LOOP_FOR`, `IN`, `LOOP_WHILE`, `BREAK`, `CONTINUE`, `PASS` |
-| `variable_declaration` | `LET`, `CONST`, `GLOBAL`, `NONLOCAL`, `DEL`, `ASSERT` |
-| `function` | `FUNC_DEF`, `RETURN`, `LAMBDA`, `YIELD`, `YIELD_FROM`, `ASYNC`, `AWAIT` |
-| `class` | `CLASS_DEF` |
-| `operators` | `AND`, `OR`, `NOT`, `IS`, `IS_NOT`, `IN_OP`, `NOT_IN` |
-| `exception_handling` | `TRY`, `EXCEPT`, `ELSE`, `FINALLY`, `RAISE`, `WITH`, `AS` |
-| `special` | `IMPORT`, `FROM`, `MATCH`, `CASE` |
+| Catégorie | Exemples |
+|-----------|----------|
+| Contrôle de flux | `COND_IF`, `COND_ELIF`, `COND_ELSE`, `LOOP_FOR`, `LOOP_WHILE` |
+| Déclarations | `LET`, `CONST`, `GLOBAL`, `NONLOCAL`, `DEL`, `ASSERT` |
+| Fonctions | `FUNC_DEF`, `RETURN`, `LAMBDA`, `YIELD`, `YIELD_FROM`, `ASYNC`, `AWAIT` |
+| Classes | `CLASS_DEF` |
+| Opérateurs | `AND`, `OR`, `NOT`, `IS`, `IS_NOT`, `IN_OP`, `NOT_IN` |
+| Exceptions et contexte | `TRY`, `EXCEPT`, `ELSE`, `FINALLY`, `RAISE`, `WITH`, `AS` |
+| Spéciaux | `IMPORT`, `FROM`, `MATCH`, `CASE` |
 
 ---
 
-## Systeme de numeraux
+## Système de numéraux
 
-### MPNumeral
+### `MPNumeral`
 
 {{snippet:reference__py12}}
 
-### RomanNumeral
+### `RomanNumeral`
 
 {{snippet:reference__py13}}
 
-### UnicodeNumeral
+### `UnicodeNumeral`
 
 {{snippet:reference__py14}}
 
-### NumeralConverter
+### `NumeralConverter`
 
 {{snippet:reference__py15}}
 
@@ -122,15 +120,15 @@ Le noeud AST `Program` contient une liste de noeuds `Statement`. Voir `multiling
 ## Commandes CLI
 
 ```bash
-# Executer un fichier programme
+# Exécuter un programme
 multilingual run <file.ml> --lang en
-multilg run programme.ml --lang fr
+multilingual run programme.ml --lang fr
 
-# Demarrer le REPL
+# Démarrer le REPL
 multilingual repl
 multilingual repl --lang fr --show-python --show-wat
 
-# Transpiler vers Python (affichage sans execution)
+# Transpiler vers Python
 multilingual compile hello.ml --lang en
 
 # Construire un bundle WASM
@@ -140,7 +138,7 @@ multilingual build-wasm-bundle hello.ml --lang en --out-dir ./dist
 multilingual smoke --lang fr
 multilingual smoke --all
 
-# Verifier l'encodage de la sortie generee
+# Vérifier l'encodage du code généré
 multilingual encoding-check-generated hello.ml --lang en
 
 # Afficher la version
@@ -149,60 +147,45 @@ multilingual --version
 
 ---
 
-## Base de compatibilite Python
+## Base de compatibilité Python
 
-**Sous-ensemble de fonctionnalites Python 3.12+ supporte :**
+**Sous-ensemble Python 3.12+ pris en charge :**
 
-| Feature | Status |
-|---------|--------|
-| Variable declarations + type annotations | ✅ |
-| Arithmetic, bitwise, comparison operators | ✅ |
-| Augmented assignment (`+=`, `-=`, etc.) | ✅ |
-| Chained assignment | ✅ |
-| Starred unpacking | ✅ |
-| Lists, dicts, sets, tuples | ✅ |
-| F-strings with format specs (`:.2f`, `!r`, `!s`, `!a`) | ✅ |
+| Fonctionnalité | Statut |
+|----------------|--------|
+| Déclarations de variables et annotations | ✅ |
+| Opérateurs arithmétiques, bit à bit et comparaisons | ✅ |
+| Affectations augmentées | ✅ |
+| Affectations chaînées | ✅ |
+| Dépaquetage étoilé | ✅ |
+| Listes, dictionnaires, ensembles et tuples | ✅ |
+| F-strings et spécificateurs de format | ✅ |
 | `if` / `elif` / `else` | ✅ |
-| `while` / `for` loops with `else` | ✅ |
+| Boucles `while` / `for` avec `else` | ✅ |
 | `break` / `continue` / `pass` | ✅ |
-| `match` / `case` with guards, OR, AS | ✅ |
-| Ternary expressions | ✅ |
-| Functions with all param types | ✅ |
-| Positional-only (`/`) and keyword-only (`*`) params | ✅ |
-| `*args` and `**kwargs` | ✅ |
-| Decorators on functions and classes | ✅ |
-| Lambda expressions | ✅ |
-| `yield` / `yield from` | ✅ |
+| `match` / `case` avec gardes | ✅ |
+| Fonctions avec tous les types de paramètres | ✅ |
+| Générateurs et `yield from` | ✅ |
 | `async def` / `await` / `async for` / `async with` | ✅ |
-| Class definitions and inheritance | ✅ |
-| `super()` | ✅ |
+| Classes, héritage et `super()` | ✅ |
 | `try` / `except` / `else` / `finally` | ✅ |
 | `raise` / `raise ... from` | ✅ |
-| `assert` | ✅ |
-| `with` / multiple contexts | ✅ |
-| List, dict, set comprehensions | ✅ |
-| Generator expressions | ✅ |
-| Nested comprehensions | ✅ |
-| `global` / `nonlocal` | ✅ |
-| `del` | ✅ |
-| Walrus operator `:=` | ✅ |
-| Slices | ✅ |
+| Gestionnaires de contexte | ✅ |
+| Compréhensions et expressions génératrices | ✅ |
+| `global` / `nonlocal` / `del` | ✅ |
 | `import` / `from ... import` / `as` / `*` | ✅ |
-| Wildcard import | ✅ |
-| 70+ built-in functions | ✅ |
-| 45+ exception types | ✅ |
-| Localized built-in aliases (41 concepts) | ✅ |
-| Surface normalization (SOV/RTL languages) | ✅ |
+| Alias localisés des fonctions intégrées | ✅ |
+| Normalisation de surface pour les langues SOV / RTL | ✅ |
 
-**~1 797 tests sur 58 fichiers de tests** definissent la base de compatibilite.
+Cette base de compatibilité est couverte par environ 1 797 tests répartis sur 58 fichiers.
 
 ---
 
 ## Historique des versions
 
-| Version | Highlights |
-|---------|-----------|
-| `0.5.1` | Documentation updates |
-| `0.5.0` | WAT/WASM OOP object model; class lowering with linear-memory bump allocator; inheritance with C3 MRO; `super()` resolution; WAT execution tests; SemanticAnalyzer plain-assignment fix |
-| `0.4.0` | WAT/WASM code generation; browser playground; WASM backend with 25+ Python fallbacks; 20 corpus projects |
-| `0.3.0` | Earlier milestone |
+| Version | Points marquants |
+|---------|------------------|
+| `0.5.1` | Mise à jour de la documentation |
+| `0.5.0` | Modèle objet WAT/WASM, héritage avec MRO C3, support de `super()`, correctifs d'analyse sémantique |
+| `0.4.0` | Génération WAT/WASM, playground navigateur, backend WASM avec replis Python |
+| `0.3.0` | Jalons initiaux du projet |

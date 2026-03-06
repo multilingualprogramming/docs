@@ -1,7 +1,7 @@
 ---
 page_id: language_guide__async_generators
 locale: fr
-title: Asynchrone et generateurs
+title: Asynchrone et générateurs
 path_segments:
 - guide-langage
 - asynchrone-generateurs
@@ -10,13 +10,11 @@ status: translated
 permalink: /fr/docs/guide-langage/asynchrone-generateurs/
 ---
 
-
-
-Les generateurs et constructions async dans multilingual prennent en charge le modele Python complet avec mots-cles localises pour `yield`, `async`, `await`, `async for` et `async with`.
+Les générateurs et les constructions asynchrones de `multilingual` suivent le modèle Python complet, avec des mots-clés localisés pour `yield`, `async`, `await`, `async for` et `async with`.
 
 ---
 
-## Generateurs
+## Générateurs
 
 ### Syntaxe
 
@@ -26,13 +24,13 @@ Les generateurs et constructions async dans multilingual prennent en charge le m
     [YIELD] [FROM] iterable
 ```
 
-A function containing `yield` becomes a generator — it can produce a sequence of values lazily without building them all in memory.
+Une fonction qui contient `yield` devient un générateur. Elle produit les valeurs à la demande, sans construire toute la séquence en mémoire.
 
 ### Anglais
 
 {{snippet:language_guide__async_generators__py01}}
 
-### Francais
+### Français
 
 {{snippet:language_guide__async_generators__py02}}
 
@@ -56,43 +54,43 @@ A function containing `yield` becomes a generator — it can produce a sequence 
 
 {{snippet:language_guide__async_generators__py07}}
 
-### Chinese
+### Chinois
 
 {{snippet:language_guide__async_generators__py08}}
 
 ---
 
-## yield from
+## `yield from`
 
-`yield from` delegates to another iterable or generator:
+`yield from` délègue la production des valeurs à un autre itérable ou à un autre générateur :
 
 {{snippet:language_guide__async_generators__py09}}
 
-### Recursive Generator
+### Générateur récursif
 
 {{snippet:language_guide__async_generators__py10}}
 
 ---
 
-## Generator Expressions
+## Expressions génératrices
 
-Generator expressions produce lazy sequences without a function definition:
+Les expressions génératrices produisent des séquences paresseuses sans définir de fonction dédiée :
 
 {{snippet:language_guide__async_generators__py11}}
 
 ---
 
-## Generator Use Cases
+## Cas d'usage
 
-### Infinite Sequences
+### Séquences infinies
 
 {{snippet:language_guide__async_generators__py12}}
 
-### File Streaming (Memory Efficient)
+### Lecture de fichiers en flux
 
 {{snippet:language_guide__async_generators__py13}}
 
-### Pipeline Pattern
+### Pipelines de transformation
 
 {{snippet:language_guide__async_generators__py14}}
 
@@ -111,7 +109,7 @@ Generator expressions produce lazy sequences without a function definition:
 
 {{snippet:language_guide__async_generators__py15}}
 
-### Francais
+### Français
 
 {{snippet:language_guide__async_generators__py16}}
 
@@ -133,9 +131,9 @@ Generator expressions produce lazy sequences without a function definition:
 
 ---
 
-## Boucles async for
+## Boucles `async for`
 
-Iterating over async iterables:
+Itération sur des itérables asynchrones :
 
 ### Syntaxe
 
@@ -148,13 +146,13 @@ Iterating over async iterables:
 
 {{snippet:language_guide__async_generators__py21}}
 
-### Francais
+### Français
 
 {{snippet:language_guide__async_generators__py22}}
 
 ---
 
-## Async with (gestionnaires de contexte)
+## `async with` et gestionnaires de contexte
 
 ```text
 [ASYNC] [WITH] expression [AS] name:
@@ -165,35 +163,35 @@ Iterating over async iterables:
 
 ---
 
-## Exemple async complet
+## Exemple asynchrone complet
 
 {{snippet:language_guide__async_generators__py24}}
 
 ---
 
-## Generateurs asynchrones
+## Générateurs asynchrones
 
-A function that combines `async def` and `yield` is an async generator:
+Une fonction qui combine `async def` et `yield` devient un générateur asynchrone :
 
 {{snippet:language_guide__async_generators__py25}}
 
 ---
 
-## Execution de code async
+## Exécution de code asynchrone
 
 {{snippet:language_guide__async_generators__py26}}
 
 ---
 
-## Table des mots-cles async/generateur
+## Repères de vocabulaire
 
-| Concept | en | fr | es | de | ja | ar | hi | zh |
-|---------|----|----|----|----|----|----|----|----|
-| async def | `async def` | `async_fonction` | `función_async` | `async_funktion` | `非同期関数` | `دالة_غير_متزامنة` | `असंकालिक_कार्य` | `异步函数` |
-| await | `await` | `attendre` | `esperar` | `erwarten` | `待つ` | `انتظر` | `प्रतीक्षा` | `等待` |
-| yield | `yield` | `produire` | `producir` | `ergeben` | `産出` | `أنتج` | `उत्पन्न` | `产出` |
-| yield from | `yield from` | `produire de` | `producir de` | `ergeben von` | `産出から` | `أنتج من` | `उत्पन्न से` | `从产出` |
-| async for | `async for` | `async_pour` | `para_async` | `async_für` | `非同期毎` | `غير_متزامن_لكل` | `असंकालिक_प्रत्येक` | `异步对于` |
-| async with | `async with` | `async_avec` | `async_con` | `async_mit` | `非同期と共に` | `غير_متزامن_مع` | `असंकालिक_साथ` | `异步以` |
+| Concept | Anglais | Français |
+|---------|---------|-----------|
+| Définition asynchrone | `async def` | `async_fonction` |
+| Attente | `await` | `attendre` |
+| Production | `yield` | `produire` |
+| Délégation | `yield from` | `produire de` |
+| Boucle asynchrone | `async for` | `async_pour` |
+| Contexte asynchrone | `async with` | `async_avec` |
 
-Voir [Reference des mots-cles](/fr/docs/guide-langage/mots-cles/) pour les 17 langues.
+Voir la [Référence des mots-clés](/fr/docs/guide-langage/mots-cles/) pour la liste complète des 17 langues.

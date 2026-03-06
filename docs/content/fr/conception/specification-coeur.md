@@ -1,7 +1,7 @@
 ---
 page_id: design__core_spec
 locale: fr
-title: Sp?cification du c?ur
+title: Spécification du cœur
 path_segments:
 - conception
 - specification-coeur
@@ -10,7 +10,7 @@ status: translated
 permalink: /fr/docs/conception/specification-coeur/
 ---
 
-Le c?ur formel d?finit les concepts, les invariants de parsing/semantic, et les structures interm?diaires utilis?es par tous les frontends linguistiques.
+Le cœur formel définit les concepts, les invariants de parsing / sémantique et les structures intermédiaires utilisées par tous les frontends linguistiques.
 
 {{snippet:design__core_spec__py01}}
 

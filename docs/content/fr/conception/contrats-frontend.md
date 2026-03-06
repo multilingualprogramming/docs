@@ -10,7 +10,7 @@ status: translated
 permalink: /fr/docs/conception/contrats-frontend/
 ---
 
-Chaque frontend doit produire un AST conforme au c?ur, pr?server la s?mantique et maintenir la compatibilit? des diagnostics et du runtime.
+Chaque frontend doit produire un AST conforme au cœur, préserver la sémantique et maintenir la compatibilité des diagnostics et du runtime.
 
 {{snippet:design__frontend_contracts__py01}}
 
