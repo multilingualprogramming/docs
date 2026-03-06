@@ -1,3 +1,5 @@
+require "cgi"
+
 module SnippetTokens
   TOKEN = /\{\{\s*snippet:([a-zA-Z0-9_-]+)\s*\}\}/.freeze
 
@@ -18,7 +20,8 @@ module SnippetTokens
       end
 
       snippet = File.read(resolved_path, encoding: "utf-8").rstrip
-      "\n```python\n#{snippet}\n```\n"
+      escaped = CGI.escapeHTML(snippet)
+      "\n<pre><code class=\"language-python\">#{escaped}</code></pre>\n"
     end
   end
 end
