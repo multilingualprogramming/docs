@@ -11,7 +11,7 @@ permalink: /en/docs/extending/
 
 multilingual is designed so new programming languages can be added primarily by updating **data files** (JSON), not parser or codegen logic.
 
-Language onboarding follows a controlled-language policy: add deterministic, testable surface forms only. See [CNL Scope](/extending/cnl-scope/).
+Language onboarding follows a controlled-language policy: add deterministic, testable surface forms only. See [CNL Scope]({{ '/en/docs/extending/cnl-scope/' | relative_url }}).
 
 ---
 

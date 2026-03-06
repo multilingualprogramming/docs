@@ -189,7 +189,7 @@ Before submitting a language pack PR:
 
 ## Resources
 
-- [Adding a New Language](/extending/) — Full onboarding guide
+- [Adding a New Language]({{ '/en/docs/extending/' | relative_url }}) — Full onboarding guide
 - `multilingualprogramming/resources/usm/keywords.json` — Keyword data file
 - `multilingualprogramming/resources/usm/builtins_aliases.json` — Builtin aliases
 - `multilingualprogramming/keyword/keyword_validator.py` — Validation logic

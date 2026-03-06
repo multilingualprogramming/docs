@@ -212,7 +212,7 @@ afficher(profil)
 | `appliquer` | `map` |
 | `filtrer` | `filter` |
 
-Voir la [référence des fonctions intégrées](/fr/docs/references/fonctions-integrees/) pour la liste complète.
+Voir la [référence des fonctions intégrées]({{ '/fr/docs/references/fonctions-integrees/' | relative_url }}) pour la liste complète.
 
 ---
 

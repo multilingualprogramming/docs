@@ -236,7 +236,7 @@ Certains built-ins universels ont des alias localisés. Les noms universels Pyth
 | `ensemble` | `set` |
 | `tuple` | `tuple` |
 
-Voir la [référence des alias built-in](/en/docs/reference/builtins/) pour la liste complète.
+Voir la [référence des alias built-in]({{ '/en/docs/reference/builtins/' | relative_url }}) pour la liste complète.
 
 ---
 

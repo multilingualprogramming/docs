@@ -12,7 +12,7 @@ permalink: /fr/docs/guide-langage/syntaxe/
 
 Cette page sert de référence syntaxique pour `multilingual`. Les mots-clés affichés sous la forme `[CONCEPT]` représentent des concepts sémantiques ; remplacez-les par le mot-clé approprié à la langue choisie.
 
-Voir la [Référence des mots-clés](/fr/docs/guide-langage/mots-cles/) pour le mapping complet.
+Voir la [Référence des mots-clés]({{ '/fr/docs/guide-langage/mots-cles/' | relative_url }}) pour le mapping complet.
 
 ---
 

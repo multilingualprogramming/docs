@@ -204,4 +204,4 @@ Decorators are applied bottom-up:
 
 > `super`, `lambda`, `pass` are universal across all 17 languages.
 
-See [Keywords Reference](/en/docs/language-guide/keywords/) for all 17 languages.
+See [Keywords Reference]({{ '/en/docs/language-guide/keywords/' | relative_url }}) for all 17 languages.

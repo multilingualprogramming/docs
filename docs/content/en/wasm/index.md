@@ -220,10 +220,17 @@ All 17 languages support both Python and WASM backends. The WASM backend acceler
 
 ## Documentation Pages
 
+{% capture installation_url %}{{ '/en/docs/wasm/installation/' | relative_url }}{% endcapture %}
+{% capture architecture_url %}{{ '/en/docs/wasm/architecture/' | relative_url }}{% endcapture %}
+{% capture performance_url %}{{ '/en/docs/wasm/performance/' | relative_url }}{% endcapture %}
+{% capture development_url %}{{ '/en/docs/wasm/development/' | relative_url }}{% endcapture %}
+{% capture troubleshooting_url %}{{ '/en/docs/wasm/troubleshooting/' | relative_url }}{% endcapture %}
+{% capture faq_url %}{{ '/en/docs/wasm/faq/' | relative_url }}{% endcapture %}
+
 <div class="card-grid">
 
 <div class="card">
-<a href="/wasm/installation/">
+<a href="{{ installation_url | strip }}">
 <span class="card-icon">📦</span>
 <h3>Installation Guide</h3>
 <p>Platform-specific setup, verification, troubleshooting common installation issues.</p>
@@ -231,7 +238,7 @@ All 17 languages support both Python and WASM backends. The WASM backend acceler
 </div>
 
 <div class="card">
-<a href="/wasm/architecture/">
+<a href="{{ architecture_url | strip }}">
 <span class="card-icon">🏛️</span>
 <h3>Architecture Overview</h3>
 <p>WASM infrastructure stack, code generation pipeline, Python–WASM bridge.</p>
@@ -239,7 +246,7 @@ All 17 languages support both Python and WASM backends. The WASM backend acceler
 </div>
 
 <div class="card">
-<a href="/wasm/performance/">
+<a href="{{ performance_url | strip }}">
 <span class="card-icon">📈</span>
 <h3>Performance Tuning</h3>
 <p>Benchmarking, optimization strategies, profiling, and performance expectations by operation type.</p>
@@ -247,7 +254,7 @@ All 17 languages support both Python and WASM backends. The WASM backend acceler
 </div>
 
 <div class="card">
-<a href="/wasm/development/">
+<a href="{{ development_url | strip }}">
 <span class="card-icon">🛠️</span>
 <h3>WASM Development</h3>
 <p>Writing WASM-compatible multilingual code, contributing to the WASM backend.</p>
@@ -255,7 +262,7 @@ All 17 languages support both Python and WASM backends. The WASM backend acceler
 </div>
 
 <div class="card">
-<a href="/wasm/troubleshooting/">
+<a href="{{ troubleshooting_url | strip }}">
 <span class="card-icon">🔍</span>
 <h3>Troubleshooting</h3>
 <p>Common issues, platform-specific workarounds, diagnostic commands.</p>
@@ -263,7 +270,7 @@ All 17 languages support both Python and WASM backends. The WASM backend acceler
 </div>
 
 <div class="card">
-<a href="/wasm/faq/">
+<a href="{{ faq_url | strip }}">
 <span class="card-icon">❓</span>
 <h3>FAQ</h3>
 <p>Frequently asked questions about WASM support, performance, and compatibility.</p>

@@ -147,7 +147,7 @@ The CNL approach is related to:
 - **Racket #lang** — explicit language selection at module boundary, shared semantic core
 - **ALGOL 68** — multiple publication languages mapping to one formal definition
 
-See [Related Work](/design/related-work/) for more context.
+See [Related Work]({{ '/en/docs/design/related-work/' | relative_url }}) for more context.
 
 ---
 

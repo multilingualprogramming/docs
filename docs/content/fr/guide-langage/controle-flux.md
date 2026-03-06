@@ -256,4 +256,4 @@ Version française :
 | Appartenance dans une boucle | `in` | `dans` |
 | Tant que | `while` | `tant_que` |
 
-Voir la [Référence des mots-clés](/fr/docs/guide-langage/mots-cles/) pour la liste complète des 17 langues.
+Voir la [Référence des mots-clés]({{ '/fr/docs/guide-langage/mots-cles/' | relative_url }}) pour la liste complète des 17 langues.

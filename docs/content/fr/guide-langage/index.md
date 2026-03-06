@@ -70,10 +70,17 @@ Un même programme, dans n'importe quelle langue, produit un comportement identi
 
 ## Sections de ce guide
 
+{% capture syntax_url %}{{ '/fr/docs/guide-langage/syntaxe/' | relative_url }}{% endcapture %}
+{% capture keywords_url %}{{ '/fr/docs/guide-langage/mots-cles/' | relative_url }}{% endcapture %}
+{% capture control_flow_url %}{{ '/fr/docs/guide-langage/controle-flux/' | relative_url }}{% endcapture %}
+{% capture functions_classes_url %}{{ '/fr/docs/guide-langage/fonctions-classes/' | relative_url }}{% endcapture %}
+{% capture async_generators_url %}{{ '/fr/docs/guide-langage/asynchrone-generateurs/' | relative_url }}{% endcapture %}
+{% capture all_languages_url %}{{ '/fr/docs/guide-langage/toutes-langues/' | relative_url }}{% endcapture %}
+
 <div class="card-grid">
 
 <div class="card">
-<a href="/fr/docs/guide-langage/syntaxe/">
+<a href="{{ syntax_url | strip }}">
 <span class="card-icon">📐</span>
 <h3>Référence de syntaxe</h3>
 <p>Syntaxe complète pour les variables, le contrôle de flux, les fonctions, les classes, l'async, les exceptions et les compréhensions.</p>
@@ -81,7 +88,7 @@ Un même programme, dans n'importe quelle langue, produit un comportement identi
 </div>
 
 <div class="card">
-<a href="/fr/docs/guide-langage/mots-cles/">
+<a href="{{ keywords_url | strip }}">
 <span class="card-icon">🔑</span>
 <h3>Mots-clés</h3>
 <p>Table complète des mots-clés : 51 concepts sémantiques sur 17 langues.</p>
@@ -89,7 +96,7 @@ Un même programme, dans n'importe quelle langue, produit un comportement identi
 </div>
 
 <div class="card">
-<a href="/fr/docs/guide-langage/controle-flux/">
+<a href="{{ control_flow_url | strip }}">
 <span class="card-icon">🔀</span>
 <h3>Contrôle de flux</h3>
 <p>`if` / `elif` / `else`, `for`, `while`, `match/case`, `break`, `continue`, avec exemples dans chaque langue.</p>
@@ -97,7 +104,7 @@ Un même programme, dans n'importe quelle langue, produit un comportement identi
 </div>
 
 <div class="card">
-<a href="/fr/docs/guide-langage/fonctions-classes/">
+<a href="{{ functions_classes_url | strip }}">
 <span class="card-icon">🏗️</span>
 <h3>Fonctions et classes</h3>
 <p>`def`, `class`, décorateurs, héritage, générateurs et lambdas, dans leurs 17 formes linguistiques.</p>
@@ -105,7 +112,7 @@ Un même programme, dans n'importe quelle langue, produit un comportement identi
 </div>
 
 <div class="card">
-<a href="/fr/docs/guide-langage/asynchrone-generateurs/">
+<a href="{{ async_generators_url | strip }}">
 <span class="card-icon">⚙️</span>
 <h3>Async et générateurs</h3>
 <p>`async def`, `await`, `async for`, `async with`, `yield` et `yield from`.</p>
@@ -113,7 +120,7 @@ Un même programme, dans n'importe quelle langue, produit un comportement identi
 </div>
 
 <div class="card">
-<a href="/fr/docs/guide-langage/toutes-langues/">
+<a href="{{ all_languages_url | strip }}">
 <span class="card-icon">🌐</span>
 <h3>Les 17 langues</h3>
 <p>Exemples complets de programmes dans chaque langue supportée avec couverture fonctionnelle complète.</p>

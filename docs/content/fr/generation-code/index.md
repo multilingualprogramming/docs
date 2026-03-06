@@ -11,7 +11,7 @@ permalink: /fr/docs/generation-code/
 
 Le générateur Python émet du code exécutable à partir de l'AST cœur. Les programmes source dans différentes langues produisent un Python équivalent.
 
-- [Référence API](/fr/docs/generation-code/api/)
+- [Référence API]({{ '/fr/docs/generation-code/api/' | relative_url }})
 
 {{snippet:codegen__py01}}
 

@@ -54,6 +54,9 @@ jobs:
       - name: Build Jekyll site
         run: bundle exec jekyll build --baseurl "/docs"
 
+      - name: Check internal links
+        run: python scripts/check_internal_links.py --site-dir _site --base-path /docs
+
       - name: Check Pages artifact
         run: python scripts/check_pages_artifact.py --site-dir _site --base-path /docs
 

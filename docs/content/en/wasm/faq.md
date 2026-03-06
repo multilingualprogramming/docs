@@ -148,7 +148,7 @@ Yes, in both fallback and your code:
 
 ### Can I add my own WASM functions?
 
-Yes. See the [WASM Architecture](/wasm/architecture/) guide for details on extending the WASM backend.
+Yes. See the [WASM Architecture]({{ '/en/docs/wasm/architecture/' | relative_url }}) guide for details on extending the WASM backend.
 
 ### How does WASM interact with the 17 language frontends?
 

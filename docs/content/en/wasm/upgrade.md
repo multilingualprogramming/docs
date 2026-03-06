@@ -169,7 +169,7 @@ Your code works without changes after rollback.
 - [ ] Run `pip install --upgrade "multilingualprogramming[wasm]"`
 - [ ] Run `pytest tests/` — confirm all passing
 - [ ] Verify WASM: run the diagnostic snippet above
-- [ ] Review [WASM Troubleshooting](/wasm/troubleshooting/) if any issues
+- [ ] Review [WASM Troubleshooting]({{ '/en/docs/wasm/troubleshooting/' | relative_url }}) if any issues
 - [ ] Benchmark critical paths to confirm speedups
 
 ---
@@ -178,7 +178,7 @@ Your code works without changes after rollback.
 
 ### "I don't see speedups"
 
-WASM may not be installed or the operation may be too small for WASM overhead to pay off. See [WASM Troubleshooting](/wasm/troubleshooting/).
+WASM may not be installed or the operation may be too small for WASM overhead to pay off. See [WASM Troubleshooting]({{ '/en/docs/wasm/troubleshooting/' | relative_url }}).
 
 ### "Code broken after upgrade"
 
@@ -186,4 +186,4 @@ This shouldn't happen. Please [open a GitHub issue](https://github.com/johnsamue
 
 ### "Can't install wasmtime"
 
-Platform-specific issue. See [WASM Installation](/wasm/installation/) for platform requirements and workarounds.
+Platform-specific issue. See [WASM Installation]({{ '/en/docs/wasm/installation/' | relative_url }}) for platform requirements and workarounds.

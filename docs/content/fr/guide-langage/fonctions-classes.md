@@ -204,4 +204,4 @@ Les décorateurs sont appliqués du bas vers le haut :
 
 `super`, `lambda` et `pass` restent universels dans toutes les langues.
 
-Voir la [Référence des mots-clés](/fr/docs/guide-langage/mots-cles/) pour la liste complète des 17 langues.
+Voir la [Référence des mots-clés]({{ '/fr/docs/guide-langage/mots-cles/' | relative_url }}) pour la liste complète des 17 langues.

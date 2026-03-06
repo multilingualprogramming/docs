@@ -10,7 +10,7 @@ status: translated
 permalink: /fr/docs/demarrage/demarrage-rapide/
 ---
 
-> Ce guide présente les principales fonctionnalités du langage en quelques minutes avec des exemples en anglais. Chaque construction existe dans les 17 langues ; voir le [Guide du langage](/fr/docs/guide-langage/toutes-langues/) pour les équivalences.
+> Ce guide présente les principales fonctionnalités du langage en quelques minutes avec des exemples en anglais. Chaque construction existe dans les 17 langues ; voir le [Guide du langage]({{ '/fr/docs/guide-langage/toutes-langues/' | relative_url }}) pour les équivalences.
 
 ---
 
@@ -169,4 +169,4 @@ Affectation chaînée :
 ## Suite : les 17 langues
 
 Toutes les fonctionnalités ci-dessus existent dans les 17 langues prises en charge.
-Voir la [référence toutes les langues](/fr/docs/guide-langage/toutes-langues/) pour le mapping complet des mots-clés et de la syntaxe.
+Voir la [référence toutes les langues]({{ '/fr/docs/guide-langage/toutes-langues/' | relative_url }}) pour le mapping complet des mots-clés et de la syntaxe.

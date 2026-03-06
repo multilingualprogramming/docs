@@ -110,4 +110,4 @@ Les noms anglais universels des fonctions intégrées restent toujours valides. 
 | `input` | `input` | `saisie` |
 | `open` | `open` | `ouvrir` |
 
-Voir la page [Fonctions intégrées](/fr/docs/references/fonctions-integrees/) pour plus de détails.
+Voir la page [Fonctions intégrées]({{ '/fr/docs/references/fonctions-integrees/' | relative_url }}) pour plus de détails.

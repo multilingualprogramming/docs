@@ -12,7 +12,7 @@ permalink: /en/docs/language-guide/syntax/
 
 This page is the definitive syntax reference for multilingual. Keywords shown in `[CONCEPT]` form refer to semantic concepts — replace them with the appropriate keyword for your chosen language.
 
-See [Keywords Reference](/en/docs/language-guide/keywords/) for the full mapping.
+See [Keywords Reference]({{ '/en/docs/language-guide/keywords/' | relative_url }}) for the full mapping.
 
 ---
 

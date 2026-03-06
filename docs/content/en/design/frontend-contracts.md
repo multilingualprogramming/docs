@@ -167,4 +167,4 @@ When adding language `xx`:
 3. Satisfies compositionality: each concept keyword maps to exactly one concept
 4. (If adding surface patterns): patterns are narrow, tested, and non-overlapping
 
-See [Adding a Language](/extending/) for the full checklist.
+See [Adding a Language]({{ '/en/docs/extending/' | relative_url }}) for the full checklist.

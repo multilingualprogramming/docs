@@ -11,11 +11,11 @@ permalink: /fr/docs/conception/
 
 Cette section explique le modèle en couches, le noyau sémantique, la normalisation de surface et les contrats frontend.
 
-- [Spécification du cœur](/fr/docs/conception/specification-coeur/)
-- [Contrats frontend](/fr/docs/conception/contrats-frontend/)
-- [Normalisation de surface](/fr/docs/conception/normalisation-surface/)
-- [Localisation de la bibliothèque standard](/fr/docs/conception/localisation-bibliotheque-standard/)
-- [Travaux liés](/fr/docs/conception/travaux-lies/)
+- [Spécification du cœur]({{ '/fr/docs/conception/specification-coeur/' | relative_url }})
+- [Contrats frontend]({{ '/fr/docs/conception/contrats-frontend/' | relative_url }})
+- [Normalisation de surface]({{ '/fr/docs/conception/normalisation-surface/' | relative_url }})
+- [Localisation de la bibliothèque standard]({{ '/fr/docs/conception/localisation-bibliotheque-standard/' | relative_url }})
+- [Travaux liés]({{ '/fr/docs/conception/travaux-lies/' | relative_url }})
 
 {{snippet:design__py01}}
 

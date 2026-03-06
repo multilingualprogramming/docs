@@ -157,7 +157,7 @@ multilingual build-wasm-bundle program.ml --out-dir wasm-out
 
 The generated WAT module exports `__main` and uses host-import callbacks (`env.print_str`, `env.print_f64`, etc.) for output — it does not return values.
 
-See [WASM Architecture](/wasm/architecture/) for the full pipeline and host import protocol.
+See [WASM Architecture]({{ '/en/docs/wasm/architecture/' | relative_url }}) for the full pipeline and host import protocol.
 
 ---
 

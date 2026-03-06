@@ -140,4 +140,4 @@ multilingual [fr]> :kw
 
 ## Adding More Aliases
 
-Additional aliases can be added via `multilingualprogramming/resources/usm/builtins_aliases.json`. See [Translation Guidelines](/extending/translation/) for the process.
+Additional aliases can be added via `multilingualprogramming/resources/usm/builtins_aliases.json`. See [Translation Guidelines]({{ '/en/docs/extending/translation/' | relative_url }}) for the process.

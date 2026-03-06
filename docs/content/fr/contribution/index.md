@@ -11,7 +11,7 @@ permalink: /fr/docs/contribution/
 
 Ce guide reflète le flux de développement actuel en `0.5.1`.
 
-- [Documentation multilingue](/fr/docs/contribution/documentation-multilingue/)
+- [Documentation multilingue]({{ '/fr/docs/contribution/documentation-multilingue/' | relative_url }})
 
 ---
 

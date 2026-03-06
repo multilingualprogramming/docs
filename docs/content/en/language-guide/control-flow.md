@@ -261,4 +261,4 @@ French version:
 
 > `break`, `continue`, and `pass` are universal across all 17 languages.
 
-See [Keywords Reference](/en/docs/language-guide/keywords/) for all 17 languages including Italian, Portuguese, Polish, Dutch, Swedish, Danish, Finnish, Bengali, and Tamil.
+See [Keywords Reference]({{ '/en/docs/language-guide/keywords/' | relative_url }}) for all 17 languages including Italian, Portuguese, Polish, Dutch, Swedish, Danish, Finnish, Bengali, and Tamil.

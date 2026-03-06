@@ -70,10 +70,17 @@ The same program — in any language — produces identical behavior.
 
 ## Sections in this Guide
 
+{% capture syntax_url %}{{ '/en/docs/language-guide/syntax/' | relative_url }}{% endcapture %}
+{% capture keywords_url %}{{ '/en/docs/language-guide/keywords/' | relative_url }}{% endcapture %}
+{% capture control_flow_url %}{{ '/en/docs/language-guide/control-flow/' | relative_url }}{% endcapture %}
+{% capture functions_classes_url %}{{ '/en/docs/language-guide/functions-classes/' | relative_url }}{% endcapture %}
+{% capture async_generators_url %}{{ '/en/docs/language-guide/async-generators/' | relative_url }}{% endcapture %}
+{% capture all_languages_url %}{{ '/en/docs/language-guide/all-languages/' | relative_url }}{% endcapture %}
+
 <div class="card-grid">
 
 <div class="card">
-<a href="/en/docs/language-guide/syntax/">
+<a href="{{ syntax_url | strip }}">
 <span class="card-icon">📐</span>
 <h3>Syntax Reference</h3>
 <p>Complete syntax for every construct: variables, control flow, functions, classes, async, exceptions, comprehensions.</p>
@@ -81,7 +88,7 @@ The same program — in any language — produces identical behavior.
 </div>
 
 <div class="card">
-<a href="/en/docs/language-guide/keywords/">
+<a href="{{ keywords_url | strip }}">
 <span class="card-icon">🔑</span>
 <h3>Keywords</h3>
 <p>Full keyword table: all 51 semantic concepts across all 17 languages.</p>
@@ -89,7 +96,7 @@ The same program — in any language — produces identical behavior.
 </div>
 
 <div class="card">
-<a href="/en/docs/language-guide/control-flow/">
+<a href="{{ control_flow_url | strip }}">
 <span class="card-icon">🔀</span>
 <h3>Control Flow</h3>
 <p>if/elif/else, for, while, match/case, break, continue with examples in every language.</p>
@@ -97,7 +104,7 @@ The same program — in any language — produces identical behavior.
 </div>
 
 <div class="card">
-<a href="/en/docs/language-guide/functions-classes/">
+<a href="{{ functions_classes_url | strip }}">
 <span class="card-icon">🏗️</span>
 <h3>Functions & Classes</h3>
 <p>def, class, decorators, inheritance, generators, lambdas — with all 17 language forms.</p>
@@ -105,7 +112,7 @@ The same program — in any language — produces identical behavior.
 </div>
 
 <div class="card">
-<a href="/en/docs/language-guide/async-generators/">
+<a href="{{ async_generators_url | strip }}">
 <span class="card-icon">⚙️</span>
 <h3>Async & Generators</h3>
 <p>async def, await, async for, async with, yield, yield from.</p>
@@ -113,7 +120,7 @@ The same program — in any language — produces identical behavior.
 </div>
 
 <div class="card">
-<a href="/en/docs/language-guide/all-languages/">
+<a href="{{ all_languages_url | strip }}">
 <span class="card-icon">🌐</span>
 <h3>All 17 Languages</h3>
 <p>Complete program examples in every supported language with full feature coverage.</p>

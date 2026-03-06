@@ -11,8 +11,8 @@ permalink: /fr/docs/extension/
 
 Ajoutez de nouvelles langues via les fichiers de ressources (mots-clés, erreurs, commandes REPL, alias des fonctions intégrées) et validez le tout par des tests.
 
-- [Directives de traduction](/fr/docs/extension/traduction/)
-- [Périmètre CNL](/fr/docs/extension/perimetre-cnl/)
+- [Directives de traduction]({{ '/fr/docs/extension/traduction/' | relative_url }})
+- [Périmètre CNL]({{ '/fr/docs/extension/perimetre-cnl/' | relative_url }})
 
 {{snippet:extending__py01}}
 

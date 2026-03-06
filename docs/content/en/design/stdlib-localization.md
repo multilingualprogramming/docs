@@ -134,7 +134,7 @@ These are the built-ins that currently have localized aliases across the 17 supp
 ### String/Encoding
 `chr`, `ord`, `format`
 
-See [Built-in Aliases Reference](/en/docs/reference/builtins/) for the complete table across all languages.
+See [Built-in Aliases Reference]({{ '/en/docs/reference/builtins/' | relative_url }}) for the complete table across all languages.
 
 ---
 
@@ -170,7 +170,7 @@ Structure:
 Guidelines for adding new aliases:
 - Must be complete and unambiguous in the target language
 - Must not conflict with existing Python keywords or other aliases in the same language
-- Must pass collision detection (see [Translation Guidelines](/extending/translation/))
+- Must pass collision detection (see [Translation Guidelines]({{ '/en/docs/extending/translation/' | relative_url }}))
 - Should use full natural words, not abbreviations
 
 ---

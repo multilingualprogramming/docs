@@ -194,4 +194,4 @@ Une fonction qui combine `async def` et `yield` devient un générateur asynchro
 | Boucle asynchrone | `async for` | `async_pour` |
 | Contexte asynchrone | `async with` | `async_avec` |
 
-Voir la [Référence des mots-clés](/fr/docs/guide-langage/mots-cles/) pour la liste complète des 17 langues.
+Voir la [Référence des mots-clés]({{ '/fr/docs/guide-langage/mots-cles/' | relative_url }}) pour la liste complète des 17 langues.
