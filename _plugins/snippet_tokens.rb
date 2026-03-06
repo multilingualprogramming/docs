@@ -20,9 +20,17 @@ module SnippetTokens
       end
 
       snippet = File.read(resolved_path, encoding: "utf-8").rstrip
-      escaped = CGI.escapeHTML(snippet)
+      escaped = escape_liquid(CGI.escapeHTML(snippet))
       "\n<pre><code class=\"language-python\">#{escaped}</code></pre>\n"
     end
+  end
+
+  def escape_liquid(text)
+    text
+      .gsub("{%", "&#123;&#37;")
+      .gsub("%}", "&#37;&#125;")
+      .gsub("{{", "&#123;&#123;")
+      .gsub("}}", "&#125;&#125;")
   end
 end
 
