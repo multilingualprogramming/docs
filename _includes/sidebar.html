@@ -1,15 +1,19 @@
 {% assign nav = site.nav %}
+{% assign current_locale = page.locale | default: 'en' %}
 <div class="sidebar-nav">
   {% for section in nav %}
+  {% capture section_url %}{% include localized-url.html page_id=section.page_id fallback_url=section.url locale=current_locale %}{% endcapture %}
+  {% assign section_active_prefix = section.page_id | append: '__' %}
   <div class="sidebar-section">
-    <a href="{{ section.url | relative_url }}" class="sidebar-section-title{% if page.url == section.url or page.url contains section.url %} active{% endif %}">
+    <a href="{{ section_url | strip }}" class="sidebar-section-title{% if page.page_id == section.page_id or page.page_id contains section_active_prefix %} active{% endif %}">
       {{ section.title }}
     </a>
     {% if section.children %}
     <ul class="sidebar-items">
       {% for item in section.children %}
+      {% capture item_url %}{% include localized-url.html page_id=item.page_id fallback_url=item.url locale=current_locale %}{% endcapture %}
       <li class="sidebar-item">
-        <a href="{{ item.url | relative_url }}" class="sidebar-link{% if page.url == item.url %} active{% endif %}">
+        <a href="{{ item_url | strip }}" class="sidebar-link{% if page.page_id == item.page_id %} active{% endif %}">
           {{ item.title }}
         </a>
       </li>

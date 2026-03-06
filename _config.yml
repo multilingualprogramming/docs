@@ -33,104 +33,150 @@ plugins:
 # Navigation
 nav:
   - title: "Getting Started"
+    page_id: getting_started
     url: "/en/docs/getting-started/"
     children:
       - title: "Installation"
+        page_id: getting_started__installation
         url: "/en/docs/getting-started/installation/"
       - title: "Quick Start"
+        page_id: getting_started__quick_start
         url: "/en/docs/getting-started/quick-start/"
       - title: "REPL Guide"
+        page_id: getting_started__repl
         url: "/en/docs/getting-started/repl/"
   - title: "Language Guide"
+    page_id: language_guide
     url: "/en/docs/language-guide/"
     children:
       - title: "Overview"
+        page_id: language_guide
         url: "/en/docs/language-guide/"
       - title: "Syntax Reference"
+        page_id: language_guide__syntax
         url: "/en/docs/language-guide/syntax/"
       - title: "Keywords"
+        page_id: language_guide__keywords
         url: "/en/docs/language-guide/keywords/"
       - title: "Control Flow"
+        page_id: language_guide__control_flow
         url: "/en/docs/language-guide/control-flow/"
       - title: "Functions & Classes"
+        page_id: language_guide__functions_classes
         url: "/en/docs/language-guide/functions-classes/"
       - title: "Async & Generators"
+        page_id: language_guide__async_generators
         url: "/en/docs/language-guide/async-generators/"
       - title: "All 17 Languages"
+        page_id: language_guide__all_languages
         url: "/en/docs/language-guide/all-languages/"
       - title: "Guide Français"
+        page_id: language_guide__french
         url: "/en/docs/language-guide/french/"
   - title: "Reference"
+    page_id: reference
     url: "/en/docs/reference/"
     children:
       - title: "Language Concepts"
+        page_id: reference
         url: "/en/docs/reference/"
       - title: "Built-in Aliases"
+        page_id: reference__builtins
         url: "/en/docs/reference/builtins/"
       - title: "Operators"
+        page_id: reference__operators
         url: "/en/docs/reference/operators/"
       - title: "Numerals"
+        page_id: reference__numerals
         url: "/en/docs/reference/numerals/"
       - title: "Date & Time"
+        page_id: reference__datetime
         url: "/en/docs/reference/datetime/"
       - title: "Compatibility Matrix"
+        page_id: reference__compatibility
         url: "/en/docs/reference/compatibility/"
   - title: "WASM Backend"
+    page_id: wasm
     url: "/en/docs/wasm/"
     children:
       - title: "Overview"
+        page_id: wasm
         url: "/en/docs/wasm/"
       - title: "Installation"
+        page_id: wasm__installation
         url: "/en/docs/wasm/installation/"
       - title: "Architecture"
+        page_id: wasm__architecture
         url: "/en/docs/wasm/architecture/"
       - title: "Performance"
+        page_id: wasm__performance
         url: "/en/docs/wasm/performance/"
       - title: "Development"
+        page_id: wasm__development
         url: "/en/docs/wasm/development/"
       - title: "Troubleshooting"
+        page_id: wasm__troubleshooting
         url: "/en/docs/wasm/troubleshooting/"
       - title: "FAQ"
+        page_id: wasm__faq
         url: "/en/docs/wasm/faq/"
       - title: "Upgrade to v0.4"
+        page_id: wasm__upgrade
         url: "/en/docs/wasm/upgrade/"
   - title: "Python Codegen"
+    page_id: codegen
     url: "/en/docs/codegen/"
     children:
       - title: "Overview"
+        page_id: codegen
         url: "/en/docs/codegen/"
       - title: "API Reference"
+        page_id: codegen__api
         url: "/en/docs/codegen/api/"
   - title: "Design"
+    page_id: design
     url: "/en/docs/design/"
     children:
       - title: "Architecture"
+        page_id: design
         url: "/en/docs/design/"
       - title: "Core Specification"
+        page_id: design__core_spec
         url: "/en/docs/design/core-spec/"
       - title: "Frontend Contracts"
+        page_id: design__frontend_contracts
         url: "/en/docs/design/frontend-contracts/"
       - title: "Surface Normalization"
+        page_id: design__surface_normalization
         url: "/en/docs/design/surface-normalization/"
       - title: "Stdlib Localization"
+        page_id: design__stdlib_localization
         url: "/en/docs/design/stdlib-localization/"
       - title: "Related Work"
+        page_id: design__related_work
         url: "/en/docs/design/related-work/"
   - title: "Extending"
+    page_id: extending
     url: "/en/docs/extending/"
     children:
       - title: "Add a Language"
+        page_id: extending
         url: "/en/docs/extending/"
       - title: "Translation Guidelines"
+        page_id: extending__translation
         url: "/en/docs/extending/translation/"
       - title: "CNL Scope"
+        page_id: extending__cnl_scope
         url: "/en/docs/extending/cnl-scope/"
   - title: "Contributing"
+    page_id: contributing
     url: "/en/docs/contributing/"
     children:
       - title: "Development Guide"
+        page_id: contributing
         url: "/en/docs/contributing/"
       - title: "Multilingual Docs Ops"
+        page_id: contributing__multilingual_docs
         url: "/en/docs/contributing/multilingual-docs/"
 
 # Collections

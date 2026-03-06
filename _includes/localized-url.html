@@ -1,0 +1,12 @@
+{% assign resolved_url = include.fallback_url | default: '/' %}
+{% assign target_locale = include.locale | default: page.locale | default: 'en' %}
+{% if include.page_id %}
+  {% assign candidates = site.pages | where: "page_id", include.page_id %}
+  {% for candidate in candidates %}
+    {% if candidate.locale == target_locale %}
+      {% assign resolved_url = candidate.url %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+{{ resolved_url | relative_url }}

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" class="dark-theme">
+{% assign current_locale = page.locale | default: 'en' %}
+<html lang="{{ current_locale }}" class="dark-theme">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -44,15 +45,44 @@
       </a>
 
       <div class="nav-links" role="navigation">
-        <a href="{{ '/en/docs/getting-started/' | relative_url }}" class="nav-link{% if page.url contains '/getting-started' %} active{% endif %}">Getting Started</a>
-        <a href="{{ '/en/docs/language-guide/' | relative_url }}" class="nav-link{% if page.url contains '/language-guide' %} active{% endif %}">Language Guide</a>
-        <a href="{{ '/en/docs/reference/' | relative_url }}" class="nav-link{% if page.url contains '/reference' %} active{% endif %}">Reference</a>
-        <a href="{{ '/en/docs/wasm/' | relative_url }}" class="nav-link{% if page.url contains '/wasm' %} active{% endif %}">WASM</a>
-        <a href="{{ '/en/docs/design/' | relative_url }}" class="nav-link{% if page.url contains '/design' %} active{% endif %}">Design</a>
+        {% for section in site.nav limit: 5 %}
+        {% capture section_url %}{% include localized-url.html page_id=section.page_id fallback_url=section.url locale=current_locale %}{% endcapture %}
+        {% assign section_active_prefix = section.page_id | append: '__' %}
+        <a href="{{ section_url | strip }}" class="nav-link{% if page.page_id == section.page_id or page.page_id contains section_active_prefix %} active{% endif %}">{{ section.title }}</a>
+        {% endfor %}
         <a href="https://github.com/johnsamuelwrites/multilingual" class="nav-link nav-link-external" target="_blank" rel="noopener noreferrer">
           <svg class="icon-github" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
           GitHub
         </a>
+        {% assign docs_locales = site.data.locales | where: "docs_enabled", true %}
+        {% if docs_locales.size > 1 %}
+        <div class="language-switcher">
+          <label class="language-switcher-label" for="language-switcher">Language</label>
+          <select id="language-switcher" class="language-switcher-select" aria-label="Switch documentation language">
+            {% for locale in docs_locales %}
+              {% assign option_url = '/' %}
+              {% if page.page_id %}
+                {% assign sibling_pages = site.pages | where: "page_id", page.page_id %}
+                {% for sibling in sibling_pages %}
+                  {% if sibling.locale == locale.code %}
+                    {% assign option_url = sibling.url %}
+                    {% break %}
+                  {% endif %}
+                {% endfor %}
+              {% elsif locale.docs_home_page_id %}
+                {% assign home_pages = site.pages | where: "page_id", locale.docs_home_page_id %}
+                {% for home_page in home_pages %}
+                  {% if home_page.locale == locale.code %}
+                    {% assign option_url = home_page.url %}
+                    {% break %}
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+            <option value="{{ option_url | relative_url }}"{% if locale.code == current_locale %} selected{% endif %}>{{ locale.native_label }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        {% endif %}
       </div>
 
       <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
@@ -87,20 +117,29 @@
           <div class="footer-col">
             <h4>Documentation</h4>
             <ul>
-              <li><a href="{{ '/en/docs/getting-started/' | relative_url }}">Getting Started</a></li>
-              <li><a href="{{ '/en/docs/language-guide/' | relative_url }}">Language Guide</a></li>
-              <li><a href="{{ '/en/docs/reference/' | relative_url }}">Reference</a></li>
-              <li><a href="{{ '/en/docs/wasm/' | relative_url }}">WASM Backend</a></li>
-              <li><a href="{{ '/en/docs/design/' | relative_url }}">Design &amp; Architecture</a></li>
+              {% capture footer_getting_started_url %}{% include localized-url.html page_id='getting_started' fallback_url='/en/docs/getting-started/' locale=current_locale %}{% endcapture %}
+              {% capture footer_language_guide_url %}{% include localized-url.html page_id='language_guide' fallback_url='/en/docs/language-guide/' locale=current_locale %}{% endcapture %}
+              {% capture footer_reference_url %}{% include localized-url.html page_id='reference' fallback_url='/en/docs/reference/' locale=current_locale %}{% endcapture %}
+              {% capture footer_wasm_url %}{% include localized-url.html page_id='wasm' fallback_url='/en/docs/wasm/' locale=current_locale %}{% endcapture %}
+              {% capture footer_design_url %}{% include localized-url.html page_id='design' fallback_url='/en/docs/design/' locale=current_locale %}{% endcapture %}
+              <li><a href="{{ footer_getting_started_url | strip }}">Getting Started</a></li>
+              <li><a href="{{ footer_language_guide_url | strip }}">Language Guide</a></li>
+              <li><a href="{{ footer_reference_url | strip }}">Reference</a></li>
+              <li><a href="{{ footer_wasm_url | strip }}">WASM Backend</a></li>
+              <li><a href="{{ footer_design_url | strip }}">Design &amp; Architecture</a></li>
             </ul>
           </div>
           <div class="footer-col">
             <h4>Languages</h4>
             <ul>
-              <li><a href="{{ '/en/docs/language-guide/all-languages/' | relative_url }}">All 17 Languages</a></li>
-              <li><a href="{{ '/en/docs/language-guide/keywords/' | relative_url }}">Keywords</a></li>
-              <li><a href="{{ '/en/docs/extending/' | relative_url }}">Add a Language</a></li>
-              <li><a href="{{ '/en/docs/extending/translation/' | relative_url }}">Translation Guide</a></li>
+              {% capture footer_all_languages_url %}{% include localized-url.html page_id='language_guide__all_languages' fallback_url='/en/docs/language-guide/all-languages/' locale=current_locale %}{% endcapture %}
+              {% capture footer_keywords_url %}{% include localized-url.html page_id='language_guide__keywords' fallback_url='/en/docs/language-guide/keywords/' locale=current_locale %}{% endcapture %}
+              {% capture footer_extending_url %}{% include localized-url.html page_id='extending' fallback_url='/en/docs/extending/' locale=current_locale %}{% endcapture %}
+              {% capture footer_translation_url %}{% include localized-url.html page_id='extending__translation' fallback_url='/en/docs/extending/translation/' locale=current_locale %}{% endcapture %}
+              <li><a href="{{ footer_all_languages_url | strip }}">All 17 Languages</a></li>
+              <li><a href="{{ footer_keywords_url | strip }}">Keywords</a></li>
+              <li><a href="{{ footer_extending_url | strip }}">Add a Language</a></li>
+              <li><a href="{{ footer_translation_url | strip }}">Translation Guide</a></li>
             </ul>
           </div>
           <div class="footer-col">
@@ -108,7 +147,8 @@
             <ul>
               <li><a href="https://github.com/johnsamuelwrites/multilingual" target="_blank" rel="noopener">GitHub</a></li>
               <li><a href="https://github.com/johnsamuelwrites/multilingual/issues" target="_blank" rel="noopener">Issues</a></li>
-              <li><a href="{{ '/en/docs/design/related-work/' | relative_url }}">Related Work</a></li>
+              {% capture footer_related_work_url %}{% include localized-url.html page_id='design__related_work' fallback_url='/en/docs/design/related-work/' locale=current_locale %}{% endcapture %}
+              <li><a href="{{ footer_related_work_url | strip }}">Related Work</a></li>
             </ul>
           </div>
         </div>

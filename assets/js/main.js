@@ -379,6 +379,17 @@ except Exception as _e:
     });
   }
 
+  /* ---- Docs language switcher ---- */
+  const languageSwitcher = document.getElementById('language-switcher');
+  if (languageSwitcher) {
+    languageSwitcher.addEventListener('change', event => {
+      const nextUrl = event.target.value;
+      if (nextUrl) {
+        window.location.href = nextUrl;
+      }
+    });
+  }
+
   /* ---- TOC generation ---- */
   const toc = document.getElementById('toc');
   const article = document.querySelector('.content-body');
