@@ -198,10 +198,15 @@ multilingual --version
 
 ## Next Steps
 
+{% capture next_installation_url %}{% include localized-url.html page_id='getting_started__installation' fallback_url='/en/docs/getting-started/installation/' locale=page.locale %}{% endcapture %}
+{% capture next_quick_start_url %}{% include localized-url.html page_id='getting_started__quick_start' fallback_url='/en/docs/getting-started/quick-start/' locale=page.locale %}{% endcapture %}
+{% capture next_language_guide_url %}{% include localized-url.html page_id='language_guide' fallback_url='/en/docs/language-guide/' locale=page.locale %}{% endcapture %}
+{% capture next_wasm_url %}{% include localized-url.html page_id='wasm' fallback_url='/en/docs/wasm/' locale=page.locale %}{% endcapture %}
+
 <div class="card-grid">
 
 <div class="card">
-<a href="/en/docs/getting-started/installation/">
+<a href="{{ next_installation_url | strip }}">
 <span class="card-icon">📦</span>
 <h3>Installation Details</h3>
 <p>Platform-specific setup, WASM requirements, virtual environments.</p>
@@ -209,7 +214,7 @@ multilingual --version
 </div>
 
 <div class="card">
-<a href="/en/docs/getting-started/quick-start/">
+<a href="{{ next_quick_start_url | strip }}">
 <span class="card-icon">🚀</span>
 <h3>Quick Start Examples</h3>
 <p>10-minute tour of the main language features.</p>
@@ -217,7 +222,7 @@ multilingual --version
 </div>
 
 <div class="card">
-<a href="/en/docs/language-guide/">
+<a href="{{ next_language_guide_url | strip }}">
 <span class="card-icon">📖</span>
 <h3>Language Guide</h3>
 <p>Complete syntax reference for all 17 languages.</p>
@@ -225,7 +230,7 @@ multilingual --version
 </div>
 
 <div class="card">
-<a href="/wasm/">
+<a href="{{ next_wasm_url | strip }}">
 <span class="card-icon">⚡</span>
 <h3>WASM Backend</h3>
 <p>50–100x performance with WebAssembly.</p>
