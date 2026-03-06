@@ -7,6 +7,8 @@ import argparse
 import sys
 from pathlib import Path
 
+SNIPPET_TOKEN = "{{snippet:"
+
 
 def main() -> int:
     parser = argparse.ArgumentParser()
@@ -30,6 +32,20 @@ def main() -> int:
 
     if args.base_path and not args.base_path.startswith("/"):
         print(f"ERROR: invalid base path (must start with '/'): {args.base_path!r}")
+        return 1
+
+    unresolved = []
+    for html_file in site_dir.rglob("*.html"):
+        text = html_file.read_text(encoding="utf-8")
+        if SNIPPET_TOKEN in text:
+            unresolved.append(str(html_file))
+
+    if unresolved:
+        print("ERROR: unresolved snippet tokens found in built HTML:")
+        for path in unresolved[:20]:
+            print(f" - {path}")
+        if len(unresolved) > 20:
+            print(f" - ... and {len(unresolved) - 20} more")
         return 1
 
     print(f"Pages artifact sanity checks passed for {site_dir}")
