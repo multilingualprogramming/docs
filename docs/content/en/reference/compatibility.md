@@ -5,7 +5,7 @@ title: Compatibility Matrix
 path_segments:
 - reference
 - compatibility
-source_hash: 5200c7a76a88
+source_hash: 2cea4d177e8d
 status: source
 permalink: /en/docs/reference/compatibility/
 ---
@@ -13,7 +13,7 @@ permalink: /en/docs/reference/compatibility/
 This matrix defines the current compatibility baseline for `multilingual`. The source of truth is:
 
 - `examples/complete_features_en.ml` and equivalents in all 17 languages
-- `tests/` (~1,797 tests across 58 test files)
+- `tests/` (~1,924 tests across 63 test files)
 
 **Target runtime**: CPython 3.12.x
 
@@ -76,6 +76,9 @@ This matrix defines the current compatibility baseline for `multilingual`. The s
 | Tuples | ✅ | literals, unpacking |
 | Strings | ✅ | single/double/triple quotes, f-strings |
 | F-string format specs | ✅ | `f"{x:.2f}"`, `f"{x!r}"`, `f"{x!s}"`, `f"{x!a}"` |
+| Bytes literals | ✅ | `b"..."`, `B"..."`, triple-quoted `b"""..."""` |
+| Raw strings | ✅ | `r"..."`, `R"..."`, triple-quoted `r"""..."""` — no escape processing |
+| Raw bytes | ✅ | `rb"..."`, `br"..."` and all case variants |
 | Hex/octal/binary literals | ✅ | `0xFF`, `0o77`, `0b1010` |
 | Scientific notation | ✅ | `1.5e10` |
 
@@ -168,7 +171,7 @@ This matrix defines the current compatibility baseline for `multilingual`. The s
 | Universal built-in functions | ✅ 70+ available | `len`, `range`, `abs`, `pow`, `divmod`, `complex`, `format`, `ascii`, `compile`, `eval`, `exec`, `globals`, `locals`, `issubclass`, `delattr`, `slice`, `aiter`, `anext`, and more |
 | Exception types | ✅ 45+ | `BaseException`, `ValueError`, `TypeError`, `KeyError`, `ModuleNotFoundError`, `ExceptionGroup`, `BaseExceptionGroup`, all warnings, and more |
 | Special values | ✅ | `True`, `False`, `None`, `Ellipsis`, `NotImplemented` |
-| Localized built-in aliases | ✅ 41 concepts | 41 builtins with aliases in all 16 non-English languages |
+| Localized built-in aliases | ✅ 75 concepts | 75 builtins with aliases in all 16 non-English languages |
 | Canonical Python built-in names | ✅ | Always usable in all languages |
 
 ---
@@ -188,7 +191,7 @@ SOV and RTL languages can use natural word order. The surface normalizer rewrite
 
 ## Test Coverage
 
-~1,797 tests across 58 test files (~19,848 lines of test code):
+~1,924 tests across 63 test files:
 
 | Test area | Files | Description |
 |-----------|-------|-------------|
@@ -214,19 +217,24 @@ The following are **not** claimed as universally compatible:
 - Full behavioral parity with all CPython edge cases
 - Full third-party package/runtime ecosystem compatibility
 - Every advanced metaprogramming/introspection scenario
-- Complete localization aliases for all CPython built-in functions (41 of 70+ have aliases)
-- Starred unpacking in deeply nested expression contexts
-- Complex decorator chains with arguments
+- WAT `@property` setter/deleter protocol (getter fully supported; `@prop.setter` not yet lowered)
+- WAT `print` `file=` keyword argument (stdout is the only target in WAT)
 
 ---
 
-## Known Fixes (v0.5.x)
+## Known Fixes
 
 | Version | Fix |
 |---------|-----|
+| v0.6.0 | **100% Python 3.12 core syntax**: bytes literals (`b"..."`), raw strings (`r"..."`), raw bytes (`rb"..."`) fully supported in lexer, parser, and both code generators |
+| v0.6.0 | Localized aliases expanded from 41 → 75: `eval`, `exec`, `compile`, `globals`, `locals`, `vars`, `help`, `memoryview`, `breakpoint`, `aiter`, `anext`, `exit`, `quit`, `copyright`, `credits`, `license` added across all 16 non-English languages |
+| v0.6.0 | WAT `@property` getter: `obj.attr` now emits a WAT function call to the getter instead of a raw `f64.load` |
+| v0.6.0 | WAT `@staticmethod` / `@classmethod`: detected via decorator; call sites no longer push an implicit `self` |
+| v0.6.0 | WAT `print` `sep=` / `end=`: custom separator and terminator interned in the data section and printed via `$print_str`; `sep=""` / `end=""` suppress output |
+| v0.6.0 | WAT dynamic dispatch: type tag (class ID) stored 8 bytes before each stateful object; `$__dispatch_method` switch function generated for every overridden method; function parameters of unknown type now dispatch polymorphically at runtime |
 | v0.5.1 | Documentation updates |
 | v0.5.0 | WAT/WASM OOP object model: class lowering with linear-memory bump allocator, inheritance with C3 MRO, `super()` resolution, WAT execution tests |
-| v0.5.0 | SemanticAnalyzer: plain assignments (`x = 5`) now correctly define the variable in scope rather than triggering a false `UNDEFINED_NAME` error (was a false-positive in some languages, e.g., French) |
+| v0.5.0 | SemanticAnalyzer: plain assignments (`x = 5`) now correctly define the variable in scope |
 | v0.5.0 | Augmented assignment (`x += 1`) now correctly reports `UNDEFINED_NAME` when the target variable has not been previously defined |
 
 ---

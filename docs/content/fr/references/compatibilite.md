@@ -5,7 +5,7 @@ title: Compatibilité
 path_segments:
 - references
 - compatibilite
-source_hash: 5200c7a76a88
+source_hash: 2cea4d177e8d
 status: translated
 permalink: /fr/docs/references/compatibilite/
 ---
@@ -13,7 +13,7 @@ permalink: /fr/docs/references/compatibilite/
 Cette matrice décrit l'état actuel de compatibilité de `multilingual`. La source de vérité repose sur :
 
 - `examples/complete_features_en.ml` et ses équivalents dans les 17 langues
-- `tests/` (environ 1 797 tests répartis sur 58 fichiers de test)
+- `tests/` (environ 1 924 tests répartis sur 63 fichiers de test)
 
 **Runtime cible** : CPython 3.12.x
 
@@ -76,6 +76,9 @@ Cette matrice décrit l'état actuel de compatibilité de `multilingual`. La sou
 | Tuples | ✅ | littéraux, dépaquetage |
 | Chaînes | ✅ | guillemets simples, doubles, triples, f-strings |
 | Spécificateurs de format f-string | ✅ | `f"{x:.2f}"`, `f"{x!r}"`, `f"{x!s}"`, `f"{x!a}"` |
+| Littéraux d'octets | ✅ | `b"..."`, `B"..."`, `b"""..."""` |
+| Chaînes brutes | ✅ | `r"..."`, `R"..."`, `r"""..."""` — sans traitement des séquences d'échappement |
+| Octets bruts | ✅ | `rb"..."`, `br"..."` et toutes les variantes de casse |
 | Littéraux hexadécimaux, octaux et binaires | ✅ | `0xFF`, `0o77`, `0b1010` |
 | Notation scientifique | ✅ | `1.5e10` |
 
@@ -168,7 +171,7 @@ Cette matrice décrit l'état actuel de compatibilité de `multilingual`. La sou
 | Fonctions built-in universelles | ✅ 70+ disponibles | `len`, `range`, `abs`, `pow`, `divmod`, `complex`, `format`, `ascii`, `compile`, `eval`, `exec`, `globals`, `locals`, `issubclass`, `delattr`, `slice`, `aiter`, `anext`, etc. |
 | Types d'exceptions | ✅ 45+ | `BaseException`, `ValueError`, `TypeError`, `KeyError`, `ModuleNotFoundError`, `ExceptionGroup`, `BaseExceptionGroup`, tous les warnings, etc. |
 | Valeurs spéciales | ✅ | `True`, `False`, `None`, `Ellipsis`, `NotImplemented` |
-| Alias built-in localisés | ✅ 41 concepts | 41 builtins avec alias dans les 16 langues non anglaises |
+| Alias built-in localisés | ✅ 75 concepts | 75 builtins avec alias dans les 16 langues non anglaises |
 | Noms built-in Python canoniques | ✅ | Toujours utilisables dans toutes les langues |
 
 ---
@@ -188,7 +191,7 @@ Les langues SOV et RTL peuvent utiliser un ordre de mots naturel. Le normaliseur
 
 ## Couverture de tests
 
-Environ 1 797 tests répartis sur 58 fichiers de test :
+Environ 1 924 tests répartis sur 63 fichiers de test :
 
 | Domaine | Fichiers | Description |
 |-----------|-------|-------------|
@@ -214,16 +217,21 @@ Les points suivants **ne sont pas** annoncés comme universellement compatibles 
 - Une parité comportementale complète avec tous les cas limites de CPython
 - Une compatibilité complète avec tous les écosystèmes tiers
 - Tous les scénarios avancés de métaprogrammation / introspection
-- Des alias localisés pour l'intégralité des builtins CPython
-- Le dépaquetage étoilé dans certains contextes d'expressions très imbriqués
-- Certaines chaînes complexes de décorateurs avec arguments
+- Le protocole setter/deleter de `@property` en WAT (le getter est entièrement pris en charge ; `@prop.setter` n'est pas encore abaissé)
+- L'argument nommé `file=` de `print` en WAT (seul stdout est disponible en WAT)
 
 ---
 
-## Correctifs connus (v0.5.x)
+## Correctifs connus
 
 | Version | Correctif |
 |---------|-----|
+| v0.6.0 | **Compatibilité Python 3.12 à 100 %** : littéraux d'octets (`b"..."`), chaînes brutes (`r"..."`), octets bruts (`rb"..."`) entièrement pris en charge dans le lexer, le parser et les deux générateurs de code |
+| v0.6.0 | Alias localisés élargis de 41 → 75 : `eval`, `exec`, `compile`, `globals`, `locals`, `vars`, `help`, `memoryview`, `breakpoint`, `aiter`, `anext`, `exit`, `quit`, `copyright`, `credits`, `license` ajoutés dans les 16 langues non anglaises |
+| v0.6.0 | WAT `@property` getter : `obj.attr` émet désormais un appel de fonction WAT vers le getter au lieu d'un `f64.load` brut |
+| v0.6.0 | WAT `@staticmethod` / `@classmethod` : détectés via décorateur ; les sites d'appel ne poussent plus de `self` implicite |
+| v0.6.0 | WAT `print` `sep=` / `end=` : séparateur et terminateur personnalisés internés dans la section de données et imprimés via `$print_str` ; `sep=""` / `end=""` supprime la sortie |
+| v0.6.0 | WAT dispatch dynamique : balise de type (ID de classe) stockée 8 octets avant chaque objet stateful ; fonction de commutation `$__dispatch_method` générée pour chaque méthode surchargée ; paramètres de fonction de type inconnu dispatchés polymorphiquement à l'exécution |
 | v0.5.1 | Mises à jour de documentation |
 | v0.5.0 | Modèle objet POO WAT / WASM : abaissement des classes avec allocateur linéaire, héritage avec MRO C3, résolution de `super()`, tests d'exécution WAT |
 | v0.5.0 | `SemanticAnalyzer` gère correctement les affectations simples (`x = 5`) dans la portée |

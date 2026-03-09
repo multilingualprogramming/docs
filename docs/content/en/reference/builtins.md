@@ -5,12 +5,12 @@ title: Built-in Aliases
 path_segments:
 - reference
 - builtins
-source_hash: 3b6205ba8915
+source_hash: 2cea4d177e8d
 status: source
 permalink: /en/docs/reference/builtins/
 ---
 
-multilingual provides localized aliases for 41 commonly used Python built-in functions. Universal English names are **always available** in all languages — aliases are additive.
+multilingual provides localized aliases for 75 Python built-in functions. Universal English names are **always available** in all languages — aliases are additive.
 
 ---
 
@@ -111,6 +111,8 @@ print(range(5))            # Universal still works
 | `next` | suivant | siguiente | naechster | 次 | التالي | अगला | 下一个 |
 | `any` | quelconque | cualquiera | irgendein | どれか | أي | कोई | 任意 |
 | `all` | tous | todos | alle | すべて | كل | सब | 所有 |
+| `aiter` | iterasync | iterasync | asynciter | 非同期イテレータ | مكرر\_غير\_متزامن | असिंकइटर | 异步迭代器 |
+| `anext` | prochainasync | siguienteasync | asyncnaechstes | 非同期次 | التالي\_غير\_المتزامن | असिंकअगला | 异步下一个 |
 
 ### String/Encoding
 
@@ -119,6 +121,35 @@ print(range(5))            # Universal still works
 | `chr` | chr | chr | chr | 文字 | حرف | वर्ण | 字符 |
 | `ord` | ord | ord | ord | 文字コード | رمز\_حرف | कोड | 编码 |
 | `format` | formater | formatear | formatieren | フォーマット | تنسيق | प्रारूप | 格式化 |
+
+### Execution
+
+| Builtin | fr | es | de | ja | ar | hi | zh |
+|---------|----|----|----|----|----|----|-----|
+| `eval` | evaluer | evaluar | auswerten | 評価 | تقييم | मूल्यांकन | 评估 |
+| `exec` | executer | ejecutar | ausfuehren | 実行 | تنفيذ | निष्पादन | 执行 |
+| `compile` | compiler | compilar | kompilieren | コンパイル | تجميع | संकलन | 编译 |
+
+### Scope Inspection
+
+| Builtin | fr | es | de | ja | ar | hi | zh |
+|---------|----|----|----|----|----|----|-----|
+| `globals` | globaux | globales | globale | グローバル変数 | عالمي | वैश्विक | 全局变量 |
+| `locals` | locaux | locales | lokale | ローカル変数 | محلي | स्थानीय | 局部变量 |
+| `vars` | variables | variables | variablen | 変数 | متغيرات | चर | 变量 |
+
+### Debug & REPL
+
+| Builtin | fr | es | de | ja | ar | hi | zh |
+|---------|----|----|----|----|----|----|-----|
+| `help` | aide | ayuda | hilfe | ヘルプ | مساعدة | सहायता | 帮助 |
+| `breakpoint` | pointdarret | puntodeparada | haltepunkt | ブレークポイント | نقطة\_توقف | विरामबिंदु | 断点 |
+| `memoryview` | vuememoire | vistamemoria | speicheransicht | メモリビュー | عرض\_الذاكرة | मेमोरीदृश्य | 内存视图 |
+| `exit` | quitter | salir | beenden | 終了 | خروج | बाहर | 退出 |
+| `quit` | fermer | terminar | abbrechen | 終わり | انهاء | समाप्त | 停止 |
+| `copyright` | droitsauteur | derechosautor | urheberrecht | 著作権 | حقوق\_النشر | कॉपीराइट | 版权 |
+| `credits` | remerciements | creditos | danksagungen | クレジット | اعتمادات | श्रेय | 致谢 |
+| `license` | licence | licencia | lizenz | ライセンス | رخصة | लाइसेंस | 许可证 |
 
 ---
 
