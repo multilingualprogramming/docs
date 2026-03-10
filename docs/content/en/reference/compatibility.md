@@ -5,7 +5,7 @@ title: Compatibility Matrix
 path_segments:
 - reference
 - compatibility
-source_hash: 2cea4d177e8d
+source_hash: 5266b537e3e5
 status: source
 permalink: /en/docs/reference/compatibility/
 ---
@@ -13,7 +13,7 @@ permalink: /en/docs/reference/compatibility/
 This matrix defines the current compatibility baseline for `multilingual`. The source of truth is:
 
 - `examples/complete_features_en.ml` and equivalents in all 17 languages
-- `tests/` (~1,924 tests across 63 test files)
+- `tests/` (1,926 collected tests across 63 test files)
 
 **Target runtime**: CPython 3.12.x
 
@@ -191,7 +191,7 @@ SOV and RTL languages can use natural word order. The surface normalizer rewrite
 
 ## Test Coverage
 
-~1,924 tests across 63 test files:
+1,926 collected tests across 63 test files:
 
 | Test area | Files | Description |
 |-----------|-------|-------------|
@@ -204,7 +204,7 @@ SOV and RTL languages can use natural word order. The surface normalizer rewrite
 | Critical features | 8 | Triple-quoted strings, slices, parameters, tuples, comprehensions, decorators, f-strings |
 | Language completeness and CLI | 8 | Augmented assignment, membership, ternary, assert, chained assignment, CLI, REPL |
 | Advanced language features | 23 | Loop else, yield/raise from, set comprehensions, parameter separators, f-string formatting, match guards/OR/AS, global/nonlocal, builtins, exceptions, surface normalization, extended builtins, alias resolution, starred unpacking, integration, multilingual |
-| WAT/WASM backend | 5 | WAT generation, OOP/inheritance in WAT, WASM execution, corpus projects (20) |
+| WAT/WASM backend | 8 | WAT generation, manifest/build orchestration, OOP/inheritance and dispatch in WAT, string/lambda lowering, WASM execution, corpus projects (20) |
 | Infrastructure | 10 | Keyword registry, AST nodes, AST printer, error messages, runtime builtins, REPL |
 
 ---
@@ -217,7 +217,7 @@ The following are **not** claimed as universally compatible:
 - Full behavioral parity with all CPython edge cases
 - Full third-party package/runtime ecosystem compatibility
 - Every advanced metaprogramming/introspection scenario
-- WAT `@property` setter/deleter protocol (getter fully supported; `@prop.setter` not yet lowered)
+- WAT `@property` deleter protocol (`@property` getter/setter are lowered; deleter handling is not documented as complete)
 - WAT `print` `file=` keyword argument (stdout is the only target in WAT)
 
 ---

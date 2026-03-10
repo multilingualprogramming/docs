@@ -4,12 +4,12 @@ locale: fr
 title: Backend WASM
 path_segments:
 - wasm
-source_hash: 7a83161027ac
+source_hash: c17143ce90da
 status: translated
 permalink: /fr/docs/wasm/
 ---
 
-Cette section présente le backend WASM, les performances, l'installation, l'architecture et le dépannage.
+Cette section présente l'état actuel du backend WASM (`0.6.0`), ses performances, son installation, son architecture et son dépannage.
 
 - [Installation]({{ '/fr/docs/wasm/installation/' | relative_url }})
 - [Architecture]({{ '/fr/docs/wasm/architecture/' | relative_url }})

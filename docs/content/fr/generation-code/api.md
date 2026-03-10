@@ -5,12 +5,12 @@ title: Référence de l'API de génération de code
 path_segments:
 - generation-code
 - api
-source_hash: 66021f3a6bbf
+source_hash: f5184586a04b
 status: translated
 permalink: /fr/docs/generation-code/api/
 ---
 
-Cette page documente l'API actuelle `0.5.1` de transpilation, d'exécution et de génération WAT/WASM.
+Cette page documente l'API actuelle `0.6.0` de transpilation, d'exécution et de génération WAT/WASM.
 
 ---
 
@@ -171,6 +171,8 @@ Helper recommandé si vous utilisez `exec()` directement :
 ## `WATCodeGenerator`
 
 Générateur principal côté WASM. Il produit directement du WAT à partir de l'AST partagé ou d'un `CoreIRProgram`.
+
+En `0.6.0`, le backend WAT couvre l'état actuel du modèle objet à classes stateful, le dispatch dynamique, les accesseurs de propriété, l'abaissement de `with`/`try`/`match`, les littéraux `bytes` et l'abaissement asynchrone best-effort décrit dans le dépôt amont.
 
 {{snippet:codegen__api__py22}}
 

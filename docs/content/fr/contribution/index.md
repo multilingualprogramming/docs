@@ -4,12 +4,12 @@ locale: fr
 title: Contribution et développement
 path_segments:
 - contribution
-source_hash: 246c35a74a08
+source_hash: 48a6c71c7442
 status: translated
 permalink: /fr/docs/contribution/
 ---
 
-Ce guide reflète le flux de développement actuel en `0.5.1`.
+Ce guide reflète le flux de développement actuel en `0.6.0`.
 
 - [Documentation multilingue]({{ '/fr/docs/contribution/documentation-multilingue/' | relative_url }})
 
@@ -60,10 +60,9 @@ python -m pytest -m wasm tests/
 python -m pytest -k "inheritance" tests/
 ```
 
-D'après la référence locale actuelle :
-- environ 58 fichiers de tests
-- environ 1 797 tests
-- 2 tests ignores attendus pour `rustc wasm32`
+D'après l'état actuel du dépôt amont :
+- 63 fichiers de tests
+- 1 926 tests collectés
 
 Fichiers clés :
 - `tests/lexer_test.py`
@@ -73,6 +72,9 @@ Fichiers clés :
 - `tests/wat_generator_test.py`
 - `tests/frontend_equivalence_test.py`
 - `tests/regression_fixes_test.py`
+- `tests/wat_oop_dispatch_test.py`
+- `tests/wat_generator_manifest_test.py`
+- `tests/wat_generator_string_lambda_test.py`
 
 ---
 

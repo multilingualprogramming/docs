@@ -5,7 +5,7 @@ title: WASM Architecture
 path_segments:
 - wasm
 - architecture
-source_hash: 3c9983c998ed
+source_hash: 8daba5db70bd
 status: source
 permalink: /en/docs/wasm/architecture/
 ---
@@ -18,7 +18,7 @@ The WASM infrastructure is designed around three principles: **transparent selec
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│              Multilingual Programming Language v0.5.1         │
+│              Multilingual Programming Language v0.6.0         │
 └─────────────────────────────────────────────────────────────┘
                               │
                 ┌─────────────┴──────────────┐

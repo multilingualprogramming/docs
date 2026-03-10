@@ -5,7 +5,7 @@ title: Compatibilité
 path_segments:
 - references
 - compatibilite
-source_hash: 2cea4d177e8d
+source_hash: 5266b537e3e5
 status: translated
 permalink: /fr/docs/references/compatibilite/
 ---
@@ -13,7 +13,7 @@ permalink: /fr/docs/references/compatibilite/
 Cette matrice décrit l'état actuel de compatibilité de `multilingual`. La source de vérité repose sur :
 
 - `examples/complete_features_en.ml` et ses équivalents dans les 17 langues
-- `tests/` (environ 1 924 tests répartis sur 63 fichiers de test)
+- `tests/` (1 926 tests collectés répartis sur 63 fichiers de test)
 
 **Runtime cible** : CPython 3.12.x
 
@@ -191,7 +191,7 @@ Les langues SOV et RTL peuvent utiliser un ordre de mots naturel. Le normaliseur
 
 ## Couverture de tests
 
-Environ 1 924 tests répartis sur 63 fichiers de test :
+1 926 tests collectés répartis sur 63 fichiers de test :
 
 | Domaine | Fichiers | Description |
 |-----------|-------|-------------|
@@ -204,7 +204,7 @@ Environ 1 924 tests répartis sur 63 fichiers de test :
 | Fonctionnalités critiques | 8 | Chaînes triple-quoted, slices, paramètres, tuples, compréhensions, décorateurs, f-strings |
 | Couverture du langage et CLI | 8 | Affectation augmentée, appartenance, ternaire, assert, affectation chaînée, CLI, REPL |
 | Fonctionnalités avancées | 23 | `loop else`, `yield from`, `raise from`, compréhensions d'ensembles, séparateurs de paramètres, formatage f-string, gardes `match`, `global`, `nonlocal`, builtins, exceptions, normalisation de surface, alias, dépaquetage étoilé, intégration |
-| Backend WAT / WASM | 5 | Génération WAT, POO / héritage en WAT, exécution WASM, projets corpus |
+| Backend WAT / WASM | 8 | Génération WAT, orchestration manifeste / build, POO / héritage / dispatch en WAT, abaissement des chaînes et des lambdas, exécution WASM, projets corpus |
 | Infrastructure | 10 | Registre des mots-clés, nœuds AST, AST printer, messages d'erreur, builtins runtime, REPL |
 
 ---
@@ -217,7 +217,7 @@ Les points suivants **ne sont pas** annoncés comme universellement compatibles 
 - Une parité comportementale complète avec tous les cas limites de CPython
 - Une compatibilité complète avec tous les écosystèmes tiers
 - Tous les scénarios avancés de métaprogrammation / introspection
-- Le protocole setter/deleter de `@property` en WAT (le getter est entièrement pris en charge ; `@prop.setter` n'est pas encore abaissé)
+- Le protocole deleter de `@property` en WAT (les getters / setters sont abaissés ; le deleter n'est pas documenté comme complet)
 - L'argument nommé `file=` de `print` en WAT (seul stdout est disponible en WAT)
 
 ---

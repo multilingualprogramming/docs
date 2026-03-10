@@ -4,7 +4,7 @@ locale: fr
 title: Référence technique
 path_segments:
 - references
-source_hash: 7daaacafc108
+source_hash: "130731172631"
 status: translated
 permalink: /fr/docs/references/
 ---
@@ -177,7 +177,7 @@ multilingual --version
 | Alias localisés des fonctions intégrées | ✅ |
 | Normalisation de surface pour les langues SOV / RTL | ✅ |
 
-Cette base de compatibilité est couverte par environ 1 797 tests répartis sur 58 fichiers.
+Cette base de compatibilité est couverte par 1 926 tests collectés répartis sur 63 fichiers.
 
 ---
 
@@ -185,6 +185,7 @@ Cette base de compatibilité est couverte par environ 1 797 tests répartis sur 
 
 | Version | Points marquants |
 |---------|------------------|
+| `0.6.0` | Modèle objet WAT/WASM stateful, dispatch dynamique, accesseurs `@property`, abaissement de `with`/`try`/`match`, littéraux `bytes` en WAT, alias localisés de builtins élargis |
 | `0.5.1` | Mise à jour de la documentation |
 | `0.5.0` | Modèle objet WAT/WASM, héritage avec MRO C3, support de `super()`, correctifs d'analyse sémantique |
 | `0.4.0` | Génération WAT/WASM, playground navigateur, backend WASM avec replis Python |

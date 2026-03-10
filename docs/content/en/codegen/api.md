@@ -5,12 +5,12 @@ title: Codegen API Reference
 path_segments:
 - codegen
 - api
-source_hash: 66021f3a6bbf
+source_hash: f5184586a04b
 status: source
 permalink: /en/docs/codegen/api/
 ---
 
-This page documents the current `0.5.1` code-generation and execution APIs used by `multilingualprogramming`.
+This page documents the current `0.6.0` code-generation and execution APIs used by `multilingualprogramming`.
 
 ---
 
@@ -171,6 +171,8 @@ Recommended helper when you call `exec()` yourself:
 ## WATCodeGenerator
 
 Primary WASM-facing generator. It emits WAT directly from the shared AST or from a `CoreIRProgram`.
+
+As of `0.6.0`, the WAT backend covers the current stateful-class object model, dynamic dispatch, property accessors, `with`/`try`/`match` lowering, bytes literals, and the best-effort async lowering described in the upstream language repository.
 
 {{snippet:codegen__api__py22}}
 

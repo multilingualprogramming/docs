@@ -4,7 +4,7 @@ locale: en
 title: WASM Backend
 path_segments:
 - wasm
-source_hash: 7a83161027ac
+source_hash: c17143ce90da
 status: source
 permalink: /en/docs/wasm/
 ---
@@ -162,7 +162,7 @@ multilingual Source (.ml)
 
 ## WAT Language Support
 
-The WAT backend supports a rich subset of the multilingual language. Unsupported constructs emit stub comments and fall back to Python.
+The WAT backend supports a rich subset of the multilingual language. Remaining gaps emit stub comments and fall back to Python.
 
 | Construct | WAT support |
 |---|---|
@@ -178,8 +178,9 @@ The WAT backend supports a rich subset of the multilingual language. Unsupported
 | `async def` / `await` | ✓ best-effort |
 | Class definition (OOP) with fields | ✓ linear-memory object model |
 | Inheritance and `super()` | ✓ C3 MRO |
-| `match`/`case` (numeric/boolean) | ✓ lowered to WAT blocks |
-| `match`/`case` (string/complex) | stub |
+| `match`/`case` (numeric/boolean/string) | ✓ lowered to WAT blocks |
+| `match`/`case` (`None`, capture, tuple/list patterns) | ✓ best-effort |
+| `match`/`case` (class/complex patterns) | stub |
 | `print` | ✓ host import |
 | `abs`, `min`, `max` (n-arg) | ✓ native f64 ops |
 | `len` (string literal/var, list, tuple) | ✓ |
@@ -189,8 +190,10 @@ The WAT backend supports a rich subset of the multilingual language. Unsupported
 | `with` statement | ✓ best-effort |
 | Lambda expressions | ✓ lifted to named WAT functions |
 | List/generator comprehension over `range` | ✓ |
-| String concatenation, indexing, slicing | not supported |
-| `async for` / `async with` | not supported |
+| String concatenation, indexing, slicing | ✓ |
+| `async for` over `range()` / tracked list vars | ✓ best-effort |
+| `async with` | ✓ best-effort |
+| `async for` over arbitrary iterables | stub |
 
 ---
 

@@ -4,7 +4,7 @@ locale: en
 title: Language Reference
 path_segments:
 - reference
-source_hash: 7daaacafc108
+source_hash: "130731172631"
 status: source
 permalink: /en/docs/reference/
 ---
@@ -189,10 +189,10 @@ multilingual --version
 | Wildcard import | ✅ |
 | 70+ built-in functions | ✅ |
 | 45+ exception types | ✅ |
-| Localized built-in aliases (41 concepts) | ✅ |
+| Localized built-in aliases (75 concepts) | ✅ |
 | Surface normalization (SOV/RTL languages) | ✅ |
 
-**~1,797 tests across 58 test files** provide the compatibility baseline.
+**1,926 collected tests across 63 test files** provide the compatibility baseline.
 
 ---
 
@@ -200,6 +200,7 @@ multilingual --version
 
 | Version | Highlights |
 |---------|-----------|
+| `0.6.0` | WAT/WASM stateful object model, dynamic dispatch, `@property` accessors, `with`/`try`/`match` lowering, bytes literals in WAT, expanded localized builtin aliases |
 | `0.5.1` | Documentation updates |
 | `0.5.0` | WAT/WASM OOP object model; class lowering with linear-memory bump allocator; inheritance with C3 MRO; `super()` resolution; WAT execution tests; SemanticAnalyzer plain-assignment fix |
 | `0.4.0` | WAT/WASM code generation; browser playground; WASM backend with 25+ Python fallbacks; 20 corpus projects |

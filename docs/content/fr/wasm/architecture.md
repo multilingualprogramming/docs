@@ -5,12 +5,12 @@ title: Architecture WASM
 path_segments:
 - wasm
 - architecture
-source_hash: 3c9983c998ed
+source_hash: 8daba5db70bd
 status: translated
 permalink: /fr/docs/wasm/architecture/
 ---
 
-Le pipeline WASM suit la chaîne : source multilingue -> AST cœur -> génération WAT -> module WASM -> exécution via runtime.
+Le pipeline WASM actuel (`0.6.0`) suit la chaîne : source multilingue -> AST cœur -> génération WAT -> module WASM -> exécution via runtime.
 
 Le backend Python reste disponible comme repli automatique.
 

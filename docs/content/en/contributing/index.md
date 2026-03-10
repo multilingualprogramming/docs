@@ -4,12 +4,12 @@ locale: en
 title: Contributing & Development
 path_segments:
 - contributing
-source_hash: 246c35a74a08
+source_hash: 48a6c71c7442
 status: source
 permalink: /en/docs/contributing/
 ---
 
-This guide reflects the current `0.5.1` development workflow.
+This guide reflects the current `0.6.0` development workflow.
 
 ---
 
@@ -97,10 +97,9 @@ python -m pytest -k "inheritance" tests/
 
 ## Test Suite Overview
 
-According to the current local agent reference:
-- about 58 test files
-- about 1,797 tests
-- 2 expected skips for `rustc wasm32`-dependent execution tests
+According to the current upstream repository state:
+- 63 test files
+- 1,926 collected tests
 
 Key files:
 - `tests/lexer_test.py`
@@ -112,6 +111,9 @@ Key files:
 - `tests/complete_features_wasm_execution_test.py`
 - `tests/frontend_equivalence_test.py`
 - `tests/regression_fixes_test.py`
+- `tests/wat_oop_dispatch_test.py`
+- `tests/wat_generator_manifest_test.py`
+- `tests/wat_generator_string_lambda_test.py`
 
 ---
 
