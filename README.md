@@ -39,7 +39,7 @@ Prerequisites:
 Install the Python package used by the docs tests:
 
 ```bash
-pip install multilingualprogramming
+pip install -r requirements-build.txt
 ```
 
 Install dependencies:
@@ -76,6 +76,8 @@ bundle exec jekyll build
 2. Update `_config.yml` navigation entries when adding new pages.
 3. Run `bundle exec jekyll serve` and verify pages render correctly.
 4. Submit a pull request.
+
+The stable docs-test baseline for `multilingualprogramming` is pinned in `requirements-build.txt`, and a scheduled compatibility workflow also checks the latest published package and upstream `main`.
 
 For multilingual EN/FR documentation operations (metadata model, localized routing, snippets, CI checks, and Pages-safe deploy), see [contributing/multilingual-docs.md](contributing/multilingual-docs.md).
 
