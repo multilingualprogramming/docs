@@ -58,7 +58,7 @@ permalink: /fr/
     <span class="code-demo-dot dot-red"></span>
     <span class="code-demo-dot dot-yellow"></span>
     <span class="code-demo-dot dot-green"></span>
-    <span class="code-demo-title">bonjour.ml</span>
+    <span class="code-demo-title">bonjour.multi</span>
   </div>
   <div class="code-demo-tabs">
     <button class="code-tab active" data-target="en">Anglais</button>
@@ -272,8 +272,8 @@ python -m multilingualprogramming repl --show-python
 **Executer un fichier :**
 
 ```bash
-python -m multilingualprogramming run myprogram.ml --lang en
-python -m multilingualprogramming run programme.ml --lang fr
+python -m multilingualprogramming run myprogram.multi --lang en
+python -m multilingualprogramming run programme.multi --lang fr
 ```
 
 **Utiliser comme bibliotheque :**
@@ -297,7 +297,7 @@ afficher(x + y)
   <p class="section-desc">Chaque programme, dans n'importe quelle langue, suit le meme pipeline vers une sortie Python ou WASM.</p>
 
 ```
-Langage de surface (fichier .ml)
+Langage de surface (fichier .multi)
         |
         v
   +---------------+

@@ -5,7 +5,7 @@ title: Frontend Contracts
 path_segments:
 - design
 - frontend-contracts
-source_hash: 2a5dd692fb4e
+source_hash: f84f5bb29766
 status: source
 permalink: /en/docs/design/frontend-contracts/
 ---

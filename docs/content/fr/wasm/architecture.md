@@ -5,7 +5,7 @@ title: Architecture WASM
 path_segments:
 - wasm
 - architecture
-source_hash: 8daba5db70bd
+source_hash: 0018fabdb49b
 status: translated
 permalink: /fr/docs/wasm/architecture/
 ---

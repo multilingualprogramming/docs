@@ -5,7 +5,7 @@ title: Documentation multilingue
 path_segments:
 - contribution
 - documentation-multilingue
-source_hash: 4f17f1104cac
+source_hash: 305c45520986
 status: translated
 permalink: /fr/docs/contribution/documentation-multilingue/
 ---

@@ -4,7 +4,7 @@ locale: fr
 title: Référence technique
 path_segments:
 - references
-source_hash: "130731172631"
+source_hash: cd5c1ec6b295
 status: translated
 permalink: /fr/docs/references/
 ---
@@ -121,25 +121,25 @@ Le nœud AST `Program` contient une liste de nœuds `Statement`. Voir `multiling
 
 ```bash
 # Exécuter un programme
-multilingual run <file.ml> --lang en
-multilingual run programme.ml --lang fr
+multilingual run <file.multi> --lang en
+multilingual run programme.multi --lang fr
 
 # Démarrer le REPL
 multilingual repl
 multilingual repl --lang fr --show-python --show-wat
 
 # Transpiler vers Python
-multilingual compile hello.ml --lang en
+multilingual compile hello.multi --lang en
 
 # Construire un bundle WASM
-multilingual build-wasm-bundle hello.ml --lang en --out-dir ./dist
+multilingual build-wasm-bundle hello.multi --lang en --out-dir ./dist
 
 # Valider un pack de langue
 multilingual smoke --lang fr
 multilingual smoke --all
 
 # Vérifier l'encodage du code généré
-multilingual encoding-check-generated hello.ml --lang en
+multilingual encoding-check-generated hello.multi --lang en
 
 # Afficher la version
 multilingual --version

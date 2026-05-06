@@ -5,7 +5,7 @@ title: Syntaxe
 path_segments:
 - guide-langage
 - syntaxe
-source_hash: 1a1df4d35040
+source_hash: 225c5dedade4
 status: translated
 permalink: /fr/docs/guide-langage/syntaxe/
 ---

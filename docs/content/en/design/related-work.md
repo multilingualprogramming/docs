@@ -5,7 +5,7 @@ title: Related Work
 path_segments:
 - design
 - related-work
-source_hash: 5d1b221665f1
+source_hash: e43442f24f94
 status: source
 permalink: /en/docs/design/related-work/
 ---

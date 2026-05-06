@@ -4,7 +4,7 @@ locale: en
 title: Getting Started
 path_segments:
 - getting-started
-source_hash: 9b9c8ca97172
+source_hash: 5b461e2c6dfc
 status: source
 permalink: /en/docs/getting-started/
 ---
@@ -77,50 +77,50 @@ Check WASM availability:
 
 ### English
 
-Create a file `hello_en.ml`:
+Create a file `hello_en.multi`:
 
 {{snippet:getting_started__py02}}
 
 Run it:
 
 ```bash
-python -m multilingualprogramming run hello_en.ml --lang en
+python -m multilingualprogramming run hello_en.multi --lang en
 ```
 
 ### French
 
-Create `hello_fr.ml`:
+Create `hello_fr.multi`:
 
 {{snippet:getting_started__py03}}
 
 Run:
 
 ```bash
-python -m multilingualprogramming run hello_fr.ml --lang fr
+python -m multilingualprogramming run hello_fr.multi --lang fr
 ```
 
 ### Japanese
 
-Create `hello_ja.ml`:
+Create `hello_ja.multi`:
 
 {{snippet:getting_started__py04}}
 
 Run:
 
 ```bash
-python -m multilingualprogramming run hello_ja.ml --lang ja
+python -m multilingualprogramming run hello_ja.multi --lang ja
 ```
 
 ### Arabic
 
-Create `hello_ar.ml`:
+Create `hello_ar.multi`:
 
 {{snippet:getting_started__py05}}
 
 Run:
 
 ```bash
-python -m multilingualprogramming run hello_ar.ml --lang ar
+python -m multilingualprogramming run hello_ar.multi --lang ar
 ```
 
 ---
@@ -175,7 +175,7 @@ The CLI is available as both `multilingual` and `multilg`:
 
 ```bash
 # Run a program file
-multilingual run <file.ml> --lang <code>
+multilingual run <file.multi> --lang <code>
 
 # Start REPL
 multilingual repl [--lang <code>] [--show-python]

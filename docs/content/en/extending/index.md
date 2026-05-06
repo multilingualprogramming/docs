@@ -4,7 +4,7 @@ locale: en
 title: Adding a New Language
 path_segments:
 - extending
-source_hash: a0f8c50e1206
+source_hash: df86b23c985b
 status: source
 permalink: /en/docs/extending/
 ---

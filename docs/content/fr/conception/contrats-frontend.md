@@ -5,7 +5,7 @@ title: Contrats des frontends
 path_segments:
 - conception
 - contrats-frontend
-source_hash: 2a5dd692fb4e
+source_hash: f84f5bb29766
 status: translated
 permalink: /fr/docs/conception/contrats-frontend/
 ---

@@ -59,7 +59,7 @@ permalink: /
     <span class="code-demo-dot dot-red"></span>
     <span class="code-demo-dot dot-yellow"></span>
     <span class="code-demo-dot dot-green"></span>
-    <span class="code-demo-title">hello.ml</span>
+    <span class="code-demo-title">hello.multi</span>
   </div>
   <div class="code-demo-tabs">
     <button class="code-tab active" data-target="en">English</button>
@@ -276,8 +276,8 @@ python -m multilingualprogramming repl --show-python
 **Run a file:**
 
 ```bash
-python -m multilingualprogramming run myprogram.ml --lang en
-python -m multilingualprogramming run programme.ml --lang fr
+python -m multilingualprogramming run myprogram.multi --lang en
+python -m multilingualprogramming run programme.multi --lang fr
 ```
 
 **Use as a library:**
@@ -302,7 +302,7 @@ print(x + y)
   <p class="section-desc">Every program, in any language, follows the same forward-only pipeline to Python or WASM output.</p>
 
 ```
-Surface Language (.ml file)
+Surface Language (.multi file)
         │
         ▼
   ┌─────────────┐

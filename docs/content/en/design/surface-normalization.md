@@ -5,7 +5,7 @@ title: Surface Normalization
 path_segments:
 - design
 - surface-normalization
-source_hash: f8b33f26176e
+source_hash: ea5b1af18e95
 status: source
 permalink: /en/docs/design/surface-normalization/
 ---

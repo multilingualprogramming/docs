@@ -5,7 +5,7 @@ title: Controlled Language Scope
 path_segments:
 - extending
 - cnl-scope
-source_hash: 3966758c9120
+source_hash: aad1d5553a21
 status: source
 permalink: /en/docs/extending/cnl-scope/
 ---

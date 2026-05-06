@@ -4,7 +4,7 @@ locale: en
 title: Language Guide
 path_segments:
 - language-guide
-source_hash: f82e154d80f9
+source_hash: cffd7bcf4cde
 status: source
 permalink: /en/docs/language-guide/
 ---

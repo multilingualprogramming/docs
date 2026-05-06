@@ -5,7 +5,7 @@ title: Multilingual Documentation Operations
 path_segments:
 - contributing
 - multilingual-docs
-source_hash: 4f17f1104cac
+source_hash: 305c45520986
 status: source
 permalink: /en/docs/contributing/multilingual-docs/
 ---

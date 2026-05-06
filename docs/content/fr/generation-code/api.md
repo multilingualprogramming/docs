@@ -5,7 +5,7 @@ title: Référence de l'API de génération de code
 path_segments:
 - generation-code
 - api
-source_hash: f5184586a04b
+source_hash: 3f6353de973f
 status: translated
 permalink: /fr/docs/generation-code/api/
 ---
@@ -189,7 +189,7 @@ Le module généré importe `env.print_str`, `env.print_f64`, `env.print_bool`, 
 ### CLI : `build-wasm-bundle`
 
 ```bash
-multilingual build-wasm-bundle programme.ml --out-dir wasm-out
+multilingual build-wasm-bundle programme.multi --out-dir wasm-out
 ```
 
 Cette commande écrit :

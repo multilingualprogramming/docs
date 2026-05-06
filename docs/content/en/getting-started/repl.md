@@ -5,7 +5,7 @@ title: REPL Guide
 path_segments:
 - getting-started
 - repl
-source_hash: 4444b80aad58
+source_hash: c40d1e22a1ab
 status: source
 permalink: /en/docs/getting-started/repl/
 ---

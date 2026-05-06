@@ -4,7 +4,7 @@ locale: fr
 title: Backend WASM
 path_segments:
 - wasm
-source_hash: c17143ce90da
+source_hash: 8c521fff7b73
 status: translated
 permalink: /fr/docs/wasm/
 ---

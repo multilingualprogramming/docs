@@ -5,7 +5,7 @@ title: Codegen API Reference
 path_segments:
 - codegen
 - api
-source_hash: f5184586a04b
+source_hash: 3f6353de973f
 status: source
 permalink: /en/docs/codegen/api/
 ---
@@ -189,7 +189,7 @@ The returned module imports `env.print_str`, `env.print_f64`, `env.print_bool`, 
 ### CLI: `build-wasm-bundle`
 
 ```bash
-multilingual build-wasm-bundle program.ml --out-dir wasm-out
+multilingual build-wasm-bundle program.multi --out-dir wasm-out
 ```
 
 This writes:

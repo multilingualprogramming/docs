@@ -5,7 +5,7 @@ title: Contrôle de flux
 path_segments:
 - guide-langage
 - controle-flux
-source_hash: 76561f72de89
+source_hash: 7be28fb485aa
 status: translated
 permalink: /fr/docs/guide-langage/controle-flux/
 ---

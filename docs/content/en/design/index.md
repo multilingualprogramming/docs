@@ -4,7 +4,7 @@ locale: en
 title: Design & Architecture
 path_segments:
 - design
-source_hash: 20eca0b52594
+source_hash: 823b5568f18c
 status: source
 permalink: /en/docs/design/
 ---
@@ -58,7 +58,7 @@ This makes boundary questions explicit:
 ## Compilation Pipeline
 
 ```
-Source File (.ml)
+Source File (.multi)
       │  language="fr"
       ▼
 ┌──────────────────┐

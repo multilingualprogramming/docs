@@ -5,7 +5,7 @@ title: Démarrage rapide
 path_segments:
 - demarrage
 - demarrage-rapide
-source_hash: c17c2ed2a7d8
+source_hash: f774af810b6d
 status: translated
 permalink: /fr/docs/demarrage/demarrage-rapide/
 ---

@@ -5,7 +5,7 @@ title: Opérateurs
 path_segments:
 - references
 - operateurs
-source_hash: 7ce7e4343a9f
+source_hash: da4c64e52081
 status: translated
 permalink: /fr/docs/references/operateurs/
 ---

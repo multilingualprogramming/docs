@@ -5,7 +5,7 @@ title: Syntax Reference
 path_segments:
 - language-guide
 - syntax
-source_hash: 1a1df4d35040
+source_hash: 225c5dedade4
 status: source
 permalink: /en/docs/language-guide/syntax/
 ---

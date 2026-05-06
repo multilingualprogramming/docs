@@ -5,7 +5,7 @@ title: FAQ WASM
 path_segments:
 - wasm
 - faq
-source_hash: ef56e9bd0602
+source_hash: 89b1554f2c01
 status: translated
 permalink: /fr/docs/wasm/faq/
 ---

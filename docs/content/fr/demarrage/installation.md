@@ -5,7 +5,7 @@ title: Installation
 path_segments:
 - demarrage
 - installation
-source_hash: 7febf671956e
+source_hash: 285194e966cb
 status: translated
 permalink: /fr/docs/demarrage/installation/
 ---

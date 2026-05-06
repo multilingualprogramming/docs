@@ -4,7 +4,7 @@ locale: fr
 title: Guide du langage
 path_segments:
 - guide-langage
-source_hash: f82e154d80f9
+source_hash: cffd7bcf4cde
 status: translated
 permalink: /fr/docs/guide-langage/
 ---

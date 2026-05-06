@@ -5,7 +5,7 @@ title: Localisation de la bibliothèque standard
 path_segments:
 - conception
 - localisation-bibliotheque-standard
-source_hash: 47a2a5d65161
+source_hash: 13e6476de796
 status: translated
 permalink: /fr/docs/conception/localisation-bibliotheque-standard/
 ---

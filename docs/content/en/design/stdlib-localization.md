@@ -5,7 +5,7 @@ title: Standard Library Localization
 path_segments:
 - design
 - stdlib-localization
-source_hash: 47a2a5d65161
+source_hash: 13e6476de796
 status: source
 permalink: /en/docs/design/stdlib-localization/
 ---

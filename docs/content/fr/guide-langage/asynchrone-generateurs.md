@@ -5,7 +5,7 @@ title: Asynchrone et générateurs
 path_segments:
 - guide-langage
 - asynchrone-generateurs
-source_hash: ef520f55de2d
+source_hash: 1db908c29aaa
 status: translated
 permalink: /fr/docs/guide-langage/asynchrone-generateurs/
 ---

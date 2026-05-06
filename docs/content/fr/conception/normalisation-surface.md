@@ -5,7 +5,7 @@ title: Normalisation de surface
 path_segments:
 - conception
 - normalisation-surface
-source_hash: f8b33f26176e
+source_hash: ea5b1af18e95
 status: translated
 permalink: /fr/docs/conception/normalisation-surface/
 ---

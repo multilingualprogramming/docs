@@ -5,7 +5,7 @@ title: Upgrading to v0.4 (WASM)
 path_segments:
 - wasm
 - upgrade
-source_hash: 050d2a528acc
+source_hash: b569d835aa70
 status: source
 permalink: /en/docs/wasm/upgrade/
 ---

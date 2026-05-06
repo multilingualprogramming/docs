@@ -5,7 +5,7 @@ title: Fonctions et classes
 path_segments:
 - guide-langage
 - fonctions-classes
-source_hash: b0f5ca5c422c
+source_hash: df64ae3f4637
 status: translated
 permalink: /fr/docs/guide-langage/fonctions-classes/
 ---

@@ -5,7 +5,7 @@ title: Directives de traduction
 path_segments:
 - extension
 - traduction
-source_hash: 1401f62eb2ab
+source_hash: 773eff541b9f
 status: translated
 permalink: /fr/docs/extension/traduction/
 ---

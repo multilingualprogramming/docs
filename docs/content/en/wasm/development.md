@@ -5,7 +5,7 @@ title: WASM Development Guide
 path_segments:
 - wasm
 - development
-source_hash: a286b6d0538a
+source_hash: 9aa9413f7d9f
 status: source
 permalink: /en/docs/wasm/development/
 ---

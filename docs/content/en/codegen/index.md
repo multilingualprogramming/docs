@@ -4,7 +4,7 @@ locale: en
 title: Python Code Generation
 path_segments:
 - codegen
-source_hash: 5929fb8cc4b6
+source_hash: fd90bc5e1c9b
 status: source
 permalink: /en/docs/codegen/
 ---
@@ -16,7 +16,7 @@ The Python code generator (`PythonCodeGenerator`) is the primary backend for mul
 ## Pipeline Position
 
 ```
-Source Language (.ml)
+Source Language (.multi)
       │
       ▼  [Lexer + Parser + SurfaceNormalizer]
 Core AST
@@ -151,7 +151,7 @@ The primary WASM backend is `WATCodeGenerator`, which compiles the Core AST dire
 From the command line, `build-wasm-bundle` runs the full pipeline (WAT → binary → artifacts):
 
 ```bash
-multilingual build-wasm-bundle program.ml --out-dir wasm-out
+multilingual build-wasm-bundle program.multi --out-dir wasm-out
 # Produces: module.wat, module.wasm, host_shim.js, abi_manifest.json
 ```
 
@@ -165,7 +165,7 @@ See [WASM Architecture]({{ '/en/docs/wasm/architecture/' | relative_url }}) for 
 
 Full end-to-end transpile from Japanese to Python:
 
-**Input** (Japanese, `program.ml`):
+**Input** (Japanese, `program.multi`):
 
 {{snippet:codegen__py08}}
 

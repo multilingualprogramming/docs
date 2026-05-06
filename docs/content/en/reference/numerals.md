@@ -5,7 +5,7 @@ title: Numeral Systems
 path_segments:
 - reference
 - numerals
-source_hash: fbb7f9155632
+source_hash: c5a80c42bf85
 status: source
 permalink: /en/docs/reference/numerals/
 ---

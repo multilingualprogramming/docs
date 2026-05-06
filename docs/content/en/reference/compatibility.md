@@ -5,14 +5,14 @@ title: Compatibility Matrix
 path_segments:
 - reference
 - compatibility
-source_hash: 5266b537e3e5
+source_hash: 1d354ab4ba71
 status: source
 permalink: /en/docs/reference/compatibility/
 ---
 
 This matrix defines the current compatibility baseline for `multilingual`. The source of truth is:
 
-- `examples/complete_features_en.ml` and equivalents in all 17 languages
+- `examples/complete_features_en.multi` and equivalents in all 17 languages
 - `tests/` (1,926 collected tests across 63 test files)
 
 **Target runtime**: CPython 3.12.x
@@ -245,5 +245,5 @@ When evaluating compatibility for a real codebase:
 
 1. Start from this matrix
 2. Run smoke tests: `multilingual smoke --all`
-3. Run focused tests: `multilingual run yourprogram.ml --lang en`
+3. Run focused tests: `multilingual run yourprogram.multi --lang en`
 4. Track gaps as concrete syntax/runtime items

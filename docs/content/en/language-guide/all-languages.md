@@ -5,7 +5,7 @@ title: All 17 Languages
 path_segments:
 - language-guide
 - all-languages
-source_hash: 897bd24154cc
+source_hash: 9384ee383e56
 status: source
 permalink: /en/docs/language-guide/all-languages/
 ---
@@ -22,7 +22,7 @@ All programs produce identical output regardless of language used.
 
 **Run:**
 ```bash
-python -m multilingualprogramming run program.ml --lang en
+python -m multilingualprogramming run program.multi --lang en
 ```
 
 ---
@@ -33,7 +33,7 @@ python -m multilingualprogramming run program.ml --lang en
 
 **Run:**
 ```bash
-python -m multilingualprogramming run programme.ml --lang fr
+python -m multilingualprogramming run programme.multi --lang fr
 ```
 
 ---
@@ -98,7 +98,7 @@ python -m multilingualprogramming run programme.ml --lang fr
 
 **Run:**
 ```bash
-python -m multilingualprogramming run program.ml --lang hi
+python -m multilingualprogramming run program.multi --lang hi
 ```
 
 ---
@@ -109,7 +109,7 @@ python -m multilingualprogramming run program.ml --lang hi
 
 **Run:**
 ```bash
-python -m multilingualprogramming run program.ml --lang ar
+python -m multilingualprogramming run program.multi --lang ar
 ```
 
 ---
@@ -132,7 +132,7 @@ python -m multilingualprogramming run program.ml --lang ar
 
 **Run:**
 ```bash
-python -m multilingualprogramming run program.ml --lang zh
+python -m multilingualprogramming run program.multi --lang zh
 ```
 
 ---
@@ -143,7 +143,7 @@ python -m multilingualprogramming run program.ml --lang zh
 
 **Run:**
 ```bash
-python -m multilingualprogramming run program.ml --lang ja
+python -m multilingualprogramming run program.multi --lang ja
 ```
 
 ---

@@ -4,7 +4,7 @@ locale: en
 title: WASM Backend
 path_segments:
 - wasm
-source_hash: c17143ce90da
+source_hash: 8c521fff7b73
 status: source
 permalink: /en/docs/wasm/
 ---
@@ -113,7 +113,7 @@ export MULTILINGUAL_DEBUG=1
 ## WASM Architecture
 
 ```
-multilingual Source (.ml)
+multilingual Source (.multi)
         │
         ▼
   ┌──────────────┐

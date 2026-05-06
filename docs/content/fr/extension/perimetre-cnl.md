@@ -5,7 +5,7 @@ title: Périmètre CNL
 path_segments:
 - extension
 - perimetre-cnl
-source_hash: 3966758c9120
+source_hash: aad1d5553a21
 status: translated
 permalink: /fr/docs/extension/perimetre-cnl/
 ---

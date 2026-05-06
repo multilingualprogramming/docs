@@ -4,7 +4,7 @@ locale: fr
 title: Conception et architecture
 path_segments:
 - conception
-source_hash: 20eca0b52594
+source_hash: 823b5568f18c
 status: translated
 permalink: /fr/docs/conception/
 ---

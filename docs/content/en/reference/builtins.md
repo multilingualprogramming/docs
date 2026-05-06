@@ -5,7 +5,7 @@ title: Built-in Aliases
 path_segments:
 - reference
 - builtins
-source_hash: 2cea4d177e8d
+source_hash: 03fb8e85acf2
 status: source
 permalink: /en/docs/reference/builtins/
 ---

@@ -5,7 +5,7 @@ title: Guide de programmation (Français)
 path_segments:
 - language-guide
 - french
-source_hash: 8aaca71d7f2f
+source_hash: 28e48e4d2e29
 status: source
 permalink: /en/docs/language-guide/french/
 ---
@@ -28,7 +28,7 @@ Concrètement :
 
 ## Démarrage rapide
 
-Les fichiers source du langage utilisent l'extension `.ml` (par exemple `bonjour.ml`).
+Les fichiers source du langage utilisent l'extension `.multi` (par exemple `bonjour.multi`).
 
 ```bash
 # Installation
@@ -41,10 +41,10 @@ multilingual repl --lang fr
 multilingual repl --lang fr --show-python
 
 # Exécuter un fichier source
-multilingual run bonjour.ml --lang fr
+multilingual run bonjour.multi --lang fr
 ```
 
-Exemple `bonjour.ml` :
+Exemple `bonjour.multi` :
 
 ```text
 afficher("Bonjour le monde")
@@ -259,7 +259,7 @@ Voir la [référence des alias built-in]({{ '/en/docs/reference/builtins/' | rel
 Le flux est identique pour toutes les langues :
 
 ```
-Source français (.ml)
+Source français (.multi)
       │
       ▼  Lexer (tokenisation Unicode)
 Tokens

@@ -5,7 +5,7 @@ title: Spécification du cœur
 path_segments:
 - conception
 - specification-coeur
-source_hash: 5d4dce322e66
+source_hash: 8317a54eab29
 status: translated
 permalink: /fr/docs/conception/specification-coeur/
 ---

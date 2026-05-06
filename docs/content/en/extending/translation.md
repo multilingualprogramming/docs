@@ -5,7 +5,7 @@ title: Translation Guidelines
 path_segments:
 - extending
 - translation
-source_hash: 1401f62eb2ab
+source_hash: 773eff541b9f
 status: source
 permalink: /en/docs/extending/translation/
 ---

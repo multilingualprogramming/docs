@@ -5,7 +5,7 @@ title: Functions & Classes
 path_segments:
 - language-guide
 - functions-classes
-source_hash: b0f5ca5c422c
+source_hash: df64ae3f4637
 status: source
 permalink: /en/docs/language-guide/functions-classes/
 ---

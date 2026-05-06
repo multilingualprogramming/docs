@@ -5,7 +5,7 @@ title: Toutes les langues
 path_segments:
 - guide-langage
 - toutes-langues
-source_hash: 897bd24154cc
+source_hash: 9384ee383e56
 status: translated
 permalink: /fr/docs/guide-langage/toutes-langues/
 ---
@@ -22,7 +22,7 @@ Tous les programmes produisent la même sortie quelle que soit la langue utilis�
 
 **Exécution :**
 ```bash
-python -m multilingualprogramming run program.ml --lang en
+python -m multilingualprogramming run program.multi --lang en
 ```
 
 ---
@@ -33,7 +33,7 @@ python -m multilingualprogramming run program.ml --lang en
 
 **Exécution :**
 ```bash
-python -m multilingualprogramming run programme.ml --lang fr
+python -m multilingualprogramming run programme.multi --lang fr
 ```
 
 ---
@@ -98,7 +98,7 @@ python -m multilingualprogramming run programme.ml --lang fr
 
 **Exécution :**
 ```bash
-python -m multilingualprogramming run program.ml --lang hi
+python -m multilingualprogramming run program.multi --lang hi
 ```
 
 ---
@@ -109,7 +109,7 @@ python -m multilingualprogramming run program.ml --lang hi
 
 **Exécution :**
 ```bash
-python -m multilingualprogramming run program.ml --lang ar
+python -m multilingualprogramming run program.multi --lang ar
 ```
 
 ---
@@ -132,7 +132,7 @@ python -m multilingualprogramming run program.ml --lang ar
 
 **Exécution :**
 ```bash
-python -m multilingualprogramming run program.ml --lang zh
+python -m multilingualprogramming run program.multi --lang zh
 ```
 
 ---
@@ -143,7 +143,7 @@ python -m multilingualprogramming run program.ml --lang zh
 
 **Exécution :**
 ```bash
-python -m multilingualprogramming run program.ml --lang ja
+python -m multilingualprogramming run program.multi --lang ja
 ```
 
 ---

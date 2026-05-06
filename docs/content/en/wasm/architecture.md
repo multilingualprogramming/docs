@@ -5,7 +5,7 @@ title: WASM Architecture
 path_segments:
 - wasm
 - architecture
-source_hash: 8daba5db70bd
+source_hash: 0018fabdb49b
 status: source
 permalink: /en/docs/wasm/architecture/
 ---
@@ -25,7 +25,7 @@ The WASM infrastructure is designed around three principles: **transparent selec
                 │                            │
          ┌──────▼──────┐          ┌──────────▼────────┐
          │ User Code   │          │ Standard Library  │
-         │ (.ml files) │          │ (17 languages)    │
+         │ (.multi files) │          │ (17 languages)    │
          └──────┬──────┘          └──────────┬────────┘
                 └─────────────┬──────────────┘
                               │
@@ -95,7 +95,7 @@ Transforms the Core AST directly into WebAssembly Text Format (WAT). This is the
 
 ```bash
 # Build a complete browser bundle from a multilingual source file
-multilingual build-wasm-bundle demo.ml --out-dir wasm-out
+multilingual build-wasm-bundle demo.multi --out-dir wasm-out
 ```
 
 {{snippet:wasm__architecture__py01}}
@@ -234,9 +234,9 @@ This WAT text is then assembled into a `.wasm` binary (via `wabt`/`wat2wasm`) an
 ## Build Pipeline (CI)
 
 ```
-demo.ml
+demo.multi
   │
-  ▼  multilingual build-wasm-bundle demo.ml --out-dir wasm-out
+  ▼  multilingual build-wasm-bundle demo.multi --out-dir wasm-out
 wasm-out/
   ├── module.wat          ← WAT source (human-readable)
   ├── module.wasm         ← binary (browser execution)

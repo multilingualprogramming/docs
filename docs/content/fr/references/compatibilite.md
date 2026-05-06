@@ -5,14 +5,14 @@ title: Compatibilité
 path_segments:
 - references
 - compatibilite
-source_hash: 5266b537e3e5
+source_hash: 1d354ab4ba71
 status: translated
 permalink: /fr/docs/references/compatibilite/
 ---
 
 Cette matrice décrit l'état actuel de compatibilité de `multilingual`. La source de vérité repose sur :
 
-- `examples/complete_features_en.ml` et ses équivalents dans les 17 langues
+- `examples/complete_features_en.multi` et ses équivalents dans les 17 langues
 - `tests/` (1 926 tests collectés répartis sur 63 fichiers de test)
 
 **Runtime cible** : CPython 3.12.x
@@ -245,5 +245,5 @@ Pour évaluer la compatibilité sur un vrai code :
 
 1. Partir de cette matrice
 2. Exécuter les smoke tests : `multilingual smoke --all`
-3. Exécuter des tests ciblés : `multilingual run yourprogram.ml --lang en`
+3. Exécuter des tests ciblés : `multilingual run yourprogram.multi --lang en`
 4. Suivre les écarts comme des éléments concrets de syntaxe ou de runtime

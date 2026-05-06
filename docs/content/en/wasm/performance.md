@@ -5,7 +5,7 @@ title: WASM Performance Tuning
 path_segments:
 - wasm
 - performance
-source_hash: 5c6b23b59e51
+source_hash: 2b01f60abf4d
 status: source
 permalink: /en/docs/wasm/performance/
 ---

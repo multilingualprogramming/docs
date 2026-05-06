@@ -5,7 +5,7 @@ title: Async & Generators
 path_segments:
 - language-guide
 - async-generators
-source_hash: ef520f55de2d
+source_hash: 1db908c29aaa
 status: source
 permalink: /en/docs/language-guide/async-generators/
 ---

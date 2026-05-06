@@ -5,7 +5,7 @@ title: Core Specification
 path_segments:
 - design
 - core-spec
-source_hash: 5d4dce322e66
+source_hash: 8317a54eab29
 status: source
 permalink: /en/docs/design/core-spec/
 ---

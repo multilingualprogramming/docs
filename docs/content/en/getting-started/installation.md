@@ -5,7 +5,7 @@ title: Installation
 path_segments:
 - getting-started
 - installation
-source_hash: 7febf671956e
+source_hash: 285194e966cb
 status: source
 permalink: /en/docs/getting-started/installation/
 ---

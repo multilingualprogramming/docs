@@ -4,7 +4,7 @@ locale: en
 title: Language Reference
 path_segments:
 - reference
-source_hash: "130731172631"
+source_hash: cd5c1ec6b295
 status: source
 permalink: /en/docs/reference/
 ---
@@ -121,25 +121,25 @@ The `Program` AST node contains a list of `Statement` nodes. See `multilingualpr
 
 ```bash
 # Run a program file
-multilingual run <file.ml> --lang en
-multilg run programme.ml --lang fr
+multilingual run <file.multi> --lang en
+multilg run programme.multi --lang fr
 
 # Start REPL
 multilingual repl
 multilingual repl --lang fr --show-python --show-wat
 
 # Transpile to Python (print output, no execution)
-multilingual compile hello.ml --lang en
+multilingual compile hello.multi --lang en
 
 # Build WASM bundle
-multilingual build-wasm-bundle hello.ml --lang en --out-dir ./dist
+multilingual build-wasm-bundle hello.multi --lang en --out-dir ./dist
 
 # Validate a language pack
 multilingual smoke --lang fr
 multilingual smoke --all
 
 # Check generated output encoding
-multilingual encoding-check-generated hello.ml --lang en
+multilingual encoding-check-generated hello.multi --lang en
 
 # Show version
 multilingual --version

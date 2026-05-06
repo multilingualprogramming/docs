@@ -4,7 +4,7 @@ locale: en
 title: Contributing & Development
 path_segments:
 - contributing
-source_hash: 48a6c71c7442
+source_hash: 7f671e38bc01
 status: source
 permalink: /en/docs/contributing/
 ---
@@ -43,16 +43,16 @@ python -m pip install -e ".[dev,wasm]"
 
 ```bash
 multilingual repl
-multilingual run hello.ml
-multilg run hello.ml
+multilingual run hello.multi
+multilg run hello.multi
 ```
 
 Module form is still the safest during development:
 
 ```bash
 python -m multilingualprogramming repl
-python -m multilingualprogramming run hello.ml --lang fr
-python -m multilingualprogramming compile hello.ml
+python -m multilingualprogramming run hello.multi --lang fr
+python -m multilingualprogramming compile hello.multi
 python -m multilingualprogramming smoke --all
 ```
 

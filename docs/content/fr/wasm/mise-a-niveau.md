@@ -5,7 +5,7 @@ title: Mise à niveau WASM
 path_segments:
 - wasm
 - mise-a-niveau
-source_hash: 050d2a528acc
+source_hash: b569d835aa70
 status: translated
 permalink: /fr/docs/wasm/mise-a-niveau/
 ---

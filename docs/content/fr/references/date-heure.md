@@ -5,7 +5,7 @@ title: Date et heure
 path_segments:
 - references
 - date-heure
-source_hash: 4e5871b97df0
+source_hash: 41e20fadf1d3
 status: translated
 permalink: /fr/docs/references/date-heure/
 ---

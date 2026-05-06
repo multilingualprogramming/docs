@@ -4,7 +4,7 @@ locale: fr
 title: Démarrage
 path_segments:
 - demarrage
-source_hash: 9b9c8ca97172
+source_hash: 5b461e2c6dfc
 status: translated
 permalink: /fr/docs/demarrage/
 ---
@@ -74,7 +74,7 @@ Vérifier la disponibilité WASM :
 {{snippet:getting_started__py02}}
 
 ```bash
-python -m multilingualprogramming run hello_en.ml --lang en
+python -m multilingualprogramming run hello_en.multi --lang en
 ```
 
 ### Français
@@ -82,7 +82,7 @@ python -m multilingualprogramming run hello_en.ml --lang en
 {{snippet:getting_started__py03}}
 
 ```bash
-python -m multilingualprogramming run hello_fr.ml --lang fr
+python -m multilingualprogramming run hello_fr.multi --lang fr
 ```
 
 ### Japonais
@@ -90,7 +90,7 @@ python -m multilingualprogramming run hello_fr.ml --lang fr
 {{snippet:getting_started__py04}}
 
 ```bash
-python -m multilingualprogramming run hello_ja.ml --lang ja
+python -m multilingualprogramming run hello_ja.multi --lang ja
 ```
 
 ### Arabe
@@ -98,7 +98,7 @@ python -m multilingualprogramming run hello_ja.ml --lang ja
 {{snippet:getting_started__py05}}
 
 ```bash
-python -m multilingualprogramming run hello_ar.ml --lang ar
+python -m multilingualprogramming run hello_ar.multi --lang ar
 ```
 
 ---
@@ -128,7 +128,7 @@ python -m multilingualprogramming repl --show-python
 ## Référence CLI
 
 ```bash
-multilingual run <file.ml> --lang <code>
+multilingual run <file.multi> --lang <code>
 multilingual repl [--lang <code>] [--show-python]
 multilingual smoke --lang <code>
 multilingual smoke --all

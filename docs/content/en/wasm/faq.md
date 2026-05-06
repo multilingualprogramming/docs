@@ -5,7 +5,7 @@ title: WASM FAQ
 path_segments:
 - wasm
 - faq
-source_hash: ef56e9bd0602
+source_hash: 89b1554f2c01
 status: source
 permalink: /en/docs/wasm/faq/
 ---
@@ -170,7 +170,7 @@ WASM acceleration happens at the **backend** level, after parsing. All 17 langua
 
 ```bash
 export MULTILINGUAL_DEBUG=1
-python -m multilingualprogramming run myprogram.ml --lang en
+python -m multilingualprogramming run myprogram.multi --lang en
 ```
 
 ---

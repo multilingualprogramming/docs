@@ -5,7 +5,7 @@ title: Installation WASM
 path_segments:
 - wasm
 - installation
-source_hash: c2006bf62d77
+source_hash: f3342711ceac
 status: translated
 permalink: /fr/docs/wasm/installation/
 ---

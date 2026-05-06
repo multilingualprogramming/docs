@@ -4,7 +4,7 @@ locale: fr
 title: Génération de code Python
 path_segments:
 - generation-code
-source_hash: 5929fb8cc4b6
+source_hash: fd90bc5e1c9b
 status: translated
 permalink: /fr/docs/generation-code/
 ---

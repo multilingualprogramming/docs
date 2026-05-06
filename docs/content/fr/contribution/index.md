@@ -4,7 +4,7 @@ locale: fr
 title: Contribution et développement
 path_segments:
 - contribution
-source_hash: 48a6c71c7442
+source_hash: 7f671e38bc01
 status: translated
 permalink: /fr/docs/contribution/
 ---
@@ -43,8 +43,8 @@ python -m pip install -e ".[dev,wasm]"
 
 ```bash
 multilingual repl
-multilingual run hello.ml
-multilg run hello.ml
+multilingual run hello.multi
+multilg run hello.multi
 python -m multilingualprogramming smoke --all
 ```
 

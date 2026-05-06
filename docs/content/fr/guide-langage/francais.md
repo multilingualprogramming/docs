@@ -5,7 +5,7 @@ title: Guide français
 path_segments:
 - guide-langage
 - francais
-source_hash: 8aaca71d7f2f
+source_hash: 28e48e4d2e29
 status: translated
 permalink: /fr/docs/guide-langage/francais/
 ---
@@ -28,16 +28,16 @@ Concrètement :
 
 ## Démarrage rapide
 
-Les fichiers source utilisent l'extension `.ml`.
+Les fichiers source utilisent l'extension `.multi`.
 
 ```bash
 pip install multilingualprogramming
 multilingual repl --lang fr
 multilingual repl --lang fr --show-python
-multilingual run bonjour.ml --lang fr
+multilingual run bonjour.multi --lang fr
 ```
 
-Exemple `bonjour.ml` :
+Exemple `bonjour.multi` :
 
 ```text
 afficher("Bonjour le monde")
@@ -235,7 +235,7 @@ Voir la [référence des fonctions intégrées]({{ '/fr/docs/references/fonction
 Le flux est identique pour toutes les langues :
 
 ```text
-Source français (.ml)
+Source français (.multi)
       |
       v  Lexer
 Tokens

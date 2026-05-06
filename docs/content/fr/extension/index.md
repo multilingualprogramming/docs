@@ -4,7 +4,7 @@ locale: fr
 title: Ajouter une nouvelle langue
 path_segments:
 - extension
-source_hash: a0f8c50e1206
+source_hash: df86b23c985b
 status: translated
 permalink: /fr/docs/extension/
 ---
